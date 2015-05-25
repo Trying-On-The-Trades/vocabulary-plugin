@@ -7,8 +7,6 @@ class deck{
               $exists   = 0;
 
     function __construct($id = 1){
-
-        // Get the Quest (Skill) based on the id
         if (is_numeric($id)){
             $deck_row = get_deck($id);
             $this->build($deck_row);

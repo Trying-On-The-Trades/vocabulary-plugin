@@ -22,6 +22,11 @@ function get_decks_table_name(){
   return $wpdb->prefix . "wordpleh_deck";
 }
 
+function get_deck_words_table_name(){
+  global $wpdb;
+  return $wpdb->prefix . "worpleh_deck_words";
+}
+
 function build_dictionary_sql(){
   $table_name = get_dictionary_table_name();
 
@@ -36,7 +41,7 @@ function build_dictionary_sql(){
     `category_id` int(11),
     PRIMARY KEY (`id`),
     FOREIGN KEY (trade_id) REFERENCES ' . get_trades_table_name() . '(id),
-    FOREIGN KEY (category_id) REFERENCES wp_wordpleh_category(id)
+    FOREIGN KEY (category_id) REFERENCES ' . get_categories_table_name() . '(id)
     )ENGINE=MyISAM DEFAULT CHARSET=latin1;';
 
     return $sql;
@@ -75,6 +80,19 @@ function build_decks_sql(){
     `name` char(50) NOT NULL,
     PRIMARY KEY(`id`)
     )ENGINE=MyISAM DEFAULT CHARSET=latin1;';;
+
+  return $sql;
+}
+
+function build_deck_words_sql(){
+  $table_name = get_deck_words_table_name();
+
+  $sql = 'CREATE TABLE `' . $table_name . '` (
+    `deck_id` int(10) NOT NULL,
+    `dictionary_id` int(10) NOT NULL, 
+    PRIMARY KEY (deck_id, dictionary_id),  
+    FOREIGN KEY (deck_id) REFERENCES ' . get_decks_table_name() . '(id),  
+    FOREIGN KEY (genre_id) REFERENCES ' . get_dictionary_table_name() . '(id))';
 
   return $sql;
 }

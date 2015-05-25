@@ -1,4 +1,6 @@
 <?php
+
+//create and update deck word
 function get_trades_prefix(){
   global $wpdb;
   $table_name = $wpdb->prefix . "pano_trades"
@@ -49,10 +51,21 @@ function get_decks(){
 
   $decks_table_name = get_decks_table_name();
 
-  $deckss = $wpdb->get_results( 
+  $decks = $wpdb->get_results( 
             "SELECT * FROM " . $decks_table_name . " wpt ");
 
   return $decks;
+}
+
+function get_deck_words(){
+  global $wpdb;
+
+  $table_name = get_deck_words_table_name();
+
+  $deck_words = $wpdb->get_results(
+                  "SELECT * FROM " . $table_name . "wpt");
+
+  return $deck_words;
 }
 
 function get_word($word_id){
@@ -114,6 +127,16 @@ function get_deck($deck_id){
     );
 
     return $trade;
+}
+
+function get_deck_word($deck_id, $dictionary_id){
+  global $wpdb;
+  $table_name = get_deck_words_table_name();
+  $deck = $wpdb->get_row($wpdb->prepare(
+    "SELECT * FROM " . $table_name . " wpt " .
+    "WHERE wpt.deck_id = " . $deck_id . " AND 
+    wpt.dictionary_id = " . $dictionary_id)
+  );
 }
 
 function update_word($word_id, $word_word, $word_hint, $trade_id){
@@ -179,6 +202,10 @@ function update_deck($deck_id, $deck_name){
   }
 }
 
+function update_deck_word($deck_id, $dictionary_id){
+  //DOO
+}
+
 function create_word($word_word, $word_hint, $trade_id){
     global $wpdb;
     $word_table_name = get_dictionary_table_name();
@@ -218,6 +245,16 @@ function create_deck($deck_name){
     return $wpdb->insert_id;
 }
 
+function create_deck_word($deck_id, $dictionary_id){
+  global $wpdb;
+  $table_name = get_deck_words_table_name();
+
+  $wpdb->insert( $table_name, array( 'deck_id' => $deck_id),
+                              array('dictionary_id' => $dictionary_id));
+
+  return $wpdb->insert_id;//REDO
+}
+
 function delete_word($word_id){
     global $wpdb;
     $word_table_name = get_dictionary_table_name();
@@ -244,4 +281,12 @@ function delete_deck($deck_id){
     $deck_table_name = get_decks_table_name();
 
     $wpdb->delete( $deck_table_name, array( 'id' => $deck_id ) );
+}
+
+function delete_deck_word($deck_id, $dictionary_id){
+  global $wpdb;
+  $table_name = get_deck_words_table_name();
+
+  $wpdb->delete( $table_name, array('deck_id' => $deck_id), 
+                              array('dictionary_id' => $dictionary_id));
 }
