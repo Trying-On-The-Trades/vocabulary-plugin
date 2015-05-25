@@ -17,6 +17,10 @@ function get_categories_table_name(){
   return $wpdb->prefix . "wordpleh_category";
 }
 
+function get_decks_table_name(){
+  global $wpdb;
+  return $wpdb->prefix . "wordpleh_deck";
+}
 
 function build_dictionary_sql(){
   $table_name = get_dictionary_table_name();
@@ -61,4 +65,16 @@ function build_categories_sql(){
     )ENGINE=MyISAM DEFAULT CHARSET=latin1;';
 
     return $sql;
+}
+
+function build_decks_sql(){
+  $table_name = get_decks_table_name();
+
+  $sql = 'CREATE TABLE `' . $table_name . '` (
+    `id` int(10) NOT NULL AUTO_INCREMENT,
+    `name` char(50) NOT NULL,
+    PRIMARY KEY(`id`)
+    )ENGINE=MyISAM DEFAULT CHARSET=latin1;';;
+
+  return $sql;
 }

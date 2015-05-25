@@ -44,6 +44,17 @@ function get_categories(){
   return $categories;
 }
 
+function get_decks(){
+  global $wpdb;
+
+  $decks_table_name = get_decks_table_name();
+
+  $deckss = $wpdb->get_results( 
+            "SELECT * FROM " . $decks_table_name . " wpt ");
+
+  return $decks;
+}
+
 function get_word($word_id){
     global $wpdb;
     $word_table_name = get_dictionary_table_name();
@@ -88,6 +99,18 @@ function get_category($category_id){
     $category = $wpdb->get_row( $wpdb->prepare(
         "SELECT * FROM " . $category_table_name . " wpt " .
         "WHERE wpt.id = %d", $category_id)
+    );
+
+    return $trade;
+}
+
+function get_deck($deck_id){
+    global $wpdb;
+    $deck_table_name = get_decks_table_name();
+
+    $deck = $wpdb->get_row( $wpdb->prepare(
+        "SELECT * FROM " . $deck_table_name . " wpt " .
+        "WHERE wpt.id = %d", $deck_id)
     );
 
     return $trade;
@@ -141,6 +164,21 @@ function update_category($category_id, $category_name){
   }
 }
 
+function update_deck($deck_id, $deck_name){
+  global $wpdb;
+  $deck_table_name = get_decks_table_name();
+
+  if(isset($deck_id) && is_numeric($deck_id)){
+      $wpdb->update( $deck_table_name,
+                     array('name' => $deck_name),
+                     array('id' => $deck_id));
+
+      return true;
+  } else {
+      return false;
+  }
+}
+
 function create_word($word_word, $word_hint, $trade_id){
     global $wpdb;
     $word_table_name = get_dictionary_table_name();
@@ -166,7 +204,16 @@ function create_category($category_name){
     global $wpdb;
     $category_table_name = get_categories_table_name();
 
-    $wpdb->insert( $category_table_name, array( 'profession' => $category_name));
+    $wpdb->insert( $category_table_name, array( 'name' => $category_name));
+
+    return $wpdb->insert_id;
+}
+
+function create_deck($deck_name){
+    global $wpdb;
+    $deck_table_name = get_decks_table_name();
+
+    $wpdb->insert( $deck_table_name, array( 'name' => $deck_name));
 
     return $wpdb->insert_id;
 }
@@ -190,4 +237,11 @@ function delete_category($category_id){
     $category_table_name = get_categories_table_name();
 
     $wpdb->delete( $category_table_name, array( 'id' => $category_id ) );
+}
+
+function delete_deck($deck_id){
+    global $wpdb;
+    $deck_table_name = get_decks_table_name();
+
+    $wpdb->delete( $deck_table_name, array( 'id' => $deck_id ) );
 }
