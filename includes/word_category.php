@@ -1,6 +1,6 @@
 <?php
 
-class category{
+class word_category{
 
     protected $id,
               $name,
@@ -10,12 +10,12 @@ class category{
 
         // Get the Quest (Skill) based on the id
         if (is_numeric($id)){
-            $category_row = get_category($id);
-            $this->build($category_row);
+            $word_category_row = get_word_category($id);
+            $this->build($word_category_row);
         }
     }
 
-    function build($category_row){
+    function build($word_category_row){
         if ($trade_row->id > 0){
             $this->exists   = 1;
             $this->id       = $trade_row->id;
