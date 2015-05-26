@@ -3,7 +3,7 @@
 //create and update deck word
 function get_trades_prefix(){
   global $wpdb;
-  $table_name = $wpdb->prefix . "pano_trades"
+  $table_name = $wpdb->prefix . "pano_trades";
   $sql = "SHOW TABLES LIKE '" . $table_name ."'";
   $table = $wpdb->get_results($sql);
   $exists = $table->num_rows;
@@ -87,8 +87,7 @@ function get_word_with_trade($word_id){
 
     $word = $wpdb->get_row( $wpdb->prepare(
         "SELECT * FROM " . $trade_table_name . " AS trade, " . $word_table_name .
-        "AS words WHERE trade.id = words.trade_id AND words.id = " . $word_id})
-    );
+        "AS words WHERE trade.id = words.trade_id AND words.id = " . $word_id));
 
     return $word;
 }
@@ -114,7 +113,7 @@ function get_category($category_id){
         "WHERE wpt.id = %d", $category_id)
     );
 
-    return $trade;
+    return $category;
 }
 
 function get_deck($deck_id){
@@ -126,7 +125,7 @@ function get_deck($deck_id){
         "WHERE wpt.id = %d", $deck_id)
     );
 
-    return $trade;
+    return $deck;
 }
 
 function get_deck_word($deck_id, $dictionary_id){
@@ -221,7 +220,7 @@ function create_trade($trade_profession, $trade_image){
     global $wpdb;
     $trade_table_name = get_trades_table_name();
 
-    $wpdb->insert( $trade_table_name, array( 'profession' => $trade_name),
+    $wpdb->insert( $trade_table_name, array( 'profession' => $trade_profession),
                                       array( 'image' => $trade_image));
 
     return $wpdb->insert_id;
