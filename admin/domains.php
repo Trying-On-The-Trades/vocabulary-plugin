@@ -11,7 +11,7 @@ function pano_domain_settings_page() {
 
 <!-- style sheet so our admin page looks nice -->
 <link rel="stylesheet" type="text/css" href="<?php echo $semantic ?>"/>
-<p>Manage your missions!</p>
+<p>Manage your domains!</p>
 <hr>
 
 <?php if ( isset( $_GET[ 'settings-saved' ] ) ): ?>
@@ -22,6 +22,7 @@ function pano_domain_settings_page() {
 <table class="ui table segment">
   <tr>
     <th>Domain</th>
+    <th>Image</th>
     <th>Edit</th>
     <th>Delete</th>
   </tr>
@@ -29,6 +30,7 @@ function pano_domain_settings_page() {
 
     <tr>
         <td><?php echo $domain->profession ?></td>
+        <td><?php echo $domain->image ?></td>
         <td><a class="ui blue icon button" href="<?php echo $edit_domain_url ?>&id=<?php echo $domain->id ?>" style="padding: 7px">Edit</a></td>
         <td>
             <form method="post" action="admin-post.php" id="delete_domain_form<?php echo $domain->id ?>">
