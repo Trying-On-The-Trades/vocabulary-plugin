@@ -5,7 +5,7 @@ function edit_mission_settings_page() {
     $semantic = WP_PLUGIN_URL . '/panomanager/css/semantic.css';
     
     $words    = get_words();
-
+    $domains  = get_domains();
 	$trades   = get_trades();
 
     if (isset($_GET['id']) && is_numeric( $_GET['id']) ) {
@@ -42,11 +42,11 @@ function edit_mission_settings_page() {
     <input type="hidden" name="action" value="edit_words" />
 	    <div class="ui form">
 	      <div class="field">
-	        <label for="prereq_trade_id">Select a Trade</label>
-	        <select name="trade_id">
+	        <label for="prereq_domain_id">Select a domain</label>
+	        <select name="domain_id">
 				 <option value="NA">...</option>
-                 <?php foreach($trades as $trade): ?>
-					<option value="<?php echo $trade->id ?>" <?php echo ($trade->id === $words->get_trade_id()) ? "selected" : "" ?>><?php echo $trade->name ?></option>
+                 <?php foreach($domains as $domain): ?>
+					<option value="<?php echo $domain->id ?>" <?php echo ($domain->id === $words->get_domain_id()) ? "selected" : "" ?>><?php echo $domain->name ?></option>
 				 <?php endforeach; ?>
 			</select>
 	      </div>
@@ -56,14 +56,26 @@ function edit_mission_settings_page() {
 	      <div class="field">
 	      	<div class="ui left labeled icon input">
 	        	<label for="words_name">Word Name</label>
-	    		<input name="words_name" id="name" placeholder="Fun Mission" value="<?php echo $words->get_word() ?>" required />
+	    		<input name="words_name" id="name" value="<?php echo $words->get_word() ?>" required />
      	 	</div>
 	      </div>
 	    </div>
 	    <div class="ui form">
 	      <div class="field">
-	        <label for="words_hint">Hint</label>
-	        <textarea name="words_hint" required ><?php echo $words->get_hint() ?></textarea>
+	        <label for="words_description">Description</label>
+	        <textarea name="words_description" required ><?php echo $words->get_description() ?></textarea>
+	      </div>
+	    </div>
+        <div class="ui form">
+	      <div class="field">
+	        <label for="words_image">Image</label>
+	        <input name="words_image" id="image" value="<?php echo $words->get_image() ?>" />
+	      </div>
+	    </div>
+        <div class="ui form">
+	      <div class="field">
+	        <label for="words_audio">Audio</label>
+	        <input name="words_audio" id="audio" value="<?php echo $words->get_audio() ?>" />
 	      </div>
 	    </div>
 
