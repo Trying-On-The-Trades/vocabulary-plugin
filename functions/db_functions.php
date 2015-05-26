@@ -117,8 +117,8 @@ function get_deck_word($deck_id, $dictionary_id){
     );
 }
 
-function update_word($word_id, $word_word, $word_description, $word_points, $word_image, 
-                    $word_audio, $word_domain_id, $word_word_category_id){
+function update_word($word_id, $word_word, $word_description, $word_points, $word_image,
+                     $word_audio, $word_domain_id, $word_word_category_id){
     global $wpdb;
     $word_table_name = get_dictionary_table_name();
 
@@ -186,8 +186,8 @@ function update_deck($deck_id, $deck_name, $deck_image, $deck_number_of_words){
     }
 }
 
-function create_word($word_word, $word_description, $word_points, $word_audio, 
-                    $word_image, $word_domain_id, $word_word_category_id){
+function create_word($word_word, $word_description, $word_points, $word_audio,
+                     $word_image, $word_domain_id, $word_word_category_id){
     global $wpdb;
     $word_table_name = get_dictionary_table_name();
 
@@ -224,7 +224,7 @@ function create_deck($deck_name, $deck_image, $deck_number_of_words){
     global $wpdb;
     $deck_table_name = get_decks_table_name();
 
-    $wpdb->insert( $deck_table_name, array( 'name' => $deck_name), 
+    $wpdb->insert( $deck_table_name, array( 'name' => $deck_name),
         array('image' => $deck_image), array('number_of_words' => $deck_number_of_words));
 
     return $wpdb->insert_id;
