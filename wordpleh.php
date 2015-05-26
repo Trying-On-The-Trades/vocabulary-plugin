@@ -27,7 +27,7 @@ require_once("functions/install.php");
 require_once("functions/menu.php");
 
 // Create the admin menu from menu.php
-add_action( 'admin_menu', 'pano_create_menu');
+add_action( 'admin_menu', 'word_create_menu');
 add_action( 'admin_enqueue_scripts', 'plu_admin_enqueue');
 
 // Activation hook to install the DB
