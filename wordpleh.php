@@ -24,11 +24,11 @@ require_once("functions/functions.php");
 
 require_once("functions/install.php");
 //require_once("functions/uninstall.php");
-require_once("functions/menu.php");
+//require_once("functions/menu.php");
 
 // Create the admin menu from menu.php
-add_action( 'admin_menu', 'word_create_menu');
-add_action( 'admin_enqueue_scripts', 'plu_admin_enqueue');
+// add_action( 'admin_menu', 'word_create_menu');
+// add_action( 'admin_enqueue_scripts', 'plu_admin_enqueue');
 
 // Activation hook to install the DB
 register_activation_hook( __FILE__, 'wordpleh_install' );
@@ -43,7 +43,7 @@ require_once("includes/dictionary.php");
 require_once("includes/word_category.php");
 
 // Require the admin pages
-require_once("admin/admin_page.php");
+//require_once("admin/admin_page.php");
 
 require_once("admin/new_word.php");
 require_once("admin/edit_word.php");
