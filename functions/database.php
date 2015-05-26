@@ -7,9 +7,9 @@ function get_dictionary_table_name(){
   return $wpdb->prefix . "wordpleh_dictionary";
 }
 
-function get_trades_table_name(){
+function get_domains_table_name(){
   global $wpdb;
-  return $wpdb->prefix . get_word_prefix();
+  return $wpdb->prefix . get_domains_prefix();
 }
 
 function get_categories_table_name(){
@@ -37,25 +37,34 @@ function build_dictionary_sql(){
     `image` char(30),
     `audio` char(30),
     `points` integer(10),
-    `trade_id` int(11),
+    `domain_id` int(11),
     `category_id` int(11),
     PRIMARY KEY (`id`),
-    FOREIGN KEY (trade_id) REFERENCES ' . get_trades_table_name() . '(id),
+    FOREIGN KEY (domain_id) REFERENCES ' . get_domains_table_name() . '(id),
     FOREIGN KEY (category_id) REFERENCES ' . get_categories_table_name() . '(id)
     )ENGINE=MyISAM DEFAULT CHARSET=latin1;';
 
     return $sql;
 }
 
-function build_trades_sql(){
-  $table_name = get_trades_table_name();
+function build_domains_sql(){
+  $table_name = get_domains_table_name();
+  $prefix = get_domains_prefix();
 
-  $sql = 'CREATE TABLE `' . $table_name . '` (
-    `id` int(10) NOT NULL AUTO_INCREMENT,
-    `image` varchar(255) NOT NULL,
-    `profession` char(30) NOT NULL,
-    PRIMARY KEY(`id`)
-    )ENGINE=MyISAM DEFAULT CHARSET=latin1;';
+  if($prefix === 'pano_domain')
+  {
+    $sql = 'ALTER TABLE `' . $table_name . '`;
+  }
+  else 
+  {
+
+    $sql = 'CREATE TABLE `' . $table_name . '` (
+      `id` int(10) NOT NULL AUTO_INCREMENT,
+      `image` varchar(255) NOT NULL,
+      `profession` char(30) NOT NULL,
+      PRIMARY KEY(`id`)
+      )ENGINE=MyISAM DEFAULT CHARSET=latin1;';
+  }
 
     return $sql;
 }

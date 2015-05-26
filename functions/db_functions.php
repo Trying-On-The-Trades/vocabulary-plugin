@@ -1,16 +1,16 @@
 <?php
 
 //create and update deck word
-function get_trades_prefix(){
+function get_domains_prefix(){
   global $wpdb;
-  $table_name = $wpdb->prefix . "pano_trades"
+  $table_name = $wpdb->prefix . "pano_domains"
   $sql = "SHOW TABLES LIKE '" . $table_name ."'";
   $table = $wpdb->get_results($sql);
   $exists = $table->num_rows;
   if($exists === 0)
-    return false;
+    return "wordpleh_domains";
   else 
-    return true;
+    return "pano_domains";
 }
 
 function get_words(){
@@ -24,15 +24,15 @@ function get_words(){
     return $words;
 }
 
-function get_trades(){
+function get_domains(){
     global $wpdb;
     
-    $trade_table_name = get_trades_table_name();
+    $domain_table_name = get_domains_table_name();
 
-    $trades = $wpdb->get_results( 
-            "SELECT * FROM " . $trade_table_name . " wpt ");
+    $domains = $wpdb->get_results( 
+            "SELECT * FROM " . $domain_table_name . " wpt ");
 
-    return $trades;
+    return $domains;
 }
 
 function get_categories(){
@@ -80,29 +80,29 @@ function get_word($word_id){
     return $word;
 }
 
-function get_word_with_trade($word_id){
+function get_word_with_domain($word_id){
     global $wpdb;
     $word_table_name = get_dictionary_table_name();
-    $trade_table_name = get_trades_table_name();
+    $domain_table_name = get_domains_table_name();
 
     $word = $wpdb->get_row( $wpdb->prepare(
-        "SELECT * FROM " . $trade_table_name . " AS trade, " . $word_table_name .
-        "AS words WHERE trade.id = words.trade_id AND words.id = " . $word_id})
+        "SELECT * FROM " . $domain_table_name . " AS domain, " . $word_table_name .
+        "AS words WHERE domain.id = words.domain_id AND words.id = " . $word_id})
     );
 
     return $word;
 }
 
-function get_trade($trade_id){
+function get_domain($domain_id){
     global $wpdb;
-    $trade_table_name = get_trades_table_name();
+    $domain_table_name = get_domains_table_name();
 
-    $trade = $wpdb->get_row( $wpdb->prepare(
-        "SELECT * FROM " . $trade_table_name . " wpt " .
-        "WHERE wpt.id = %d", $trade_id)
+    $domain = $wpdb->get_row( $wpdb->prepare(
+        "SELECT * FROM " . $domain_table_name . " wpt " .
+        "WHERE wpt.id = %d", $domain_id)
     );
 
-    return $trade;
+    return $domain;
 }
 
 function get_category($category_id){
@@ -114,7 +114,7 @@ function get_category($category_id){
         "WHERE wpt.id = %d", $category_id)
     );
 
-    return $trade;
+    return $domain;
 }
 
 function get_deck($deck_id){
@@ -126,7 +126,7 @@ function get_deck($deck_id){
         "WHERE wpt.id = %d", $deck_id)
     );
 
-    return $trade;
+    return $domain;
 }
 
 function get_deck_word($deck_id, $dictionary_id){
@@ -139,7 +139,7 @@ function get_deck_word($deck_id, $dictionary_id){
   );
 }
 
-function update_word($word_id, $word_word, $word_hint, $trade_id){
+function update_word($word_id, $word_word, $word_hint, $domain_id){
     global $wpdb;
     $word_table_name = get_dictionary_table_name();
 
@@ -147,7 +147,7 @@ function update_word($word_id, $word_word, $word_hint, $trade_id){
         $wpdb->update( $word_table_name,
                        array('word' => $word_word),
                        array('hint' => $word_hint),
-                       array('trade_id' => $trade_id),
+                       array('domain_id' => $domain_id),
                        array('id' => $word_id));
 
         return true;
@@ -156,15 +156,15 @@ function update_word($word_id, $word_word, $word_hint, $trade_id){
     }
 }
 
-function update_trade($trade_id, $trade_profession, $trade_image){
+function update_domain($domain_id, $domain_profession, $domain_image){
     global $wpdb;
-    $trade_table_name = get_trades_table_name();
+    $domain_table_name = get_domains_table_name();
 
-    if(isset($trade_id) && is_numeric($trade_id)){
-        $wpdb->update( $trade_table_name,
-                       array('profession' => $trade_profession),
-                       array('image' => $trade_image),
-                       array('id' => $trade_id));
+    if(isset($domain_id) && is_numeric($domain_id)){
+        $wpdb->update( $domain_table_name,
+                       array('profession' => $domain_profession),
+                       array('image' => $domain_image),
+                       array('id' => $domain_id));
 
         return true;
     } else {
@@ -206,23 +206,23 @@ function update_deck_word($deck_id, $dictionary_id){
   //DOO
 }
 
-function create_word($word_word, $word_hint, $trade_id){
+function create_word($word_word, $word_hint, $domain_id){
     global $wpdb;
     $word_table_name = get_dictionary_table_name();
 
     $wpdb->insert( $word_table_name, array( 'word' => $word_word),
                                      array( 'hint' => $word_hint),
-                                     array( 'trade_id' => $trade_id));
+                                     array( 'domain_id' => $domain_id));
 
     return $wpdb->insert_id;
 }
 
-function create_trade($trade_profession, $trade_image){
+function create_domain($domain_profession, $domain_image){
     global $wpdb;
-    $trade_table_name = get_trades_table_name();
+    $domain_table_name = get_domains_table_name();
 
-    $wpdb->insert( $trade_table_name, array( 'profession' => $trade_name),
-                                      array( 'image' => $trade_image));
+    $wpdb->insert( $domain_table_name, array( 'profession' => $domain_name),
+                                      array( 'image' => $domain_image));
 
     return $wpdb->insert_id;
 }
@@ -262,11 +262,11 @@ function delete_word($word_id){
     $wpdb->delete( $word_table_name, array( 'id' => $word_id ) );
 }
 
-function delete_trade($trade_id){
+function delete_domain($domain_id){
     global $wpdb;
-    $trade_table_name = get_trades_table_name();
+    $domain_table_name = get_domains_table_name();
 
-    $wpdb->delete( $trade_table_name, array( 'id' => $trade_id ) );
+    $wpdb->delete( $domain_table_name, array( 'id' => $domain_id ) );
 }
 
 function delete_category($category_id){

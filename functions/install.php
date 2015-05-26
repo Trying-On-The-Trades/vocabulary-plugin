@@ -3,7 +3,7 @@
 // These are functions that get called when the plugin is installed for the first time. These are for setting up the database and handlers.
 
 // Create the table to hold the API keys
-function pano_install () {
+function wordpleh_install () {
    global $wpdb;
 
    $installed_ver = get_option( "pano_db_version" );
