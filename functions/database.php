@@ -12,9 +12,9 @@ function get_domains_table_name(){
     return $wpdb->prefix . "pano_domain";
 }
 
-function get_categories_table_name(){
+function get_word_categories_table_name(){
     global $wpdb;
-    return $wpdb->prefix . "wordpleh_category";
+    return $wpdb->prefix . "wordpleh_word_category";
 }
 
 function get_decks_table_name(){
@@ -38,17 +38,17 @@ function build_dictionary_sql(){
     `audio` char(30),
     `points` integer(10),
     `domain_id` int(11),
-    `category_id` int(11),
+    `word_category_id` int(11),
     PRIMARY KEY (`id`),
     FOREIGN KEY (domain_id) REFERENCES ' . get_domains_table_name() . '(id),
-    FOREIGN KEY (category_id) REFERENCES ' . get_categories_table_name() . '(id)
+    FOREIGN KEY (word_category_id) REFERENCES ' . get_word_categories_table_name() . '(id)
     )ENGINE=MyISAM DEFAULT CHARSET=latin1;';
 
     return $sql;
 }
 
-function build_categories_sql(){
-  $table_name = get_categories_table_name();
+function build_word_categories_sql(){
+  $table_name = get_word_categories_table_name();
 
   $sql = 'CREATE TABLE `' . $table_name . '` (
     `id` int(10) NOT NULL AUTO_INCREMENT,
