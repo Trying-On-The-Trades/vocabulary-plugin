@@ -9,7 +9,7 @@ class dictionary{
               $audio,
               $points,
               $trade_id,
-              $category_id,
+              $word_category_id,
               $exists   = 0;
 
     function __construct($id = 1){
@@ -29,7 +29,7 @@ class dictionary{
             $this->audio       = $dictionary_row->audio;
             $this->points      = $dictionary_row->points;
             $this->trade_id    = $dictionary_row->trade_id;
-            $this->category_id = $dictionary_row->category_id;
+            $this->word_category_id = $dictionary_row->word_category_id;
         }
     }
 
@@ -61,7 +61,7 @@ class dictionary{
         return $this->trade_id;
     }
 
-    function get_category_id(){
-        return $this->category_id;
+    function get_word_category_id(){
+        return $this->word_category_id;
     }
 }

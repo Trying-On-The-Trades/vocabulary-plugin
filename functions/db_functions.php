@@ -1,17 +1,6 @@
 <?php
 
 //create and update deck word
-function get_domains_prefix(){
-    global $wpdb;
-    $table_name = $wpdb->prefix . "pano_domains";
-  $sql = "SHOW TABLES LIKE '" . $table_name ."'";
-  $table = $wpdb->get_results($sql);
-  $exists = $table->num_rows;
-  if($exists === 0)
-      return "wordpleh_domains";
-  else
-      return "pano_domains";
-}
 
 function get_words(){
     global $wpdb;
@@ -35,13 +24,13 @@ function get_domains(){
     return $domains;
 }
 
-function get_categories(){
+function get_word_categories(){
     global $wpdb;
 
-    $category_table_name = get_categories_table_name();
+    $word_category_table_name = get_word_categories_table_name();
 
-    $categories = $wpdb->get_results(
-        "SELECT * FROM " . $category_table_name . " wpt ");
+    $word_categories = $wpdb->get_results(
+        "SELECT * FROM " . $word_category_table_name . " wpt ");
 
     return $categories;
 }
@@ -93,16 +82,16 @@ function get_domain($domain_id){
     return $domain;
 }
 
-function get_category($category_id){
+function get_word_category($word_category_id){
     global $wpdb;
-    $category_table_name = get_categories_table_name();
+    $word_category_table_name = get_word_categories_table_name();
 
-    $category = $wpdb->get_row( $wpdb->prepare(
-        "SELECT * FROM " . $category_table_name . " wpt " .
-        "WHERE wpt.id = %d", $category_id)
+    $word_category = $wpdb->get_row( $wpdb->prepare(
+        "SELECT * FROM " . $word_category_table_name . " wpt " .
+        "WHERE wpt.id = %d", $word_category_id)
     );
 
-    return $category;
+    return $word_category;
 }
 
 function get_deck($deck_id){
@@ -127,15 +116,20 @@ function get_deck_word($deck_id, $dictionary_id){
     );
 }
 
-function update_word($word_id, $word_word, $word_hint, $domain_id){
+function update_word($word_id, $word_word, $word_description, $word_points, $word_image, 
+                    $word_audio, $word_domain_id, $word_word_category_id){
     global $wpdb;
     $word_table_name = get_dictionary_table_name();
 
     if(isset($word_id) && is_numeric($word_id)){
         $wpdb->update( $word_table_name,
             array('word' => $word_word),
-            array('hint' => $word_hint),
+            array('description' => $word_description),
+            array('points' => $word_points),
+            array('image' => $word_image),
+            array('audio' => $word_audio),
             array('domain_id' => $domain_id),
+            array('word_category_id' => $word_word_category_id),
             array('id' => $word_id));
 
         return true;
@@ -144,14 +138,13 @@ function update_word($word_id, $word_word, $word_hint, $domain_id){
     }
 }
 
-function update_domain($domain_id, $domain_profession, $domain_image){
+function update_domain($domain_id, $domain_name){
     global $wpdb;
     $domain_table_name = get_domains_table_name();
 
     if(isset($domain_id) && is_numeric($domain_id)){
         $wpdb->update( $domain_table_name,
-            array('profession' => $domain_profession),
-            array('image' => $domain_image),
+            array('name' => $domain_name),
             array('id' => $domain_id));
 
         return true;
@@ -160,14 +153,14 @@ function update_domain($domain_id, $domain_profession, $domain_image){
     }
 }
 
-function update_category($category_id, $category_name){
+function update_word_category($word_category_id, $word_category_name){
     global $wpdb;
-    $category_table_name = get_categories_table_name();
+    $word_category_table_name = get_word_categories_table_name();
 
-    if(isset($category_id) && is_numeric($category_id)){
-        $wpdb->update( $category_table_name,
-            array('name' => $category_name),
-            array('id' => $category_id));
+    if(isset($word_category_id) && is_numeric($word_category_id)){
+        $wpdb->update( $word_category_table_name,
+            array('name' => $word_category_name),
+            array('id' => $word_category_id));
 
         return true;
     } else {
@@ -175,13 +168,15 @@ function update_category($category_id, $category_name){
     }
 }
 
-function update_deck($deck_id, $deck_name){
+function update_deck($deck_id, $deck_name, $deck_image, $deck_number_of_words){
     global $wpdb;
     $deck_table_name = get_decks_table_name();
 
     if(isset($deck_id) && is_numeric($deck_id)){
         $wpdb->update( $deck_table_name,
             array('name' => $deck_name),
+            array('image' => $deck_image),
+            array('number_of_words' => $deck_number_of_words),
             array('id' => $deck_id));
 
         return true;
@@ -190,45 +185,46 @@ function update_deck($deck_id, $deck_name){
     }
 }
 
-function update_deck_word($deck_id, $dictionary_id){
-    //DOO
-}
-
-function create_word($word_word, $word_hint, $domain_id){
+function create_word($word_word, $word_description, $word_points, $word_audio, 
+                    $word_image, $word_domain_id, $word_word_category_id){
     global $wpdb;
     $word_table_name = get_dictionary_table_name();
 
     $wpdb->insert( $word_table_name, array( 'word' => $word_word),
-        array( 'hint' => $word_hint),
-        array( 'domain_id' => $domain_id));
+        array( 'description' => $word_description),
+        array('points' => $word_points),
+        array('audio' => $word_audio),
+        array('image' => $word_image),
+        array( 'domain_id' => $word_domain_id),
+        array('word_category_id' => $word_word_category_id));
 
     return $wpdb->insert_id;
 }
 
-function create_domain($domain_profession, $domain_image){
+function create_domain($domain_name){
     global $wpdb;
     $domain_table_name = get_domains_table_name();
 
-    $wpdb->insert( $domain_table_name, array( 'profession' => $domain_profession),
-        array( 'image' => $domain_image));
+    $wpdb->insert( $domain_table_name, array( 'name' => $domain_name));
 
     return $wpdb->insert_id;
 }
 
-function create_category($category_name){
+function create_word_category($word_category_name){
     global $wpdb;
-    $category_table_name = get_categories_table_name();
+    $word_category_table_name = get_word_categories_table_name();
 
-    $wpdb->insert( $category_table_name, array( 'name' => $category_name));
+    $wpdb->insert( $word_category_table_name, array( 'name' => $word_category_name));
 
     return $wpdb->insert_id;
 }
 
-function create_deck($deck_name){
+function create_deck($deck_name, $deck_image, $deck_number_of_words){
     global $wpdb;
     $deck_table_name = get_decks_table_name();
 
-    $wpdb->insert( $deck_table_name, array( 'name' => $deck_name));
+    $wpdb->insert( $deck_table_name, array( 'name' => $deck_name), 
+        array('image' => $deck_image), array('number_of_words' => $deck_number_of_words));
 
     return $wpdb->insert_id;
 }
@@ -257,11 +253,11 @@ function delete_domain($domain_id){
     $wpdb->delete( $domain_table_name, array( 'id' => $domain_id ) );
 }
 
-function delete_category($category_id){
+function delete_word_category($word_category_id){
     global $wpdb;
-    $category_table_name = get_categories_table_name();
+    $word_category_table_name = get_word_categories_table_name();
 
-    $wpdb->delete( $category_table_name, array( 'id' => $category_id ) );
+    $wpdb->delete( $word_category_table_name, array( 'id' => $word_category_id ) );
 }
 
 function delete_deck($deck_id){
