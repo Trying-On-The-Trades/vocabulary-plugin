@@ -77,9 +77,10 @@ function build_deck_words_sql(){
   $sql = 'CREATE TABLE `' . $table_name . '` (
     `deck_id` int(10) NOT NULL,
     `dictionary_id` int(10) NOT NULL, 
-    PRIMARY KEY (deck_id, dictionary_id),  
-    FOREIGN KEY (deck_id) REFERENCES ' . get_decks_table_name() . '(id) ON DELETE CASCADE,  
-    FOREIGN KEY (genre_id) REFERENCES ' . get_dictionary_table_name() . '(id)) ON DELETE CASCADE';
+    PRIMARY KEY (deck_id, dictionary_id),
+    FOREIGN KEY (deck_id) REFERENCES ' . get_decks_table_name() . '(id) ON DELETE CASCADE,
+    FOREIGN KEY (dictionary_id) REFERENCES ' . get_dictionary_table_name() . '(id)) ON DELETE CASCADE' ;
+
 
   return $sql;
 }

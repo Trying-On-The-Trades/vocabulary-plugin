@@ -1,14 +1,14 @@
 <?php
 
 // Build the settings page
-function new_mission_settings_page() {
+function new_word_settings_page() {
     $semantic = WP_PLUGIN_URL . '/panomanager/css/semantic.css';
-	$words    = get_words();
+
 	$domains   = get_domains();
     $categories = get_categories();
     ?>
 <link rel="stylesheet" type="text/css" href="<?php echo $semantic ?>"/>
-<h2>Create a new pano!</h2>
+<h2>Create a new word!</h2>
 <hr>
 <style type="text/css">
 	#wpfooter{
@@ -63,6 +63,16 @@ function new_mission_settings_page() {
 	      <div class="field">
 	        <label for="words_description">Description</label>
 	        <textarea name="words_description" required ></textarea>
+	      </div>
+	    </div>
+        <div class="ui form">
+	      <div class="field">
+	        <label for="words_description">Points per word</label>
+	         <select name="words_points">
+	            <option value="30">30</option>
+	            <option value="20">20</option>
+	            <option value="10">10</option>
+            </select>
 	      </div>
 	    </div>
        <div class="ui form">
