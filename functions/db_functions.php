@@ -1,17 +1,6 @@
 <?php
 
 //create and update deck word
-function get_domains_prefix(){
-    global $wpdb;
-    $table_name = $wpdb->prefix . "pano_domains";
-  $sql = "SHOW TABLES LIKE '" . $table_name ."'";
-  $table = $wpdb->get_results($sql);
-  $exists = $table->num_rows;
-  if($exists === 0)
-      return "wordpleh_domains";
-  else
-      return "pano_domains";
-}
 
 function get_words(){
     global $wpdb;
@@ -144,14 +133,13 @@ function update_word($word_id, $word_word, $word_hint, $domain_id){
     }
 }
 
-function update_domain($domain_id, $domain_profession, $domain_image){
+function update_domain($domain_id, $domain_name){
     global $wpdb;
     $domain_table_name = get_domains_table_name();
 
     if(isset($domain_id) && is_numeric($domain_id)){
         $wpdb->update( $domain_table_name,
-            array('profession' => $domain_profession),
-            array('image' => $domain_image),
+            array('name' => $domain_name),
             array('id' => $domain_id));
 
         return true;
@@ -205,12 +193,11 @@ function create_word($word_word, $word_hint, $domain_id){
     return $wpdb->insert_id;
 }
 
-function create_domain($domain_profession, $domain_image){
+function create_domain($domain_name){
     global $wpdb;
     $domain_table_name = get_domains_table_name();
 
-    $wpdb->insert( $domain_table_name, array( 'profession' => $domain_profession),
-        array( 'image' => $domain_image));
+    $wpdb->insert( $domain_table_name, array( 'name' => $domain_name));
 
     return $wpdb->insert_id;
 }

@@ -3,8 +3,7 @@
 class domain{
 
     protected $id,
-              $profession,
-              $image,
+              $name,
               $exists   = 0;
 
     function __construct($id = 1){
@@ -18,22 +17,16 @@ class domain{
 
     function build($domain_row){
         if ($domain_row->id > 0){
-            $this->exists     = 1;
-            $this->id         = $domain_row->id;
-            $this->profession = $domain_row->profession;
-            $this->image      = $domain_row->image;
-        }
+            $this->exists = 1;
+            $this->id     = $domain_row->id;
+            $this->name   = $domain_row->name;
     }
 
     function get_id(){
         return $this->id;
     }
 
-    function get_profession(){
-        return $this->profession;
-    }
-
-    function get_image(){
-        return $this->image;
+    function get_name(){
+        return $this->name;
     }
 }
