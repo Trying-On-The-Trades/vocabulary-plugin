@@ -1,6 +1,6 @@
 <?php
 
-class trade{
+class domain{
 
     protected $id,
               $profession,
@@ -11,17 +11,17 @@ class trade{
 
         // Get the Quest (Skill) based on the id
         if (is_numeric($id)){
-            $trade_row = get_trade($id);
-            $this->build($trade_row);
+            $domain_row = get_domain($id);
+            $this->build($domain_row);
         }
     }
 
-    function build($trade_row){
-        if ($trade_row->id > 0){
+    function build($domain_row){
+        if ($domain_row->id > 0){
             $this->exists     = 1;
-            $this->id         = $trade_row->id;
-            $this->profession = $trade_row->profession;
-            $this->image      = $trade_row->image;
+            $this->id         = $domain_row->id;
+            $this->profession = $domain_row->profession;
+            $this->image      = $domain_row->image;
         }
     }
 
