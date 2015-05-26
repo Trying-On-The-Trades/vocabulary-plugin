@@ -1,12 +1,12 @@
 <?php
 
 // Build the settings page
-function edit_mission_settings_page() {
+function edit_words_settings_page() {
     $semantic = WP_PLUGIN_URL . '/panomanager/css/semantic.css';
     
     $words    = get_words();
     $domains  = get_domains();
-	$trades   = get_trades();
+    $categories = get_categories();
 
     if (isset($_GET['id']) && is_numeric( $_GET['id']) ) {
         $words = build_words($_GET['id']);
@@ -51,6 +51,17 @@ function edit_mission_settings_page() {
 			</select>
 	      </div>
 	    </div>
+	    <div class="ui form">
+	      <div class="field">
+	        <label for="prereq_category_id">Select a category</label>
+	        <select name="category_id">
+				 <option value="NA">...</option>
+                 <?php foreach($categories as $category): ?>
+                     <option value="<?php echo $category->id ?>" <?php echo ($category->id === $words->get_category_id()) ? "selected" : "" ?>><?php echo $category->name ?></option>
+                 <?php endforeach; ?>
+			</select>
+	      </div>
+	    </div>
     <div class="ui form segment new_pano_form">
 	    <div class="ui form">
 	      <div class="field">
@@ -64,6 +75,16 @@ function edit_mission_settings_page() {
 	      <div class="field">
 	        <label for="words_description">Description</label>
 	        <textarea name="words_description" required ><?php echo $words->get_description() ?></textarea>
+	      </div>
+	    </div>
+        <div class="ui form">
+	      <div class="field">
+	        <label for="words_points">Points</label>
+	        <select name="words_points">
+	            <option value="30">30</option>
+	            <option value="20">20</option>
+	            <option value="10">10</option>
+            </select>
 	      </div>
 	    </div>
         <div class="ui form">

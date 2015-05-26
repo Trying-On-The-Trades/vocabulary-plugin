@@ -45,14 +45,6 @@ function edit_domain_settings_page() {
      	 	</div>
 	      </div>
 	    </div>
-        <div class="ui form">
-	      <div class="field">
-	      	<div class="ui left labeled icon input">
-	        	<label for="domain_image">Domain Image</label>
-	    		<input name="domain_image" id="image" value="<?php echo $domain->get_image(); ?>"  />
-     	 	</div>
-	      </div>
-	    </div>
 	    <?php submit_button(); ?>
 	</div>
 </form>

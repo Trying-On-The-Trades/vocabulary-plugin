@@ -101,7 +101,7 @@ function build_deck_words_sql(){
     `dictionary_id` int(10) NOT NULL, 
     PRIMARY KEY (deck_id, dictionary_id),  
     FOREIGN KEY (deck_id) REFERENCES ' . get_decks_table_name() . '(id),  
-    FOREIGN KEY (genre_id) REFERENCES ' . get_dictionary_table_name() . '(id))';
+    FOREIGN KEY (dictionary_id) REFERENCES ' . get_dictionary_table_name() . '(id))';
 
   return $sql;
 }
