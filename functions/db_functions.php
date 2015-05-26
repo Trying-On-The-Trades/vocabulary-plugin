@@ -32,8 +32,9 @@ function get_word_categories(){
     $word_categories = $wpdb->get_results(
         "SELECT * FROM " . $word_category_table_name . " wpt ");
 
-    return $categories;
+    return $word_categories;
 }
+
 
 function get_decks(){
     global $wpdb;
@@ -128,7 +129,7 @@ function update_word($word_id, $word_word, $word_description, $word_points, $wor
             array('points' => $word_points),
             array('image' => $word_image),
             array('audio' => $word_audio),
-            array('domain_id' => $domain_id),
+            array('domain_id' => $word_domain_id),
             array('word_category_id' => $word_word_category_id),
             array('id' => $word_id));
 
