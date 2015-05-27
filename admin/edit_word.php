@@ -48,7 +48,7 @@ function edit_word_settings_page() {
 <!--	        <select name="category_id">-->
 <!--				 <option value="NA">...</option>-->
 <!--                 --><?php //foreach($categories as $category): ?>
-<!--                     <option value="--><?php //echo $category->id ?><!--" --><?php //echo ($category->id === $words->get_category_id()) ? "selected" : "" ?><!-->--><?php //echo $category->name ?><!--</option>-->
+<!--                     <option value="--><?php //echo $category->id ?><!--" --><?php //echo ($category->id === $words->get_category_id()) ? "selected" : "" ?><!-->--><?p6hp //echo $category->name ?><!--</option>-->
 <!--                 --><?php //endforeach; ?>
 <!--			</select>-->
 <!--	      </div>-->

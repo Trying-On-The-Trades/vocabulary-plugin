@@ -40,22 +40,22 @@ function create_sub_wordpleh_menus(){
         "Flash Card Game",
         "Flash Card Game",
         "administrator",
-        "flash_card_game_settings",
-        "flash_card_game_settings_page");
+        "flashcardgame_settings",
+        "flashcardgame_settings_page");
 
     add_submenu_page(null,
         "New Flash Card Game",
         "New Flash Card Game",
         "administrator",
-        "new_flash_card_game_settings",
-        "new_flash_card_game_settings_page");
+        "new_flashcardgame_settings",
+        "new_flashcardgame_settings_page");
 
     add_submenu_page(null,
         "Edit Flash Card Game",
         "Edit Flash Card Game",
         "administrator",
-        "edit_flash_card_game_settings",
-        "edit_flash_card_game_settings_page");
+        "edit_flashcardgame_settings",
+        "edit_flashcardgame_settings_page");
 
 //    // Create the sub menu item for  s
 //    add_submenu_page("word_menu",

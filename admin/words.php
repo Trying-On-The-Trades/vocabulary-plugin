@@ -33,19 +33,19 @@ function word_settings_page() {
 
         <tbody>
         <?php foreach ($words as $word): ?>
-
+            <?php $current_word = build_words($word->id); ?>
             <tr>
-                <td><?php echo $word->word ?></td>
-                <td><?php echo $word->description ?></td>
-                <td><?php echo $word->image ?></td>
-                <td><?php echo $word->audio ?></td>
+                <td><?php echo $current_word->get_word(); ?></td>
+                <td><?php echo $current_word->get_description(); ?></td>
+                <td><?php echo $current_word->get_image(); ?></td>
+                <td><?php echo $current_word->get_audio(); ?></td>
 
-                <td><a class="ui blue icon button" href="<?php echo $edit_word_url ?>&id=<?php echo $word->id ?>" style="padding: 7px">Edit</a></td>
+                <td><a class="ui blue icon button" href="<?php echo $edit_word_url ?>&id=<?php echo $current_word->get_id(); ?>" style="padding: 7px">Edit</a></td>
                 <td>
-                    <form method="post" action="admin-post.php" id="delete_word_form<?php echo $word->id ?>">
+                    <form method="post" action="admin-post.php" id="delete_word_form<?php echo $current_word->get_id(); ?>">
                         <!-- word processing hook -->
                         <input type="hidden" name="action" value="delete_word" />
-                        <input type="hidden" name="word_id" value="<?php echo $word->word_id ?>" />
+                        <input type="hidden" name="word_id" value="<?php echo $current_word->get_id(); ?>" />
 
                         <input type="submit" class="ui blue icon button" value="Delete" style="padding: 7px" >
                     </form>
