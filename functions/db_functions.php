@@ -215,7 +215,7 @@ function update_word_category($word_category_id, $word_category_name){
     }
 }
 
-function update_deck($deck_id, $deck_name, $deck_image, $deck_number_of_words){
+function update_deck($deck_id, $deck_name, $deck_image, $deck_number_of_words, $deck_game_type){
     global $wpdb;
     $deck_table_name = get_decks_table_name();
 
@@ -224,6 +224,7 @@ function update_deck($deck_id, $deck_name, $deck_image, $deck_number_of_words){
             array('name' => $deck_name),
             array('image' => $deck_image),
             array('number_of_words' => $deck_number_of_words),
+            array('game_type' => $deck_game_type),
             array('id' => $deck_id));
 
         return true;
@@ -266,12 +267,12 @@ function create_word_category($word_category_name){
     return $wpdb->insert_id;
 }
 
-function create_deck($deck_name, $deck_image, $deck_number_of_words){
+function create_deck($deck_name, $deck_image, $deck_number_of_words, $deck_game_type){
     global $wpdb;
     $deck_table_name = get_decks_table_name();
 
     $wpdb->insert( $deck_table_name, array( 'name' => $deck_name),
-        array('image' => $deck_image), array('number_of_words' => $deck_number_of_words));
+        array('image' => $deck_image), array('number_of_words' => $deck_number_of_words), array('game_type' => $deck_game_type));
 
     return $wpdb->insert_id;
 }
