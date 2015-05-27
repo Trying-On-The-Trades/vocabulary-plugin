@@ -1,7 +1,7 @@
 <?php
 
 // Create the admin menu
-function pano_create_menu() {
+function word_create_menu() {
 	create_top_menu();
 	create_sub_menus();
 }
