@@ -96,7 +96,7 @@ function get_word_details($word_id){
         "SELECT * FROM " . $word_table_name . " AS word, " . $domain_table_name .
         " AS domain , " . $word_category_table_name . " AS category " .
         "WHERE word.domain_id = domain.id AND word.word_category_id = category.id" .
-        "AND word.id = {$wrd_id}"
+        "AND word.id = {$word_id}"
     );
 
     return $word;
