@@ -2,7 +2,7 @@
 
 // Build the settings page
 function new_word_settings_page() {
-    $semantic = WP_PLUGIN_URL . '/panomanager/css/semantic.css';
+    $semantic = WP_PLUGIN_URL . '/vocabulary-plugin/css/semantic.css';
 
 	$domains   = get_domains();
     $categories = get_categories();

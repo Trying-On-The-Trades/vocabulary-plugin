@@ -169,15 +169,15 @@ function update_word($word_id, $word_word, $word_description, $word_points, $wor
     $word_table_name = get_dictionary_table_name();
 
     if(isset($word_id) && is_numeric($word_id)){
-        $wpdb->update( $word_table_name,
-            array('word' => $word_word),
-            array('description' => $word_description),
-            array('points' => $word_points),
-            array('image' => $word_image),
-            array('audio' => $word_audio),
-            array('domain_id' => $word_domain_id),
-            array('word_category_id' => $word_word_category_id),
-            array('id' => $word_id));
+        $wpdb->update( $word_table_name, array(
+            'word' => $word_word,
+            'description' => $word_description,
+            'points' => $word_points,
+            'image' => $word_image,
+            'audio' => $word_audio,
+            'domain_id' => $word_domain_id,
+            'word_category_id' => $word_word_category_id,
+            'id' => $word_id));
 
         return true;
     } else {
@@ -191,8 +191,9 @@ function update_domain($domain_id, $domain_name){
 
     if(isset($domain_id) && is_numeric($domain_id)){
         $wpdb->update( $domain_table_name,
-            array('name' => $domain_name),
-            array('id' => $domain_id));
+            array(
+            'name' => $domain_name,
+            'id' => $domain_id));
 
         return true;
     } else {
@@ -206,8 +207,9 @@ function update_word_category($word_category_id, $word_category_name){
 
     if(isset($word_category_id) && is_numeric($word_category_id)){
         $wpdb->update( $word_category_table_name,
-            array('name' => $word_category_name),
-            array('id' => $word_category_id));
+            array(
+            'name' => $word_category_name,
+            'id' => $word_category_id));
 
         return true;
     } else {
@@ -215,17 +217,16 @@ function update_word_category($word_category_id, $word_category_name){
     }
 }
 
-function update_deck($deck_id, $deck_name, $deck_image, $deck_number_of_words, $deck_game_type){
+function update_deck($deck_id, $deck_name, $deck_image, $deck_number_of_words){
     global $wpdb;
     $deck_table_name = get_decks_table_name();
 
     if(isset($deck_id) && is_numeric($deck_id)){
-        $wpdb->update( $deck_table_name,
-            array('name' => $deck_name),
-            array('image' => $deck_image),
-            array('number_of_words' => $deck_number_of_words),
-            array('game_type' => $deck_game_type),
-            array('id' => $deck_id));
+        $wpdb->update( $deck_table_name, array(
+            'name' => $deck_name,
+            'image' => $deck_image,
+            'number_of_words' => $deck_number_of_words,
+            'id' => $deck_id));
 
         return true;
     } else {
@@ -235,16 +236,18 @@ function update_deck($deck_id, $deck_name, $deck_image, $deck_number_of_words, $
 
 function create_word($word_word, $word_description, $word_points, $word_audio,
                      $word_image, $word_domain_id, $word_word_category_id){
+
     global $wpdb;
     $word_table_name = get_dictionary_table_name();
 
-    $wpdb->insert( $word_table_name, array( 'word' => $word_word),
-        array( 'description' => $word_description),
-        array('points' => $word_points),
-        array('audio' => $word_audio),
-        array('image' => $word_image),
-        array( 'domain_id' => $word_domain_id),
-        array('word_category_id' => $word_word_category_id));
+    $wpdb->insert( $word_table_name, array(
+        'word' => $word_word,
+        'description' => $word_description,
+        'points' => $word_points,
+        'audio' => $word_audio,
+        'image' => $word_image,
+        'domain_id' => $word_domain_id,
+        'word_category_id' => $word_word_category_id));
 
     return $wpdb->insert_id;
 }
@@ -267,12 +270,14 @@ function create_word_category($word_category_name){
     return $wpdb->insert_id;
 }
 
-function create_deck($deck_name, $deck_image, $deck_number_of_words, $deck_game_type){
+function create_deck($deck_name, $deck_image, $deck_number_of_words){
     global $wpdb;
     $deck_table_name = get_decks_table_name();
 
-    $wpdb->insert( $deck_table_name, array( 'name' => $deck_name),
-        array('image' => $deck_image), array('number_of_words' => $deck_number_of_words), array('game_type' => $deck_game_type));
+    $wpdb->insert( $deck_table_name, array(
+        'name' => $deck_name,
+        'image' => $deck_image, 
+        'number_of_words' => $deck_number_of_words));
 
     return $wpdb->insert_id;
 }
@@ -281,8 +286,9 @@ function create_deck_word($deck_id, $dictionary_id){
     global $wpdb;
     $table_name = get_deck_words_table_name();
 
-    $wpdb->insert( $table_name, array( 'deck_id' => $deck_id),
-        array('dictionary_id' => $dictionary_id));
+    $wpdb->insert( $table_name, array(
+        'deck_id' => $deck_id,
+        'dictionary_id' => $dictionary_id));
 
     return $wpdb->insert_id;//REDO
 }
@@ -319,6 +325,7 @@ function delete_deck_word($deck_id, $dictionary_id){
     global $wpdb;
     $table_name = get_deck_words_table_name();
 
-    $wpdb->delete( $table_name, array('deck_id' => $deck_id),
-        array('dictionary_id' => $dictionary_id));
+    $wpdb->delete( $table_name, array(
+        'deck_id' => $deck_id,
+        'dictionary_id' => $dictionary_id));
 }
