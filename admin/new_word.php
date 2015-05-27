@@ -61,21 +61,21 @@ function new_word_settings_page() {
 	    <div class="ui form">
 	      <div class="field">
 	      	<div class="ui left labeled icon input">
-	        	<label for="words_name">Word Name</label>
-	    		<input type="text" name="words_name" id="name" required />
+	        	<label for="word_name">Word Name</label>
+	    		<input type="text" name="word_name" id="name" required />
      	 	</div>
 	      </div>
 	    </div>
 	    <div class="ui form">
 	      <div class="field">
-	        <label for="words_description">Description</label>
-	        <textarea name="words_description" required ></textarea>
+	        <label for="word_description">Description</label>
+	        <textarea name="word_description" required ></textarea>
 	      </div>
 	    </div>
         <div class="ui form">
 	      <div class="field">
-	        <label for="words_description">Points per word</label>
-	         <select name="words_points">
+	        <label for="word_description">Points per word</label>
+	         <select name="word_points">
 	            <option value="30">30</option>
 	            <option value="20">20</option>
 	            <option value="10">10</option>
@@ -85,16 +85,16 @@ function new_word_settings_page() {
        <div class="ui form">
 	      <div class="field">
 	      	<div class="ui left labeled icon input">
-	        	<label for="words_image">Image</label>
-	    		<input type="text" name="words_image" id="image"  />
+	        	<label for="word_image">Image</label>
+	    		<input type="text" name="word_image" id="image"  />
      	 	</div>
 	      </div>
 	    </div>
         <div class="ui form">
 	      <div class="field">
 	      	<div class="ui left labeled icon input">
-	        	<label for="words_audio">Audio</label>
-	    		<input type="text" name="words_audio" id="audio"  />
+	        	<label for="word_audio">Audio</label>
+	    		<input type="text" name="word_audio" id="audio"  />
      	 	</div>
 	      </div>
 	    </div>
