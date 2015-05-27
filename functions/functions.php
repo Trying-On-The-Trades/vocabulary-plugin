@@ -1,8 +1,8 @@
 <?php
 
-    function build_word($word_id = 1){
+    function build_words($word_id = 1){
 
-        $word = new word($word_id);
+        $word = new dictionary($word_id);
         return $word;
     }
 
@@ -14,12 +14,13 @@
         $word_points        = $_POST['words_points'];
         $word_image         = $_POST['words_image'];
         $word_audio        = $_POST['words_audio'];
-
+        $word_domain_id       = $_POST['domain_id'];
+        $word_word_category_id       = $_POST['category_id'];
 
         // Get the id
-        create_word($word_word, $word_description, $word_points, $word_image, $words_audio);
+        create_word($word_word, $word_description, $word_points, $word_image, $word_audio, $word_domain_id, $word_word_category_id);
 
-        wp_redirect( admin_url( 'admin.php?page=word_settings' ) );
+        wp_redirect( admin_url( 'admin.php?page=word_menu' ) );
     }
 
     function process_edit_word(){
@@ -31,14 +32,16 @@
         $word_points        = $_POST['words_points'];
         $word_image         = $_POST['words_image'];
         $word_audio        = $_POST['words_audio'];
+        $word_domain_id       = $_POST['domain_id'];
+        $word_word_category_id       = $_POST['category_id'];
 
         // Get the id
-        $return = update_word($word_id, $word_word, $word_description, $word_points, $word_image, $words_audio);
+        $return = update_word($word_id, $word_word, $word_description, $word_points, $word_image, $word_audio, $word_domain_id, $word_word_category_id);
 
         if($return){
-            wp_redirect( admin_url( 'admin.php?page=word_settings&settings-saved') );
+            wp_redirect( admin_url( 'admin.php?page=word_menu&settings-saved') );
         } else {
-            wp_redirect( admin_url( 'admin.php?page=word_settings&error') );
+            wp_redirect( admin_url( 'admin.php?page=word_menu&error') );
         }
     }
 
@@ -49,7 +52,7 @@
 
         delete_word($word_id);
 
-        wp_redirect( admin_url( 'admin.php?page=word_settings') );
+        wp_redirect( admin_url( 'admin.php?page=word_menu') );
     }
 
 

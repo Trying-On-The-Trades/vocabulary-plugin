@@ -55,6 +55,7 @@ require_once("includes/word_category.php");
 require_once("admin/new_word.php");
 require_once("admin/edit_word.php");
 require_once("admin/words.php");
+//require_once("admin/admin_page.php");
 
 require_once("admin/new_flashcardgame.php");
 require_once("admin/edit_flashcardgame.php");

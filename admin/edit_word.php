@@ -40,29 +40,29 @@ function edit_word_settings_page() {
 <form method="post" enctype="multipart/form-data" action="<?php echo get_admin_url() . 'admin-post.php' ?>">
     <!-- pano processing hook -->
     <input type="hidden" name="action" value="edit_words" />
-	    <div class="ui form">
-	      <div class="field">
-	        <label for="prereq_domain_id">Select a domain</label>
-	        <select name="domain_id">
-				 <option value="NA">...</option>
-                 <?php foreach($domains as $domain): ?>
-					<option value="<?php echo $domain->id ?>" <?php echo ($domain->id === $words->get_domain_id()) ? "selected" : "" ?>><?php echo $domain->name ?></option>
-				 <?php endforeach; ?>
-			</select>
-	      </div>
-	    </div>
-	    <div class="ui form">
-	      <div class="field">
-	        <label for="prereq_category_id">Select a category</label>
-	        <select name="category_id">
-				 <option value="NA">...</option>
-                 <?php foreach($categories as $category): ?>
-                     <option value="<?php echo $category->id ?>" <?php echo ($category->id === $words->get_category_id()) ? "selected" : "" ?>><?php echo $category->name ?></option>
-                 <?php endforeach; ?>
-			</select>
-	      </div>
-	    </div>
-    <div class="ui form segment new_pano_form">
+<!--	    <div class="ui form">-->
+<!--	      <div class="field">-->
+<!--	        <label for="prereq_domain_id">Select a domain</label>-->
+<!--	        <select name="domain_id">-->
+<!--				 <option value="NA">...</option>-->
+<!--                 --><?php //foreach($domains as $domain): ?>
+<!--					<option value="--><?php //echo $domain->id ?><!--" --><?php //echo ($domain->id === $words->get_domain_id()) ? "selected" : "" ?><!-->--><?php //echo $domain->name ?><!--</option>-->
+<!--				 --><?php //endforeach; ?>
+<!--			</select>-->
+<!--	      </div>-->
+<!--	    </div>-->
+<!--	    <div class="ui form">-->
+<!--	      <div class="field">-->
+<!--	        <label for="prereq_category_id">Select a category</label>-->
+<!--	        <select name="category_id">-->
+<!--				 <option value="NA">...</option>-->
+<!--                 --><?php //foreach($categories as $category): ?>
+<!--                     <option value="--><?php //echo $category->id ?><!--" --><?php //echo ($category->id === $words->get_category_id()) ? "selected" : "" ?><!-->--><?php //echo $category->name ?><!--</option>-->
+<!--                 --><?php //endforeach; ?>
+<!--			</select>-->
+<!--	      </div>-->
+<!--	    </div>-->
+    <div class="ui form segment new_word_form">
 	    <div class="ui form">
 	      <div class="field">
 	      	<div class="ui left labeled icon input">
