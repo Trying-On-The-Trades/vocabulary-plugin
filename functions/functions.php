@@ -9,6 +9,7 @@
     function process_new_word(){
 
         // Create a new word using the post data
+
         $word_word          = $_POST['words_name'];
         $word_description   = trim($_POST['words_description']);
         $word_points        = $_POST['words_points'];
@@ -26,6 +27,7 @@
     function process_edit_word(){
 
         // Create a new word using the post data
+
         $word_id            = $_POST['word_id'];
         $word_word          = $_POST['words_name'];
         $word_description   = trim($_POST['words_description']);
