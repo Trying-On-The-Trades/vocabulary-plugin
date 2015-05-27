@@ -10,10 +10,15 @@
 
         // Create a new word using the post data
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+
+>>>>>>> 17c310cfc4fb61719ec0a3212d6a4b2204232159
         $word_word          = $_POST['words_name'];
         $word_description   = trim($_POST['words_description']);
         $word_points        = $_POST['words_points'];
         $word_image         = $_POST['words_image'];
+<<<<<<< HEAD
         $words_audio        = $_POST['words_audio'];
 
 =======
@@ -25,9 +30,14 @@
         $word_domain_id         = $_POST['domain_id'];
         $word_word_category_id  = $_POST['category_id'];
 >>>>>>> ff13c513486d76e5a72968ee614c2588222f20fd
+=======
+        $word_audio        = $_POST['words_audio'];
+        $word_domain_id       = $_POST['domain_id'];
+        $word_word_category_id       = $_POST['category_id'];
+>>>>>>> 17c310cfc4fb61719ec0a3212d6a4b2204232159
 
         // Get the id
-        create_word($word_word, $word_description, $word_points, $word_image, $words_audio, $word_domain_id, $word_word_category_id);
+        create_word($word_word, $word_description, $word_points, $word_image, $word_audio, $word_domain_id, $word_word_category_id);
 
         wp_redirect( admin_url( 'admin.php?page=word_menu' ) );
     }
@@ -36,11 +46,16 @@
 
         // Create a new word using the post data
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+
+>>>>>>> 17c310cfc4fb61719ec0a3212d6a4b2204232159
         $word_id            = $_POST['word_id'];
         $word_word          = $_POST['words_name'];
         $word_description   = trim($_POST['words_description']);
         $word_points        = $_POST['words_points'];
         $word_image         = $_POST['words_image'];
+<<<<<<< HEAD
         $words_audio        = $_POST['words_audio'];
 =======
         $word_id                = $_POST['word_id'];
@@ -52,9 +67,14 @@
         $word_domain_id         = $_POST['domain_id'];
         $word_word_category_id  = $_POST['category_id'];
 >>>>>>> ff13c513486d76e5a72968ee614c2588222f20fd
+=======
+        $word_audio        = $_POST['words_audio'];
+        $word_domain_id       = $_POST['domain_id'];
+        $word_word_category_id       = $_POST['category_id'];
+>>>>>>> 17c310cfc4fb61719ec0a3212d6a4b2204232159
 
         // Get the id
-        $return = update_word($word_id, $word_word, $word_description, $word_points, $word_image, $words_audio, $word_domain_id, $word_word_category_id);
+        $return = update_word($word_id, $word_word, $word_description, $word_points, $word_image, $word_audio, $word_domain_id, $word_word_category_id);
 
         if($return){
             wp_redirect( admin_url( 'admin.php?page=word_menu&settings-saved') );

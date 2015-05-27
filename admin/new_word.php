@@ -11,22 +11,14 @@ function new_word_settings_page() {
 <h2>Create a new word!</h2>
 <hr>
 <style type="text/css">
-	#wpfooter{
-		display: none;
-	}
+	#domain_form{
+	    display: none;
+	    width: 80%;
+	    margin: 0 auto;
 
-	#file_input {
-	    border: 1px solid #cccccc;
-	    padding: 5px;
-	}
-
-	.new_pano_form{
-		width:85%;
-		margin: 0px auto;
 	}
 </style>
 <form method="post" enctype="multipart/form-data" action="<?php echo get_admin_url() . 'admin-post.php' ?>">
-    <!-- pano processing hook -->
     <input type="hidden" name="action" value="create_new_word" />
     <div class="ui form segment new_word_form">
 	    <div class="ui form">
@@ -38,8 +30,23 @@ function new_word_settings_page() {
 					<option value="<?php echo $domain->id ?>"><?php echo $domain->name ?></option>
 				 <?php endforeach; ?>
 			</select>
-	      </div>
+            </div>
 	    </div>
+	        <button onclick="addForm()" class="ui blue icon button" id="buttonDomain">Add new Domain</button>
+<!--			<input onclick="addForm()" type="submit" class="ui blue icon button" value="Add new Domain" id="add_domain" style="padding: 7px" >-->
+			<form method="post" enctype="multipart/form-data" action="<?php echo get_admin_url() . 'admin-post.php' ?>">
+                <div class="ui form" id="domain_form">
+                  <div class="field">
+                    <div class="ui left labeled icon input">
+                        <label for="domain_name">Domain Name</label>
+                        <input type="text" name="domain_name" id="name" />
+                    </div>
+                  </div>
+                  <?php submit_button(); ?>
+                </div>
+
+			</form>
+
     <div class="ui form">
 	      <div class="field">
 	        <label for="category_id">Select a Category</label>
@@ -103,5 +110,11 @@ function new_word_settings_page() {
 			jQuery("#quest_id").val(quest_id);
 		});
 	});
+    function addForm() {
+        document.getElementById("buttonDomain").style.display = "none";
+        document.getElementById("domain_form").style.display = "block";
+    }
+
+
 </script>
 <?php }
