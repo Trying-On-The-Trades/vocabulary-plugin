@@ -65,6 +65,8 @@ function build_decks_sql(){
   $sql = 'CREATE TABLE `' . $table_name . '` (
     `id` int(10) NOT NULL AUTO_INCREMENT,
     `name` char(50) NOT NULL,
+    `image` char(50),
+    `number_of_words` int(10),
     PRIMARY KEY(`id`)
     )ENGINE=MyISAM DEFAULT CHARSET=latin1;';
 
