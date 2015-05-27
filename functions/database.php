@@ -37,7 +37,7 @@ function build_dictionary_sql(){
     `image` char(30),
     `audio` char(30),
     `points` integer(10),
-    `domain_id` int(11),
+    `domain_id` int(11) NOT NULL,
     `word_category_id` int(11),
     PRIMARY KEY (`id`),
     FOREIGN KEY (domain_id) REFERENCES ' . get_domains_table_name() . '(id),
@@ -65,6 +65,8 @@ function build_decks_sql(){
   $sql = 'CREATE TABLE `' . $table_name . '` (
     `id` int(10) NOT NULL AUTO_INCREMENT,
     `name` char(50) NOT NULL,
+    `image` char(50),
+    `number_of_words` int(10),
     PRIMARY KEY(`id`)
     )ENGINE=MyISAM DEFAULT CHARSET=latin1;';
 
