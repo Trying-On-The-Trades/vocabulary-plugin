@@ -37,7 +37,7 @@ function build_dictionary_sql(){
     `image` char(30),
     `audio` char(30),
     `points` integer(10),
-    `domain_id` int(11),
+    `domain_id` int(11) NOT NULL,
     `word_category_id` int(11),
     PRIMARY KEY (`id`),
     FOREIGN KEY (domain_id) REFERENCES ' . get_domains_table_name() . '(id),
