@@ -30,6 +30,13 @@ require_once("functions/menu.php");
  add_action( 'admin_menu', 'word_create_menu');
 // add_action( 'admin_enqueue_scripts', 'plu_admin_enqueue');
 
+
+// Add the process word hook
+add_action( 'admin_post_create_new_word', 'process_new_word' );
+add_action( 'admin_post_edit_word', 'process_edit_word' );
+add_action( 'admin_post_delete_word', 'process_delete_word' );
+
+
 // Activation hook to install the DB
 register_activation_hook( __FILE__, 'wordpleh_install' );
 
@@ -48,6 +55,10 @@ require_once("includes/word_category.php");
 require_once("admin/new_word.php");
 require_once("admin/edit_word.php");
 require_once("admin/words.php");
+
+require_once("admin/new_flashcardgame.php");
+require_once("admin/edit_flashcardgame.php");
+require_once("admin/flashcardgames.php");
 
 
 
