@@ -1,7 +1,7 @@
 <?php
 
 // Build the settings page
-function edit_words_settings_page() {
+function edit_word_settings_page() {
     $semantic = WP_PLUGIN_URL . '/panomanager/css/semantic.css';
     
     $words    = get_words();
@@ -105,12 +105,12 @@ function edit_words_settings_page() {
 </form>
 </div>
 
-<script>
-	jQuery(document).ready(function(){
-		jQuery("#pano_id").change(function(){
-			var quest_id = jQuery("option:selected", this).attr("data-quest-id");
-			jQuery("#quest_id").val(quest_id);
-		});
-	});
-</script>
+<!--<script>-->
+<!--	jQuery(document).ready(function(){-->
+<!--		jQuery("#pano_id").change(function(){-->
+<!--			var quest_id = jQuery("option:selected", this).attr("data-quest-id");-->
+<!--			jQuery("#quest_id").val(quest_id);-->
+<!--		});-->
+<!--	});-->
+<!--</script>-->
 <?php }
