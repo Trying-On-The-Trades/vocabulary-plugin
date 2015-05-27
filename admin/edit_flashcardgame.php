@@ -1,7 +1,7 @@
 <?php
 
 // Build the settings page
-function edit_flash_card_game_settings_page() {
+function edit_flashcardgame_settings_page() {
     $semantic = WP_PLUGIN_URL . '/panomanager/css/semantic.css';
 
     $words    = get_words();

@@ -1,8 +1,8 @@
 <?php
 
-    function build_word($word_id = 1){
+    function build_words($word_id = 1){
 
-        $word = new word($word_id);
+        $word = new dictionary($word_id);
         return $word;
     }
 
@@ -13,7 +13,7 @@
         $word_description   = trim($_POST['words_description']);
         $word_points        = $_POST['words_points'];
         $word_image         = $_POST['words_image'];
-        $word_audio        = $_POST['words_audio'];
+        $words_audio        = $_POST['words_audio'];
 
 
         // Get the id
@@ -30,7 +30,7 @@
         $word_description   = trim($_POST['words_description']);
         $word_points        = $_POST['words_points'];
         $word_image         = $_POST['words_image'];
-        $word_audio        = $_POST['words_audio'];
+        $words_audio        = $_POST['words_audio'];
 
         // Get the id
         $return = update_word($word_id, $word_word, $word_description, $word_points, $word_image, $words_audio);
