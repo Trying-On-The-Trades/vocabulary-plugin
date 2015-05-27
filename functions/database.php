@@ -38,7 +38,7 @@ function build_dictionary_sql(){
     `audio` char(30),
     `points` integer(10),
     `domain_id` int(11) NOT NULL,
-    `word_category_id` int(11),
+    `word_category_id` int(11) NOT NULL,
     PRIMARY KEY (`id`),
     FOREIGN KEY (domain_id) REFERENCES ' . get_domains_table_name() . '(id),
     FOREIGN KEY (word_category_id) REFERENCES ' . get_word_categories_table_name() . '(id)

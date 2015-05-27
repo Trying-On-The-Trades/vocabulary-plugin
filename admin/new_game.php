@@ -1,11 +1,14 @@
 <?php
+    function new_hat_game(){
+        $words = get_words();
+        $domains = get_domains();
+        $word_categories = get_word_categories();
 
-    $words = get_words();
-    get_all_game_words();
+        compare_words(); // Return an array with words already on the game
 
-    compare_words(); // Return an array with words already on the game
-
-    create_inputs();
+        create_inputs();
+    }
+    
 ?>
 
 

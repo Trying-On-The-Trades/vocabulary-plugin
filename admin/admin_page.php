@@ -1,9 +1,9 @@
 <?php
 
 // Build the settings page
-function pano_settings_page() {
+function word_settings_page() {
   
-    $panos = get_panos();
+    $panos = get_words();
 
     // Create urls
     $semantic      = WP_PLUGIN_URL . '/panomanager/css/semantic.css';
