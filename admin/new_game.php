@@ -1,4 +1,5 @@
 <?php
+
     include '../functions/db_funtions.php';
 
     echo 'Test';
@@ -13,6 +14,7 @@
 //    compare_words(); // Return an array with words already on the game
 //
 //    create_inputs();
+
 ?>
 
 
