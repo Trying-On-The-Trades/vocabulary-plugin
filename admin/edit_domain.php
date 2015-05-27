@@ -40,8 +40,8 @@ function edit_domain_settings_page() {
 	    <div class="ui form">
 	      <div class="field">
 	      	<div class="ui left labeled icon input">
-	        	<label for="domain_profession">Domain Name</label>
-	    		<input name="domain_profession" id="profession" value="<?php echo $domain->get_profession(); ?>" required />
+	        	<label for="domain_name">Domain Name</label>
+	    		<input name="domain_name" id="profession" value="<?php echo $domain->get_name(); ?>" required />
      	 	</div>
 	      </div>
 	    </div>
