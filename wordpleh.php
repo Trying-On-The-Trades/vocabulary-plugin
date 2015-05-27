@@ -49,5 +49,9 @@ require_once("admin/new_word.php");
 require_once("admin/edit_word.php");
 require_once("admin/words.php");
 
+require_once("admin/new_flashcardgame.php");
+require_once("admin/edit_flashcardgame.php");
+require_once("admin/flashcardgames.php");
+
 
 
