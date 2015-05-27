@@ -2,9 +2,11 @@
 
 // Build the settings page
 function edit_word_settings_page() {
-    $semantic = WP_PLUGIN_URL . '/panomanager/css/semantic.css';
-    
-    $words    = get_words();
+    $semantic = WP_PLUGIN_URL . '/vocabulary-plugin/css/semantic.css';
+
+    $word_id = filter_input(INPUT_POST,'id');
+
+    $words    = get_word($word_id);
     $domains  = get_domains();
     $categories = get_categories();
 
@@ -39,7 +41,8 @@ function edit_word_settings_page() {
 <?php endif; ?>
 <form method="post" enctype="multipart/form-data" action="<?php echo get_admin_url() . 'admin-post.php' ?>">
     <!-- pano processing hook -->
-    <input type="hidden" name="action" value="edit_words" />
+    <input type="hidden" name="action" value="edit_word" />
+    <input type="hidden" name="words_id" value="<?= $words->get_id(); ?>"/>
 <!--	    <div class="ui form">-->
 <!--	      <div class="field">-->
 <!--	        <label for="prereq_domain_id">Select a domain</label>-->
@@ -62,7 +65,7 @@ function edit_word_settings_page() {
 <!--			</select>-->
 <!--	      </div>-->
 <!--	    </div>-->
-    <div class="ui form segment new_word_form">
+    <div class="ui form segment edit_word_form">
 	    <div class="ui form">
 	      <div class="field">
 	      	<div class="ui left labeled icon input">

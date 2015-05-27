@@ -13,6 +13,7 @@ function get_words(){
     return $words;
 }
 
+
 function get_all_game_words($deck_id){
     global $wpdb;
 
@@ -163,8 +164,8 @@ function get_deck_word($deck_id, $dictionary_id){
     );
 }
 
-function update_word($word_id, $word_word, $word_description, $word_points, $word_image,
-                     $word_audio, $word_domain_id, $word_word_category_id){
+function update_word($word_id, $word_word, $word_description, $word_points, $word_audio, $word_image,
+                     $word_domain_id, $word_word_category_id){
     global $wpdb;
     $word_table_name = get_dictionary_table_name();
 
@@ -173,11 +174,11 @@ function update_word($word_id, $word_word, $word_description, $word_points, $wor
             'word' => $word_word,
             'description' => $word_description,
             'points' => $word_points,
-            'image' => $word_image,
             'audio' => $word_audio,
+            'image' => $word_image,
             'domain_id' => $word_domain_id,
             'word_category_id' => $word_word_category_id,
-            'id' => $word_id));
+            ), array('id' => $word_id));
 
         return true;
     } else {
