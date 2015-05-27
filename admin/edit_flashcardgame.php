@@ -1,20 +1,22 @@
 <?php
 
 // Build the settings page
-function edit_flash_card_game_settings_page() {
-    $semantic = WP_PLUGIN_URL . '/panomanager/css/semantic.css';
+function edit_flashcardgame_settings_page() {
+    $semantic = WP_PLUGIN_URL . '/vocabulary-plugin/css/semantic.css';
 
-    $words    = get_words();
+    $game_id = filter_input(INPUT_POST,'id');
+
+    $games    = get_word($game_id);
     $domains  = get_domains();
     $categories = get_categories();
 
     if (isset($_GET['id']) && is_numeric( $_GET['id']) ) {
-        $words = build_words($_GET['id']);
+        $games = build_words($_GET['id']);
     }
 
     ?>
 <link rel="stylesheet" type="text/css" href="<?php echo $semantic ?>"/>
-<h2>Edit a word!</h2>
+<h2>Edit a Game!</h2>
 <hr>
 <style type="text/css">
 	#wpfooter{
@@ -39,42 +41,21 @@ function edit_flash_card_game_settings_page() {
     <?php endif; ?>
 <form method="post" enctype="multipart/form-data" action="<?php echo get_admin_url() . 'admin-post.php' ?>">
     <!-- pano processing hook -->
-    <input type="hidden" name="action" value="edit_words" />
-	    <div class="ui form">
-	      <div class="field">
-	        <label for="prereq_domain_id">Select a domain</label>
-	        <select name="domain_id">
-				 <option value="NA">...</option>
-                 <?php foreach($domains as $domain): ?>
-        <option value="<?php echo $domain->id ?>" <?php echo ($domain->id === $words->get_domain_id()) ? "selected" : "" ?>><?php echo $domain->name ?></option>
-    <?php endforeach; ?>
-			</select>
-	      </div>
-	    </div>
-	    <div class="ui form">
-	      <div class="field">
-	        <label for="prereq_category_id">Select a category</label>
-	        <select name="category_id">
-				 <option value="NA">...</option>
-                 <?php foreach($categories as $category): ?>
-        <option value="<?php echo $category->id ?>" <?php echo ($category->id === $words->get_category_id()) ? "selected" : "" ?>><?php echo $category->name ?></option>
-    <?php endforeach; ?>
-			</select>
-	      </div>
-	    </div>
-    <div class="ui form segment new_pano_form">
+    <input type="hidden" name="action" value="edit_word" />
+    <input type="hidden" name="words_id" value="<?= $games->get_id(); ?>"/>
+    <div class="ui form segment edit_word_form">
 	    <div class="ui form">
 	      <div class="field">
 	      	<div class="ui left labeled icon input">
 	        	<label for="words_name">Word Name</label>
-	    		<input name="words_name" id="name" value="<?php echo $words->get_word() ?>" required />
+	    		<input name="words_name" id="name" value="<?php echo $games->get_word() ?>" required />
      	 	</div>
 	      </div>
 	    </div>
 	    <div class="ui form">
 	      <div class="field">
 	        <label for="words_description">Description</label>
-	        <textarea name="words_description" required ><?php echo $words->get_description() ?></textarea>
+	        <textarea name="words_description" required ><?php echo $games->get_description() ?></textarea>
 	      </div>
 	    </div>
         <div class="ui form">
@@ -90,13 +71,13 @@ function edit_flash_card_game_settings_page() {
         <div class="ui form">
 	      <div class="field">
 	        <label for="words_image">Image</label>
-	        <input name="words_image" id="image" value="<?php echo $words->get_image() ?>" />
+	        <input name="words_image" id="image" value="<?php echo $games->get_image() ?>" />
 	      </div>
 	    </div>
         <div class="ui form">
 	      <div class="field">
 	        <label for="words_audio">Audio</label>
-	        <input name="words_audio" id="audio" value="<?php echo $words->get_audio() ?>" />
+	        <input name="words_audio" id="audio" value="<?php echo $games->get_audio() ?>" />
 	      </div>
 	    </div>
 
