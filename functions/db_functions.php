@@ -164,7 +164,7 @@ function get_deck_word($deck_id, $dictionary_id){
     );
 }
 
-function update_word($word_id, $word_word, $word_description, $word_points, $word_audio, $word_image,
+function update_word($word_id, $word_word, $word_description, $word_points, $word_image, $word_audio,
                      $word_domain_id, $word_word_category_id){
     global $wpdb;
     $word_table_name = get_dictionary_table_name();
@@ -174,8 +174,8 @@ function update_word($word_id, $word_word, $word_description, $word_points, $wor
             'word' => $word_word,
             'description' => $word_description,
             'points' => $word_points,
-            'audio' => $word_audio,
             'image' => $word_image,
+            'audio' => $word_audio,
             'domain_id' => $word_domain_id,
             'word_category_id' => $word_word_category_id,
             ), array('id' => $word_id));
@@ -235,8 +235,8 @@ function update_deck($deck_id, $deck_name, $deck_image, $deck_number_of_words){
     }
 }
 
-function create_word($word_word, $word_description, $word_points, $word_audio,
-                     $word_image, $word_domain_id, $word_word_category_id){
+function create_word($word_word, $word_description, $word_points, $word_image, $word_audio,
+                      $word_domain_id, $word_word_category_id){
 
     global $wpdb;
     $word_table_name = get_dictionary_table_name();
@@ -245,8 +245,8 @@ function create_word($word_word, $word_description, $word_points, $word_audio,
         'word' => $word_word,
         'description' => $word_description,
         'points' => $word_points,
-        'audio' => $word_audio,
         'image' => $word_image,
+        'audio' => $word_audio,
         'domain_id' => $word_domain_id,
         'word_category_id' => $word_word_category_id));
 

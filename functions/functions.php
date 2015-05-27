@@ -10,11 +10,11 @@
 
         // Create a new word using the post data
 
-        $word_word          = $_POST['words_name'];
-        $word_description   = trim($_POST['words_description']);
-        $word_points        = $_POST['words_points'];
-        $word_image         = $_POST['words_image'];
-        $word_audio        = $_POST['words_audio'];
+        $word_word          = $_POST['word_name'];
+        $word_description   = trim($_POST['word_description']);
+        $word_points        = $_POST['word_points'];
+        $word_image         = $_POST['word_image'];
+        $word_audio        = $_POST['word_audio'];
         $word_domain_id       = $_POST['domain_id'];
         $word_word_category_id       = $_POST['category_id'];
 
@@ -28,12 +28,12 @@
 
         // Create a new word using the post data
 
-        $word_id            = $_POST['words_id'];
-        $word_word          = $_POST['words_name'];
-        $word_description   = trim($_POST['words_description']);
-        $word_points        = $_POST['words_points'];
-        $word_image         = $_POST['words_image'];
-        $word_audio        = $_POST['words_audio'];
+        $word_id            = $_POST['word_id'];
+        $word_word          = $_POST['word_name'];
+        $word_description   = trim($_POST['word_description']);
+        $word_points        = $_POST['word_points'];
+        $word_image         = $_POST['word_image'];
+        $word_audio        = $_POST['word_audio'];
         $word_domain_id       = $_POST['domain_id'];
         $word_word_category_id       = $_POST['category_id'];
 
