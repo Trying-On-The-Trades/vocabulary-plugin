@@ -67,6 +67,7 @@ function build_decks_sql(){
     `name` char(50) NOT NULL,
     `image` char(50),
     `number_of_words` int(10),
+    `game_type` char(50),
     PRIMARY KEY(`id`)
     )ENGINE=MyISAM DEFAULT CHARSET=latin1;';
 
@@ -78,7 +79,7 @@ function build_deck_words_sql(){
 
   $sql = 'CREATE TABLE `' . $table_name . '` (
     `deck_id` int(10) NOT NULL,
-    `dictionary_id` int(10) NOT NULL, 
+    `dictionary_id` int(10) NOT NULL,
     PRIMARY KEY (deck_id, dictionary_id),
     FOREIGN KEY (deck_id) REFERENCES ' . get_decks_table_name() . '(id) ON DELETE CASCADE,
 
