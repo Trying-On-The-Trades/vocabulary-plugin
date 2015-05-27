@@ -91,10 +91,10 @@ function get_words_details(){
     $domain_table_name = get_domains_table_name();
     $word_category_table_name = get_word_categories_table_name();
 
-    $words = $wpdb->get_row( $wpdb->prepare(
+    $words = $wpdb->get_results( $wpdb->prepare(
         "SELECT * FROM " . $word_table_name . " AS word, " . $domain_table_name .
         " AS domain , " . $word_category_table_name . " AS category " .
-        "WHERE word.domain_id = domain.id AND word.word_category_id = category.id"
+        "WHERE word.domain_id = domain.id AND word.word_category_id = category.id")
     );
 
     return $words;
@@ -111,7 +111,7 @@ function get_word_details($word_id){
         "SELECT * FROM " . $word_table_name . " AS word, " . $domain_table_name .
         " AS domain , " . $word_category_table_name . " AS category " .
         "WHERE word.domain_id = domain.id AND word.word_category_id = category.id" .
-        "AND word.id = {$word_id}"
+        "AND word.id = {$word_id}")
     );
 
     return $word;
