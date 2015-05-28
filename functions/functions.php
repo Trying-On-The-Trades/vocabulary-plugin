@@ -6,10 +6,21 @@
         return $word;
     }
 
+    function build_deck($deck_id = 1){
+
+        $deck = new dictionary($deck_id);
+        return $deck;
+    }
+
+    function build_category($category_id = 1){
+
+        $category = new dictionary($category_id);
+        return $category;
+    }
+
     function process_new_word(){
 
         // Create a new word using the post data
-
         $word_word              = $_POST['word_name'];
         $word_description       = trim($_POST['word_description']);
         $word_points            = $_POST['word_points'];
@@ -24,10 +35,19 @@
         wp_redirect( admin_url( 'admin.php?page=word_menu' ) );
     }
 
+    function process_new_category(){
+
+        // Create a new category using the post data
+        $word_category_name              = $_POST['category_name'];
+
+        create_word_category($word_category_name);
+
+        wp_redirect( admin_url( 'admin.php?page=category_settings' ) );
+    }
+
     function process_edit_word(){
 
-        // Create a new word using the post data
-
+        // Edit an existing word using the post data
         $word_id                = $_POST['word_id'];
         $word_word              = $_POST['word_name'];
         $word_description       = trim($_POST['word_description']);
@@ -48,6 +68,21 @@
         }
     }
 
+    function process_edit_category(){
+
+        // Edit an existing category using the post data
+        $word_category_id            = $_POST['category_id'];
+        $word_category_name          = $_POST['category_name'];
+
+        $return = update_word_category($word_category_id, $word_category_name );
+
+        if($return){
+            wp_redirect( admin_url( 'admin.php?page=category_settings&settings-saved') );
+        } else {
+            wp_redirect( admin_url( 'admin.php?page=category_settings&error') );
+        }
+    }
+
     function process_delete_word(){
 
         // Delete a word using the post data
@@ -57,5 +92,16 @@
 
         wp_redirect( admin_url( 'admin.php?page=word_menu') );
     }
+
+    function process_delete_category(){
+
+        // Delete a category using the post data
+        $word_category_id = $_POST['category_id'];
+
+        delete_word_category($word_category_id);
+
+        wp_redirect( admin_url( 'admin.php?page=category_settings') );
+    }
+
 
 
