@@ -149,7 +149,7 @@
 
         delete_deck($deck_id);
 
-        wp_redirect( admin_url( 'admin.php?page=flashcardgames_settings') );
+        wp_redirect( admin_url( 'admin.php?page=flashcardgame_settings') );
     }
 
 
