@@ -11,14 +11,13 @@ function flashcardgame_settings_page() {
 
     <!-- style sheet so our admin page looks nice -->
     <link rel="stylesheet" type="text/css" href="<?php echo $semantic ?>"/>
-    <p>Manage your words fuuuuuuuu!</p>
     <hr>
 
     <?php if ( isset( $_GET[ 'settings-saved' ] ) ): ?>
         <div class="updated"><p>Settings updated successfully.</p></div>
     <?php endif ?>
 
-    <h2>Vocabulary</h2>
+    <h2>Games</h2>
     <table id="wordTable" class="ui table segment tablesorter">
         <thead>
         <tr>

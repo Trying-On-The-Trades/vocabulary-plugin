@@ -6,7 +6,7 @@ function edit_flashcardgame_settings_page() {
 
     $game_id = filter_input(INPUT_POST,'id');
 
-    $games    = get_word($game_id);
+    $games    = get_deck($game_id);
     $domains  = get_domains();
     $categories = get_categories();
 
@@ -35,27 +35,33 @@ function edit_flashcardgame_settings_page() {
 </style>
 
 <?php if ( isset( $_GET[ 'settings-saved' ] ) ): ?>
-        <div class="updated"><p>Dictionary updated successfully.</p></div>
+        <div class="updated"><p>Game updated successfully.</p></div>
     <?php elseif ( isset( $_GET[ 'error' ] ) ): ?>
-        <div class="error"><p>Error updating dictionary.</p></div>
+        <div class="error"><p>Error updating game.</p></div>
     <?php endif; ?>
 <form method="post" enctype="multipart/form-data" action="<?php echo get_admin_url() . 'admin-post.php' ?>">
     <!-- pano processing hook -->
-    <input type="hidden" name="action" value="edit_word" />
-    <input type="hidden" name="words_id" value="<?= $games->get_id(); ?>"/>
+    <input type="hidden" name="action" value="edit_game" />
+    <input type="hidden" name="games_id" value="<?= $games->get_id(); ?>"/>
     <div class="ui form segment edit_word_form">
 	    <div class="ui form">
 	      <div class="field">
 	      	<div class="ui left labeled icon input">
-	        	<label for="words_name">Word Name</label>
-	    		<input name="words_name" id="name" value="<?php echo $games->get_word() ?>" required />
+	        	<label for="games_name">Word Name</label>
+	    		<input name="games_name" id="name" value="<?php echo $games->get_name() ?>" required />
      	 	</div>
 	      </div>
 	    </div>
 	    <div class="ui form">
 	      <div class="field">
 	        <label for="words_description">Description</label>
-	        <textarea name="words_description" required ><?php echo $games->get_description() ?></textarea>
+	        <textarea name="words_description" required ><?php echo $games->get_image() ?></textarea>
+	      </div>
+	    </div>
+	    <div class="ui form">
+	      <div class="field">
+	        <label for="words_description">Description</label>
+	        <textarea name="words_description" required ><?php echo $games->get_number_of_words() ?></textarea>
 	      </div>
 	    </div>
         <div class="ui form">
