@@ -8,13 +8,13 @@
 
     function build_deck($deck_id = 1){
 
-        $deck = new dictionary($deck_id);
+        $deck = new deck($deck_id);
         return $deck;
     }
 
     function build_category($category_id = 1){
 
-        $category = new dictionary($category_id);
+        $category = new word_category($category_id);
         return $category;
     }
 
