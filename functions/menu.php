@@ -12,9 +12,7 @@ function create_top_wordpleh_menu(){
 				  'Wordpleh',
 				  'administrator',
 				  'word_menu',
-				  'word_settings_page',
-				  plugins_url('/images/icon.png', __FILE__)
-				  );
+				  'word_settings_page');
 }
 
 // function to create the sub menus
@@ -35,6 +33,28 @@ function create_sub_wordpleh_menus(){
 					 "administrator",
 					 "edit_word_settings",
 					 "edit_word_settings_page");
+
+
+    add_submenu_page("word_menu",
+        "Category",
+        "Category",
+        "administrator",
+        "category_settings",
+        "category_settings_page");
+
+    add_submenu_page(null,
+        "New Category",
+        "New Category",
+        "administrator",
+        "new_category_settings",
+        "new_category_settings_page");
+
+    add_submenu_page(null,
+        "Edit Category",
+        "Edit Category",
+        "administrator",
+        "edit_category_settings",
+        "edit_category_settings_page");
 
     add_submenu_page("word_menu",
         "Flash Card Game",
