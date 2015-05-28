@@ -19,19 +19,7 @@ function edit_word_settings_page() {
 <h2>Edit a word!</h2>
 <hr>
 <style type="text/css">
-	#wpfooter{
-		display: none;
-	}
 
-	#file_input {
-	    border: 1px solid #cccccc;
-	    padding: 5px;
-	}
-
-	.new_pano_form{
-		width:85%;
-		margin: 0px auto;
-	}
 </style>
 
 <?php if ( isset( $_GET[ 'settings-saved' ] ) ): ?>
@@ -42,7 +30,7 @@ function edit_word_settings_page() {
 <form method="post" enctype="multipart/form-data" action="<?php echo get_admin_url() . 'admin-post.php' ?>">
     <!-- pano processing hook -->
     <input type="hidden" name="action" value="edit_word" />
-    <input type="hidden" name="words_id" value="<?= $words->get_id(); ?>"/>
+    <input type="hidden" name="word_id" value="<?= $words->get_id(); ?>"/>
 <!--	    <div class="ui form">-->
 <!--	      <div class="field">-->
 <!--	        <label for="prereq_domain_id">Select a domain</label>-->
@@ -60,7 +48,7 @@ function edit_word_settings_page() {
 <!--	        <select name="category_id">-->
 <!--				 <option value="NA">...</option>-->
 <!--                 --><?php //foreach($categories as $category): ?>
-<!--                     <option value="--><?php //echo $category->id ?><!--" --><?php //echo ($category->id === $words->get_category_id()) ? "selected" : "" ?><!-->--><?php //echo $category->name ?><!--</option>-->
+<!--                     <option value="--><?php //echo $category->id ?><!--" --><?php //echo ($category->id === $words->get_category_id()) ? "selected" : "" ?><!-->--><?p6hp //echo $category->name ?><!--</option>-->
 <!--                 --><?php //endforeach; ?>
 <!--			</select>-->
 <!--	      </div>-->
@@ -69,21 +57,21 @@ function edit_word_settings_page() {
 	    <div class="ui form">
 	      <div class="field">
 	      	<div class="ui left labeled icon input">
-	        	<label for="words_name">Word Name</label>
-	    		<input name="words_name" id="name" value="<?php echo $words->get_word() ?>" required />
+	        	<label for="word_name">Word Name</label>
+	    		<input name="word_name" id="name" value="<?php echo $words->get_word() ?>" required />
      	 	</div>
 	      </div>
 	    </div>
 	    <div class="ui form">
 	      <div class="field">
-	        <label for="words_description">Description</label>
-	        <textarea name="words_description" required ><?php echo $words->get_description() ?></textarea>
+	        <label for="word_description">Description</label>
+	        <textarea name="word_description" required ><?php echo $words->get_description() ?></textarea>
 	      </div>
 	    </div>
         <div class="ui form">
 	      <div class="field">
-	        <label for="words_points">Points</label>
-	        <select name="words_points">
+	        <label for="word_points">Points</label>
+	        <select name="word_points">
 	            <option value="30">30</option>
 	            <option value="20">20</option>
 	            <option value="10">10</option>
@@ -92,14 +80,14 @@ function edit_word_settings_page() {
 	    </div>
         <div class="ui form">
 	      <div class="field">
-	        <label for="words_image">Image</label>
-	        <input name="words_image" id="image" value="<?php echo $words->get_image() ?>" />
+	        <label for="word_image">Image</label>
+	        <input name="word_image" id="image" value="<?php echo $words->get_image() ?>" />
 	      </div>
 	    </div>
         <div class="ui form">
 	      <div class="field">
-	        <label for="words_audio">Audio</label>
-	        <input name="words_audio" id="audio" value="<?php echo $words->get_audio() ?>" />
+	        <label for="word_audio">Audio</label>
+	        <input name="word_audio" id="audio" value="<?php echo $words->get_audio() ?>" />
 	      </div>
 	    </div>
 
@@ -108,12 +96,9 @@ function edit_word_settings_page() {
 </form>
 </div>
 
-<!--<script>-->
-<!--	jQuery(document).ready(function(){-->
-<!--		jQuery("#pano_id").change(function(){-->
-<!--			var quest_id = jQuery("option:selected", this).attr("data-quest-id");-->
-<!--			jQuery("#quest_id").val(quest_id);-->
-<!--		});-->
-<!--	});-->
-<!--</script>-->
+    <script>
+        jQuery(document).ready(function(){
+            jQuery("#wordTable").tablesorter();
+        })
+    </script>
 <?php }

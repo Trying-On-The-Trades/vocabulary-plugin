@@ -47,7 +47,7 @@ function create_sub_wordpleh_menus(){
         "New Flash Card Game",
         "New Flash Card Game",
         "administrator",
-        "new_flascardgame_settings",
+        "new_flashcardgame_settings",
         "new_flashcardgame_settings_page");
 
     add_submenu_page(null,

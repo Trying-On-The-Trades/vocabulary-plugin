@@ -16,7 +16,7 @@ class deck{
     }
 
     function build($deck_row){
-        if ($deck_row_row->id > 0){
+        if ($deck_row->id > 0){
             $this->exists          = 1;
             $this->id              = $deck_row->id;
             $this->name            = $deck_row->name;

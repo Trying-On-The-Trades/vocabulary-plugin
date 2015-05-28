@@ -32,7 +32,7 @@ function get_all_game_words($deck_id){
 function get_domains(){
     global $wpdb;
 
-    $domain_table_name = get_domains_table_name();
+    $domain_table_name = get_domain_table_name();
 
     $domains = $wpdb->get_results(
         "SELECT * FROM " . $domain_table_name . " wpt ");
@@ -89,7 +89,7 @@ function get_words_details(){
     global $wpdb;
 
     $word_table_name = get_dictionary_table_name();
-    $domain_table_name = get_domains_table_name();
+    $domain_table_name = get_domain_table_name();
     $word_category_table_name = get_word_categories_table_name();
 
     $words = $wpdb->get_results( $wpdb->prepare(
@@ -105,7 +105,7 @@ function get_word_details($word_id){
     global $wpdb;
 
     $word_table_name = get_dictionary_table_name();
-    $domain_table_name = get_domains_table_name();
+    $domain_table_name = get_domain_table_name();
     $word_category_table_name = get_word_categories_table_name();
 
     $word = $wpdb->get_row( $wpdb->prepare(
@@ -120,7 +120,7 @@ function get_word_details($word_id){
 
 function get_domain($domain_id){
     global $wpdb;
-    $domain_table_name = get_domains_table_name();
+    $domain_table_name = get_domain_table_name();
 
     $domain = $wpdb->get_row( $wpdb->prepare(
         "SELECT * FROM " . $domain_table_name . " wpt " .
@@ -164,7 +164,7 @@ function get_deck_word($deck_id, $dictionary_id){
     );
 }
 
-function update_word($word_id, $word_word, $word_description, $word_points, $word_audio, $word_image,
+function update_word($word_id, $word_word, $word_description, $word_points, $word_image, $word_audio,
                      $word_domain_id, $word_word_category_id){
     global $wpdb;
     $word_table_name = get_dictionary_table_name();
@@ -174,8 +174,8 @@ function update_word($word_id, $word_word, $word_description, $word_points, $wor
             'word' => $word_word,
             'description' => $word_description,
             'points' => $word_points,
-            'audio' => $word_audio,
             'image' => $word_image,
+            'audio' => $word_audio,
             'domain_id' => $word_domain_id,
             'word_category_id' => $word_word_category_id,
             ), array('id' => $word_id));
@@ -188,7 +188,7 @@ function update_word($word_id, $word_word, $word_description, $word_points, $wor
 
 function update_domain($domain_id, $domain_name){
     global $wpdb;
-    $domain_table_name = get_domains_table_name();
+    $domain_table_name = get_domain_table_name();
 
     if(isset($domain_id) && is_numeric($domain_id)){
         $wpdb->update( $domain_table_name,
@@ -235,8 +235,8 @@ function update_deck($deck_id, $deck_name, $deck_image, $deck_number_of_words){
     }
 }
 
-function create_word($word_word, $word_description, $word_points, $word_audio,
-                     $word_image, $word_domain_id, $word_word_category_id){
+function create_word($word_word, $word_description, $word_points, $word_image, $word_audio,
+                      $word_domain_id, $word_word_category_id){
 
     global $wpdb;
     $word_table_name = get_dictionary_table_name();
@@ -245,8 +245,8 @@ function create_word($word_word, $word_description, $word_points, $word_audio,
         'word' => $word_word,
         'description' => $word_description,
         'points' => $word_points,
-        'audio' => $word_audio,
         'image' => $word_image,
+        'audio' => $word_audio,
         'domain_id' => $word_domain_id,
         'word_category_id' => $word_word_category_id));
 
@@ -255,7 +255,7 @@ function create_word($word_word, $word_description, $word_points, $word_audio,
 
 function create_domain($domain_name){
     global $wpdb;
-    $domain_table_name = get_domains_table_name();
+    $domain_table_name = get_domain_table_name();
 
     $wpdb->insert( $domain_table_name, array( 'name' => $domain_name));
 
@@ -303,7 +303,7 @@ function delete_word($word_id){
 
 function delete_domain($domain_id){
     global $wpdb;
-    $domain_table_name = get_domains_table_name();
+    $domain_table_name = get_domain_table_name();
 
     $wpdb->delete( $domain_table_name, array( 'id' => $domain_id ) );
 }

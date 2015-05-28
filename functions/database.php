@@ -7,7 +7,7 @@ function get_dictionary_table_name(){
     return $wpdb->prefix . "wordpleh_dictionary";
 }
 
-function get_domains_table_name(){
+function get_domain_table_name(){
     global $wpdb;
     return $wpdb->prefix . "pano_domain";
 }
@@ -40,7 +40,7 @@ function build_dictionary_sql(){
     `domain_id` int(11) NOT NULL,
     `word_category_id` int(11) NOT NULL,
     PRIMARY KEY (`id`),
-    FOREIGN KEY (domain_id) REFERENCES ' . get_domains_table_name() . '(id),
+    FOREIGN KEY (domain_id) REFERENCES ' . get_domain_table_name() . '(id),
     FOREIGN KEY (word_category_id) REFERENCES ' . get_word_categories_table_name() . '(id)
     )ENGINE=MyISAM DEFAULT CHARSET=latin1;';
 
