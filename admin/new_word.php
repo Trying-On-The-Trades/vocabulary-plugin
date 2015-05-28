@@ -85,7 +85,7 @@ function new_word_settings_page() {
 	      <div class="field">
 	      	<div class="ui left labeled icon input">
 	        	<label for="word_image">Image</label>
-	    		<input type="text" name="word_image" id="image"  />
+	    		<input type="file" name="word_image" id="word_image"  />
      	 	</div>
 	      </div>
 	    </div>
@@ -93,7 +93,7 @@ function new_word_settings_page() {
 	      <div class="field">
 	      	<div class="ui left labeled icon input">
 	        	<label for="word_audio">Audio</label>
-	    		<input type="text" name="word_audio" id="audio"  />
+	    		<input type="file" name="word_audio" id="word_audio"  />
      	 	</div>
 	      </div>
 	    </div>
