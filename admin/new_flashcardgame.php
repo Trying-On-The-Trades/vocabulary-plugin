@@ -6,6 +6,8 @@ function new_flashcardgame_settings_page() {
 
     $domains   = get_domains();
     $categories = get_word_categories();
+    $words = get_words();
+
 ?>
 <link rel="stylesheet" type="text/css" href="<?php echo $semantic ?>"/>
 <h2>Create New Game!</h2>
@@ -62,6 +64,18 @@ function new_flashcardgame_settings_page() {
      	 	</div>
 	      </div>
 	    </div>
+
+	    <div class="ui form">
+	      <div class="field">
+	        <ul>
+                <?php foreach($words as $word): ?>
+                    <li>
+                        <input type="checkbox" class="<?php echo $word->word_category_id ?>" name="words[]" value="<?php echo $word->id ?>"><?php echo $word->word ?>
+                    </li>
+                <?php endforeach; ?>
+            </ul>
+	      </div>
+        </div>
 
 	    <?php submit_button(); ?>
 	</div>
