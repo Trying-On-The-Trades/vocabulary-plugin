@@ -209,7 +209,8 @@ function update_word_category($word_category_id, $word_category_name){
     if(isset($word_category_id) && is_numeric($word_category_id)){
         $wpdb->update( $word_category_table_name,
             array(
-            'name' => $word_category_name,
+            'name' => $word_category_name),
+            array(
             'id' => $word_category_id));
 
         return true;
