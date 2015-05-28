@@ -52,24 +52,24 @@ function get_word_categories(){
 }
 
 
-function get_decks(){
+function get_decks($game_type){
     global $wpdb;
 
     $decks_table_name = get_decks_table_name();
 
     $decks = $wpdb->get_results(
-        "SELECT * FROM " . $decks_table_name . " wpt ");
+        "SELECT * FROM " . $decks_table_name . " wpt WHERE game_type = " . '"' . $game_type . '"');
 
     return $decks;
 }
 
-function get_deck_words(){
+function get_deck_words($deck_id){
     global $wpdb;
 
     $table_name = get_deck_words_table_name();
 
     $deck_words = $wpdb->get_results(
-        "SELECT * FROM " . $table_name . "wpt");
+        "SELECT * FROM " . $table_name . " wpt WHERE game_type = " . '"' . $deck_id . '"');
 
     return $deck_words;
 }
