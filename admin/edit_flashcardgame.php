@@ -41,7 +41,7 @@ function edit_flashcardgame_settings_page() {
     <?php endif; ?>
 <form method="post" enctype="multipart/form-data" action="<?php echo get_admin_url() . 'admin-post.php' ?>">
     <!-- pano processing hook -->
-    <input type="hidden" name="action" value="edit_game" />
+    <input type="hidden" name="action" value="edit_flashcard" />
     <input type="hidden" name="game_id" value="<?= $game->get_id(); ?>"/>
     <div class="ui form segment edit_word_form">
 
