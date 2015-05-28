@@ -1,6 +1,6 @@
 <?php
-function pano_category_settings_page() {
-    $categories = get_categorys();
+function category_settings_page() {
+    $categories = get_categories();
 
     $semantic       = WP_PLUGIN_URL . '/vocabulary-plugin/css/semantic.css';
     $new_category_url  = admin_url() . "admin.php?page=new_category_settings";
