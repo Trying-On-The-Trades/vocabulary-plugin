@@ -2,7 +2,7 @@
 
 // Build the settings page
 function flashcardgame_settings_page() {
-    $games = get_decks();
+    $games = get_decks("flashcard");
 
     $semantic         = WP_PLUGIN_URL . '/vocabulary-plugin/css/semantic.css';
     $new_game_url  = admin_url() . "admin.php?page=new_flashcardgame_settings";
