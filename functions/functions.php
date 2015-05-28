@@ -45,6 +45,25 @@
         wp_redirect( admin_url( 'admin.php?page=category_settings' ) );
     }
 
+    function process_new_flashcard(){ 
+
+        // Create a new flashcard game
+        $flashcard_name         = $_POST['game_name'];
+        $flashcard_image        = "";
+        $flashcard_num_of_words = $_POST['game_number_of_words'];
+        $game_type              = "flashcard";
+        
+        //$word_ids = $_POST
+
+        $deck_id = create_deck($flashcard_name, $flashcard_image, $flashcard_num_of_words, $game_type);
+
+        wp_redirect( admin_url( 'admin.php?page=flashcardgame_settings' ) );
+    }
+
+    function process_new_deck_word($deck_id, $word_id){
+        create_deck_word($deck_id, $word_id);
+    }
+
     function process_edit_word(){
 
         // Edit an existing word using the post data
@@ -83,6 +102,26 @@
         }
     }
 
+    function process_edit_flashcard(){ 
+
+        // Edit a flashcard game
+        $flashcard_id           = $_POST['game_id'];
+        $flashcard_name         = $_POST['game_name'];
+        $flashcard_image        = "";
+        $flashcard_num_of_words = $_POST['game_number_of_words'];
+        $game_type              = "flashcard";
+        
+        //$word_ids = $_POST
+
+        $return = update_deck($flashcard_id, $flashcard_name, $flashcard_image, $flashcard_num_of_words, $game_type);
+
+        if($return){
+            wp_redirect( admin_url( 'admin.php?page=flashcardgames_settings&settings-saved') );
+        } else {
+            wp_redirect( admin_url( 'admin.php?page=flashcardgames_settings&error') );
+        }
+    }
+
     function process_delete_word(){
 
         // Delete a word using the post data
@@ -102,6 +141,18 @@
 
         wp_redirect( admin_url( 'admin.php?page=category_settings') );
     }
+
+    function process_delete_deck(){
+
+        // Delete a word using the post data
+        $deck_id = $_POST['game_id'];
+
+        delete_deck($deck_id);
+
+        wp_redirect( admin_url( 'admin.php?page=flashcardgames_settings') );
+    }
+
+
 
 
 
