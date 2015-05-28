@@ -116,9 +116,9 @@
         $return = update_deck($flashcard_id, $flashcard_name, $flashcard_image, $flashcard_num_of_words, $game_type);
 
         if($return){
-            wp_redirect( admin_url( 'admin.php?page=flashcardgames_settings&settings-saved') );
+            wp_redirect( admin_url( 'admin.php?page=flashcardgame_settings&settings-saved') );
         } else {
-            wp_redirect( admin_url( 'admin.php?page=flashcardgames_settings&error') );
+            wp_redirect( admin_url( 'admin.php?page=flashcardgame_settings&error') );
         }
     }
 

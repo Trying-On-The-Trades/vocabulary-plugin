@@ -227,8 +227,9 @@ function update_deck($deck_id, $deck_name, $deck_image, $deck_number_of_words, $
             'name' => $deck_name,
             'image' => $deck_image,
             'number_of_words' => $deck_number_of_words,
-            'game_type' => $deck_type,
-            'id' => $deck_id));
+            'game_type' => $deck_type),
+            array('id' => $deck_id)
+            );
 
         return true;
     } else {
