@@ -11,7 +11,7 @@ function word_settings_page() {
 
     <!-- style sheet so our admin page looks nice -->
     <link rel="stylesheet" type="text/css" href="<?php echo $semantic ?>"/>
-    <p>Manage your words fuuuuuuuu!</p>
+    <p>Manage your words!</p>
     <hr>
 
     <?php if ( isset( $_GET[ 'settings-saved' ] ) ): ?>
@@ -24,6 +24,7 @@ function word_settings_page() {
         <tr>
             <th>Name</th>
             <th>Description</th>
+            <th>Points</th>
             <th>Image</th>
             <th>Audio</th>
             <th>Edit</th>
@@ -37,6 +38,7 @@ function word_settings_page() {
             <tr>
                 <td><?php echo $current_word->get_word(); ?></td>
                 <td><?php echo $current_word->get_description(); ?></td>
+                <td><?php echo $current_word->get_points(); ?></td>
                 <td><?php echo $current_word->get_image(); ?></td>
                 <td><?php echo $current_word->get_audio(); ?></td>
 
