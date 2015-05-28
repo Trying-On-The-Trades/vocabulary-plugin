@@ -52,10 +52,14 @@
         $flashcard_image        = "";
         $flashcard_num_of_words = $_POST['game_number_of_words'];
         $game_type              = "flashcard";
-        
-        //$word_ids = $_POST
+
+        $selected_words = $_POST['words'];
 
         $deck_id = create_deck($flashcard_name, $flashcard_image, $flashcard_num_of_words, $game_type);
+
+        foreach($selected_words as $word){
+            create_deck_word($deck_id, $word);
+        }
 
         wp_redirect( admin_url( 'admin.php?page=flashcardgame_settings' ) );
     }
