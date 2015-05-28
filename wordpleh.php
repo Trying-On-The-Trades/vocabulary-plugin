@@ -36,13 +36,15 @@ add_action( 'admin_post_create_new_word', 'process_new_word' );
 add_action( 'admin_post_edit_word', 'process_edit_word' );
 add_action( 'admin_post_delete_word', 'process_delete_word' );
 
-
 // Add the process category hook
-
-
 add_action( 'admin_post_create_new_category', 'process_new_category' );
 add_action( 'admin_post_edit_category', 'process_edit_category' );
 add_action( 'admin_post_delete_category', 'process_delete_category' );
+
+// Add the process flashcard game hook
+add_action( 'admin_post_create_new_flashcard', 'process_new_flashcard' );
+add_action( 'admin_post_edit_flashcard', 'process_edit_flashcard' );
+add_action( 'admin_post_delete_deck', 'process_delete_deck' );
 
 
 // Activation hook to install the DB

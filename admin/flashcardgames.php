@@ -2,7 +2,7 @@
 
 // Build the settings page
 function flashcardgame_settings_page() {
-    $games = get_decks();
+    $games = get_decks("flashcard");
 
     $semantic         = WP_PLUGIN_URL . '/vocabulary-plugin/css/semantic.css';
     $new_game_url  = admin_url() . "admin.php?page=new_flashcardgame_settings";
@@ -39,7 +39,7 @@ function flashcardgame_settings_page() {
                 <td>
                     <form method="post" action="admin-post.php" id="delete_word_form<?php echo $current_game->get_id() ?>">
                         <!-- word processing hook -->
-                        <input type="hidden" name="action" value="delete_word" />
+                        <input type="hidden" name="action" value="delete_deck" />
                         <input type="hidden" name="word_id" value="<?php echo $current_game->get_id() ?>" />
 
                         <input type="submit" class="ui blue icon button" value="Delete" style="padding: 7px" >
