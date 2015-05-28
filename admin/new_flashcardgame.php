@@ -19,7 +19,7 @@ function new_flashcardgame_settings_page() {
 	}
 </style>
 <form method="post" enctype="multipart/form-data" action="<?php echo get_admin_url() . 'admin-post.php' ?>">
-    <input type="hidden" name="action" value="create_new_word" />
+    <input type="hidden" name="action" value="create_new_flashcard" />
     <div class="ui form segment new_word_form">
 	    <div class="ui form">
 	      <div class="field">
