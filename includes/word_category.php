@@ -16,10 +16,10 @@ class word_category{
     }
 
     function build($word_category_row){
-        if ($trade_row->id > 0){
+        if ($word_category_row->id > 0){
             $this->exists   = 1;
-            $this->id       = $trade_row->id;
-            $this->name = $trade_row->name;
+            $this->id       = $word_category_row->id;
+            $this->name = $word_category_row->name;
         }
     }
 

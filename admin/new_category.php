@@ -1,7 +1,7 @@
 <?php
 
 function new_category_settings_page() {
-    $semantic = WP_PLUGIN_URL . '/panomanager/css/semantic.css';
+    $semantic = WP_PLUGIN_URL . '/vocabulary-plugin/css/semantic.css';
     ?>
 <link rel="stylesheet" type="text/css" href="<?php echo $semantic ?>"/>
 <h2>Create a new category!</h2>
