@@ -5,7 +5,7 @@ function new_word_settings_page() {
     $semantic = WP_PLUGIN_URL . '/vocabulary-plugin/css/semantic.css';
 
 	$domains   = get_domains();
-    $categories = get_categories();
+    $categories = get_word_categories();
     ?>
 <link rel="stylesheet" type="text/css" href="<?php echo $semantic ?>"/>
 <h2>Create a new word!</h2>
@@ -15,7 +15,6 @@ function new_word_settings_page() {
 	    display: none;
 	    width: 80%;
 	    margin: 0 auto;
-
 	}
 </style>
 <form method="post" enctype="multipart/form-data" action="<?php echo get_admin_url() . 'admin-post.php' ?>">
