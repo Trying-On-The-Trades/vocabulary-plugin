@@ -7,11 +7,23 @@ function edit_flashcardgame_settings_page() {
     $game_id = filter_input(INPUT_POST,'id');
 
     $game    = get_deck($game_id);
+
     $domains  = get_domains();
     $categories = get_categories();
 
+    $words = get_words();
+
+
+
     if (isset($_GET['id']) && is_numeric( $_GET['id']) ) {
         $game = build_deck($_GET['id']);
+        $deck_words = get_all_game_words_ids($_GET['id']);
+    }
+
+    $selected_words_ids = [];
+
+    for($j = 0; $j < sizeof($deck_words); $j++){
+        $selected_words_ids[$j] = $deck_words[$j]->id;
     }
 
     ?>
@@ -63,6 +75,24 @@ function edit_flashcardgame_settings_page() {
 	      </div>
 	    </div>
 
+         <div class="ui form">
+	      <div class="field">
+	        <ul>
+                <?php foreach($words as $word): ?>
+                    <?php if(in_array($word->id, $selected_words_ids)): ?>
+                        <li>
+                            <input type="checkbox" class="<?php echo $word->word_category_id ?>" name="words[]" value="<?php echo $word->id ?>" checked><?php echo $word->word ?>
+                        </li>
+                    <?php else :?>
+                        <li>
+                            <input type="checkbox" class="<?php echo $word->word_category_id ?>" name="words[]" value="<?php echo $word->id ?>"><?php echo $word->word ?>
+                        </li>
+                    <?php endif; ?>
+
+                <?php endforeach; ?>
+            </ul>
+	      </div>
+        </div>
 
 	    <?php submit_button(); ?>
 	</div>
