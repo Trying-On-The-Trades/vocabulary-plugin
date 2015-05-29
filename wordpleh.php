@@ -75,5 +75,7 @@ require_once("admin/new_flashcardgame.php");
 require_once("admin/edit_flashcardgame.php");
 require_once("admin/flashcardgames.php");
 
+require_once("wordpla/index.php");
+
 
 
