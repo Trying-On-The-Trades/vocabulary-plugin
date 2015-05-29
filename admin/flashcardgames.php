@@ -7,6 +7,7 @@ function flashcardgame_settings_page() {
     $semantic         = WP_PLUGIN_URL . '/vocabulary-plugin/css/semantic.css';
     $new_game_url  = admin_url() . "admin.php?page=new_flashcardgame_settings";
     $edit_game_url = admin_url() . "admin.php?page=edit_flashcardgame_settings";
+    $view_game_url = WP_PLUGIN_URL . '/vocabulary-plugin/wordpla/index.php';
     ?>
 
     <!-- style sheet so our admin page looks nice -->
@@ -25,6 +26,7 @@ function flashcardgame_settings_page() {
             <th>Number of Words</th>
             <th>Edit</th>
             <th>Delete</th>
+            <th>View</th>
         </tr>
         </thead>
 
@@ -46,6 +48,7 @@ function flashcardgame_settings_page() {
                         <input type="submit" class="ui blue icon button" value="Delete" style="padding: 7px" >
                     </form>
                 </td>
+                <td><a class="ui blue icon button" href="<?php echo $view_game_url ?>&id=<?php echo $current_game->get_id() ?>" style="padding: 7px">View</a></td>
             </tr>
 
         <?php endforeach; ?>

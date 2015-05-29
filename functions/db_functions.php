@@ -21,7 +21,7 @@ function get_all_game_words($deck_id){
     $deck_word_table_name = get_deck_words_table_name();
 
     $words = $wpdb->get_results(
-        "SELECT word, description, image, audio
+        "SELECT word, description, image, audio, points
          FROM " . $word_table_name . " wpt " .
         "WHERE id IN (SELECT dictionary_id FROM " . $deck_word_table_name ." WHERE deck_id = " . $deck_id .")");
 
