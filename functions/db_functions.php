@@ -29,6 +29,21 @@ function get_all_game_words($deck_id){
     return $words;
 }
 
+function get_all_game_words_ids($deck_id){
+    global $wpdb;
+
+    $word_table_name = get_dictionary_table_name();
+    $deck_word_table_name = get_deck_words_table_name();
+
+    $words_ids = $wpdb->get_results(
+        "SELECT id
+         FROM " . $word_table_name . " wpt " .
+        "WHERE id IN (SELECT dictionary_id FROM " . $deck_word_table_name ." WHERE deck_id = " . $deck_id .")");
+
+
+    return $words_ids;
+}
+
 function get_domains(){
     global $wpdb;
 
@@ -333,4 +348,12 @@ function delete_deck_word($deck_id, $dictionary_id){
     $wpdb->delete( $table_name, array(
         'deck_id' => $deck_id,
         'dictionary_id' => $dictionary_id));
+}
+
+function delete_deck_word_by_deck($deck_id){
+    global $wpdb;
+    $table_name = get_deck_words_table_name();
+
+    $wpdb->delete( $table_name, array(
+        'deck_id' => $deck_id));
 }
