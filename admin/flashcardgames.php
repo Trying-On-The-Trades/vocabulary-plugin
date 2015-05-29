@@ -40,6 +40,7 @@ function flashcardgame_settings_page() {
                     <form method="post" action="admin-post.php" id="delete_word_form<?php echo $current_game->get_id() ?>">
                         <!-- word processing hook -->
                         <input type="hidden" name="action" value="delete_deck" />
+                        <input type="hidden" name="game_type" value="flashcardgame">
                         <input type="hidden" name="game_id" value="<?php echo $current_game->get_id() ?>" />
 
                         <input type="submit" class="ui blue icon button" value="Delete" style="padding: 7px" >

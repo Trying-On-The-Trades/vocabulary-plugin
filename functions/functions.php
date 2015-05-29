@@ -24,14 +24,14 @@ if ( ! function_exists( 'wp_handle_upload' ) ) {
 
     function process_new_word(){
 
-        if ( isset( $_FILES['word_image'] ) ) {
 
-            $file = wp_upload_bits( $_FILES['word_image']['name'], null, @file_get_contents( $_FILES['word_image']['tmp_name'] ) );
-            $image = $_FILES['word_image']['name'];
-            if ( FALSE === $file['error'] ) {
-                // TODO
-            }
+        if ( !empty( $_FILES['word_image']['name'] ) ) {
+            $image_file = wp_upload_bits( $_FILES['word_image']['name'], null, @file_get_contents( $_FILES['word_image']['tmp_name'] ) );
+            $image_file_name = $image_file['file'];
+            $pos = strpos($image_file_name,'upload');
+            $image_file_name = substr_replace($image_file_name,'',0,$pos);
         }
+
 
 
         if ( isset( $_FILES['word_audio'] ) ) {
@@ -46,7 +46,7 @@ if ( ! function_exists( 'wp_handle_upload' ) ) {
         $word_word              = $_POST['word_name'];
         $word_description       = trim($_POST['word_description']);
         $word_points            = $_POST['word_points'];
-        $word_image             = $image;
+        $word_image             = $image_file_name;
         $word_audio             = $audio;
         $word_domain_id         = $_POST['domain_id'];
         $word_word_category_id  = $_POST['category_id'];
