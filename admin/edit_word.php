@@ -58,13 +58,15 @@ function edit_word_settings_page() {
         <div class="ui form">
 	      <div class="field">
 	        <label for="word_image">Image</label>
-	        <input name="word_image" id="image" value="<?php echo $words->get_image() ?>" />
+	        <input type="hidden" name="word_image_tmp" value="<?php echo $words->get_image() ?>"/>
+	        <input type="file" name="word_image" id="word_image"  />
 	      </div>
 	    </div>
         <div class="ui form">
 	      <div class="field">
 	        <label for="word_audio">Audio</label>
-	        <input name="word_audio" id="audio" value="<?php echo $words->get_audio() ?>" />
+	        <input type="hidden" name="word_audio_tmp" value="<?php echo $words->get_audio() ?>"/>
+	        <input type="file" name="word_audio" id="word_audio" />
 	      </div>
 	    </div>
 

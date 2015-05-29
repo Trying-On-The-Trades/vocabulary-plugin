@@ -20,12 +20,30 @@
 
     function process_new_word(){
 
+        if ( isset( $_FILES['word_image'] ) ) {
+
+            $file = wp_upload_bits( $_FILES['word_image']['name'], null, @file_get_contents( $_FILES['word_image']['tmp_name'] ) );
+            $image = $_FILES['word_image']['name'];
+            if ( FALSE === $file['error'] ) {
+                // TODO
+            }
+        }
+
+
+        if ( isset( $_FILES['word_audio'] ) ) {
+
+            $file = wp_upload_bits( $_FILES['word_audio']['name'], null, @file_get_contents( $_FILES['word_audio']['tmp_name'] ) );
+            $audio = $_FILES['word_audio']['name'];
+            if ( FALSE === $file['error'] ) {
+                // TODO
+            }
+        }
         // Create a new word using the post data
         $word_word              = $_POST['word_name'];
         $word_description       = trim($_POST['word_description']);
         $word_points            = $_POST['word_points'];
-        $word_image             = $_POST['word_image'];
-        $word_audio             = $_POST['word_audio'];
+        $word_image             = $image;
+        $word_audio             = $audio;
         $word_domain_id         = $_POST['domain_id'];
         $word_word_category_id  = $_POST['category_id'];
 
@@ -73,13 +91,42 @@
 
     function process_edit_word(){
 
+        if ( isset ($_POST['word_image_tmp']) &&  $_POST['word_image_tmp'] != ""){
+            $image = $_POST['word_image_tmp'];
+
+        }else{
+            if ( isset( $_FILES['word_image'] ) ) {
+
+                $file = wp_upload_bits( $_FILES['word_image']['name'], null, @file_get_contents( $_FILES['word_image']['tmp_name'] ) );
+                $image = $_FILES['word_image']['name'];
+                if ( FALSE === $file['error'] ) {
+                    // TODO
+                }
+            }
+        }
+
+
+        if ( isset ($_POST['word_audio_tmp']) &&  $_POST['word_audio_tmp'] != ""){
+            $audio = $_POST['word_audio_tmp'];
+
+        }else {
+            if (isset($_FILES['word_audio'])) {
+
+                $file = wp_upload_bits($_FILES['word_audio']['name'], null, @file_get_contents($_FILES['word_audio']['tmp_name']));
+                $audio = $_FILES['word_audio']['name'];
+                if (FALSE === $file['error']) {
+                    // TODO
+                }
+            }
+        }
+
         // Edit an existing word using the post data
         $word_id                = $_POST['word_id'];
         $word_word              = $_POST['word_name'];
         $word_description       = trim($_POST['word_description']);
         $word_points            = $_POST['word_points'];
-        $word_image             = $_POST['word_image'];
-        $word_audio             = $_POST['word_audio'];
+        $word_image             = $image;
+        $word_audio             = $audio;
         $word_domain_id         = $_POST['domain_id'];
         $word_word_category_id  = $_POST['category_id'];
 
