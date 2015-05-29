@@ -46,6 +46,11 @@ add_action( 'admin_post_create_new_flashcard', 'process_new_flashcard' );
 add_action( 'admin_post_edit_flashcard', 'process_edit_flashcard' );
 add_action( 'admin_post_delete_deck', 'process_delete_deck' );
 
+// Add the process hat game hook
+add_action( 'admin_post_create_new_hatgame', 'process_new_hatgame' );
+add_action( 'admin_post_edit_hatgame', 'process_edit_hatgame' );
+add_action( 'admin_post_delete_deck', 'process_delete_deck' );
+
 
 // Activation hook to install the DB
 register_activation_hook( __FILE__, 'wordpleh_install' );
@@ -75,5 +80,7 @@ require_once("admin/new_flashcardgame.php");
 require_once("admin/edit_flashcardgame.php");
 require_once("admin/flashcardgames.php");
 
-
+require_once("admin/new_hatplehgame.php");
+require_once("admin/edit_hatplehgame.php");
+require_once("admin/hatplehgames.php");
 
