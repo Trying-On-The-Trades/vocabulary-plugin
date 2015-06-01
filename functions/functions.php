@@ -86,7 +86,9 @@ if ( ! function_exists( 'wp_handle_upload' ) ) {
         }
 
 
-        wp_redirect( admin_url( 'admin.php?page=flashcardgame_settings' ) );
+        $location = admin_url() . 'admin.php?page=flashcardgame_settings';
+
+        echo "<meta http-equiv='refresh' content='0;url=$location' />";
     }
 
 
@@ -223,10 +225,12 @@ if ( ! function_exists( 'wp_handle_upload' ) ) {
         }
 
         if($return){
-            wp_redirect( admin_url( 'admin.php?page=flashcardgame_settings&settings-saved') );
+            $location = admin_url() .'admin.php?page=flashcardgame_settings&settings-saved';
         } else {
-            wp_redirect( admin_url( 'admin.php?page=flashcardgame_settings&error') );
+            $location = admin_url() . 'admin.php?page=flashcardgame_settings&error';
         }
+
+        echo "<meta http-equiv='refresh' content='0;url=$location' />";
     }
 
     function process_delete_word(){
@@ -256,7 +260,9 @@ if ( ! function_exists( 'wp_handle_upload' ) ) {
         $game_type = $_POST['game_type'];
         delete_deck($deck_id);
 
-        wp_redirect( admin_url( "admin.php?page={$game_type}_settings") );
+        $location = admin_url() . "admin.php?page=flashcardgame_settings";
+
+        echo "<meta http-equiv='refresh' content='0;url=$location' />";
     }
 
 

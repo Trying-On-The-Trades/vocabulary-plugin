@@ -23,29 +23,6 @@ function new_flashcardgame_settings_page() {
 <form method="post" enctype="multipart/form-data" action="<?php echo get_admin_url() . 'admin-post.php' ?>">
     <input type="hidden" name="action" value="create_new_flashcard" />
     <div class="ui form segment new_word_form">
-	    <div class="ui form">
-	      <div class="field">
-	        <label for="domain_id">Select a Domain</label>
-	        <select name="domain_id">
-				 <option value="NA">Select a Domain</option>
-                 <?php foreach($domains as $domain): ?>
-                    <option value="<?php echo $domain->id ?>"><?php echo $domain->name ?></option>
-                <?php endforeach; ?>
-			</select>
-            </div>
-	    </div>
-	    
-    <div class="ui form">
-	      <div class="field">
-	        <label for="category_id">Select a Category</label>
-	        <select name="category_id">
-				 <option value="NA">Select a Category</option>
-                 <?php foreach($categories as $category): ?>
-                    <option value="<?php echo $category->id ?>"><?php echo $category->name ?></option>
-                 <?php endforeach; ?>
-			</select>
-	      </div>
-	    </div>
 
 	   <div class="ui form">
 	      <div class="field">

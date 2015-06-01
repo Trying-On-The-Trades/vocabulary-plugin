@@ -1,10 +1,8 @@
 <?php
 
-    if (isset($_GET['id']) && is_numeric( $_GET['id']) ) {
-        $game = build_deck($_GET['id']);
-        $words = get_all_game_words($_GET['id']);
-    }else{
-        $words = get_all_game_words(1);
+    if (isset($_POST['deck_id'])) {
+        $deck = intval($_POST['deck_id']);
+        $words = get_all_game_words($deck);
     }
 
 ?>
