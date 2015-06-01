@@ -20,7 +20,7 @@ function edit_flashcardgame_settings_page() {
         $deck_words = get_all_game_words_ids($_GET['id']);
     }
 
-    $selected_words_ids = [];
+    $selected_words_ids = array();
 
     for($j = 0; $j < sizeof($deck_words); $j++){
         $selected_words_ids[$j] = $deck_words[$j]->id;

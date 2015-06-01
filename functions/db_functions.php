@@ -44,17 +44,6 @@ function get_all_game_words_ids($deck_id){
     return $words_ids;
 }
 
-function get_domains(){
-    global $wpdb;
-
-    $domain_table_name = get_domain_table_name();
-
-    $domains = $wpdb->get_results(
-        "SELECT * FROM " . $domain_table_name . " wpt ");
-
-    return $domains;
-}
-
 function get_word_categories(){
     global $wpdb;
 
@@ -141,18 +130,6 @@ function get_word_details($word_id){
     return $word;
 }
 
-function get_domain($domain_id){
-    global $wpdb;
-    $domain_table_name = get_domain_table_name();
-
-    $domain = $wpdb->get_row( $wpdb->prepare(
-        "SELECT * FROM " . $domain_table_name . " wpt " .
-        "WHERE wpt.id = %d", $domain_id)
-    );
-
-    return $domain;
-}
-
 function get_word_category($word_category_id){
     global $wpdb;
     $word_category_table_name = get_word_categories_table_name();
@@ -209,22 +186,6 @@ function update_word($word_id, $word_word, $word_description, $word_points,
     }
     if(isset($word_id) && is_numeric($word_id)){
         $wpdb->update( $word_table_name, $params , array('id' => $word_id));
-
-        return true;
-    } else {
-        return false;
-    }
-}
-
-function update_domain($domain_id, $domain_name){
-    global $wpdb;
-    $domain_table_name = get_domain_table_name();
-
-    if(isset($domain_id) && is_numeric($domain_id)){
-        $wpdb->update( $domain_table_name,
-            array(
-            'name' => $domain_name,
-            'id' => $domain_id));
 
         return true;
     } else {
@@ -291,15 +252,6 @@ function create_word($word_word, $word_description, $word_points, $word_image, $
     return $wpdb->insert_id;
 }
 
-function create_domain($domain_name){
-    global $wpdb;
-    $domain_table_name = get_domain_table_name();
-
-    $wpdb->insert( $domain_table_name, array( 'name' => $domain_name));
-
-    return $wpdb->insert_id;
-}
-
 function create_word_category($word_category_name){
     global $wpdb;
     $word_category_table_name = get_word_categories_table_name();
@@ -338,13 +290,6 @@ function delete_word($word_id){
     $word_table_name = get_dictionary_table_name();
 
     $wpdb->delete( $word_table_name, array( 'id' => $word_id ) );
-}
-
-function delete_domain($domain_id){
-    global $wpdb;
-    $domain_table_name = get_domain_table_name();
-
-    $wpdb->delete( $domain_table_name, array( 'id' => $domain_id ) );
 }
 
 function delete_word_category($word_category_id){

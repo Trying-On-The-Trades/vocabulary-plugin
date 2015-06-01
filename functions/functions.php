@@ -114,7 +114,7 @@ if ( ! function_exists( 'wp_handle_upload' ) ) {
         foreach($selected_words as $word){
             create_deck_word($deck_id, $word);
         }
-
+        $test = admin_url( 'admin.php?page=hatplehgame_settings' );
         wp_redirect( admin_url( 'admin.php?page=hatplehgame_settings' ) );
     }
 
