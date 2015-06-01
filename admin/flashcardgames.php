@@ -12,6 +12,9 @@ function flashcardgame_settings_page() {
 
     <!-- style sheet so our admin page looks nice -->
     <link rel="stylesheet" type="text/css" href="<?php echo $semantic ?>"/>
+    <link rel="stylesheet" type="text/css" href="../wordpla/js/featherlight/featherlight.min.css"/>
+    <script type="text/javascript" src="../wordpla/js/featherlight/featherlight.min.js"></script>
+    <script type="text/javascript" src="../wordpla/js/featherlight/featherlight-functions.js"></script>
     <hr>
 
     <?php if ( isset( $_GET[ 'settings-saved' ] ) ): ?>
@@ -48,7 +51,7 @@ function flashcardgame_settings_page() {
                         <input type="submit" class="ui blue icon button" value="Delete" style="padding: 7px" >
                     </form>
                 </td>
-                <td><a class="ui blue icon button" href="<?php echo $view_game_url ?>&id=<?php echo $current_game->get_id() ?>" style="padding: 7px">View</a></td>
+                <td><a class="ui blue icon button" href="<?php echo $view_game_url ?>?id=<?php echo $current_game->get_id() ?>" style="padding: 7px">View</a></td>
             </tr>
 
         <?php endforeach; ?>
