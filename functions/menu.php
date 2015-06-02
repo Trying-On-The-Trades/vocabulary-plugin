@@ -105,6 +105,13 @@ function create_sub_wordpleh_menus(){
         "edit_hatplehgame_settings",
         "edit_hatplehgame_settings_page");
 
+    add_submenu_page(null,
+        "View Hat Game",
+        "View Hat Game",
+        "administrator",
+        "view_hatplehgame_settings",
+        "view_hatplehgame_settings_page");
+
 
 //    // Create the sub menu item for  s
 //    add_submenu_page("word_menu",

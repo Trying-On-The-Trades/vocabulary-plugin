@@ -6,7 +6,8 @@ function hatplehgame_settings_page() {
     $semantic         = WP_PLUGIN_URL . '/vocabulary-plugin/css/semantic.css';
     $new_game_url  = admin_url() . "admin.php?page=new_hatplehgame_settings";
     $edit_game_url = admin_url() . "admin.php?page=edit_hatplehgame_settings";
-    $view_game_url = WP_PLUGIN_URL . '/vocabulary-plugin/hatpleh/index.php';
+
+    $view_game_url = admin_url() . "admin.php?page=view_hatplehgame_settings";
     ?>
 
     <!-- style sheet so our admin page looks nice -->

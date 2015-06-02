@@ -1,25 +1,21 @@
-<?php 
+<?php
 
-    $word = "";
-    $hint = "";
-    $profession = "";
-//    if(isset($_GET['deck']))
-//    {
-//
-        $deck_id = 15;
-//        if(is_numeric($deck_id))
-//        {
-            $words = get_hatpleh_words($deck_id);
+    function view_hatplehgame_settings_page()
+    {
+
+        $style_css = WP_PLUGIN_URL . '/vocabulary-plugin/hatpleh/css/style-2.css';
+        $main_js = WP_PLUGIN_URL . '/vocabulary-plugin/hatpleh/js/hatpla.js';
+
+        if (isset($_POST['deck_id'])) {
+            $deck = intval($_POST['deck_id']);
+            $words = get_all_game_words($deck);
             $term = $words[mt_rand(0, count($words) - 1)];
             $word = $term['word'];
             $hint = $term['description'];
             $profession = $term['name'];
             $winner = $term['image'];
             $points = intval($term['points']) / 10;
-
-//        }
-//    }
-
+        }
 
 ?>
 
@@ -33,8 +29,8 @@
             var winner_image = "<?= $winner ?>";
             var points_value = <?= $points ?>;
         </script>
-        <script src="hatpla.js"></script>
-        <link rel="stylesheet" href="style-2.css">
+        <script type="text/javascript" src="<?=$main_js?>"></script>
+        <link href="<?=$style_css?>" type="text/css" rel="stylesheet">
         <title>Hat Pla</title>
     </head>
 <div class="wrapper">
@@ -61,3 +57,5 @@
     </div>
 
 </html>
+
+<?php }
