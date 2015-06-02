@@ -1,25 +1,26 @@
 <?php
 
+function view_flashcardgame_settings_page() {
+
+    $main_js       = WP_PLUGIN_URL . '/vocabulary-plugin/wordpla/js/main.js';
+    $flip_js       = WP_PLUGIN_URL . '/vocabulary-plugin/wordpla/js/flip.js';
+    $circliful_js  = WP_PLUGIN_URL . '/vocabulary-plugin/wordpla/js/jquery.circliful.min.js';
+    $circliful_css = WP_PLUGIN_URL . '/vocabulary-plugin/wordpla/css/jquery.circliful.css';
+    $style_css     = WP_PLUGIN_URL . '/vocabulary-plugin/wordpla/css/style.css';
+
     if (isset($_POST['deck_id'])) {
         $deck = intval($_POST['deck_id']);
         $words = get_all_game_words($deck);
     }
 
 ?>
-<!DOCTYPE html>
-<html lang="en">
-    <link>
-        <meta charset="UTF-8">
         <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
-        <script type="text/javascript" src="js/jquery.flip.js"></script>
-        <script src="js/main.js"></script>
-        <link href="css/jquery.circliful.css" rel="stylesheet" type="text/css" />
-        <script type="text/javascript" src="js/jquery.circliful.min.js"></script>
-        <link href="css/style.css" type="text/css" rel="stylesheet">
-        <title>Vocabulary Play - Game</title>
-    </head>
+        <script type="text/javascript" src="<?=$flip_js?>"></script>
+        <script src="<?=$main_js?>"></script>
+        <link href="<?=$circliful_css?>" rel="stylesheet" type="text/css" />
+        <script type="text/javascript" src="<?=$circliful_js?>"></script>
+        <link href="<?=$style_css?>" type="text/css" rel="stylesheet">
 
-    <body>
         <div id="wrapper">
             <script type="text/javascript">
 
@@ -57,5 +58,4 @@
             </script>
 
         </div>
-    </body>
-</html>
+<?php }

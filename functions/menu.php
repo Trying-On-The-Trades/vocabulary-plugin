@@ -77,6 +77,13 @@ function create_sub_wordpleh_menus(){
         "edit_flashcardgame_settings",
         "edit_flashcardgame_settings_page");
 
+    add_submenu_page(null,
+        "View Flash Card Game",
+        "View Flash Card Game",
+        "administrator",
+        "view_flashcardgame_settings",
+        "view_flashcardgame_settings_page");
+
     add_submenu_page("word_menu",
         "Hat Game",
         "Hat Game",
@@ -97,6 +104,13 @@ function create_sub_wordpleh_menus(){
         "administrator",
         "edit_hatplehgame_settings",
         "edit_hatplehgame_settings_page");
+
+    add_submenu_page(null,
+        "View Hat Game",
+        "View Hat Game",
+        "administrator",
+        "view_hatplehgame_settings",
+        "view_hatplehgame_settings_page");
 
 
 //    // Create the sub menu item for  s

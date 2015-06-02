@@ -7,7 +7,7 @@ function flashcardgame_settings_page() {
     $semantic      = WP_PLUGIN_URL . '/vocabulary-plugin/css/semantic.css';
     $new_game_url  = admin_url() . "admin.php?page=new_flashcardgame_settings";
     $edit_game_url = admin_url() . "admin.php?page=edit_flashcardgame_settings";
-    $view_game_url = WP_PLUGIN_URL . '/vocabulary-plugin/wordpla/index.php';
+    $view_game_url = admin_url() . "admin.php?page=view_flashcardgame_settings";
     ?>
 
     <!-- style sheet so our admin page looks nice -->
