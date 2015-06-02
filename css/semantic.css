@@ -15136,3 +15136,8 @@ ol.ui.horizontal.list li:before,
 div#wpfooter {
   position: inherit!important;
 }
+
+#words_error{
+    display: none;
+    color: red;
+}

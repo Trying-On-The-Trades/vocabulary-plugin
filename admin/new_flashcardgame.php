@@ -20,7 +20,7 @@ function new_flashcardgame_settings_page() {
 
 	}
 </style>
-<form method="post" enctype="multipart/form-data" action="<?php echo get_admin_url() . 'admin-post.php' ?>">
+<form id="form" method="post" enctype="multipart/form-data" action="<?php echo get_admin_url() . 'admin-post.php' ?>">
     <input type="hidden" name="action" value="create_new_flashcard" />
     <div class="ui form segment new_word_form">
 
@@ -37,10 +37,24 @@ function new_flashcardgame_settings_page() {
 	      <div class="field">
 	      	<div class="ui left labeled icon input">
 	        	<label for="game_number_of_words">Defined number of words to be guessed: </label>
-	    		<input name="game_number_of_words" id="name" required />
+	    		<input name="game_number_of_words" id="game_number_of_words" required />
      	 	</div>
 	      </div>
 	    </div>
+
+	    <p class="error" id="words_error">* Number of words in the game can not be lower than words selected</p>
+
+        <div class="ui form">
+	      <div class="field">
+	        <label for="category_id">Filter by</label>
+	        <select name="category_id">
+				 <option value="NA">Select a Category</option>
+                 <?php foreach($categories as $category): ?>
+                    <option value="<?php echo $category->id ?>"><?php echo $category->name ?></option>
+                <?php endforeach; ?>
+            </select>
+          </div>
+        </div>
 
 	    <div class="ui form">
 	      <div class="field">
@@ -66,9 +80,35 @@ function new_flashcardgame_settings_page() {
 			jQuery("#quest_id").val(quest_id);
 		});
 	});
+
     function addForm() {
         document.getElementById("buttonDomain").style.display = "none";
         document.getElementById("domain_form").style.display = "block";
+    }
+
+    jQuery('#form').submit(function(e){
+        user_selected_enough_words(e);
+    });
+
+    jQuery('#game_number_of_words').change(function(){
+        document.getElementById("words_error").style.display = "none";
+    });
+
+    jQuery("input:checkbox").change(function(){
+       document.getElementById("words_error").style.display = "none";
+    });
+
+    function user_selected_enough_words(e){
+        var n = jQuery("input:checkbox:checked").length;
+        var game_number_of_words = jQuery('#game_number_of_words').prop('value');
+
+        if(n < Number(game_number_of_words)){
+            e.preventDefault();
+            document.getElementById("words_error").style.display = "block";
+        }else{
+            document.getElementById("words_error").style.display = "none";
+        }
+
     }
 
 
