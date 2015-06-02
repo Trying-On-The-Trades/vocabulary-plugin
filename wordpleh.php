@@ -79,10 +79,9 @@ require_once("admin/categories.php");
 require_once("admin/new_flashcardgame.php");
 require_once("admin/edit_flashcardgame.php");
 require_once("admin/flashcardgames.php");
+require_once("admin/view_flashcardgame.php");
 
 require_once("admin/new_hatplehgame.php");
 require_once("admin/edit_hatplehgame.php");
 require_once("admin/hatplehgames.php");
-
-//require_once("wordpla/index.php");
-require_once("hatpleh/index.php");
+require_once("admin/view_hatplehgame.php");
