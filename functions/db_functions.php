@@ -29,6 +29,27 @@ function get_all_game_words($deck_id){
     return $words;
 }
 
+function get_hatpleh_words($deck_id)
+{
+    global $wpdb;
+
+    $word_table_name = get_dictionary_table_name();
+    $deck_word_table_name = get_deck_words_table_name();
+    $deck_table_name = get_decks_table_name();
+
+    $words = $wpdb->get_results(
+        "SELECT word.word, word.description, word.points, deck.name, deck.image
+                FROM {$word_table_name} AS word,
+                {$deck_word_table_name} AS deck_word,
+                {$deck_table_name} AS deck,
+            WHERE word.id = deck_word.dictionary_id
+            AND deck_word.deck_id = deck.id
+            AND deck.id = {$deck_id}");
+
+
+    return $words;
+}
+
 function get_all_game_words_ids($deck_id){
     global $wpdb;
 
