@@ -86,4 +86,3 @@ require_once("admin/hatplehgames.php");
 
 //require_once("wordpla/index.php");
 require_once("hatpleh/index.php");
-

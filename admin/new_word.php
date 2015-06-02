@@ -31,20 +31,6 @@ function new_word_settings_page() {
 			</select>
             </div>
 	    </div>
-	        <button onclick="addForm()" class="ui blue icon button" id="buttonDomain">Add new Domain</button>
-<!--			<input onclick="addForm()" type="submit" class="ui blue icon button" value="Add new Domain" id="add_domain" style="padding: 7px" >-->
-			<form method="post" enctype="multipart/form-data" action="<?php echo get_admin_url() . 'admin-post.php' ?>">
-                <div class="ui form" id="domain_form">
-                  <div class="field">
-                    <div class="ui left labeled icon input">
-                        <label for="domain_name">Domain Name</label>
-                        <input type="text" name="domain_name" id="name" />
-                    </div>
-                  </div>
-                  <?php submit_button(); ?>
-                </div>
-
-			</form>
 
     <div class="ui form">
 	      <div class="field">

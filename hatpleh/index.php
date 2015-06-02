@@ -5,23 +5,19 @@
     $word = "";
     $hint = "";
     $profession = "";
-    if(isset($_GET['deck']))
-    {
-                    
+    if(isset($_GET['deck'])) {
+
         $deck_id = $_GET['deck'];
-        if(is_numeric($deck_id))
-        {
-            $words = get_all_game_words($deck_id);
+        if (is_numeric($deck_id)) {
+            $words = get_hatpleh_words($deck_id);
             $term = $words[mt_rand(0, count($words) - 1)];
             $word = $term['word'];
             $hint = $term['description'];
             $profession = $term['name'];
             $winner = $term['image'];
             $points = intval($term['points']) / 10;
-
         }
     }
-
 
 ?>
 
