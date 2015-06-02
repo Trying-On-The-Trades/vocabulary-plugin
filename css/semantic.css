@@ -15137,7 +15137,43 @@ div#wpfooter {
   position: inherit!important;
 }
 
+.games_form {
+  width: 50%;
+}
+
+.games_form input[type="checkbox"]{
+  display: none;
+}
+
+.games_form label {
+  display: inline-block;
+  width: 100%;
+  background-color: #FFFFFF;
+  margin-bottom: 10px;
+  font-size: 1.2em;
+  line-height: 35px;
+  border-radius: 5px;
+  padding: 0 10px;
+  border: 1px solid #ccc;
+  cursor: pointer;
+}
+
+.games_form input[type="checkbox"]:checked + label {
+  background-color: #0192E1;
+  border: 1px solid #0072B5;
+  color: #FFFFFF;
+}
+
+.games_form input[type="checkbox"]:hover label {
+  position: relative;
+  top: 1px;
+  left: 1px;
+}
+
 #words_error{
     display: none;
     color: red;
 }
+
+
+
