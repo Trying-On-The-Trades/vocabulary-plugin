@@ -6,6 +6,7 @@ function hatplehgame_settings_page() {
     $semantic         = WP_PLUGIN_URL . '/vocabulary-plugin/css/semantic.css';
     $new_game_url  = admin_url() . "admin.php?page=new_hatplehgame_settings";
     $edit_game_url = admin_url() . "admin.php?page=edit_hatplehgame_settings";
+    $view_game_url = WP_PLUGIN_URL . '/vocabulary-plugin/hatpleh/index.php';
     ?>
 
     <!-- style sheet so our admin page looks nice -->
@@ -24,6 +25,7 @@ function hatplehgame_settings_page() {
             <th>Image</th>
             <th>Edit</th>
             <th>Delete</th>
+            <th>View</th>
         </tr>
         </thead>
 
@@ -42,6 +44,14 @@ function hatplehgame_settings_page() {
                         <input type="hidden" name="game_id" value="<?php echo $current_game->get_id() ?>" />
                         <input type="hidden" name="game_type" value="hatplehgame">
                         <input type="submit" class="ui blue icon button" value="Delete" style="padding: 7px" >
+                    </form>
+                </td>
+                <td>
+                    <form method="POST" action="<?=$view_game_url?>&">
+                        <!-- word processing hook -->
+                        <input type="hidden" name="deck_id" value="<?php echo $game->id ?>" />
+
+                        <input type="submit" class="ui blue icon button" value="View" style="padding: 7px" >
                     </form>
                 </td>
             </tr>

@@ -7,11 +7,6 @@ function get_dictionary_table_name(){
     return $wpdb->prefix . "wordpleh_dictionary";
 }
 
-function get_domain_table_name(){
-    global $wpdb;
-    return $wpdb->prefix . "pano_domain";
-}
-
 function get_word_categories_table_name(){
     global $wpdb;
     return $wpdb->prefix . "wordpleh_word_category";
