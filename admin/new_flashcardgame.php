@@ -46,8 +46,9 @@ function new_flashcardgame_settings_page() {
 	      <div class="field">
 	        <ul>
                 <?php foreach($words as $word): ?>
-                    <li>
-                        <input type="checkbox" class="<?php echo $word->word_category_id ?>" name="words[]" value="<?php echo $word->id ?>"><?php echo $word->word ?>
+                    <li class="games_form">
+                        <input type="checkbox" id="<?php echo $word->id ?>" class="<?php echo $word->word_category_id ?>" name="words[]" value="<?php echo $word->id ?>">
+                        <label for="<?php echo $word->id ?>"><?php echo $word->word ?></label>
                     </li>
                 <?php endforeach; ?>
             </ul>
