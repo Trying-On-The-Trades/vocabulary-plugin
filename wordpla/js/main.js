@@ -219,9 +219,12 @@ function learning_container(word){
     var image     = word['image'];
     var audio     = word['audio'];
     var audio_tag = "";
+    var image_tag = "";
 
     if(image == "" || image == null){
-        image = "questionMark.png";
+        image_tag = "<img src='../wp-content/plugins/vocabulary-plugin/wordpla/images/questionMark.png' alt='default'>\n";
+    }else{
+        image_tag = "<img src='../wp-content/" + image + "' alt='" + word['word'] + "'>\n";
     }
 
     if(audio == "" || audio == null){
@@ -246,7 +249,7 @@ function learning_container(word){
             "<div class='front'>\n" +
             "<p class='word'>" + word['word'] + "</p>\n" +
             "<aside id='image'>\n" +
-            "<img src='../wp-content/" + image + "' alt='" + word['word'] + "'>\n" +
+            image_tag +
             "</aside>\n" +
             audio_tag +
             "<footer class='footer'>\n" +
