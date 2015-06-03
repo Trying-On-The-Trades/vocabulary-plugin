@@ -62,6 +62,7 @@ function load()
 {
   //set the variables to their initial values
   //alert(log);
+
   space = 0;
   word = word.replace(/\s/g, '-');
 	showLives = document.getElementById("mylives");
@@ -75,11 +76,7 @@ function load()
   //gets elements for further use
   var myButtons = document.getElementById('buttons');
   var letters = document.createElement('ul');
-  letters.id = 'alphabet'; 
-
-  //adds event listeners to buttons
-  document.getElementById("reset").addEventListener("click", reset, false);
-  document.getElementById("hint").addEventListener("click", show_hint, false)
+  letters.id = 'alphabet';
 
   //creates the alphabet elements
   for (var i = 0; i < alphabet.length; i++) {
@@ -90,9 +87,15 @@ function load()
     letters.appendChild(list);
   }
 
+    //adds event listeners to buttons
+    document.getElementById("reset").addEventListener("click", reset, false);
+    document.getElementById("hint").addEventListener("click", show_hint, false);
+
   //shows the word to be guessed
   result();  
 }
+
+
 
 //adds event listenres to each letter's button
 function check(list) 
@@ -245,7 +248,13 @@ function show_answer()
 //resets the game
 function reset()
 {
-	window.location.reload();
+    document.getElementById("buttons").innerHTML = "";
+    document.getElementById("categoryName").innerHTML = "";
+    document.getElementById("hold").innerHTML = "";
+    document.getElementById("mylives").innerHTML = "";
+    document.getElementById("smileImage").innerHTML = "";
+    document.getElementById("clue").innerHTML = "";
+    load();
 }
 
 //shows hint and flag that points should be deducted
