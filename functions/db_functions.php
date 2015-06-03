@@ -255,6 +255,24 @@ function update_deck($deck_id, $deck_name, $deck_image = null, $deck_number_of_w
     }
 }
 
+function create_deck($deck_name, $deck_image = null, $deck_number_of_words= null, $deck_type){
+    global $wpdb;
+    $deck_table_name = get_decks_table_name();
+
+    $params = array(
+        'name' => $deck_name,
+        'number_of_words' => $deck_number_of_words,
+        'game_type' => $deck_type);
+
+    if ($deck_image !== null){
+        $params['image'] =  $deck_image;
+    }
+
+    $wpdb->insert( $deck_table_name,$params );
+
+    return $wpdb->insert_id;
+}
+
 function create_word($word_word, $word_description, $word_points, $word_image, $word_audio,
                       $word_domain_id, $word_word_category_id){
 
@@ -280,19 +298,6 @@ function create_word_category($word_category_name){
     $wpdb->insert( $word_category_table_name, array( 'name' => $word_category_name));
 
     return $wpdb->inser_id;
-}
-
-function create_deck($deck_name, $deck_image = null, $deck_number_of_words= null, $deck_type){
-    global $wpdb;
-    $deck_table_name = get_decks_table_name();
-
-    $wpdb->insert( $deck_table_name, array(
-        'name' => $deck_name,
-        'image' => $deck_image, 
-        'number_of_words' => $deck_number_of_words,
-        'game_type' => $deck_type));
-
-    return $wpdb->insert_id;
 }
 
 function create_deck_word($deck_id, $dictionary_id){

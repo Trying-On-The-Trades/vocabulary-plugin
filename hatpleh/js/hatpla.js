@@ -104,11 +104,11 @@ function check(list)
     this.onclick = null;
     for (var i = 0; i < word.length; i++) 
     {
-      if (word[i] === guess) 
-      {
-        guesses[i].innerHTML = guess;
-        counter += 1;
-      } 
+        if (word[i].toUpperCase() === guess.toUpperCase())
+        {
+            guesses[i].innerHTML = word[i];
+            counter += 1;
+        }
     }
     var j = (word.indexOf(guess));
     if (j === -1) 

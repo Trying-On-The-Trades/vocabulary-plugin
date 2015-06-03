@@ -9,42 +9,11 @@ function new_hatplehgame_settings_page() {
 
     ?>
 <link rel="stylesheet" type="text/css" href="<?php echo $semantic ?>"/>
-<h2>Create New Game!</h2>
+<h2>Create a new HatPleh game!</h2>
 <hr>
-<style type="text/css">
-	#domain_form{
-	    display: none;
-	    width: 80%;
-	    margin: 0 auto;
-
-	}
-</style>
 <form method="post" enctype="multipart/form-data" action="<?php echo get_admin_url() . 'admin-post.php' ?>">
     <input type="hidden" name="action" value="create_new_hatgame" />
     <div class="ui form segment new_word_form">
-	    <div class="ui form">
-	      <div class="field">
-	        <label for="domain_id">Select a Domain</label>
-	        <select name="domain_id">
-				 <option value="NA">Select a Domain</option>
-                 <?php foreach($domains as $domain): ?>
-        <option value="<?php echo $domain->id ?>"><?php echo $domain->name ?></option>
-    <?php endforeach; ?>
-			</select>
-            </div>
-	    </div>
-
-    <div class="ui form">
-	      <div class="field">
-	        <label for="category_id">Select a Category</label>
-	        <select name="category_id">
-				 <option value="NA">Select a Category</option>
-                 <?php foreach($categories as $category): ?>
-        <option value="<?php echo $category->id ?>"><?php echo $category->name ?></option>
-    <?php endforeach; ?>
-			</select>
-	      </div>
-	    </div>
 
 	   <div class="ui form">
 	      <div class="field">

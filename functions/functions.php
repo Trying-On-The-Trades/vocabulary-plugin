@@ -33,21 +33,18 @@ if ( ! function_exists( 'wp_handle_upload' ) ) {
         }
 
 
-
-        if ( isset( $_FILES['word_audio'] ) ) {
-
-            $file = wp_upload_bits( $_FILES['word_audio']['name'], null, @file_get_contents( $_FILES['word_audio']['tmp_name'] ) );
-            $audio = $_FILES['word_audio']['name'];
-            if ( FALSE === $file['error'] ) {
-                // TODO
-            }
+        if ( !empty( $_FILES['word_audio']['name'] ) ) {
+            $audio_file = wp_upload_bits( $_FILES['word_audio']['name'], null, @file_get_contents( $_FILES['word_audio']['tmp_name'] ) );
+            $audio_file_name = $audio_file['file'];
+            $pos = strpos($audio_file_name,'upload');
+            $audio_file_name = substr_replace($audio_file_name,'',0,$pos);
         }
         // Create a new word using the post data
         $word_word              = $_POST['word_name'];
         $word_description       = trim($_POST['word_description']);
         $word_points            = $_POST['word_points'];
         $word_image             = $image_file_name;
-        $word_audio             = $audio;
+        $word_audio             = $audio_file_name;
         $word_domain_id         = $_POST['domain_id'];
         $word_word_category_id  = $_POST['category_id'];
 
@@ -91,23 +88,19 @@ if ( ! function_exists( 'wp_handle_upload' ) ) {
         echo "<meta http-equiv='refresh' content='0;url=$location' />";
     }
 
-
     function process_new_hatgame(){
 
-        // Create a new flashcard game
-        $hatgame_name         = $_POST['game_name'];
-        //$hatgame_image        = null;
-        $flashcard_num_of_words = "";
-        $game_type            = "hatgame";
-
-        if ( isset( $_FILES['game_image'] ) ) {
-
-            $file = wp_upload_bits( $_FILES['game_image']['name'], null, @file_get_contents( $_FILES['game_image']['tmp_name'] ) );
-            $hatgame_image = $_FILES['game_image']['name'];
-            if ( FALSE === $file['error'] ) {
-                // TODO
-            }
+        if ( !empty( $_FILES['word_image']['name'] ) ) {
+            $image_file = wp_upload_bits( $_FILES['word_image']['name'], null, @file_get_contents( $_FILES['word_image']['tmp_name'] ) );
+            $image_file_name = $image_file['file'];
+            $pos = strpos($image_file_name,'upload');
+            $image_file_name = substr_replace($image_file_name,'',0,$pos);
         }
+
+        $hatgame_name         = $_POST['game_name'];
+        $hatgame_image        = $image_file_name;
+        $flashcard_num_of_words = "";
+        $game_type              = "hatgame";
 
         $selected_words = $_POST['words'];
 
@@ -260,7 +253,7 @@ if ( ! function_exists( 'wp_handle_upload' ) ) {
         $game_type = $_POST['game_type'];
         delete_deck($deck_id);
 
-        $location = admin_url() . "admin.php?page=flashcardgame_settings";
+        $location = admin_url() . "admin.php?page={$game_type}_settings";
 
         echo "<meta http-equiv='refresh' content='0;url=$location' />";
     }
