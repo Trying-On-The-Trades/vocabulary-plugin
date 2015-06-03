@@ -95,7 +95,9 @@ p {
   margin: 0;
   display: block;
   padding: 0;
-  display: block; }
+  display: block;
+    text-align: center;
+}
 
 #my-word li {
 
