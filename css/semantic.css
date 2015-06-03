@@ -15170,4 +15170,10 @@ div#wpfooter {
   left: 1px;
 }
 
+#words_error{
+    display: none;
+    color: red;
+}
+
+
 

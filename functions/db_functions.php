@@ -29,6 +29,18 @@ function get_all_game_words($deck_id){
     return $words;
 }
 
+function get_number_of_words_for_game($deck_id){
+    global $wpdb;
+    $deck_table_name = get_decks_table_name();
+
+    $deck_number_words = $wpdb->get_row( $wpdb->prepare(
+        "SELECT number_of_words FROM " . $deck_table_name . " wpt " .
+        "WHERE wpt.id = %d", $deck_id)
+    );
+
+    return $deck_number_words;
+}
+
 function get_hatpleh_words($deck_id)
 {
     global $wpdb;
