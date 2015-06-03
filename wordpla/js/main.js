@@ -215,6 +215,22 @@ function game_container(word, wrong_words){
 }
 
 function learning_container(word){
+
+    var image     = word['image'];
+    var audio     = word['audio'];
+    var audio_tag = "";
+
+    if(image == "" || image == null){
+        image = "questionMark.png";
+    }
+
+    if(audio == "" || audio == null){
+        audio_tag = "";
+    }else{
+        audio_tag = "<audio src='../wp-content/" + word['audio'] + "' id='audio' type='audio/mpeg' controls> </audio>\n";
+    }
+
+
     return "<header id='title'>\n" +
             "<h1>Marvel's Weapons</h1>\n" +
             "</header>\n" +
@@ -230,9 +246,9 @@ function learning_container(word){
             "<div class='front'>\n" +
             "<p class='word'>" + word['word'] + "</p>\n" +
             "<aside id='image'>\n" +
-            "<img src='../wp-content/" + word['image'] + "' alt='" + word['word'] + "'>\n" +
+            "<img src='../wp-content/" + image + "' alt='" + word['word'] + "'>\n" +
             "</aside>\n" +
-            "<audio src='../wp-content/" + word['audio'] + "' id='audio' type='audio/mpeg' controls> </audio>\n" +
+            audio_tag +
             "<footer class='footer'>\n" +
             "<span>Click the card to get description</span>\n" +
             "</footer>\n" +
