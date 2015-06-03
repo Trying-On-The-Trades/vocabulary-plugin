@@ -9,16 +9,8 @@ function new_hatplehgame_settings_page() {
 
     ?>
 <link rel="stylesheet" type="text/css" href="<?php echo $semantic ?>"/>
-<h2>Create New Game!</h2>
+<h2>Create a new HatPleh game!</h2>
 <hr>
-<style type="text/css">
-	#domain_form{
-	    display: none;
-	    width: 80%;
-	    margin: 0 auto;
-
-	}
-</style>
 <form method="post" enctype="multipart/form-data" action="<?php echo get_admin_url() . 'admin-post.php' ?>">
     <input type="hidden" name="action" value="create_new_hatgame" />
     <div class="ui form segment new_word_form">
@@ -46,8 +38,9 @@ function new_hatplehgame_settings_page() {
 	      <label>Choose witch words you want in the game:</label>
 	        <ul>
                 <?php foreach($words as $word): ?>
-        <li>
-            <input type="checkbox" class="<?php echo $word->word_category_id ?>" name="words[]" value="<?php echo $word->id ?>"><?php echo $word->word ?>
+        <li class="games_form">
+            <input type="checkbox" id="<?php echo $word->id ?>" class="<?php echo $word->word_category_id ?>" name="words[]" value="<?php echo $word->id ?>">
+            <label for="<?php echo $word->id ?>"><?php echo $word->word ?></label>
         </li>
     <?php endforeach; ?>
             </ul>

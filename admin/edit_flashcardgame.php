@@ -80,12 +80,14 @@ function edit_flashcardgame_settings_page() {
 	        <ul>
                 <?php foreach($words as $word): ?>
                     <?php if(in_array($word->id, $selected_words_ids)): ?>
-                        <li>
-                            <input type="checkbox" class="<?php echo $word->word_category_id ?>" name="words[]" value="<?php echo $word->id ?>" checked><?php echo $word->word ?>
+                        <li class="games_form">
+                            <input type="checkbox" id="<?php echo $word->id ?>" class="<?php echo $word->word_category_id ?>" name="words[]" value="<?php echo $word->id ?>" checked>
+                            <label for="<?php echo $word->id ?>"><?php echo $word->word ?></label>
                         </li>
                     <?php else :?>
-                        <li>
-                            <input type="checkbox" class="<?php echo $word->word_category_id ?>" name="words[]" value="<?php echo $word->id ?>"><?php echo $word->word ?>
+                        <li class="games_form">
+                            <input type="checkbox" id="<?php echo $word->id ?>" class="<?php echo $word->word_category_id ?>" name="words[]" value="<?php echo $word->id ?>">
+                            <label for="<?php echo $word->id ?>"><?php echo $word->word ?></label>
                         </li>
                     <?php endif; ?>
 

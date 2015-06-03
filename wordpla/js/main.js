@@ -1,8 +1,8 @@
-var number_of_words_to_guess = 5;
+var number_of_words_to_guess = 0;
 
 function initiate(type){
     game = [];
-    game = run_game(words, type);
+    game = run_game(words, type, number_of_words_to_guess_from_db);
 
     words_to_guess = game[0];
     wrong_words = game[1];
@@ -17,7 +17,7 @@ function initiate(type){
     disable_button("prev");
 }
 
-function run_game(words, type){
+function run_game(words, type, number_of_words_to_guess_from_db){
     var words_to_guess     = [];
     var wrong_words = [], not_pick_again = [],  already_guessed = [];
     var x = 0,  y = 0;
@@ -25,6 +25,8 @@ function run_game(words, type){
 
     if(type == "learning"){
         number_of_words_to_guess = words.length;
+    }else{
+        number_of_words_to_guess = number_of_words_to_guess_from_db;
     }
 
     // Picking different words
@@ -228,9 +230,9 @@ function learning_container(word){
             "<div class='front'>\n" +
             "<p class='word'>" + word['word'] + "</p>\n" +
             "<aside id='image'>\n" +
-            "<img src='images/" + word['image'] + "' alt='" + word['word'] + "'>\n" +
+            "<img src='../wp-content/" + word['image'] + "' alt='" + word['word'] + "'>\n" +
             "</aside>\n" +
-            "<audio src='audios/" + word['audio'] + "' id='audio' type='audio/mpeg' controls> </audio>\n" +
+            "<audio src='../wp-content/" + word['audio'] + "' id='audio' type='audio/mpeg' controls> </audio>\n" +
             "<footer class='footer'>\n" +
             "<span>Click the card to get description</span>\n" +
             "</footer>\n" +
@@ -470,7 +472,7 @@ function game_over_container(final_message){
             "<h1>Marvel's Weapons</h1>\n" +
             "</header>\n" +
             "<section id='content' class='game_over'>\n" +
-            '<h2 id="game_result">GAME OVER!!!</h2>' +
+            '<h2 id="game_result">' + game_over_title + '</h2>' +
             '<p>Points earned:</p>' +
             '<div id="myStat1" class:"graph" data-dimension="200" data-text="' + points + ' / ' + total_game_points + '" data-width="8" data-percent="' + points_percentage + '" data-fgcolor="#0192E1" data-bgcolor="#ccc"></div>' +
             '<span id="game_result_message">' + final_message + '</span>' +

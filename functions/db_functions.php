@@ -29,6 +29,18 @@ function get_all_game_words($deck_id){
     return $words;
 }
 
+function get_number_of_words_for_game($deck_id){
+    global $wpdb;
+    $deck_table_name = get_decks_table_name();
+
+    $deck_number_words = $wpdb->get_row( $wpdb->prepare(
+        "SELECT number_of_words FROM " . $deck_table_name . " wpt " .
+        "WHERE wpt.id = %d", $deck_id)
+    );
+
+    return $deck_number_words;
+}
+
 function get_hatpleh_words($deck_id)
 {
     global $wpdb;
@@ -38,13 +50,13 @@ function get_hatpleh_words($deck_id)
     $deck_table_name = get_decks_table_name();
 
     $words = $wpdb->get_results(
-        "SELECT word.word, word.description, word.points, deck.name, deck.image
-                FROM {$word_table_name} AS word,
-                {$deck_word_table_name} AS deck_word,
-                {$deck_table_name} AS deck,
-            WHERE word.id = deck_word.dictionary_id
-            AND deck_word.deck_id = deck.id
-            AND deck.id = {$deck_id}");
+        "SELECT wdic.word, wdic.description, wdic.points, wdec.name, wdec.image
+          FROM {$word_table_name} wdic
+          INNER JOIN {$deck_word_table_name} wdecw
+          ON wdic.id = wdecw.dictionary_id
+          INNER JOIN {$deck_table_name} wdec
+          ON wdec.id = wdecw.deck_id
+          WHERE wdec.id = {$deck_id}");
 
 
     return $words;
@@ -255,6 +267,24 @@ function update_deck($deck_id, $deck_name, $deck_image = null, $deck_number_of_w
     }
 }
 
+function create_deck($deck_name, $deck_image = null, $deck_number_of_words= null, $deck_type){
+    global $wpdb;
+    $deck_table_name = get_decks_table_name();
+
+    $params = array(
+        'name' => $deck_name,
+        'number_of_words' => $deck_number_of_words,
+        'game_type' => $deck_type);
+
+    if ($deck_image !== null){
+        $params['image'] =  $deck_image;
+    }
+
+    $wpdb->insert( $deck_table_name,$params );
+
+    return $wpdb->insert_id;
+}
+
 function create_word($word_word, $word_description, $word_points, $word_image, $word_audio,
                       $word_domain_id, $word_word_category_id){
 
@@ -280,19 +310,6 @@ function create_word_category($word_category_name){
     $wpdb->insert( $word_category_table_name, array( 'name' => $word_category_name));
 
     return $wpdb->inser_id;
-}
-
-function create_deck($deck_name, $deck_image = null, $deck_number_of_words= null, $deck_type){
-    global $wpdb;
-    $deck_table_name = get_decks_table_name();
-
-    $wpdb->insert( $deck_table_name, array(
-        'name' => $deck_name,
-        'image' => $deck_image, 
-        'number_of_words' => $deck_number_of_words,
-        'game_type' => $deck_type));
-
-    return $wpdb->insert_id;
 }
 
 function create_deck_word($deck_id, $dictionary_id){
