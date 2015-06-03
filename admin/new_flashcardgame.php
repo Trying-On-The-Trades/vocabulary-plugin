@@ -47,7 +47,7 @@ function new_flashcardgame_settings_page() {
         <div class="ui form">
 	      <div class="field">
 	        <label for="category_id">Filter by</label>
-	        <select name="category_id">
+	        <select name="category_id" id="category_id">
 				 <option value="NA">Select a Category</option>
                  <?php foreach($categories as $category): ?>
                     <option value="<?php echo $category->id ?>"><?php echo $category->name ?></option>
@@ -61,8 +61,8 @@ function new_flashcardgame_settings_page() {
 	        <ul>
                 <?php foreach($words as $word): ?>
                     <li class="games_form">
-                        <input type="checkbox" id="<?php echo $word->id ?>" class="<?php echo $word->word_category_id ?>" name="words[]" value="<?php echo $word->id ?>">
-                        <label for="<?php echo $word->id ?>"><?php echo $word->word ?></label>
+                        <input type="checkbox" id="<?php echo $word->id ?>" class="cat<?php echo $word->word_category_id ?>" name="words[]" value="<?php echo $word->id ?>">
+                        <label for="<?php echo $word->id ?>" class="cat<?php echo $word->word_category_id ?>" ><?php echo $word->word ?></label>
                     </li>
                 <?php endforeach; ?>
             </ul>
@@ -99,6 +99,10 @@ function new_flashcardgame_settings_page() {
        document.getElementById("words_error").style.display = "none";
     });
 
+    jQuery("#category_id").change(function(){
+        filter_words();
+    });
+
     function user_selected_enough_words(e){
         var n = jQuery("input:checkbox:checked").length;
         var game_number_of_words = jQuery('#game_number_of_words').prop('value');
@@ -109,6 +113,27 @@ function new_flashcardgame_settings_page() {
         }else{
             document.getElementById("words_error").style.display = "none";
         }
+
+    }
+
+    function filter_words(){
+
+        var selected = jQuery( "#category_id option:selected" ).val();
+
+        //jQuery("input:checkbox").hide();
+        //jQuery("label").hide();
+
+        if(!(selected == "NA")){
+            jQuery("label").hide();
+            var category = ".cat" + selected;
+
+            jQuery(category).show();
+            jQuery("input:checkbox").hide();
+        }else{
+            jQuery("label").show();
+            jQuery("input:checkbox").hide();
+        }
+
 
     }
 

@@ -1,8 +1,8 @@
-var number_of_words_to_guess = 5;
+var number_of_words_to_guess = 0;
 
 function initiate(type){
     game = [];
-    game = run_game(words, type);
+    game = run_game(words, type, number_of_words_to_guess_from_db);
 
     words_to_guess = game[0];
     wrong_words = game[1];
@@ -17,7 +17,7 @@ function initiate(type){
     disable_button("prev");
 }
 
-function run_game(words, type){
+function run_game(words, type, number_of_words_to_guess_from_db){
     var words_to_guess     = [];
     var wrong_words = [], not_pick_again = [],  already_guessed = [];
     var x = 0,  y = 0;
@@ -25,6 +25,8 @@ function run_game(words, type){
 
     if(type == "learning"){
         number_of_words_to_guess = words.length;
+    }else{
+        number_of_words_to_guess = number_of_words_to_guess_from_db;
     }
 
     // Picking different words
