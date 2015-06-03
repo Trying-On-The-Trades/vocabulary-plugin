@@ -24,11 +24,23 @@ function new_hatplehgame_settings_page() {
 	      </div>
 	    </div>
 
+    <div class="ui form">
+	      <div class="field">
+	        <label for="category_id">Filter by</label>
+	        <select name="category_id" id="category_id">
+				 <option value="NA">Select a Category</option>
+                 <?php foreach($categories as $category): ?>
+        <option value="<?php echo $category->id ?>"><?php echo $category->name ?></option>
+    <?php endforeach; ?>
+            </select>
+          </div>
+        </div>
+
         <div class="ui form">
 	      <div class="field">
 	      	<div class="ui left labeled icon input">
 	        	<label for="word_image">Choose an image for the hat in the game:</label>
-	    		<input type="file" name="word_image" id="word_image"  />
+	    		<input type="file" name="word_image" id="word_image" required/>
      	 	</div>
 	      </div>
 	    </div>
@@ -62,6 +74,31 @@ function new_hatplehgame_settings_page() {
     function addForm() {
         document.getElementById("buttonDomain").style.display = "none";
         document.getElementById("domain_form").style.display = "block";
+    }
+
+    jQuery("#category_id").change(function(){
+        filter_words();
+    });
+
+    function filter_words(){
+
+        var selected = jQuery( "#category_id option:selected" ).val();
+
+        //jQuery("input:checkbox").hide();
+        //jQuery("label").hide();
+
+        if(!(selected == "NA")){
+            jQuery("label").hide();
+            var category = ".cat" + selected;
+
+            jQuery(category).show();
+            jQuery("input:checkbox").hide();
+        }else{
+            jQuery("label").show();
+            jQuery("input:checkbox").hide();
+        }
+
+
     }
 
 
