@@ -16,31 +16,31 @@ var used_hint;//bool variable to check if hitn was used
 
 //this section creates the image elements to represent the user's progress
 var error1 = document.createElement("img");
-error1.setAttribute("src", "../images/1error.png");
+error1.setAttribute("src", "../wp-content/plugins/vocabulary-plugin/hatpleh/images/1error.png");
 error1.setAttribute("alt", "No Image");   
 
 var error2 = document.createElement("img");
-error2.setAttribute("src", "../images/2error.png");
+error2.setAttribute("src", "../wp-content/plugins/vocabulary-plugin/hatpleh/images/2error.png");
 error2.setAttribute("alt", "No Image");
 
 var error3 = document.createElement("img");
-error3.setAttribute("src", "../images/3error.png");
+error3.setAttribute("src", "../wp-content/plugins/vocabulary-plugin/hatpleh/images/3error.png");
 error3.setAttribute("alt", "No Image");
 
 var error4 = document.createElement("img");
-error4.setAttribute("src", "../images/4error.png");
+error4.setAttribute("src", "../wp-content/plugins/vocabulary-plugin/hatpleh/images/4error.png");
 error4.setAttribute("alt", "No Image");
 
 var error5 = document.createElement("img");
-error5.setAttribute("src", "../images/5error.png");
+error5.setAttribute("src", "../wp-content/plugins/vocabulary-plugin/hatpleh/images/5error.png");
 error5.setAttribute("alt", "No Image");
 
 var error6 = document.createElement("img");
-error6.setAttribute("src", "../images/6error.png");
+error6.setAttribute("src", "../wp-content/plugins/vocabulary-plugin/hatpleh/images/6error.png");
 error6.setAttribute("alt", "No Image");
 
 var error7 = document.createElement("img");
-error7.setAttribute("src", "../images/7error.png");
+error7.setAttribute("src", "../wp-content/plugins/vocabulary-plugin/hatpleh/images/7error.png");
 error7.setAttribute("alt", "No Image");
 
 var winner = document.createElement("img");
@@ -49,11 +49,11 @@ winner.setAttribute("src", winner_image);
 winner.setAttribute("alt", "WINNER!");
 
 var rightAnswer = document.createElement("img");
-rightAnswer.setAttribute("src", "../images/right.png");
+rightAnswer.setAttribute("src", "../wp-content/plugins/vocabulary-plugin/hatpleh/images/right.png");
 rightAnswer.setAttribute("alt", "Right!");
 
 var gameOver = document.createElement("img");
-gameOver.setAttribute("src", "../images/gameOver.png");
+gameOver.setAttribute("src", "../wp-content/plugins/vocabulary-plugin/hatpleh/images/gameOver.png");
 gameOver.setAttribute("alt", "Game Over!");
 
 

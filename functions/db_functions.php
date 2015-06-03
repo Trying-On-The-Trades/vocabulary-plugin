@@ -50,13 +50,13 @@ function get_hatpleh_words($deck_id)
     $deck_table_name = get_decks_table_name();
 
     $words = $wpdb->get_results(
-        "SELECT word.word, word.description, word.points, deck.name, deck.image
-                FROM {$word_table_name} AS word,
-                {$deck_word_table_name} AS deck_word,
-                {$deck_table_name} AS deck,
-            WHERE word.id = deck_word.dictionary_id
-            AND deck_word.deck_id = deck.id
-            AND deck.id = {$deck_id}");
+        "SELECT wdic.word, wdic.description, wdic.points, wdec.name, wdec.image
+          FROM {$word_table_name} wdic
+          INNER JOIN {$deck_word_table_name} wdecw
+          ON wdic.id = wdecw.dictionary_id
+          INNER JOIN {$deck_table_name} wdec
+          ON wdec.id = wdecw.deck_id
+          WHERE wdec.id = {$deck_id}");
 
 
     return $words;

@@ -50,7 +50,7 @@ function hatplehgame_settings_page() {
                 <td>
                     <form method="POST" action="<?=$view_game_url?>&">
                         <!-- word processing hook -->
-                        <input type="hidden" name="deck_id" value="<?php echo $game->id ?>" />
+                        <input type="hidden" name="deck" value="<?php echo $current_game->get_id() ?>" />
 
                         <input type="submit" class="ui blue icon button" value="View" style="padding: 7px" >
                     </form>
