@@ -230,9 +230,9 @@ function learning_container(word){
             "<div class='front'>\n" +
             "<p class='word'>" + word['word'] + "</p>\n" +
             "<aside id='image'>\n" +
-            "<img src='images/" + word['image'] + "' alt='" + word['word'] + "'>\n" +
+            "<img src='../wp-content/" + word['image'] + "' alt='" + word['word'] + "'>\n" +
             "</aside>\n" +
-            "<audio src='audios/" + word['audio'] + "' id='audio' type='audio/mpeg' controls> </audio>\n" +
+            "<audio src='../wp-content/" + word['audio'] + "' id='audio' type='audio/mpeg' controls> </audio>\n" +
             "<footer class='footer'>\n" +
             "<span>Click the card to get description</span>\n" +
             "</footer>\n" +
