@@ -472,7 +472,7 @@ function game_over_container(final_message){
             "<h1>Marvel's Weapons</h1>\n" +
             "</header>\n" +
             "<section id='content' class='game_over'>\n" +
-            '<h2 id="game_result">GAME OVER!!!</h2>' +
+            '<h2 id="game_result">' + game_over_title + '</h2>' +
             '<p>Points earned:</p>' +
             '<div id="myStat1" class:"graph" data-dimension="200" data-text="' + points + ' / ' + total_game_points + '" data-width="8" data-percent="' + points_percentage + '" data-fgcolor="#0192E1" data-bgcolor="#ccc"></div>' +
             '<span id="game_result_message">' + final_message + '</span>' +
