@@ -2,8 +2,6 @@
 // Build the settings page
 function new_hatplehgame_settings_page() {
     $semantic = WP_PLUGIN_URL . '/vocabulary-plugin/css/semantic.css';
-
-    $domains   = get_domains();
     $categories = get_word_categories();
     $words = get_words();
 
@@ -24,18 +22,6 @@ function new_hatplehgame_settings_page() {
 	      </div>
 	    </div>
 
-    <div class="ui form">
-	      <div class="field">
-	        <label for="category_id">Filter by</label>
-	        <select name="category_id" id="category_id">
-				 <option value="NA">Select a Category</option>
-                 <?php foreach($categories as $category): ?>
-        <option value="<?php echo $category->id ?>"><?php echo $category->name ?></option>
-    <?php endforeach; ?>
-            </select>
-          </div>
-        </div>
-
         <div class="ui form">
 	      <div class="field">
 	      	<div class="ui left labeled icon input">
@@ -45,16 +31,27 @@ function new_hatplehgame_settings_page() {
 	      </div>
 	    </div>
 
-	    <div class="ui form">
+        <div class="ui form">
 	      <div class="field">
-	      <label>Choose witch words you want in the game:</label>
+	        <label for="category_id">Filter by</label>
+	        <select name="category_id" id="category_id">
+				 <option value="NA">Select a Category</option>
+                 <?php foreach($categories as $category): ?>
+                    <option value="<?php echo $category->id ?>"><?php echo $category->name ?></option>
+                <?php endforeach; ?>
+            </select>
+          </div>
+        </div>
+
+        <div class="ui form">
+	      <div class="field">
 	        <ul>
-                <?php foreach($words as $word): ?>
-        <li class="games_form">
-            <input type="checkbox" id="<?php echo $word->id ?>" class="<?php echo $word->word_category_id ?>" name="words[]" value="<?php echo $word->id ?>">
-            <label for="<?php echo $word->id ?>"><?php echo $word->word ?></label>
-        </li>
-    <?php endforeach; ?>
+            <?php foreach($words as $word): ?>
+                <li class="games_form">
+                    <input type="checkbox" id="<?php echo $word->id ?>" class="cat<?php echo $word->word_category_id ?>" name="words[]" value="<?php echo $word->id ?>">
+                    <label for="<?php echo $word->id ?>" class="cat<?php echo $word->word_category_id ?>" ><?php echo $word->word ?></label>
+                </li>
+            <?php endforeach; ?>
             </ul>
 	      </div>
         </div>
@@ -100,7 +97,5 @@ function new_hatplehgame_settings_page() {
 
 
     }
-
-
 </script>
 <?php }
