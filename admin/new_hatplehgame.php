@@ -31,7 +31,7 @@ function new_hatplehgame_settings_page() {
 	      </div>
 	    </div>
 
-    <div class="ui form">
+        <div class="ui form">
 	      <div class="field">
 	        <label for="category_id">Filter by</label>
 	        <select name="category_id" id="category_id">

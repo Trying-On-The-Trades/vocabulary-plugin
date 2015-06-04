@@ -16,9 +16,6 @@ function edit_word_settings_page() {
 <link rel="stylesheet" type="text/css" href="<?php echo $semantic ?>"/>
 <h2>Edit a word!</h2>
 <hr>
-<style type="text/css">
-
-</style>
 
 <?php if ( isset( $_GET[ 'settings-saved' ] ) ): ?>
     <div class="updated"><p>Dictionary updated successfully.</p></div>
@@ -58,7 +55,7 @@ function edit_word_settings_page() {
         <div class="ui form">
 	      <div class="field">
 	        <label for="word_image">Image</label>
-	        <img src="<?= content_url().'/'.$words->get_image() ?>" alt="Image"/>
+	        <img class="word_image" src="<?= content_url().'/'.$words->get_image() ?>" alt="Image"/>
 	        <input type="file" name="word_image" id="word_image"  />
 	      </div>
 	    </div>
