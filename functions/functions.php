@@ -48,6 +48,8 @@ if ( ! function_exists( 'wp_handle_upload' ) ) {
         $word_domain_id         = $_POST['domain_id'];
         $word_word_category_id  = $_POST['category_id'];
 
+        $word_description = trim(preg_replace('/\s+/', ' ', $word_description));
+
         // Get the id
         create_word($word_word, $word_description, $word_points, $word_image, $word_audio, $word_domain_id, $word_word_category_id);
 
@@ -143,6 +145,7 @@ if ( ! function_exists( 'wp_handle_upload' ) ) {
         $word_image             = $image_file_name;
         $word_audio             = $audio_file_name;
 
+        $word_description = trim(preg_replace('/\s+/', ' ', $word_description));
 
         // Get the id
         $return = update_word($word_id, $word_word, $word_description, $word_points, $word_domain_id, $word_word_category_id, $word_image, $word_audio);

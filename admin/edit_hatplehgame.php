@@ -5,10 +5,7 @@ function edit_hatplehgame_settings_page() {
     $semantic = WP_PLUGIN_URL . '/vocabulary-plugin/css/semantic.css';
 
     $game_id = filter_input(INPUT_POST,'id');
-
     $game    = get_deck($game_id);
-    $domains  = get_domains();
-    $categories = get_categories();
 
     if (isset($_GET['id']) && is_numeric( $_GET['id']) ) {
         $game = build_deck($_GET['id']);
@@ -18,9 +15,6 @@ function edit_hatplehgame_settings_page() {
 <link rel="stylesheet" type="text/css" href="<?php echo $semantic ?>"/>
 <h2>Edit a Game!</h2>
 <hr>
-<style type="text/css">
-
-</style>
 
 <?php if ( isset( $_GET[ 'settings-saved' ] ) ): ?>
         <div class="updated"><p>Game updated successfully.</p></div>
@@ -44,9 +38,10 @@ function edit_hatplehgame_settings_page() {
 
         <div class="ui form">
 	      <div class="field">
-	        <label for="word_image">Image</label>
-	        <img src="<?= content_url().'/'.$game->get_image() ?>" alt="Image"/>
-	        <input type="file" name="game_image" id="game_image"  />
+                <label for="word_image">Game Image: </label>
+                <img class="word_image" src="<?= content_url().'/'.$game->get_image() ?>" alt="Image"/>
+                <input type="file" name="game_image" id="game_image"  />
+
 	      </div>
 	    </div>
 

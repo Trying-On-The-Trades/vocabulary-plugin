@@ -16,31 +16,31 @@ var used_hint;//bool variable to check if hitn was used
 
 //this section creates the image elements to represent the user's progress
 var error1 = document.createElement("img");
-error1.setAttribute("src", "../wp-content/plugins/vocabulary-plugin/hatpleh/images/1error.png");
+error1.setAttribute("src", "images/1error.png");
 error1.setAttribute("alt", "No Image");   
 
 var error2 = document.createElement("img");
-error2.setAttribute("src", "../wp-content/plugins/vocabulary-plugin/hatpleh/images/2error.png");
+error2.setAttribute("src", "images/2error.png");
 error2.setAttribute("alt", "No Image");
 
 var error3 = document.createElement("img");
-error3.setAttribute("src", "../wp-content/plugins/vocabulary-plugin/hatpleh/images/3error.png");
+error3.setAttribute("src", "images/3error.png");
 error3.setAttribute("alt", "No Image");
 
 var error4 = document.createElement("img");
-error4.setAttribute("src", "../wp-content/plugins/vocabulary-plugin/hatpleh/images/4error.png");
+error4.setAttribute("src", "images/4error.png");
 error4.setAttribute("alt", "No Image");
 
 var error5 = document.createElement("img");
-error5.setAttribute("src", "../wp-content/plugins/vocabulary-plugin/hatpleh/images/5error.png");
+error5.setAttribute("src", "images/5error.png");
 error5.setAttribute("alt", "No Image");
 
 var error6 = document.createElement("img");
-error6.setAttribute("src", "../wp-content/plugins/vocabulary-plugin/hatpleh/images/6error.png");
+error6.setAttribute("src", "images/6error.png");
 error6.setAttribute("alt", "No Image");
 
 var error7 = document.createElement("img");
-error7.setAttribute("src", "../wp-content/plugins/vocabulary-plugin/hatpleh/images/7error.png");
+error7.setAttribute("src", "images/7error.png");
 error7.setAttribute("alt", "No Image");
 
 var winner = document.createElement("img");
@@ -49,11 +49,11 @@ winner.setAttribute("src", winner_image);
 winner.setAttribute("alt", "WINNER!");
 
 var rightAnswer = document.createElement("img");
-rightAnswer.setAttribute("src", "../wp-content/plugins/vocabulary-plugin/hatpleh/images/right.png");
+rightAnswer.setAttribute("src", "images/right.png");
 rightAnswer.setAttribute("alt", "Right!");
 
 var gameOver = document.createElement("img");
-gameOver.setAttribute("src", "../wp-content/plugins/vocabulary-plugin/hatpleh/images/gameOver.png");
+gameOver.setAttribute("src", "images/gameOver.png");
 gameOver.setAttribute("alt", "Game Over!");
 
 
@@ -62,7 +62,6 @@ function load()
 {
   //set the variables to their initial values
   //alert(log);
-
   space = 0;
   word = word.replace(/\s/g, '-');
 	showLives = document.getElementById("mylives");
@@ -76,7 +75,11 @@ function load()
   //gets elements for further use
   var myButtons = document.getElementById('buttons');
   var letters = document.createElement('ul');
-  letters.id = 'alphabet';
+  letters.id = 'alphabet'; 
+
+  //adds event listeners to buttons
+  document.getElementById("reset").addEventListener("click", reset, false);
+  document.getElementById("hint").addEventListener("click", show_hint, false)
 
   //creates the alphabet elements
   for (var i = 0; i < alphabet.length; i++) {
@@ -87,15 +90,9 @@ function load()
     letters.appendChild(list);
   }
 
-    //adds event listeners to buttons
-    document.getElementById("reset").addEventListener("click", reset, false);
-    document.getElementById("hint").addEventListener("click", show_hint, false);
-
   //shows the word to be guessed
   result();  
 }
-
-
 
 //adds event listenres to each letter's button
 function check(list) 
@@ -248,27 +245,21 @@ function show_answer()
 //resets the game
 function reset()
 {
-    document.getElementById("buttons").innerHTML = "";
-    document.getElementById("categoryName").innerHTML = "";
-    document.getElementById("hold").innerHTML = "";
-    document.getElementById("mylives").innerHTML = "";
-    document.getElementById("smileImage").innerHTML = "";
-    document.getElementById("clue").innerHTML = "";
-    load();
+  window.location.reload();
 }
 
 //shows hint and flag that points should be deducted
 
 function show_hint()
 {
-        $("#hint").click(function() { 
-            document.getElementById("clue").innerHTML = "Hint: " + hint;
-            used_hint = true;
-       
-        if(document.getElementById("hint").value = "true"){  
-            document.getElementById("hint").style.display = "none";
-        }
-             });
+  $("#hint").click(function() { 
+      document.getElementById("clue").innerHTML = "Hint: " + hint;
+      used_hint = true;
+ 
+    if(document.getElementById("hint").value = "true"){  
+        document.getElementById("hint").style.display = "none";
+    }
+  });
 
 }
 
@@ -280,8 +271,8 @@ function calculate_points()
   var points = 1 + life;
   if(!used_hint)
     points += 2;
+  points *= points_value;
   document.getElementById("points").setAttribute("value", points);
-  console.log("Points: " + document.getElementById("points").value);
 }
 
 //enet listener to the page loading
