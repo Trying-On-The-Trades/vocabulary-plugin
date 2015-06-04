@@ -41,24 +41,20 @@
         <link href="<?=$style_css?>" type="text/css" rel="stylesheet">
         <script src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
 
-<div id="wrapper">
-    <h2>Can you earn your <?= $profession ?>'s Hat?</h2>
+    <div id="wrapper">
+        <h2>Can you earn your <?= $profession ?>'s Hat?</h2>
 
-<div class="content">
-    <div id="buttons">
-    </div>
-    <div id="inf">
-        <p id="categoryName"></p>
-        <div id="hold">
+        <div class="content">
+            <div id="buttons"></div>
+            <div id="inf">
+                <div id="smileImage"></div>
+                <p id="categoryName"></p>
+                <div id="hold"></div>
+                <p id="mylives"></p>
+                <p id="clue"></p>
+            </div>
         </div>
-        <p id="mylives"></p>
-        <div id="smileImage">
-        </div>
-        <p id="clue"></p>
     </div>
-
-</div>
-</div>
     <div class="container">
       <button id="hint">Hint</button>
       <button id="reset">Play again</button>

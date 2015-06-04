@@ -47,13 +47,13 @@ p {
     position: relative;
 }
 
+#smileImage {
+      text-align: center;
+}
+
 #smileImage img{
-    position: absolute;
-    right: 30px;
-    bottom:0;
     width: 120px;
     height: 120px;
-    margin-top: -98px;
 }
 
 #alphabet {
@@ -66,7 +66,7 @@ p {
     clear: both; }
 
 #clue {
-
+    text-align: center;
     width: 70%;
     margin: 0 auto
 }
@@ -160,35 +160,38 @@ button {
 @media (max-width: 767px) {
   #alphabet {
     padding: 0 0 0 15px; }
-    #smileImage {
-        position: static;
-    }
-    #mylives,
-    #clue,
-    #my-word {
-        float: left;
-    }
+  #smileImage {
+      text-align: center;
+  }
+  #smileImage img {
+    width: 120px;
+    height: 120px;
+    margin: 0 0 20px 0;
+  }
+
 }
 @media (max-width: 480px) {
   #alphabet {
     padding: 0 0 0 25px; }
-    #mylives,
-    #clue,
-    #my-word {
-        float: left;
-    }}
+  #smileImage {
+      text-align: center;
+  }
+  #smileImage img {
+    width: 120px;
+    height: 120px;
+    margin: 0 0 20px 0;
+  }
+    }
 
 @media all and (max-width : 1024px){ 
     #smileImage {
-        right: 30px;
-        bottom:50px;
+        text-align: center;
     }
-    #mylives,
-    #clue,
-    #my-word {
-        float: left;
+    #smileImage img {
+      width: 120px;
+      height: 120px;
+      margin: 0 0 20px 0;
     }
-
 }
 
 /*# sourceMappingURL=style-2.css.map */
