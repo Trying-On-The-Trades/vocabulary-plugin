@@ -43,6 +43,7 @@ function new_flashcardgame_settings_page() {
 	    </div>
 
 	    <p class="error" id="words_error">* Number of words in the game can not be lower than words selected</p>
+	    <p class="error" id="not_enough_words">* Must select at least 4 words</p>
 
         <div class="ui form">
 	      <div class="field">
@@ -93,10 +94,12 @@ function new_flashcardgame_settings_page() {
 
     jQuery('#game_number_of_words').change(function(){
         document.getElementById("words_error").style.display = "none";
+        document.getElementById("not_enough_words").style.display = "none";
     });
 
     jQuery("input:checkbox").change(function(){
        document.getElementById("words_error").style.display = "none";
+       document.getElementById("not_enough_words").style.display = "none";
     });
 
     jQuery("#category_id").change(function(){
@@ -107,11 +110,18 @@ function new_flashcardgame_settings_page() {
         var n = jQuery("input:checkbox:checked").length;
         var game_number_of_words = jQuery('#game_number_of_words').prop('value');
 
-        if(n < Number(game_number_of_words)){
+        if(n < 4){
+            e.preventDefault();
+            document.getElementById("not_enough_words").style.display = "block";
+            document.getElementById("words_error").style.display = "none";
+        }
+        else if(n < Number(game_number_of_words)){
             e.preventDefault();
             document.getElementById("words_error").style.display = "block";
+            document.getElementById("not_enough_words").style.display = "none";
         }else{
             document.getElementById("words_error").style.display = "none";
+            document.getElementById("not_enough_words").style.display = "none";
         }
 
     }
@@ -119,9 +129,6 @@ function new_flashcardgame_settings_page() {
     function filter_words(){
 
         var selected = jQuery( "#category_id option:selected" ).val();
-
-        //jQuery("input:checkbox").hide();
-        //jQuery("label").hide();
 
         if(!(selected == "NA")){
             jQuery("label").hide();
@@ -133,7 +140,6 @@ function new_flashcardgame_settings_page() {
             jQuery("label").show();
             jQuery("input:checkbox").hide();
         }
-
 
     }
 

@@ -108,6 +108,18 @@ function get_decks($game_type){
     return $decks;
 }
 
+function get_deck_title($deck_id){
+    global $wpdb;
+    $deck_table_name = get_decks_table_name();
+
+    $deck_number_words = $wpdb->get_row( $wpdb->prepare(
+        "SELECT name FROM " . $deck_table_name . " wpt " .
+        "WHERE wpt.id = %d", $deck_id)
+    );
+
+    return $deck_number_words;
+}
+
 function get_deck_words($deck_id){
     global $wpdb;
 
