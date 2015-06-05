@@ -92,6 +92,7 @@ function load()
 
   //shows the word to be guessed
   result();  
+  calculate_points();
 }
 
 //adds event listenres to each letter's button
@@ -124,6 +125,7 @@ function check(list)
         animate(true);
       }
     }
+    calculate_points();
   }
 }
 
@@ -232,7 +234,7 @@ function lock(winner)
     if(!winner)
 	   show_answer();
 
-   calculate_points();
+   final_points();
     
 }
 
@@ -264,11 +266,11 @@ function show_hint()
         document.getElementById("hint").style.display = "none";
     }
   });
-
+  calculate_points();
 }
 
 
-//calclates final points
+//calculates final points
 function calculate_points()
 {
   var life = lives;
@@ -276,7 +278,14 @@ function calculate_points()
   if(!used_hint)
     points += 2;
   points *= points_value;
-  document.getElementById("points").setAttribute("value", points);
+  //document.getElementById("points").setAttribute("value", points);
+  document.getElementById("points_so_far").innerHTML = points;
+}
+
+//records the final points
+function final_points()
+{
+  document.getElementById("points").setAttribute("value", document.getElementById("points_so_far").innerHTML);
 }
 
 //enet listener to the page loading

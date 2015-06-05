@@ -26,15 +26,6 @@
         }
         ?>
 
-<script type="text/javascript">
-    var word = "<?= $word ?>";
-    var hint = "<?= $hint ?>";
-    var winner_image = "<?= $winner ?>";
-    var points_value = <?= $points ?>;
-</script>
-<script type="text/javascript" src="<?=$main_js?>"></script>
-<link href="<?=$style_css?>" type="text/css" rel="stylesheet">
-
 <div class="wrapper">
 
         <script type="text/javascript">
@@ -56,6 +47,7 @@
         <h2>Can you earn your <?= $profession ?>'s Hat?</h2>
 
         <div class="content">
+            <aside><p>Points: <span id="points_so_far"></span></p></aside>
             <div id="buttons"></div>
             <div id="inf">
                 <div id="smileImage"></div>
