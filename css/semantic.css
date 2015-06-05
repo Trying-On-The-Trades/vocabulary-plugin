@@ -15170,7 +15170,7 @@ div#wpfooter {
   left: 1px;
 }
 
-#words_error{
+#words_error, #not_enough_words{
     display: none;
     color: red;
 }
