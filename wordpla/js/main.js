@@ -12,7 +12,7 @@ function initiate(type){
         total_game_points = total_game_points + Number(words_to_guess[i]['points']);
     }
 
-    build_word_container(words_to_guess[current_index], type, wrong_words);
+    build_word_container(words_to_guess[current_index], type, wrong_words, game_title);
 
     disable_button("prev");
 }
@@ -86,14 +86,14 @@ function still_not_picked(number, not_pick_again){
     return true;
 }
 
-function build_word_container(word, type, wrong_words){
+function build_word_container(word, type, wrong_words, game_title){
     var options_ids = [];
     var right_answer = "";
 
     if(type == "learning"){
-        var html = learning_container(word);
+        var html = learning_container(word, game_title);
     }else{
-        var game_container_restult = game_container(word, wrong_words);
+        var game_container_restult = game_container(word, wrong_words, game_title);
         var html           = game_container_restult[0];
         options_ids        = game_container_restult[1];
         right_answer       = game_container_restult[2];
@@ -105,11 +105,11 @@ function build_word_container(word, type, wrong_words){
 
     // Event click passing the size of the array to be showed
     $('#next').click(function(){
-        next_word(words_to_guess.length, type);
+        next_word(words_to_guess.length, type, game_title);
     });
 
     $('#prev').click(function(){
-        prev_word(words_to_guess.length, type);
+        prev_word(words_to_guess.length, type, game_title);
     });
 
     $('#check').click(function(e){
@@ -157,7 +157,7 @@ function build_lives(){
     return lives;
 }
 
-function game_container(word, wrong_words){
+function game_container(word, wrong_words, game_title){
     var inputs = "";
     var lives = "";
     var options_ids = [];
@@ -190,7 +190,7 @@ function game_container(word, wrong_words){
     lives = build_lives();
 
     var html =  "<header id='title'>\n" +
-                    "<h1>Marvel's Weapons</h1>\n" +
+                    "<h1>" + game_title + "</h1>\n" +
                 "</header>\n" +
                 "<section id='content'>\n" +
                     "<button class='prev disable' id='prev'></button>\n" +
@@ -214,7 +214,7 @@ function game_container(word, wrong_words){
 
 }
 
-function learning_container(word){
+function learning_container(word, game_title){
 
     var image     = word['image'];
     var audio     = word['audio'];
@@ -235,7 +235,7 @@ function learning_container(word){
 
 
     return "<header id='title'>\n" +
-            "<h1>Marvel's Weapons</h1>\n" +
+            "<h1>" + game_title + "</h1>\n" +
             "</header>\n" +
 
             "<section id='content'>\n" +
@@ -270,16 +270,16 @@ function learning_container(word){
             "</section>\n";
 }
 
-function next_word(words_length, type){
+function next_word(words_length, type, game_title){
 
     current_index = current_index + 1;
 
     if(type == "learning" && current_index < words_length){
-        build_word_container(words_to_guess[current_index], "learning", wrong_words);
+        build_word_container(words_to_guess[current_index], "learning", wrong_words, game_title);
     }else if(type == "game" && current_index < words_length){
-        build_word_container(words_to_guess[current_index], "game", wrong_words);
+        build_word_container(words_to_guess[current_index], "game", wrong_words, game_title);
     }else{
-        build_learn_container();
+        build_learn_container(game_title);
     }
 
     if(current_index >= (words_length)){
@@ -291,14 +291,14 @@ function next_word(words_length, type){
     }
 }
 
-function prev_word(words_length, type){
+function prev_word(words_length, type, game_title){
 
     current_index = current_index - 1;
 
     if(type == "learning"){
-        build_word_container(words_to_guess[current_index], "learning", wrong_words);
+        build_word_container(words_to_guess[current_index], "learning", wrong_words, game_title);
     }else{
-        build_word_container(words_to_guess[current_index], "game", wrong_words);
+        build_word_container(words_to_guess[current_index], "game", wrong_words, game_title);
     }
 
     if(current_index == 0){
@@ -421,7 +421,7 @@ function show_error(){
 }
 
 function build_home(){
-    var html = home_container();
+    var html = home_container(game_title);
 
     $("#wrapper").html(html);
 
@@ -443,7 +443,7 @@ function build_game_over(){
 
 
     var final_message = final_message_game();
-    var html = game_over_container(final_message);
+    var html = game_over_container(final_message, game_title);
 
     points = 0;
     total_game_points = 0;
@@ -479,7 +479,7 @@ function final_message_game(){
     return message;
 }
 
-function game_over_container(final_message){
+function game_over_container(final_message, game_title){
     var points_percentage = (points * 100) / total_game_points;
     var game_over_title = "GAME OVER!!";
 
@@ -488,7 +488,7 @@ function game_over_container(final_message){
     }
 
     return  "<header id='title'>\n" +
-            "<h1>Marvel's Weapons</h1>\n" +
+            "<h1>" + game_title + "</h1>\n" +
             "</header>\n" +
             "<section id='content' class='game_over'>\n" +
             '<h2 id="game_result">' + game_over_title + '</h2>' +
@@ -507,9 +507,9 @@ function draw_graph(){
     });
 }
 
-function home_container(){
+function home_container(game_title){
     return  "<header id='title'>\n" +
-                "<h1>Marvel's Weapons</h1>\n" +
+                "<h1>" + game_title + "</h1>\n" +
             "</header>\n" +
             "<section id='content' class='start'>\n" +
                 "<button id='learning' class='learning'>Learning Section</button>\n" +
@@ -517,9 +517,9 @@ function home_container(){
             "</section>\n";
 }
 
-function final_learn_container(){
+function final_learn_container(game_title){
     return  "<header id='title'>\n" +
-            "<h1>Marvel's Weapons</h1>\n" +
+            "<h1>" + game_title + "</h1>\n" +
             "</header>\n" +
             "<section id='content' class='game_over'>\n" +
             '<h2>DONE!!!</h2>' +
@@ -530,7 +530,7 @@ function final_learn_container(){
             "</section>\n";
 }
 
-function build_learn_container() {
+function build_learn_container(game_title) {
 
     errors = 0;
     points = 0;
@@ -540,7 +540,7 @@ function build_learn_container() {
     wrong_words;
     game = [];
 
-    var html = final_learn_container();
+    var html = final_learn_container(game_title);
 
     $("#wrapper").html(html);
 

@@ -9,9 +9,10 @@ function view_flashcardgame_settings_page() {
     $style_css     = WP_PLUGIN_URL . '/vocabulary-plugin/wordpla/css/style.css';
 
     if (isset($_POST['deck_id'])) {
-        $deck = intval($_POST['deck_id']);
-        $words = get_all_game_words($deck);
+        $deck            = intval($_POST['deck_id']);
+        $words           = get_all_game_words($deck);
         $number_of_words = get_number_of_words_for_game($deck);
+        $deck_name       = get_deck_title($deck);
     }
 
 ?>
@@ -21,6 +22,10 @@ function view_flashcardgame_settings_page() {
         <link href="<?=$circliful_css?>" rel="stylesheet" type="text/css" />
         <script type="text/javascript" src="<?=$circliful_js?>"></script>
         <link href="<?=$style_css?>" type="text/css" rel="stylesheet">
+
+        <script type="text/javascript">
+            var game_title = "<?php echo $deck_name->name ?>";
+        </script>
 
         <div id="wrapper">
             <script type="text/javascript">
