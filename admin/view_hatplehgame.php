@@ -56,7 +56,7 @@
                 <div id="smileImage"></div>
                 <p id="categoryName"></p>
                 <div id="hold"></div>
-                <p id="status"></p>
+                <p id="gameOver"></p>
                 <p id="clue"></p>
             </div>
         </div>

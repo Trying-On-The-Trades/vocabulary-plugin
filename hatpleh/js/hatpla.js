@@ -266,7 +266,7 @@ function reset()
     document.getElementById("categoryName").innerHTML = "";
     document.getElementById("hold").innerHTML = "";
     document.getElementById("life").innerHTML = "";
-    document.getElementById("status").innerHTML = "";
+    document.getElementById("gameOver").innerHTML = "";
     document.getElementById("smileImage").innerHTML = "";
     document.getElementById("clue").innerHTML = "";
     load();
