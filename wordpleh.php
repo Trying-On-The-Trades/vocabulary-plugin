@@ -85,5 +85,3 @@ require_once("admin/new_hatplehgame.php");
 require_once("admin/edit_hatplehgame.php");
 require_once("admin/hatplehgames.php");
 require_once("admin/view_hatplehgame.php");
-
-

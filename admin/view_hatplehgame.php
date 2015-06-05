@@ -24,8 +24,10 @@
             $winner = $term->image;
             $points = intval($term->points) / 10;
         }
+        ?>
 
-?>
+<div class="wrapper">
+
         <script type="text/javascript">
             var word = "<?= $word ?>";
             var hint = "<?= $hint ?>";
@@ -45,6 +47,7 @@
         <h2>Can you earn your <?= $profession ?>'s Hat?</h2>
 
         <div class="content">
+            <aside><p>Points: <span id="points_so_far"></span></p></aside>
             <div id="buttons"></div>
             <div id="inf">
                 <div id="smileImage"></div>

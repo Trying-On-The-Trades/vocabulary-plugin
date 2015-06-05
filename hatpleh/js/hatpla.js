@@ -93,6 +93,7 @@ function load()
 
   //shows the word to be guessed
   result();  
+  calculate_points();
 }
 
 
@@ -127,6 +128,7 @@ function check(list)
         animate(true);
       }
     }
+    calculate_points();
   }
 }
 
@@ -236,8 +238,8 @@ function lock(winner)
     if(!winner)
 	   show_answer();
 
-   calculate_points();
-    
+  final_points();
+  
 }
 
 //shows game's answer
@@ -274,7 +276,7 @@ function show_hint()
             document.getElementById("hint").style.display = "none";
         }
              });
-
+  calculate_points();
 }
 
 
@@ -285,8 +287,14 @@ function calculate_points()
   var points = 1 + life;
   if(!used_hint)
     points += 2;
-  document.getElementById("points").setAttribute("value", points);
-  console.log("Points: " + document.getElementById("points").value);
+  //document.getElementById("points").setAttribute("value", points);
+  document.getElementById("points_so_far").innerHTML = points;
+}
+
+//records the final points
+function final_points()
+{
+  document.getElementById("points").setAttribute("value", document.getElementById("points_so_far").innerHTML);
 }
 
 //enet listener to the page loading
