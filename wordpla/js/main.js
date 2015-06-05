@@ -216,15 +216,18 @@ function game_container(word, wrong_words, game_title){
 
 function learning_container(word, game_title){
 
-    var image     = word['image'];
-    var audio     = word['audio'];
-    var audio_tag = "";
-    var image_tag = "";
+    var image      = word['image'];
+    var audio      = word['audio'];
+    var audio_tag  = "";
+    var image_tag  = "";
+    var word_class = "";
 
     if(image == "" || image == null){
-        image_tag = "<img src='../wp-content/plugins/vocabulary-plugin/wordpla/images/questionMark.png' alt='default'>\n";
+        image_tag  = "";
+        word_class = "word only_word";
     }else{
         image_tag = "<img src='../wp-content/" + image + "' alt='" + word['word'] + "'>\n";
+        word_class = "word";
     }
 
     if(audio == "" || audio == null){
@@ -247,7 +250,7 @@ function learning_container(word, game_title){
             "<div id='card'>\n" +
 
             "<div class='front'>\n" +
-            "<p class='word'>" + word['word'] + "</p>\n" +
+            "<p class='" + word_class + "'>" + word['word'] + "</p>\n" +
             "<aside id='image'>\n" +
             image_tag +
             "</aside>\n" +
