@@ -65,13 +65,13 @@ function load()
 
   space = 0;
   word = word.replace(/\s/g, '-');
-	showLives = document.getElementById("mylives");
-	lives = 7;
+  showLives = document.getElementById("mylives");
+  lives = 7;
 	counter = 0;
   used_hint = false;
-
+  build_lives(lives);
   //shows the number of lives
-  comments();
+
 
   //gets elements for further use
   var myButtons = document.getElementById('buttons');
@@ -127,6 +127,7 @@ function check(list)
         animate(true);
       }
     }
+    build_lives(lives);
   }
 }
 
@@ -172,15 +173,18 @@ function animate(result)
 //shows the comments (number of lives, win and lose message)
 //in case the game ends, locks the game and returns if the user won or not.
 function comments() {
-    if (lives == 1){
-        showLives.innerHTML = "You have " + lives + " life";
-    }else{
-        showLives.innerHTML = "You have " + lives + " lives";
-    }
+    //if (lives == 1){
+    //    showLives.innerHTML = "You have " + lives + " life";
+    //}else{
+    //    showLives.innerHTML = "You have " + lives + " lives";
+    //}
+    update_lives();
+
 
     if (lives < 1) {
       smileImage.innerHTML = "";
-      showLives.innerHTML = "Game Over!";
+
+      document.getElementById("gameOver").innerHTML = "Game Over!";
       smileImage.appendChild(gameOver);
       lock(false);
       return false;
@@ -196,6 +200,7 @@ function comments() {
       }
     }
   }
+
 
 //creates the holder for the word
 function result() 
@@ -287,6 +292,122 @@ function calculate_points()
     points += 2;
   document.getElementById("points").setAttribute("value", points);
   console.log("Points: " + document.getElementById("points").value);
+}
+
+function build_lives(){
+    var life = "";
+    switch (lives){
+        case 7:
+            life = "<span class='live' id='life1'></span>\n" +
+            "<span class='live' id='life2'></span>\n" +
+            "<span class='live' id='life3'></span>\n" +
+            "<span class='live' id='life4'></span>\n" +
+            "<span class='live' id='life5'></span>\n" +
+            "<span class='live' id='life6'></span>\n" +
+            "<span class='live' id='life7'></span>\n";
+            break;
+        case 6:
+            life = "<span class='live dead' id='life1'></span>\n" +
+            "<span class='live' id='life2'></span>\n" +
+            "<span class='live' id='life3'></span>\n" +
+            "<span class='live' id='life4'></span>\n" +
+            "<span class='live' id='life5'></span>\n" +
+            "<span class='live' id='life6'></span>\n" +
+            "<span class='live' id='life7'></span>\n";
+            break;
+        case 5:
+            life = "<span class='live dead' id='life1'></span>\n" +
+            "<span class='live dead' id='life2'></span>\n" +
+            "<span class='live' id='life3'></span>\n" +
+            "<span class='live' id='life4'></span>\n" +
+            "<span class='live' id='life5'></span>\n" +
+            "<span class='live' id='life6'></span>\n" +
+            "<span class='live' id='life7'></span>\n";
+            break;
+        case 4:
+            life = "<span class='live dead' id='life1'></span>\n" +
+            "<span class='live dead' id='life2'></span>\n" +
+            "<span class='live dead' id='life3'></span>\n" +
+            "<span class='live' id='life4'></span>\n" +
+            "<span class='live' id='life5'></span>\n" +
+            "<span class='live' id='life6'></span>\n" +
+            "<span class='live' id='life7'></span>\n";
+            break;
+        case 3:
+            life = "<span class='live dead' id='life1'></span>\n" +
+            "<span class='live dead' id='life2'></span>\n" +
+            "<span class='live dead' id='life3'></span>\n" +
+            "<span class='live dead' id='life4'></span>\n" +
+            "<span class='live' id='life5'></span>\n" +
+            "<span class='live' id='life6'></span>\n" +
+            "<span class='live' id='life7'></span>\n";
+            break;
+        case 2:
+            life = "<span class='live dead' id='life1'></span>\n" +
+            "<span class='live dead' id='life2'></span>\n" +
+            "<span class='live dead' id='life3'></span>\n" +
+            "<span class='live dead' id='life4'></span>\n" +
+            "<span class='live dead' id='life5'></span>\n" +
+            "<span class='live' id='life6'></span>\n" +
+            "<span class='live' id='life7'></span>\n";
+            break;
+        case 1:
+            life = "<span class='live dead' id='life1'></span>\n" +
+            "<span class='live dead' id='life2'></span>\n" +
+            "<span class='live dead' id='life3'></span>\n" +
+            "<span class='live dead' id='life4'></span>\n" +
+            "<span class='live dead' id='life5'></span>\n" +
+            "<span class='live dead' id='life6'></span>\n" +
+            "<span class='live' id='life7'></span>\n";
+            break;
+        case 0:
+            life = "<span class='live dead' id='life1'></span>\n" +
+            "<span class='live dead' id='life2'></span>\n" +
+            "<span class='live dead' id='life3'></span>\n" +
+            "<span class='live dead' id='life4'></span>\n" +
+            "<span class='live dead' id='life5'></span>\n" +
+            "<span class='live dead' id='life6'></span>\n" +
+            "<span class='live dead' id='life7'></span>\n";
+            break;
+    }
+    document.getElementById('life').innerHTML = life;
+
+}
+
+function update_lives(){
+    switch (lives){
+        case 0:
+            $('#life1').removeClass("dead");
+            $('#life2').removeClass("dead");
+            $('#life3').removeClass("dead");
+            $('#life4').removeClass("dead");
+            $('#life5').removeClass("dead");
+            $('#life6').removeClass("dead");
+            $('#life7').removeClass("dead");
+            break;
+        case 1:
+            $('#life1').addClass("dead");
+            break;
+        case 2:
+            $('#life2').addClass("dead");
+            break;
+        case 3:
+            $('#life3').addClass("dead");
+            break;
+        case 4:
+            $('#life4').addClass("dead");
+            break;
+        case 5:
+            $('#life5').addClass("dead");
+            break;
+        case 6:
+            $('#life6').addClass("dead");
+            break;
+        case 7:
+            $('#life7').addClass("dead");
+            break;
+
+    }
 }
 
 //enet listener to the page loading
