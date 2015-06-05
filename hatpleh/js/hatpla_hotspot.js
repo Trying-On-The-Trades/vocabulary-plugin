@@ -169,7 +169,11 @@ function animate(result)
 //shows the comments (number of lives, win and lose message)
 //in case the game ends, locks the game and returns if the user won or not.
 function comments() {
-    showLives.innerHTML = "You have " + lives + " lives";
+    if (lives == 1){
+        showLives.innerHTML = "You have " + lives + " life";
+    }else{
+        showLives.innerHTML = "You have " + lives + " lives";
+    }
     if (lives < 1) {
       smileImage.innerHTML = "";
       showLives.innerHTML = "Game Over!";
