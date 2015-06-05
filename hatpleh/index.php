@@ -43,32 +43,33 @@
     <script src="http://code.jquery.com/jquery-1.9.1.js"></script>
     <script type="text/javascript" src="js/hatpla_hotspot.js"></script>
     <script type="text/javascript" src="js/jquery.easy-confirm-dialog.js"></script>
-    <link href="css/style-2.css" type="text/css" rel="stylesheet">
+    <link href="css/style-3.css" type="text/css" rel="stylesheet">
     <script src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
     
 </head>
 <body>
 <div id="wrapper">
     <h2>Can you earn your <?= $profession ?>'s Hat?</h2>
-
     <div class="content">
-        <aside><p>Points: <span id="points_so_far"></span></p></aside>
+        <aside><p id="life"></p></aside>
+    </div>
+    <div class="content">
+        <aside><p id="points">Points: <span id="points_so_far"></span></p></aside>
         <div id="buttons"></div>
         <div id="inf">
             <div id="smileImage"></div>
             <p id="categoryName"></p>
             <div id="hold"></div>
-            <p id="mylives"></p>
+            <p id="gameOver"></p>
             <p id="clue"></p>
         </div>
     </div>
 </div>
-
 <div class="container">
-  <button id="hint">Hint</button>
-  <button id="reset">Play again</button>
-  <input id="points" type="hidden" value="0"/>
-</div>  
+    <button id="hint">Hint</button>
+    <button id="reset">Play again</button>
+    <input id="points" type="hidden" value="0"/>
+</div>
 <script>
     $("#hint").easyconfirm({locale: { text: 'Are you sure you want to use hint? You will lose 2 points!', button: ['No','Yes']}});
 </script>

@@ -1,5 +1,5 @@
 //HatPla js game
-//Version 1.3 20/05/15
+//Version 2.1 20/05/15
 //Andre F. C. Silva and Julia Passamani
 //BITSpace Development
 
@@ -70,9 +70,8 @@ function load()
 	counter = 0;
   used_hint = false;
   build_lives(lives);
-  //shows the number of lives
 
-
+  document.getElementById("hint").style.display = "inline-block";
   //gets elements for further use
   var myButtons = document.getElementById('buttons');
   var letters = document.createElement('ul');
@@ -198,7 +197,7 @@ function comments() {
     for (var i = 0; i < guesses.length; i++) {
       if (counter + space === guesses.length) {
         smileImage.innerHTML = "";
-        showLives.innerHTML = "Winner!!!!";
+        document.getElementById("gameOver").innerHTML = "Winner!!!!";
         smileImage.appendChild(winner);
         lock(true);
         return true;
@@ -266,7 +265,8 @@ function reset()
     document.getElementById("buttons").innerHTML = "";
     document.getElementById("categoryName").innerHTML = "";
     document.getElementById("hold").innerHTML = "";
-    document.getElementById("mylives").innerHTML = "";
+    document.getElementById("life").innerHTML = "";
+    document.getElementById("status").innerHTML = "";
     document.getElementById("smileImage").innerHTML = "";
     document.getElementById("clue").innerHTML = "";
     load();

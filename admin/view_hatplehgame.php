@@ -50,13 +50,13 @@
             <aside><p id="life"></p></aside>
         </div>
         <div class="content">
-            <aside><p>Points: <span id="points_so_far"></span></p></aside>
+            <aside><p id="points">Points: <span id="points_so_far"></span></p></aside>
             <div id="buttons"></div>
             <div id="inf">
                 <div id="smileImage"></div>
                 <p id="categoryName"></p>
                 <div id="hold"></div>
-                <p id="gameOver"></p>
+                <p id="status"></p>
                 <p id="clue"></p>
             </div>
         </div>
