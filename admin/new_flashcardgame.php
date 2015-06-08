@@ -47,6 +47,18 @@ function new_flashcardgame_settings_page() {
 
         <div class="ui form">
 	      <div class="field">
+	        <label for="domain_id">Filter by</label>
+	        <select name="domain_id" id="domain_id">
+				 <option value="NA">Select a Domain</option>
+                 <?php foreach($domains as $domain): ?>
+                    <option value="<?php echo $domain->id ?>"><?php echo $domain->name ?></option>
+                <?php endforeach; ?>
+            </select>
+          </div>
+        </div>
+
+        <div class="ui form">
+	      <div class="field">
 	        <label for="category_id">Filter by</label>
 	        <select name="category_id" id="category_id">
 				 <option value="NA">Select a Category</option>
