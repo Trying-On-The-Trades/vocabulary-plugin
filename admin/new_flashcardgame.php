@@ -63,7 +63,7 @@ function new_flashcardgame_settings_page() {
                 <?php foreach($words as $word): ?>
                     <li class="games_form">
                         <input type="checkbox" id="<?php echo $word->id ?>" class="cat<?php echo $word->word_category_id ?>" name="words[]" value="<?php echo $word->id ?>">
-                        <label for="<?php echo $word->id ?>" class="cat<?php echo $word->word_category_id ?>" ><?php echo $word->word ?></label>
+                        <label for="<?php echo $word->id ?>" class="cat_option cat<?php echo $word->word_category_id ?>" ><?php echo $word->word ?></label>
                     </li>
                 <?php endforeach; ?>
             </ul>
@@ -126,20 +126,22 @@ function new_flashcardgame_settings_page() {
 
     }
 
-    function filter_words(){
+        function filter_words(){
 
         var selected = jQuery( "#category_id option:selected" ).val();
 
-        if(!(selected == "NA")){
-            jQuery("label").hide();
+
+        if(selected == "NA"){
+            jQuery(".cat_option").show();
+            jQuery("input:checkbox").hide();
+        }else{
+            jQuery(".cat_option").hide();
             var category = ".cat" + selected;
 
             jQuery(category).show();
             jQuery("input:checkbox").hide();
-        }else{
-            jQuery("label").show();
-            jQuery("input:checkbox").hide();
         }
+
 
     }
 

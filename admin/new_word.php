@@ -70,7 +70,7 @@ function new_word_settings_page() {
        <div class="ui form">
 	      <div class="field">
 	      	<div class="ui left labeled icon input">
-	        	<label for="word_image">Image</label>
+	        	<label for="word_image">Choose a image <b>(Preferably 120x120)</b></label>
 	    		<input type="file" name="word_image" id="word_image"  />
      	 	</div>
 	      </div>

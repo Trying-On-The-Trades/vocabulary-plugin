@@ -7,7 +7,7 @@ function new_hatplehgame_settings_page() {
 
     ?>
 <link rel="stylesheet" type="text/css" href="<?php echo $semantic ?>"/>
-<h2>Create a new HatPleh game!</h2>
+<h2>Create a new HatPlã game!</h2>
 <hr>
 <form method="post" enctype="multipart/form-data" action="<?php echo get_admin_url() . 'admin-post.php' ?>">
     <input type="hidden" name="action" value="create_new_hatgame" />
@@ -25,7 +25,7 @@ function new_hatplehgame_settings_page() {
         <div class="ui form">
 	      <div class="field">
 	      	<div class="ui left labeled icon input">
-	        	<label for="word_image">Choose an image for the hat in the game:</label>
+	        	<label for="word_image">Choose an image for winning the game: <b>(Preferably 120x120)</b></label>
 	    		<input type="file" name="word_image" id="word_image" required/>
      	 	</div>
 	      </div>
@@ -49,7 +49,7 @@ function new_hatplehgame_settings_page() {
             <?php foreach($words as $word): ?>
                 <li class="games_form">
                     <input type="checkbox" id="<?php echo $word->id ?>" class="cat<?php echo $word->word_category_id ?>" name="words[]" value="<?php echo $word->id ?>">
-                    <label for="<?php echo $word->id ?>" class="cat<?php echo $word->word_category_id ?>" ><?php echo $word->word ?></label>
+                    <label for="<?php echo $word->id ?>" class="cat_option cat<?php echo $word->word_category_id ?>" ><?php echo $word->word ?></label>
                 </li>
             <?php endforeach; ?>
             </ul>
@@ -84,14 +84,14 @@ function new_hatplehgame_settings_page() {
         //jQuery("input:checkbox").hide();
         //jQuery("label").hide();
 
-        if(!(selected == "NA")){
-            jQuery("label").hide();
+        if(selected == "NA"){
+            jQuery(".cat_option").show();
+            jQuery("input:checkbox").hide();
+        }else{
+            jQuery(".cat_option").hide();
             var category = ".cat" + selected;
 
             jQuery(category).show();
-            jQuery("input:checkbox").hide();
-        }else{
-            jQuery("label").show();
             jQuery("input:checkbox").hide();
         }
 
