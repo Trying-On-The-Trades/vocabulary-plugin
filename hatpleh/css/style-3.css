@@ -1,0 +1,227 @@
+/* Variabes */
+/* Mixin's */
+body {
+    background: whitesmoke;
+    font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
+    color: #147BB5;
+    height: 100%;
+    font-size: 18px;
+}
+
+#wrappper {
+    width: 100%;
+    margin: 0 auto;
+    text-align: center;}
+#wrappper:after {
+    content: "";
+    display: table;
+    clear: both; }
+
+
+h1, h2, h3 {
+    font-family: 'Roboto', sans-serif;
+    font-weight: 100;
+
+    margin: 5px 0; }
+
+h1 {
+    font-size: 2.6em; }
+
+h2 {
+    font-size: 1.6em;
+    color: #147BB5;
+    text-align: center;
+    margin-top: 35px;
+    margin-bottom: 30px; }
+
+p {
+    font-size: 100%; }
+
+#winner_image {
+    width: 200px;
+    height: 150px;
+}
+
+.content {
+    width: 70%;
+    margin: 0 auto;
+    position: relative;
+}
+
+#smileImage {
+    text-align: center;
+}
+
+#smileImage img{
+    width: 120px;
+    height: 120px;
+}
+
+#alphabet {
+    margin: 15px auto;
+    padding: 15px;
+    max-width: 900px; }
+#alphabet:after {
+    content: "";
+    display: table;
+    clear: both; }
+
+#clue {
+    text-align: center;
+    width: 70%;
+    margin: 0 auto
+}
+
+#alphabet li {
+    float: left;
+    margin: 0 10px 10px 4px;
+    list-style: none;
+    width: 53px;
+    height: 30px;
+    padding-top: 10px;
+    text-align: center;
+    background: #147BB5;
+    color: #fff;
+    cursor: pointer;
+    -moz-border-radius: 5px;
+    -webkit-border-radius: 5px;
+    border-radius: 5px;
+    -khtml-border-radius: 5px;
+    border: solid 1px #fff; }
+#alphabet li:hover {
+    background: #fff;
+    border: solid 1px #fff;
+    color: #147BB5; }
+
+#my-
+{
+    margin: 0;
+    display: block;
+    padding: 0;
+    display: block;
+    text-align: center;
+}
+
+#my-word li {
+
+    list-style: none;
+    margin: 0;
+    display: inline-block;
+    padding: 0 10px;
+    font-size: 1.6em; }
+
+#points{
+    font-size: 18px;
+    margin-left: 20px;
+}
+
+.active {
+    opacity: 0.4;
+    filter: alpha(opacity=40);
+    -moz-transition: all 1s ease-in;
+    -moz-transition: all 0.3s ease-in-out;
+    -webkit-transition: all 0.3s ease-in-out;
+    cursor: default; }
+.active:hover {
+    -moz-transition: all 1s ease-in;
+    -moz-transition: all 0.3s ease-in-out;
+    -webkit-transition: all 0.3s ease-in-out;
+    opacity: 0.4;
+    filter: alpha(opacity=40);
+    -moz-transition: all 1s ease-in;
+    -moz-transition: all 0.3s ease-in-out;
+    -webkit-transition: all 0.3s ease-in-out; }
+
+/*#mylives {*/
+/*font-size: 1.6em;*/
+/*text-align: center;*/
+/*display: block; }*/
+
+.container{
+    text-align: center;
+}
+
+#buttons{
+    margin-top: 24px;
+}
+
+button {
+    -moz-border-radius: 5px;
+    -webkit-border-radius: 5px;
+    border-radius: 5px;
+    -khtml-border-radius: 5px;
+    background: #147BB5;
+    color: #fff;
+    border: solid 1px #147BB5;
+    text-decoration: none;
+    cursor: pointer;
+    font-size: 1.2em;
+    padding: 18px 10px;
+    width: 180px;
+    margin: 10px;
+    outline: none; }
+button:hover {
+    -webkit-transition: all 0.3s ease-in-out;
+    -moz-transition: all 0.3s ease-in-out;
+    transition: all 0.3s ease-in-out;
+    background: #fff;
+    color: #147BB5; }
+
+#gameOver{
+    text-align: center;
+}
+
+#life{
+    margin-right: 80px;
+}
+
+#life .live{
+    width: 30px;
+    height: 29px;
+    display: block;
+    background: url(../images/rsz_heart_red.png);
+    float: right;
+    margin-left: 5px;
+}
+#life .dead{
+    opacity: 0.2;
+}
+
+@media (max-width: 767px) {
+    #alphabet {
+        padding: 0 0 0 15px; }
+    #smileImage {
+        text-align: center;
+    }
+    #smileImage img {
+        width: 120px;
+        height: 120px;
+        margin: 0 0 20px 0;
+    }
+
+}
+@media (max-width: 480px) {
+    #alphabet {
+        padding: 0 0 0 25px; }
+    #smileImage {
+        text-align: center;
+    }
+    #smileImage img {
+        width: 120px;
+        height: 120px;
+        margin: 0 0 20px 0;
+    }
+}
+
+@media all and (max-width : 1024px){
+    #smileImage {
+        text-align: center;
+    }
+    #smileImage img {
+        width: 120px;
+        height: 120px;
+        margin: 0 0 20px 0;
+    }
+}
+
+/*# sourceMappingURL=style-2.css.map */
