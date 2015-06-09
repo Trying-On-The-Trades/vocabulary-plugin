@@ -5,7 +5,8 @@ function hatplehgame_settings_page() {
 
     $semantic         = WP_PLUGIN_URL . '/vocabulary-plugin/css/semantic.css';
     $new_game_url  = admin_url() . "admin.php?page=new_hatplehgame_settings";
-    $edit_game_url = admin_url() . "admin.php?page=edit_hatplehgame_settings";
+    $edit_game_url = admin_url() . "admin.php?page=edit_hatplehgame_settings&action=edit";
+    $copy_game_url = admin_url() . "admin.php?page=edit_hatplehgame_settings&action=copy";
 
     $view_game_url = admin_url() . "admin.php?page=view_hatplehgame_settings";
     ?>
@@ -25,6 +26,7 @@ function hatplehgame_settings_page() {
             <th>Name</th>
             <th>Image</th>
             <th>Edit</th>
+            <th>Copy</th>
             <th>Delete</th>
             <th>View</th>
         </tr>
@@ -38,6 +40,7 @@ function hatplehgame_settings_page() {
                 <td><?php echo $current_game->get_image(); ?></td>
 
                 <td><a class="ui blue icon button" href="<?php echo $edit_game_url ?>&id=<?php echo $current_game->get_id() ?>" style="padding: 7px">Edit</a></td>
+                <td><a class="ui blue icon button" href="<?php echo $copy_game_url ?>&id=<?php echo $current_game->get_id() ?>" style="padding: 7px">Copy</a></td>
                 <td>
                     <form method="post" action="admin-post.php" id="delete_word_form<?php echo $current_game->get_id() ?>">
                         <!-- word processing hook -->
