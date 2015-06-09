@@ -9,7 +9,7 @@ function word_create_menu() {
 // function to create the top level meny
 function create_top_wordpleh_menu(){
 	add_menu_page('word-settings', 
-				  'Wordpleh',
+				  'WordPlã',
 				  'administrator',
 				  'word_menu',
 				  'word_settings_page');
@@ -113,27 +113,4 @@ function create_sub_wordpleh_menus(){
         "view_hatplehgame_settings_page");
 
 
-//    // Create the sub menu item for  s
-//    add_submenu_page("word_menu",
-//        "Dictionary",
-//        "Dictionary",
-//        "administrator",
-//        "word_settings",
-//        "word_settings_page");
-//
-//    // Create the sub menu item for  s
-//    add_submenu_page(null,
-//        "New Word",
-//        "New Word",
-//        "administrator",
-//        "new_word_settings",
-//        "new_word_settings_page");
-//
-//    // Create the sub menu item for editng  s
-//    add_submenu_page(null,
-//        "Edit Mission",
-//        "Edit Mission",
-//        "administrator",
-//        "edit_word_settings",
-//        "edit_word_settings_page");
 }

@@ -9,7 +9,7 @@
         $image_url = '../wp-content/';
 
 
-        $style_css = WP_PLUGIN_URL . '/vocabulary-plugin/hatpleh/css/style-2.css';
+        $style_css = WP_PLUGIN_URL . '/vocabulary-plugin/hatpleh/css/style-3.css';
         $main_js = WP_PLUGIN_URL . '/vocabulary-plugin/hatpleh/js/hatpla.js';
         $jquery_css = WP_PLUGIN_URL . '/vocabulary-plugin/hatpleh/css/jquery-ui.css';
         $jquery_js = WP_PLUGIN_URL . '/vocabulary-plugin/hatpleh/js/jquery.easy-confirm-dialog.js';
@@ -35,6 +35,7 @@
             var winner_image = "<?= $image_url . $winner ?>";
 
             var points_value = <?= $points ?>;
+
         </script>
         <link rel="stylesheet" href="<?=$jquery_css?>" type="text/css" />
         <script src="http://code.jquery.com/jquery-1.9.1.js"></script>
@@ -45,15 +46,17 @@
 
     <div id="wrapper">
         <h2>Can you earn your <?= $profession ?>'s Hat?</h2>
-
         <div class="content">
-            <aside><p>Points: <span id="points_so_far"></span></p></aside>
+            <aside><p id="life"></p></aside>
+        </div>
+        <div class="content">
+            <aside><p id="points">Points: <span id="points_so_far"></span></p></aside>
             <div id="buttons"></div>
             <div id="inf">
                 <div id="smileImage"></div>
                 <p id="categoryName"></p>
                 <div id="hold"></div>
-                <p id="mylives"></p>
+                <p id="gameOver"></p>
                 <p id="clue"></p>
             </div>
         </div>

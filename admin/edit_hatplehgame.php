@@ -38,7 +38,7 @@ function edit_hatplehgame_settings_page() {
 
         <div class="ui form">
 	      <div class="field">
-                <label for="word_image">Game Image: </label>
+                <label for="word_image">Choose an image for winning the game: <b>(Preferably 120x120)</b></label>
                 <img class="word_image" src="<?= content_url().'/'.$game->get_image() ?>" alt="Image"/>
                 <input type="file" name="game_image" id="game_image"  />
 

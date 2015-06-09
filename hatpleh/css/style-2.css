@@ -125,13 +125,17 @@ p {
     -moz-transition: all 0.3s ease-in-out;
     -webkit-transition: all 0.3s ease-in-out; }
 
-#mylives {
-  font-size: 1.6em;
-  text-align: center;
-  display: block; }
+/*#mylives {*/
+  /*font-size: 1.6em;*/
+  /*text-align: center;*/
+  /*display: block; }*/
 
 .container{
     text-align: center;
+}
+
+#buttons{
+    margin-top: 55px;
 }
 
 button {
@@ -156,6 +160,22 @@ button {
     background: #e2e2e2;
     border: solid 1px #fff;
     color: #147BB5; }
+
+#life{
+    margin-right: 80px;
+}
+
+#life .live{
+    width: 30px;
+    height: 29px;
+    display: block;
+    background: url(../images/rsz_heart1.png);
+    float: right;
+    margin-left: 5px;
+}
+#life .dead{
+    opacity: 0.2;
+}
 
 @media (max-width: 767px) {
   #alphabet {

@@ -54,15 +54,19 @@ function edit_word_settings_page() {
 	    </div>
         <div class="ui form">
 	      <div class="field">
-	        <label for="word_image">Image</label>
-	        <img class="word_image" src="<?= content_url().'/'.$words->get_image() ?>" alt="Image"/>
-	        <input type="file" name="word_image" id="word_image"  />
+	        <div class="ui left labeled icon input">
+                <label for="word_image">Choose an image: <b>(Preferably 120x120)</b> </label>
+                <img class="word_image" src="<?= content_url().'/'.$words->get_image() ?>" alt="Image"/>
+                <input type="file" name="word_image" id="word_image"  />
+            </div>
 	      </div>
 	    </div>
         <div class="ui form">
 	      <div class="field">
-	        <label for="word_audio">Audio</label>
-	        <input type="file" name="word_audio" id="word_audio" />
+	        <div class="ui left labeled icon input">
+                <label for="word_audio">Choose an audio: </label>
+                <input type="file" name="word_audio" id="word_audio" />
+	        </div>
 	      </div>
 	    </div>
 

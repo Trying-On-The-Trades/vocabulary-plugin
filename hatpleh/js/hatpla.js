@@ -1,5 +1,5 @@
 //HatPla js game
-//Version 1.3 20/05/15
+//Version 2.1 20/05/15
 //Andre F. C. Silva and Julia Passamani
 //BITSpace Development
 
@@ -65,14 +65,13 @@ function load()
 
   space = 0;
   word = word.replace(/\s/g, '-');
-	showLives = document.getElementById("mylives");
-	lives = 7;
+  showLives = document.getElementById("mylives");
+  lives = 7;
 	counter = 0;
   used_hint = false;
+  build_lives(lives);
 
-  //shows the number of lives
-  comments();
-
+  document.getElementById("hint").style.display = "inline-block";
   //gets elements for further use
   var myButtons = document.getElementById('buttons');
   var letters = document.createElement('ul');
@@ -128,7 +127,11 @@ function check(list)
         animate(true);
       }
     }
+
+    build_lives(lives);
+
     calculate_points();
+
   }
 }
 
@@ -174,15 +177,18 @@ function animate(result)
 //shows the comments (number of lives, win and lose message)
 //in case the game ends, locks the game and returns if the user won or not.
 function comments() {
-    if (lives == 1){
-        showLives.innerHTML = "You have " + lives + " life";
-    }else{
-        showLives.innerHTML = "You have " + lives + " lives";
-    }
+    //if (lives == 1){
+    //    showLives.innerHTML = "You have " + lives + " life";
+    //}else{
+    //    showLives.innerHTML = "You have " + lives + " lives";
+    //}
+    update_lives();
+
 
     if (lives < 1) {
       smileImage.innerHTML = "";
-      showLives.innerHTML = "Game Over!";
+
+      document.getElementById("gameOver").innerHTML = "Game Over!";
       smileImage.appendChild(gameOver);
       lock(false);
       return false;
@@ -191,13 +197,14 @@ function comments() {
     for (var i = 0; i < guesses.length; i++) {
       if (counter + space === guesses.length) {
         smileImage.innerHTML = "";
-        showLives.innerHTML = "Winner!!!!";
+        document.getElementById("gameOver").innerHTML = "Winner!!!!";
         smileImage.appendChild(winner);
         lock(true);
         return true;
       }
     }
   }
+
 
 //creates the holder for the word
 function result() 
@@ -258,7 +265,8 @@ function reset()
     document.getElementById("buttons").innerHTML = "";
     document.getElementById("categoryName").innerHTML = "";
     document.getElementById("hold").innerHTML = "";
-    document.getElementById("mylives").innerHTML = "";
+    document.getElementById("life").innerHTML = "";
+    document.getElementById("gameOver").innerHTML = "";
     document.getElementById("smileImage").innerHTML = "";
     document.getElementById("clue").innerHTML = "";
     load();
@@ -295,6 +303,122 @@ function calculate_points()
 function final_points()
 {
   document.getElementById("points").setAttribute("value", document.getElementById("points_so_far").innerHTML);
+}
+
+function build_lives(){
+    var life = "";
+    switch (lives){
+        case 7:
+            life = "<span class='live' id='life1'></span>\n" +
+            "<span class='live' id='life2'></span>\n" +
+            "<span class='live' id='life3'></span>\n" +
+            "<span class='live' id='life4'></span>\n" +
+            "<span class='live' id='life5'></span>\n" +
+            "<span class='live' id='life6'></span>\n" +
+            "<span class='live' id='life7'></span>\n";
+            break;
+        case 6:
+            life = "<span class='live dead' id='life1'></span>\n" +
+            "<span class='live' id='life2'></span>\n" +
+            "<span class='live' id='life3'></span>\n" +
+            "<span class='live' id='life4'></span>\n" +
+            "<span class='live' id='life5'></span>\n" +
+            "<span class='live' id='life6'></span>\n" +
+            "<span class='live' id='life7'></span>\n";
+            break;
+        case 5:
+            life = "<span class='live dead' id='life1'></span>\n" +
+            "<span class='live dead' id='life2'></span>\n" +
+            "<span class='live' id='life3'></span>\n" +
+            "<span class='live' id='life4'></span>\n" +
+            "<span class='live' id='life5'></span>\n" +
+            "<span class='live' id='life6'></span>\n" +
+            "<span class='live' id='life7'></span>\n";
+            break;
+        case 4:
+            life = "<span class='live dead' id='life1'></span>\n" +
+            "<span class='live dead' id='life2'></span>\n" +
+            "<span class='live dead' id='life3'></span>\n" +
+            "<span class='live' id='life4'></span>\n" +
+            "<span class='live' id='life5'></span>\n" +
+            "<span class='live' id='life6'></span>\n" +
+            "<span class='live' id='life7'></span>\n";
+            break;
+        case 3:
+            life = "<span class='live dead' id='life1'></span>\n" +
+            "<span class='live dead' id='life2'></span>\n" +
+            "<span class='live dead' id='life3'></span>\n" +
+            "<span class='live dead' id='life4'></span>\n" +
+            "<span class='live' id='life5'></span>\n" +
+            "<span class='live' id='life6'></span>\n" +
+            "<span class='live' id='life7'></span>\n";
+            break;
+        case 2:
+            life = "<span class='live dead' id='life1'></span>\n" +
+            "<span class='live dead' id='life2'></span>\n" +
+            "<span class='live dead' id='life3'></span>\n" +
+            "<span class='live dead' id='life4'></span>\n" +
+            "<span class='live dead' id='life5'></span>\n" +
+            "<span class='live' id='life6'></span>\n" +
+            "<span class='live' id='life7'></span>\n";
+            break;
+        case 1:
+            life = "<span class='live dead' id='life1'></span>\n" +
+            "<span class='live dead' id='life2'></span>\n" +
+            "<span class='live dead' id='life3'></span>\n" +
+            "<span class='live dead' id='life4'></span>\n" +
+            "<span class='live dead' id='life5'></span>\n" +
+            "<span class='live dead' id='life6'></span>\n" +
+            "<span class='live' id='life7'></span>\n";
+            break;
+        case 0:
+            life = "<span class='live dead' id='life1'></span>\n" +
+            "<span class='live dead' id='life2'></span>\n" +
+            "<span class='live dead' id='life3'></span>\n" +
+            "<span class='live dead' id='life4'></span>\n" +
+            "<span class='live dead' id='life5'></span>\n" +
+            "<span class='live dead' id='life6'></span>\n" +
+            "<span class='live dead' id='life7'></span>\n";
+            break;
+    }
+    document.getElementById('life').innerHTML = life;
+
+}
+
+function update_lives(){
+    switch (lives){
+        case 0:
+            $('#life1').removeClass("dead");
+            $('#life2').removeClass("dead");
+            $('#life3').removeClass("dead");
+            $('#life4').removeClass("dead");
+            $('#life5').removeClass("dead");
+            $('#life6').removeClass("dead");
+            $('#life7').removeClass("dead");
+            break;
+        case 1:
+            $('#life1').addClass("dead");
+            break;
+        case 2:
+            $('#life2').addClass("dead");
+            break;
+        case 3:
+            $('#life3').addClass("dead");
+            break;
+        case 4:
+            $('#life4').addClass("dead");
+            break;
+        case 5:
+            $('#life5').addClass("dead");
+            break;
+        case 6:
+            $('#life6').addClass("dead");
+            break;
+        case 7:
+            $('#life7').addClass("dead");
+            break;
+
+    }
 }
 
 //enet listener to the page loading
