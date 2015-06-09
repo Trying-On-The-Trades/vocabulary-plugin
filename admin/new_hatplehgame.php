@@ -42,10 +42,10 @@ function new_hatplehgame_settings_page() {
                  <?php endforeach; ?>
             </select>
             <select name="category_id" id="category_id">
-                 <option value="NA">Select a Category</option>
+				 <option value="NA">Select a Category</option>
                  <?php foreach($categories as $category): ?>
                     <option value="<?php echo $category->id ?>"><?php echo $category->name ?></option>
-                 <?php endforeach; ?>
+                <?php endforeach; ?>
             </select>
           </div>
         </div>
