@@ -23,6 +23,10 @@
             $profession = $term->name;
             $winner = $term->image;
             $points = intval($term->points) / 10;
+            if($points_hint == 1)
+                $message = get_points_name_singular();
+            else
+                $message = get_points_name_plural();
         }
         ?>
 
@@ -67,6 +71,6 @@
       <input id="points" type="hidden" value="0"/>
     </div>
         <script>
-            $("#hint").easyconfirm({locale: { text: 'Are you sure you want to use hint? You will lose 2 points!', button: ['No','Yes']}});
+            $("#hint").easyconfirm({locale: { text: 'Are you sure you want to use hint? You will lose <?= $points_hint . $message ?>!', button: ['No','Yes']}});
         </script>
 <?php }
