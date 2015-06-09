@@ -37,6 +37,10 @@ h2 {
 p {
     font-size: 100%; }
 
+#my-word {
+    text-align: center;
+}
+
 #winner_image {
     width: 200px;
     height: 150px;

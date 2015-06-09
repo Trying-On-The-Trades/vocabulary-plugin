@@ -23,8 +23,8 @@ body {
 }
 
 #title h1 {
-	text-align: center;
-	font-size: 4.5em;
+    text-align: center;
+    font-size: 2.5em;
 }
 
 #content {
@@ -76,8 +76,13 @@ body {
 }
 
 #content p.word {
-	font-size: 5em;
-	margin: 10px;
+ font-size: 4em;
+ margin: 0 0 20px 0;
+ line-height: 1em;
+}
+
+#content p.only_word {
+ line-height: 7em !important;
 }
 
 #content p.question {
@@ -123,8 +128,9 @@ body {
 }
 
 #image img {
-	width: 100%;
-	margin-bottom: 50px;
+    width: 100%;
+    margin-bottom: 50px;
+    max-height: 200px;
 }
 
 #article {
