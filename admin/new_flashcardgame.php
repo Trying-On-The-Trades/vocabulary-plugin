@@ -45,7 +45,7 @@ function new_flashcardgame_settings_page() {
 	    <p class="error" id="words_error">* Number of words in the game can not be lower than words selected</p>
 	    <p class="error" id="not_enough_words">* Must select at least 4 words</p>
 
-        <div class="ui form">
+       <div class="ui form">
 	      <div class="field">
 	        <label for="filter">Filter by</label>
             <select name="domain_id" id="domain_id">
