@@ -13,7 +13,9 @@ function edit_flashcardgame_settings_page() {
 
     $words = get_words();
 
-
+    //Will be empty if it's a copy or
+    //Will have the id if it's an update
+    $game_id_to_form = "";
 
     if (isset($_GET['id']) && is_numeric( $_GET['id']) ) {
         $game = build_deck($_GET['id']);
@@ -54,7 +56,16 @@ function edit_flashcardgame_settings_page() {
 <form id="form" method="post" enctype="multipart/form-data" action="<?php echo get_admin_url() . 'admin-post.php' ?>">
     <!-- pano processing hook -->
     <input type="hidden" name="action" value="edit_flashcard" />
-    <input type="hidden" name="game_id" value="<?= $game->get_id(); ?>"/>
+
+    <?php
+        if(isset($_GET['action']) && $_GET['action'] == "edit"){
+            $game_id_to_form = $game->get_id();
+        }elseif(isset($_GET['action']) && $_GET['action'] == "copy"){
+            $game_id_to_form = "copy";
+        }
+    ?>
+
+    <input type="hidden" name="game_id" value="<?= $game_id_to_form ?>"/>
     <div class="ui form segment edit_word_form">
 
 	    <div class="ui form">
