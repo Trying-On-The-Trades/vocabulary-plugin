@@ -54,7 +54,7 @@
         <aside><p id="life"></p></aside>
     </div>
     <div class="content">
-        <aside><p id="points">Points: <span id="points_so_far"></span></p></aside>
+        <aside><p id="points"><?= get_points_simbol() ?> <span id="points_so_far"></span></p></aside>
         <div id="buttons"></div>
         <div id="inf">
             <div id="smileImage"></div>

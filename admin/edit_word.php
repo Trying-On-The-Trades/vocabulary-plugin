@@ -44,7 +44,7 @@ function edit_word_settings_page() {
 	    </div>
         <div class="ui form">
 	      <div class="field">
-	        <label for="word_points">Points</label>
+	        <label for="word_points">Total <?= get_points_name_plural() ?>:</label>
 	        <select name="word_points">
 	            <option value="30">30</option>
 	            <option value="20">20</option>
