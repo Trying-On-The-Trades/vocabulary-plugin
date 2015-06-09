@@ -187,10 +187,33 @@ if ( ! function_exists( 'wp_handle_upload' ) ) {
         $hatgame_image        = $image_file_name;
         $flashcard_num_of_words = "";
         $game_type              = "hatgame";
-        
-        //$word_ids = $_POST
 
-        $return = update_deck($hatgame_id, $hatgame_name, $hatgame_image, $flashcard_num_of_words, $game_type);
+        if($hatgame_id == "copy"){
+            $hatgame_image = $_POST['game_image'];
+            $deck_id = create_deck($hatgame_name, $hatgame_image, $flashcard_num_of_words, $game_type);
+
+            $selected_words = $_POST['words'];
+
+            if(!empty($selected_words)){
+                foreach($selected_words as $word){
+                    create_deck_word($deck_id, $word);
+                }
+            }
+
+            $return = "true";
+        }else{
+            $return = update_deck($hatgame_id, $hatgame_name, $hatgame_image, $flashcard_num_of_words, $game_type);
+
+            $selected_words = $_POST['words'];
+
+            delete_deck_word_by_deck($hatgame_id);
+
+            if(!empty($selected_words)){
+                foreach($selected_words as $word){
+                    create_deck_word($hatgame_id, $word);
+                }
+            }
+        }
 
         if($return){
             wp_redirect( admin_url( 'admin.php?page=hatplehgame_settings&settings-saved') );
@@ -208,25 +231,37 @@ if ( ! function_exists( 'wp_handle_upload' ) ) {
         $flashcard_num_of_words = $_POST['game_number_of_words'];
         $game_type              = "flashcard";
 
-        $return = update_deck($flashcard_id, $flashcard_name, $flashcard_image, $flashcard_num_of_words, $game_type);
+        if($flashcard_id == "copy"){
+            $deck_id = create_deck($flashcard_name, $flashcard_image, $flashcard_num_of_words, $game_type);
 
-        $selected_words = $_POST['words'];
+            $selected_words = $_POST['words'];
 
-        delete_deck_word_by_deck($flashcard_id);
+            if(!empty($selected_words)){
+                foreach($selected_words as $word){
+                    create_deck_word($deck_id, $word);
+                }
+            }
 
-        if(!empty($selected_words)){
-            foreach($selected_words as $word){
-                create_deck_word($flashcard_id, $word);
+            $return = "true";
+        }else{
+            $return = update_deck($flashcard_id, $flashcard_name, $flashcard_image, $flashcard_num_of_words, $game_type);
+
+            $selected_words = $_POST['words'];
+
+            delete_deck_word_by_deck($flashcard_id);
+
+            if(!empty($selected_words)){
+                foreach($selected_words as $word){
+                    create_deck_word($flashcard_id, $word);
+                }
             }
         }
 
         if($return){
-            $location = admin_url() .'admin.php?page=flashcardgame_settings&settings-saved';
+            wp_redirect( admin_url( 'admin.php?page=flashcardgame_settings&settings-saved') );
         } else {
-            $location = admin_url() . 'admin.php?page=flashcardgame_settings&error';
+            wp_redirect( admin_url( 'admin.php?page=flashcardgame_settings&error') );
         }
-
-        echo "<meta http-equiv='refresh' content='0;url=$location' />";
     }
 
     function process_delete_word(){
