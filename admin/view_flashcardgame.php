@@ -13,6 +13,7 @@ function view_flashcardgame_settings_page() {
         $words           = get_all_game_words($deck);
         $number_of_words = get_number_of_words_for_game($deck);
         $deck_name       = get_deck_title($deck);
+        $currency        = get_points_simbol();
     }
 
 ?>
@@ -25,6 +26,7 @@ function view_flashcardgame_settings_page() {
 
         <script type="text/javascript">
             var game_title = "<?php echo $deck_name->name ?>";
+            var currency   = "<?php echo $currency ?>";
         </script>
 
         <div id="wrapper">
