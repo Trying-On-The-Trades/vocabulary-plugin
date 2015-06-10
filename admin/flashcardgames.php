@@ -53,9 +53,9 @@ function flashcardgame_settings_page() {
                     </form>
                 </td>
                 <td>
-                    <form method="POST" action="<?=$view_game_url?>&">
+                    <form method="POST" action="<?=$view_game_url?>&id=<?php echo $current_game->get_id() ?>">
                         <!-- word processing hook -->
-                        <input type="hidden" name="deck_id" value="<?php echo $game->id ?>" />
+<!--                        <input type="hidden" name="deck_id" value="--><?php //echo $game->id ?><!--" />-->
 
                         <input type="submit" class="ui blue icon button" value="View" style="padding: 7px" >
                     </form>

@@ -8,12 +8,14 @@ function view_flashcardgame_settings_page() {
     $circliful_css = WP_PLUGIN_URL . '/vocabulary-plugin/wordpla/css/jquery.circliful.css';
     $style_css     = WP_PLUGIN_URL . '/vocabulary-plugin/wordpla/css/style.css';
 
-    if (isset($_POST['deck_id'])) {
-        $deck            = intval($_POST['deck_id']);
+    if (isset($_GET['id'])) {
+//        $deck            = intval($_POST['deck_id']);
+        $deck            = $_GET['id'];
         $words           = get_all_game_words($deck);
         $number_of_words = get_number_of_words_for_game($deck);
         $deck_name       = get_deck_title($deck);
-        $currency        = get_points_simbol();
+//        $currency        = get_points_simbol();
+        $currency        = get_points_symbol();
     }
 
 ?>
