@@ -17,7 +17,7 @@ function get_all_game_words($db, $deck_id){
     $final = array();
 
     $rows = $db->query(
-        "SELECT wdic.word, wdic.description, wdic.points, wdec.name, wdec.image
+        "SELECT wdic.word, wdic.description, wdic.points, wdic.audio, wdic.image
               FROM {$word_table_name} wdic
               INNER JOIN {$deck_word_table_name} wdecw
               ON wdic.id = wdecw.dictionary_id
@@ -28,7 +28,7 @@ function get_all_game_words($db, $deck_id){
     while($row = $rows->fetch_object())
     {
         array_push($final, array('word' => $row->word,'description' => $row->description,
-            'points' => $row->points, 'name' => $row->name, 'image' => $row->image));
+            'points' => $row->points, 'audio' => $row->audio, 'image' => $row->image));
     }
 
     return $final;

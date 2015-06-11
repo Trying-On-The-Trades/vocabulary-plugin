@@ -8,6 +8,7 @@
         $words           = get_all_game_words($db, $deck);
         $number_of_words = get_number_of_words_for_game($db, $deck);
         $deck_name       = get_deck_title($db, $deck);
+        $image_url = '../../../';
     }
 
 ?>
@@ -36,7 +37,7 @@
 
         var words = [
             <?php foreach($words as $word): ?>
-            {word:"<?php echo $word['word']?>", description:"<?php echo $word['description']?>", image:"<?php echo $word['image']?>", audio:"<?php echo $word['audio']?>", points:"<?php echo $word['points']?>"},
+            {word:"<?php echo $word['word']?>", description:"<?php echo $word['description']?>", image:"<?php echo $image_url . $word['image']?>", audio:"<?php echo $word['audio']?>", points:"<?php echo $word['points']?>"},
             <?php endforeach; ?>
 
         ];
