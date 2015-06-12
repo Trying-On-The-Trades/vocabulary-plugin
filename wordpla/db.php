@@ -68,4 +68,21 @@ function get_deck_title($db, $deck_id){
     return $final;
 }
 
+function get_points_symbol($db){
+
+    $deck_table_name = 'wp_points_info';
+    $final = "";
+
+    $rows = $db->query(
+        "SELECT symbol FROM {$deck_table_name}
+          WHERE id = 1");
+
+    while($row = $rows->fetch_object())
+    {
+        $final = $row->symbol;
+    }
+
+    return $final;
+}
+
 ?>
