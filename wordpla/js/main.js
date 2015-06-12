@@ -222,7 +222,7 @@ function learning_container(word, game_title){
     var image_tag  = "";
     var word_class = "";
 
-    if(image == "" || image == null){
+    if(image == "" || image == null || image == "../../../"){
         image_tag  = "";
         word_class = "word only_word";
     }else{
