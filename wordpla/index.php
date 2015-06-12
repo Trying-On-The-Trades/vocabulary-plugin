@@ -9,6 +9,7 @@
         $number_of_words = get_number_of_words_for_game($db, $deck);
         $deck_name       = get_deck_title($db, $deck);
         $image_url = '../../../';
+        $currency        = get_points_symbol($db);
     }
 
 ?>
@@ -30,6 +31,7 @@
 
 <script type="text/javascript">
     var game_title = "<?php echo $deck_name ?>";
+    var currency   = "<?php echo $currency ?>";
 </script>
 
 <div id="wrapper">
