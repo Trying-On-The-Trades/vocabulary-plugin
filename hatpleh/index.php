@@ -33,6 +33,7 @@
     <meta charset="UTF-8">
     <script type="text/javascript">
         var word = "<?= $word ?>";
+		word = word.toLowerCase();
         var hint = "<?= $hint ?>";
 
         var winner_image = "<?= $image_url . $winner ?>";
