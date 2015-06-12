@@ -270,6 +270,7 @@ function learning_container(word, game_title){
 
             "</article>\n" +
             "<button class='next' id='next'></button>\n" +
+            '<input type="text" id="points" value="0" hidden>' +
             "</section>\n";
 }
 
@@ -518,6 +519,7 @@ function home_container(game_title){
             "<section id='content' class='start'>\n" +
                 "<button id='learning' class='learning'>Learning Section</button>\n" +
                 "<button id='game' class='game'>Play Game!</button>\n" +
+                '<input type="text" id="points" value="0" hidden>' +
             "</section>\n";
 }
 
@@ -531,6 +533,7 @@ function final_learn_container(game_title){
             '<p>What do you want to do next ?</p>' +
             "<button id='learning' class='over_learning'>Do it again!</button>\n" +
             "<button id='game' class='over_game'>Play Game!</button>\n" +
+            '<input type="text" id="points" value="0" hidden>' +
             "</section>\n";
 }
 
