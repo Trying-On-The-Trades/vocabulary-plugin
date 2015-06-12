@@ -113,7 +113,7 @@ function check(list)
             counter += 1;
         }
     }
-    var j = (word.indexOf(guess));
+    var j = (word.toUpperCase().indexOf(guess.toUpperCase()));
     if (j === -1) 
     {
       lives -= 1;
