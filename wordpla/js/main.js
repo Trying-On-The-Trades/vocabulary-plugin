@@ -500,6 +500,7 @@ function game_over_container(final_message, game_title){
             '<span id="game_result_message">' + final_message + '</span>' +
             "<button id='learning' class='over_learning'>Back to Learning</button>\n" +
             "<button id='game' class='over_game'>Play Again!</button>\n" +
+            '<input type="text" id="points" value="0" hidden>' +
             "</section>\n";
 
 }
