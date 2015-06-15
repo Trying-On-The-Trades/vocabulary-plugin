@@ -1,7 +1,7 @@
 <?php
 
 /*
-Plugin Name: wordpleh
+Plugin Name: wordplã
 Plugin URI: http://dan-blair.ca
 Description: Manage your KR Panos
 Version: 0.1.5
