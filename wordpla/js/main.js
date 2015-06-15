@@ -12,7 +12,7 @@ function initiate(type){
         total_game_points = total_game_points + Number(words_to_guess[i]['points']);
     }
 
-    build_word_container(words_to_guess[current_index], type, wrong_words, game_title);
+    build_word_container(words_to_guess[current_index], type, wrong_words, game_title, currency);
 
     disable_button("prev");
 }
@@ -86,14 +86,14 @@ function still_not_picked(number, not_pick_again){
     return true;
 }
 
-function build_word_container(word, type, wrong_words, game_title){
+function build_word_container(word, type, wrong_words, game_title, currency){
     var options_ids = [];
     var right_answer = "";
 
     if(type == "learning"){
         var html = learning_container(word, game_title);
     }else{
-        var game_container_restult = game_container(word, wrong_words, game_title);
+        var game_container_restult = game_container(word, wrong_words, game_title, currency);
         var html           = game_container_restult[0];
         options_ids        = game_container_restult[1];
         right_answer       = game_container_restult[2];
@@ -105,7 +105,7 @@ function build_word_container(word, type, wrong_words, game_title){
 
     // Event click passing the size of the array to be showed
     $('#next').click(function(){
-        next_word(words_to_guess.length, type, game_title);
+        next_word(words_to_guess.length, type, game_title, currency);
     });
 
     $('#prev').click(function(){
@@ -113,7 +113,7 @@ function build_word_container(word, type, wrong_words, game_title){
     });
 
     $('#check').click(function(e){
-        ckeck_answer(options_ids, e, right_answer, word['points']);
+        ckeck_answer(options_ids, e, right_answer, word['points'], currency);
     });
 
     $('input[name = "options"]').change(function(){
@@ -157,7 +157,7 @@ function build_lives(){
     return lives;
 }
 
-function game_container(word, wrong_words, game_title){
+function game_container(word, wrong_words, game_title, currency){
     var inputs = "";
     var lives = "";
     var options_ids = [];
@@ -196,7 +196,7 @@ function game_container(word, wrong_words, game_title){
                     "<button class='prev disable' id='prev'></button>\n" +
                     "<article id='article' class='game_card'>\n" +
                         "<div id='top_content'>\n" +
-                        '<p id="points_result" class="points">' + points + ' pts</p>' +
+                        '<p id="points_result" class="points">' + points + ' ' + currency + '</p>' +
                             lives +
                         "</div>\n" +
                         "<p class='question'>" + word['description'] + "</p>\n" +
@@ -204,7 +204,7 @@ function game_container(word, wrong_words, game_title){
                             inputs +
                             "<div class='error' id='error'>You need to select one option</div>\n" +
                             "<button id='check' class='check'>Check Answer</button>\n" +
-                            '<input type="text" id="points" value="0" hidden>' +
+                            '<input type="text" id="points" value="'+ points +'" hidden>' +
                         "</form>\n" +
                     "</article>\n" +
                     "<button class='next' id='next'></button>\n" +
@@ -222,7 +222,7 @@ function learning_container(word, game_title){
     var image_tag  = "";
     var word_class = "";
 
-    if(image == "" || image == null){
+    if(image == "" || image == null || image == "../../../"){
         image_tag  = "";
         word_class = "word only_word";
     }else{
@@ -270,17 +270,18 @@ function learning_container(word, game_title){
 
             "</article>\n" +
             "<button class='next' id='next'></button>\n" +
+            '<input type="text" id="points" value="'+ points +'" hidden>' +
             "</section>\n";
 }
 
-function next_word(words_length, type, game_title){
+function next_word(words_length, type, game_title, currency){
 
     current_index = current_index + 1;
 
     if(type == "learning" && current_index < words_length){
-        build_word_container(words_to_guess[current_index], "learning", wrong_words, game_title);
+        build_word_container(words_to_guess[current_index], "learning", wrong_words, game_title, "");
     }else if(type == "game" && current_index < words_length){
-        build_word_container(words_to_guess[current_index], "game", wrong_words, game_title);
+        build_word_container(words_to_guess[current_index], "game", wrong_words, game_title, currency);
     }else{
         build_learn_container(game_title);
     }
@@ -294,14 +295,14 @@ function next_word(words_length, type, game_title){
     }
 }
 
-function prev_word(words_length, type, game_title){
+function prev_word(words_length, type, game_title, currency){
 
     current_index = current_index - 1;
 
     if(type == "learning"){
-        build_word_container(words_to_guess[current_index], "learning", wrong_words, game_title);
+        build_word_container(words_to_guess[current_index], "learning", wrong_words, game_title, "");
     }else{
-        build_word_container(words_to_guess[current_index], "game", wrong_words, game_title);
+        build_word_container(words_to_guess[current_index], "game", wrong_words, game_title, currency);
     }
 
     if(current_index == 0){
@@ -355,14 +356,14 @@ function block_panel(){
     disable_button('check');
 }
 
-function add_points(word_points){
+function add_points(word_points, currency){
     points = points + Number(word_points);
     $('#points').val(points);
-    $('#points_result').html(points + ' pts');
+    $('#points_result').html(points + ' ' + currency);
 
 }
 
-function ckeck_answer(options_ids, event, right_answer, word_points){
+function ckeck_answer(options_ids, event, right_answer, word_points, currency){
     if(user_checked_one_answer(options_ids)){
         var option_selected = $('input[name = "options"]:checked', '#form_word').val();
 
@@ -371,7 +372,7 @@ function ckeck_answer(options_ids, event, right_answer, word_points){
             var label_name = 'label[for="' + option_selected + '"]';
             $(label_name).addClass('correct');
 
-            add_points(word_points);
+            add_points(word_points, currency);
         }else{
             event.preventDefault();
 
@@ -500,6 +501,7 @@ function game_over_container(final_message, game_title){
             '<span id="game_result_message">' + final_message + '</span>' +
             "<button id='learning' class='over_learning'>Back to Learning</button>\n" +
             "<button id='game' class='over_game'>Play Again!</button>\n" +
+            '<input type="text" id="points" value="'+ points +'" hidden>' +
             "</section>\n";
 
 }
@@ -517,6 +519,7 @@ function home_container(game_title){
             "<section id='content' class='start'>\n" +
                 "<button id='learning' class='learning'>Learning Section</button>\n" +
                 "<button id='game' class='game'>Play Game!</button>\n" +
+                '<input type="text" id="points" value="'+ points +'" hidden>' +
             "</section>\n";
 }
 
@@ -530,6 +533,7 @@ function final_learn_container(game_title){
             '<p>What do you want to do next ?</p>' +
             "<button id='learning' class='over_learning'>Do it again!</button>\n" +
             "<button id='game' class='over_game'>Play Game!</button>\n" +
+            '<input type="text" id="points" value="'+ points +'" hidden>' +
             "</section>\n";
 }
 

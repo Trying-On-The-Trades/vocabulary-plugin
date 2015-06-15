@@ -33,6 +33,7 @@
     <meta charset="UTF-8">
     <script type="text/javascript">
         var word = "<?= $word ?>";
+		word = word.toLowerCase();
         var hint = "<?= $hint ?>";
 
         var winner_image = "<?= $image_url . $winner ?>";
@@ -54,7 +55,7 @@
         <aside><p id="life"></p></aside>
     </div>
     <div class="content">
-        <aside><p id="points">Points: <span id="points_so_far"></span></p></aside>
+        <aside><p id="points"><?=get_points_symbol($db)?> <span id="points_so_far"></span></p></aside>
         <div id="buttons"></div>
         <div id="inf">
             <div id="smileImage"></div>
