@@ -112,5 +112,33 @@ function create_sub_wordpleh_menus(){
         "view_hatplehgame_settings",
         "view_hatplehgame_settings_page");
 
+    add_submenu_page("word_menu",
+        "Spot Game",
+        "Spot Game",
+        "administrator",
+        "spotgame_settings",
+        "spotgame_settings_page");
+
+    add_submenu_page(null,
+        "New Spot Game",
+        "New Spot Game",
+        "administrator",
+        "new_spotgame_settings",
+        "new_spotgame_settings_page");
+
+    add_submenu_page(null,
+        "Edit Spot Game",
+        "Edit Spot Game",
+        "administrator",
+        "edit_spotgame_settings",
+        "edit_spotgame_settings_page");
+
+    add_submenu_page(null,
+        "View Spot Game",
+        "View Spot Game",
+        "administrator",
+        "view_hatplehgame_settings",
+        "view_hatplehgame_settings_page");
+
 
 }
