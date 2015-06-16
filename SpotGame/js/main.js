@@ -188,7 +188,7 @@ function game_container(word, wrong_words, game_title, currency){
     var right_answer_shown = false;
 
     // Get a random index for the right answer
-    var right_answer_id = get_random_number(4);
+    var right_answer_id = get_random_number(5);
 
     for(var i = 0; i < 4; i++){
         if(i == right_answer_id){
