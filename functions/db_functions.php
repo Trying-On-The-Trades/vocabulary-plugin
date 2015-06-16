@@ -97,6 +97,10 @@ function get_flashcard_deck(){
     return get_decks("flashcard");
 }
 
+function get_spotgame_deck(){
+    return get_decks("spotgame");
+}
+
 function get_decks($game_type){
     global $wpdb;
 

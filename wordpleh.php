@@ -51,6 +51,11 @@ add_action( 'admin_post_create_new_hatgame', 'process_new_hatgame' );
 add_action( 'admin_post_edit_hatgame', 'process_edit_hatgame' );
 add_action( 'admin_post_delete_deck', 'process_delete_deck' );
 
+//Add the process spot game hook
+add_action( 'admin_post_create_new_spotgame', 'process_new_spotgame' );
+add_action( 'admin_post_edit_spotgame', 'process_edit_spotgame' );
+add_action( 'admin_post_delete_deck', 'process_delete_deck' );
+
 
 // Activation hook to install the DB
 register_activation_hook( __FILE__, 'wordpleh_install' );
@@ -84,4 +89,9 @@ require_once("admin/view_flashcardgame.php");
 require_once("admin/new_hatplehgame.php");
 require_once("admin/edit_hatplehgame.php");
 require_once("admin/hatplehgames.php");
+require_once("admin/view_hatplehgame.php");
+
+require_once("admin/new_spotgame.php");
+require_once("admin/edit_spotgame.php");
+require_once("admin/spotgames.php");
 require_once("admin/view_hatplehgame.php");

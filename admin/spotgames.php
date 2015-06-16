@@ -2,7 +2,7 @@
 
 // Build the settings page
 function spotgame_settings_page() {
-    $games = get_decks("flashcard");
+    $games = get_decks("spotgame");
 
     $semantic      = WP_PLUGIN_URL . '/vocabulary-plugin/css/semantic.css';
     $new_game_url  = admin_url() . "admin.php?page=new_spotgame_settings";

@@ -14,7 +14,7 @@ function new_spotgame_settings_page() {
 <hr>
 
 <form id="form" method="post" enctype="multipart/form-data" action="<?php echo get_admin_url() . 'admin-post.php' ?>">
-    <input type="hidden" name="action" value="create_new_flashcard" />
+    <input type="hidden" name="action" value="create_new_spotgame" />
     <div class="ui form segment new_word_form">
 
 	   <div class="ui form">
@@ -26,11 +26,11 @@ function new_spotgame_settings_page() {
 	      </div>
 	    </div>
 
-	    <p class="error" id="words_error">* Number of words in the game can not be lower than words selected</p>
 	    <p class="error" id="not_enough_words">* Select just one word</p>
 
        <div class="ui form">
 	      <div class="field">
+	        <label>Word to be guessed:</label>
 	        <label for="filter">Filter by</label>
             <select name="domain_id" id="domain_id">
 				 <option value="NA">Select a Domain</option>
@@ -97,7 +97,7 @@ function new_spotgame_settings_page() {
         var n = jQuery("input:checkbox:checked").length;
         var game_number_of_words = jQuery('#game_number_of_words').prop('value');
 
-        if(n < 4){
+        if(n > 1){
             e.preventDefault();
             document.getElementById("not_enough_words").style.display = "block";
             document.getElementById("words_error").style.display = "none";

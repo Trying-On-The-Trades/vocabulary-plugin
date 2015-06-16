@@ -40,7 +40,7 @@ function edit_spotgame_settings_page() {
     <?php endif; ?>
 <form id="form" method="post" enctype="multipart/form-data" action="<?php echo get_admin_url() . 'admin-post.php' ?>">
     <!-- pano processing hook -->
-    <input type="hidden" name="action" value="edit_flashcard" />
+    <input type="hidden" name="action" value="edit_spotgame" />
 
     <?php
     if(isset($_GET['action']) && $_GET['action'] == "edit"){
@@ -56,17 +56,8 @@ function edit_spotgame_settings_page() {
 	    <div class="ui form">
 	      <div class="field">
 	      	<div class="ui left labeled icon input">
-	        	<label for="game_name">Game Name: </label>
+	        	<label for="game_name">Question that will display in the game: </label>
 	    		<input name="game_name" id="name" value="<?php echo $game->get_name() ?>" required />
-     	 	</div>
-	      </div>
-	    </div>
-
-	    <div class="ui form">
-	      <div class="field">
-	      	<div class="ui left labeled icon input">
-	        	<label for="game_number_of_words">Defined number of words to be guessed: </label>
-	    		<input name="game_number_of_words" id="game_number_of_words" value="<?php echo $game->get_number_of_words() ?>" required />
      	 	</div>
 	      </div>
 	    </div>
