@@ -71,7 +71,7 @@ function run_game(words, type, number_of_words_to_guess_from_db){
         // Can't get the same word again
         not_pick_again.push(x);
 
-        for(var j = 0; j < 3; j++){
+        for(var j = 0; j < 4; j++){
             picking_new_word = true;
 
             while(picking_new_word) {
@@ -185,9 +185,10 @@ function game_container(word, wrong_words, game_title, currency){
     var lives = "";
     var options_ids = [];
     var right_answer = word['word'];
+    var right_answer_shown = false;
 
     // Get a random index for the right answer
-    var right_answer_id = get_random_number(3);
+    var right_answer_id = get_random_number(4);
 
     for(var i = 0; i < 4; i++){
         if(i == right_answer_id){
@@ -198,6 +199,7 @@ function game_container(word, wrong_words, game_title, currency){
             '<label for="' + word['word'] + '">' + word['word'] + '</label>');
 
             options_ids.push(word['word']);
+            right_answer_shown = true;
         }else{
             inputs += ('<input type="radio" ' +
             'class="" id="' + wrong_words[0] + '" ' +
@@ -208,6 +210,18 @@ function game_container(word, wrong_words, game_title, currency){
             options_ids.push(wrong_words[0]);
             wrong_words.splice(0, 1);
         }
+    }
+
+    inputs += ('<input type="radio" ' +
+    'class="" id="' + "None" + '" ' +
+    'name="options" ' +
+    'value="' + "None" + '">\n' +
+    '<label for="' + "None" + '">' + "None of them" + '</label>');
+
+    options_ids.push("None");
+
+    if(!right_answer_shown){
+        right_answer = "None";
     }
 
     lives = build_lives();
@@ -226,8 +240,10 @@ function game_container(word, wrong_words, game_title, currency){
         "<form name='form_word' id='form_word'>\n" +
         inputs +
         "<div class='error' id='error'>You need to select one option</div>\n" +
+        '<div class="buttons_div">' +
         "<button id='check' class='check'>Check Answer</button>\n" +
         "<button id='learning' class='check'>Go to Learn</button>\n" +
+        '</div>' +
         '<input type="text" id="points" value="'+ points +'" hidden>' +
         "</form>\n" +
         "</article>\n" +
