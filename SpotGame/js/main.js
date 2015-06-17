@@ -120,7 +120,7 @@ function build_word_container(word, type, wrong_words, game_title, currency){
 
     $("#wrapper").html(html);
 
-    update_lives();
+    //update_lives();
 
     // Event click passing the size of the array to be showed
     $('#next').click(function(){
@@ -139,6 +139,14 @@ function build_word_container(word, type, wrong_words, game_title, currency){
         go_to_learn(e, "learning");
     });
 
+    $("#play").click(function(e){
+        show_word();
+    });
+
+    $("#cancel").click(function(e){
+        build_home();
+    });
+
     $('input[name = "options"]').change(function(){
         hide_error();
     });
@@ -150,6 +158,11 @@ function build_word_container(word, type, wrong_words, game_title, currency){
     }
 
     $("#card").flip();
+}
+
+function show_word(){
+    $('#form_word').fadeIn( "slow" );
+    $('#initial_question').hide();
 }
 
 function build_lives(){
@@ -227,28 +240,33 @@ function game_container(word, wrong_words, game_title, currency){
     lives = build_lives();
 
     var html =  "<header id='title'>\n" +
-        "<h1>" + game_title + "</h1>\n" +
-        "</header>\n" +
-        "<section id='content'>\n" +
-        "<button class='prev disable' id='prev'></button>\n" +
-        "<article id='article' class='game_card'>\n" +
-        "<div id='top_content'>\n" +
-        '<p id="points_result" class="points">' + points + ' ' + currency + '</p>' +
-        lives +
-        "</div>\n" +
-        "<p class='question'>" + word['description'] + "</p>\n" +
-        "<form name='form_word' id='form_word'>\n" +
-        inputs +
-        "<div class='error' id='error'>You need to select one option</div>\n" +
-        '<div class="buttons_div">' +
-        "<button id='check' class='check'>Check Answer</button>\n" +
-        "<button id='learning' class='check'>Go to Learn</button>\n" +
-        '</div>' +
-        '<input type="text" id="points" value="'+ points +'" hidden>' +
-        "</form>\n" +
-        "</article>\n" +
-        "<button class='next' id='next'></button>\n" +
-        "</section>\n";
+                    "<h1>" + game_title + "</h1>\n" +
+                "</header>\n" +
+                "<section id='content'>\n" +
+                    "<button class='prev disable' id='prev'></button>\n" +
+                    "<article id='article' class='game_card'>\n" +
+                        "<div id='top_content'>\n" +
+                        "</div>\n" +
+                        "<p class='question'>" + word['description'] + "</p>\n" +
+                        "<form name='form_word' id='form_word' hidden>\n" +
+                            inputs +
+                            "<div class='error' id='error'>You need to select one option</div>\n" +
+                            '<div class="buttons_div">' +
+                                "<button id='learning' class='check'>Go to Learn</button>\n" +
+                                "<button id='check' class='check'>Check Answer</button>\n" +
+                            '</div>' +
+                            '<input type="text" id="points" value="'+ points +'" hidden>' +
+                        "</form>\n" +
+                        "<div id='initial_question'>" +
+                            "<p class='question'>It will cost you 10$ to play. Let's do it!?</p>" +
+                            '<div class="buttons_div">' +
+                                "<button id='cancel' class='check'>Cancel</button>\n" +
+                                "<button id='play' class='check'>Let's Go!</button>\n" +
+                            '</div>' +
+                        '</div>' +
+                    "</article>\n" +
+                    "<button class='next' id='next'></button>\n" +
+                "</section>\n";
 
     return [html, options_ids, right_answer];
 
@@ -424,7 +442,7 @@ function ckeck_answer(options_ids, event, right_answer, word_points, currency){
 
             errors = errors + 1;
 
-            update_lives();
+            //update_lives();
         }
 
         block_panel();
