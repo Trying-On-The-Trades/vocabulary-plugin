@@ -94,4 +94,4 @@ require_once("admin/view_hatplehgame.php");
 require_once("admin/new_spotgame.php");
 require_once("admin/edit_spotgame.php");
 require_once("admin/spotgames.php");
-require_once("admin/view_hatplehgame.php");
+require_once("admin/view_spotgame.php");
