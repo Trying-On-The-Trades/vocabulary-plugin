@@ -137,8 +137,8 @@ function create_sub_wordpleh_menus(){
         "View Spot Game",
         "View Spot Game",
         "administrator",
-        "view_hatplehgame_settings",
-        "view_hatplehgame_settings_page");
+        "view_spotgame_settings",
+        "view_spotgame_settings_page");
 
 
 }
