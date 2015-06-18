@@ -13,6 +13,8 @@ function edit_spotgame_settings_page() {
 
     $words = get_words();
 
+    $decks = get_decks('flashcard');
+
     //Will be empty if it's a copy or
     //Will have the id if it's an update
     $game_id_to_form = "";
@@ -53,6 +55,18 @@ function edit_spotgame_settings_page() {
     <input type="hidden" name="game_id" value="<?= $game_id_to_form ?>"/>
     <div class="ui form segment edit_word_form">
 
+        <div class="ui form">
+        <div class="field">
+            <label>Choose a deck:</label>
+            <select name="decks" id="deck_id">
+				 <option value="NA">Select a Deck</option>
+                 <?php foreach($decks as $deck): ?>
+                    <option value="<?php echo $deck->id ?>"><?php echo $deck->name ?></option>
+                <?php endforeach; ?>
+            </select>
+        </div>
+       </div>
+
 	    <div class="ui form">
 	      <div class="field">
 	      	<div class="ui left labeled icon input">
@@ -62,7 +76,7 @@ function edit_spotgame_settings_page() {
 	      </div>
 	    </div>
 
-	    <p class="error" id="words_error">* Number of words in the game can not be lower than words selected</p>
+	    <p class="error" id="not_enough_words">* Select just one word</p>
 
 	    <div class="ui form">
 	      <div class="field">
@@ -113,6 +127,7 @@ function edit_spotgame_settings_page() {
 
     jQuery("input:checkbox").change(function(){
        document.getElementById("words_error").style.display = "none";
+       document.getElementById("not_enough_words").style.display = "none";
     });
 
     jQuery("#category_id").change(function(){
@@ -123,11 +138,18 @@ function edit_spotgame_settings_page() {
         var n = jQuery("input:checkbox:checked").length;
         var game_number_of_words = jQuery('#game_number_of_words').prop('value');
 
-        if(n < Number(game_number_of_words)){
+        if(n > 1 || n < 1){
+            e.preventDefault();
+            document.getElementById("not_enough_words").style.display = "block";
+            document.getElementById("words_error").style.display = "none";
+        }
+        else if(n < Number(game_number_of_words)){
             e.preventDefault();
             document.getElementById("words_error").style.display = "block";
+            document.getElementById("not_enough_words").style.display = "none";
         }else{
             document.getElementById("words_error").style.display = "none";
+            document.getElementById("not_enough_words").style.display = "none";
         }
 
     }

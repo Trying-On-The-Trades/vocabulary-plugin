@@ -95,7 +95,7 @@ if ( ! function_exists( 'wp_handle_upload' ) ) {
         // Create a new spotgame game
         $spotgame_name         = $_POST['game_name'];
         $spotgame_image        = "";
-        $spotgame_num_of_words = "";
+        $spotgame_num_of_words = $_POST['words'][0];
         $game_type             = "spotgame";
 
         $selected_words = $_POST['words'];
@@ -260,17 +260,18 @@ if ( ! function_exists( 'wp_handle_upload' ) ) {
         $spotgame_id           = $_POST['game_id'];
         $spotgame_name         = $_POST['game_name'];
         $spotgame_image        = "";
-        $spotgame_num_of_words = "";
+        $spotgame_num_of_words = $_POST['words'][0];
         $game_type              = "spotgame";
 
         if($spotgame_id == "copy"){
             $deck_id = create_deck($spotgame_name, $spotgame_image, $spotgame_num_of_words, $game_type);
 
             $selected_words = $_POST['words'];
+            $selected_deck = $_POST['decks'];
 
-            if(!empty($selected_words)){
-                foreach($selected_words as $word){
-                    create_deck_word($deck_id, $word);
+            if(!empty($selected_deck)){
+                foreach($selected_deck as $word){
+                    create_deck_word($deck_id, $word->id);
                 }
             }
 
@@ -279,12 +280,13 @@ if ( ! function_exists( 'wp_handle_upload' ) ) {
             $return = update_deck($spotgame_id, $spotgame_name, $spotgame_image, $spotgame_num_of_words, $game_type);
 
             $selected_words = $_POST['words'];
+            $selected_deck = $_POST['decks'];
 
             delete_deck_word_by_deck($spotgame_id);
 
-            if(!empty($selected_words)){
-                foreach($selected_words as $word){
-                    create_deck_word($spotgame_id, $word);
+            if(!empty($selected_deck)){
+                foreach($selected_deck as $word){
+                    create_deck_word($spotgame_id, $word->id);
                 }
             }
         }

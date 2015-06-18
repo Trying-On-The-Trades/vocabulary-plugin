@@ -110,7 +110,7 @@ function new_spotgame_settings_page() {
         var n = jQuery("input:checkbox:checked").length;
         var game_number_of_words = jQuery('#game_number_of_words').prop('value');
 
-        if(n > 1 && n < 1){
+        if(n > 1 || n < 1){
             e.preventDefault();
             document.getElementById("not_enough_words").style.display = "block";
             document.getElementById("words_error").style.display = "none";
