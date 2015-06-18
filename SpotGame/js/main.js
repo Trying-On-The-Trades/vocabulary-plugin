@@ -239,6 +239,9 @@ function game_container(word, wrong_words, game_title, currency){
 
     lives = build_lives();
 
+    var cost = Number(word['points']) * 0.1;
+    cost = parseInt(cost, 10);
+
     var html =  "<header id='title'>\n" +
                     "<h1>" + game_title + "</h1>\n" +
                 "</header>\n" +
@@ -258,7 +261,7 @@ function game_container(word, wrong_words, game_title, currency){
                             '<input type="text" id="points" value="'+ points +'" hidden>' +
                         "</form>\n" +
                         "<div id='initial_question'>" +
-                            "<p class='question'>It will cost you 10$ to play. Let's do it!?</p>" +
+                            "<p class='question'>It will cost you " + cost + currency + " to play. Let's do it!?</p>" +
                             '<div class="buttons_div">' +
                                 "<button id='cancel' class='check'>Cancel</button>\n" +
                                 "<button id='play' class='check'>Let's Go!</button>\n" +
@@ -416,6 +419,7 @@ function block_panel(){
 
 function add_points(word_points, currency){
     points = points + Number(word_points);
+    points = parseInt(points, 10);
     $('#points').val(points);
     $('#points_result').html(points + ' ' + currency);
 
@@ -430,6 +434,9 @@ function ckeck_answer(options_ids, event, right_answer, word_points, currency){
             var label_name = 'label[for="' + option_selected + '"]';
             $(label_name).addClass('correct');
 
+            // Cost of 10% to play
+            word_points = word_points - (word_points * 0.1);
+
             add_points(word_points, currency);
         }else{
             event.preventDefault();
@@ -442,7 +449,15 @@ function ckeck_answer(options_ids, event, right_answer, word_points, currency){
 
             errors = errors + 1;
 
+            // Cost of 10% to play
+            word_points = word_points - (word_points * 0.1);
+            word_points = (word_points * 0.2) * (-1);
+
+            add_points(word_points, currency);
+
             //update_lives();
+
+            add_points(word_points, currency);
         }
 
         block_panel();
@@ -542,11 +557,18 @@ function final_message_game(){
 }
 
 function game_over_container(final_message, game_title){
+    var final_points = 0;
     var points_percentage = (points * 100) / total_game_points;
     var game_over_title = "GAME OVER!!";
+    var final_result = "";
 
-    if(final_message == "You have got full marks! :)"){
+    if(points < 0) {
+        final_points = points * (-1);
+        final_result = 'It cost you ' + final_points + currency;
+    }else{
         game_over_title = "Congratulations!!";
+        final_points = points;
+        final_result = 'You have earned ' + final_points + currency;
     }
 
     return  "<header id='title'>\n" +
@@ -554,9 +576,7 @@ function game_over_container(final_message, game_title){
         "</header>\n" +
         "<section id='content' class='game_over'>\n" +
         '<h2 id="game_result">' + game_over_title + '</h2>' +
-        '<p>Points earned:</p>' +
-        '<div id="myStat1" class:"graph" data-dimension="200" data-text="' + points + ' / ' + total_game_points + '" data-width="8" data-percent="' + points_percentage + '" data-fgcolor="#0192E1" data-bgcolor="#ccc"></div>' +
-        '<span id="game_result_message">' + final_message + '</span>' +
+        '<p>' + final_result + '</p>' +
         "<button id='learning' class='over_learning'>Back to Learning</button>\n" +
         "<button id='game' class='over_game'>Play Again!</button>\n" +
         '<input type="text" id="points" value="'+ points +'" hidden>' +
