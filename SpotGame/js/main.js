@@ -250,7 +250,7 @@ function game_container(word, wrong_words, game_title, currency){
                     "<article id='article' class='game_card'>\n" +
                         "<div id='top_content'>\n" +
                         "</div>\n" +
-                        "<p class='question'>" + word['description'] + "</p>\n" +
+                        "<p class='question'>" + question + "</p>\n" +
                         "<form name='form_word' id='form_word' hidden>\n" +
                             inputs +
                             "<div class='error' id='error'>You need to select one option</div>\n" +
