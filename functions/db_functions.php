@@ -29,6 +29,21 @@ function get_all_game_words($deck_id){
     return $words;
 }
 
+function get_all_game_words_ids($deck_id){
+    global $wpdb;
+
+    $word_table_name = get_dictionary_table_name();
+    $deck_word_table_name = get_deck_words_table_name();
+
+    $words = $wpdb->get_results(
+        "SELECT id
+         FROM " . $word_table_name . " wpt " .
+        "WHERE id IN (SELECT dictionary_id FROM " . $deck_word_table_name ." WHERE deck_id = " . $deck_id .")");
+
+
+    return $words;
+}
+
 function get_number_of_words_for_game($deck_id){
     global $wpdb;
     $deck_table_name = get_decks_table_name();
@@ -60,21 +75,6 @@ function get_hatpleh_words($deck_id)
 
 
     return $words;
-}
-
-function get_all_game_words_ids($deck_id){
-    global $wpdb;
-
-    $word_table_name = get_dictionary_table_name();
-    $deck_word_table_name = get_deck_words_table_name();
-
-    $words_ids = $wpdb->get_results(
-        "SELECT id
-         FROM " . $word_table_name . " wpt " .
-        "WHERE id IN (SELECT dictionary_id FROM " . $deck_word_table_name ." WHERE deck_id = " . $deck_id .")");
-
-
-    return $words_ids;
 }
 
 function get_word_categories(){

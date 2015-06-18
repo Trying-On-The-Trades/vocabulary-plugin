@@ -3,7 +3,8 @@
 // Build the settings page
 function new_spotgame_settings_page() {
     $semantic = WP_PLUGIN_URL . '/vocabulary-plugin/css/semantic.css';
-
+    $decks = get_decks('flashcard');
+    $deck_words = get_deck_words('');
     $domains   = get_domains();
     $categories = get_word_categories();
     $words = get_words();
@@ -16,6 +17,18 @@ function new_spotgame_settings_page() {
 <form id="form" method="post" enctype="multipart/form-data" action="<?php echo get_admin_url() . 'admin-post.php' ?>">
     <input type="hidden" name="action" value="create_new_spotgame" />
     <div class="ui form segment new_word_form">
+
+       <div class="ui form">
+        <div class="field">
+            <label>Choose a deck:</label>
+            <select name="decks" id="deck_id">
+				 <option value="NA">Select a Deck</option>
+                 <?php foreach($decks as $deck): ?>
+                    <option value="<?php echo $deck->id ?>"><?php echo $deck->name ?></option>
+                <?php endforeach; ?>
+            </select>
+        </div>
+       </div>
 
 	   <div class="ui form">
 	      <div class="field">
@@ -35,14 +48,14 @@ function new_spotgame_settings_page() {
             <select name="domain_id" id="domain_id">
 				 <option value="NA">Select a Domain</option>
                  <?php foreach($domains as $domain): ?>
-        <option value="<?php echo $domain->id ?>"><?php echo $domain->name ?></option>
-    <?php endforeach; ?>
+                    <option value="<?php echo $domain->id ?>"><?php echo $domain->name ?></option>
+                <?php endforeach; ?>
             </select>
             <select name="category_id" id="category_id">
 				 <option value="NA">Select a Category</option>
                  <?php foreach($categories as $category): ?>
-        <option value="<?php echo $category->id ?>"><?php echo $category->name ?></option>
-    <?php endforeach; ?>
+                    <option value="<?php echo $category->id ?>"><?php echo $category->name ?></option>
+                <?php endforeach; ?>
             </select>
           </div>
         </div>
@@ -51,11 +64,11 @@ function new_spotgame_settings_page() {
 	      <div class="field">
 	        <ul>
             <?php foreach($words as $word): ?>
-        <li class="games_form">
-            <input type="checkbox" id="<?php echo $word->id ?>" class="dom<?php echo $word->domain_id ?> cat<?php echo $word->word_category_id ?>" name="words[]" value="<?php echo $word->id ?>">
-            <label for="<?php echo $word->id ?>" class="dom_option cat_option dom<?php echo $word->domain_id ?> cat<?php echo $word->word_category_id ?>" ><?php echo $word->word ?></label>
-        </li>
-    <?php endforeach; ?>
+                <li class="games_form">
+                    <input type="checkbox" id="<?php echo $word->id ?>" class="dom<?php echo $word->domain_id ?> cat<?php echo $word->word_category_id ?>" name="words[]" value="<?php echo $word->id ?>">
+                    <label for="<?php echo $word->id ?>" class="dom_option cat_option dom<?php echo $word->domain_id ?> cat<?php echo $word->word_category_id ?>" ><?php echo $word->word ?></label>
+                </li>
+            <?php endforeach; ?>
             </ul>
 	      </div>
         </div>
@@ -97,7 +110,7 @@ function new_spotgame_settings_page() {
         var n = jQuery("input:checkbox:checked").length;
         var game_number_of_words = jQuery('#game_number_of_words').prop('value');
 
-        if(n > 1){
+        if(n > 1 && n < 1){
             e.preventDefault();
             document.getElementById("not_enough_words").style.display = "block";
             document.getElementById("words_error").style.display = "none";

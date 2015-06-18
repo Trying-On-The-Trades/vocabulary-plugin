@@ -26,8 +26,7 @@ function spotgame_settings_page() {
     <table id="gameTable" class="ui table segment tablesorter">
         <thead>
         <tr>
-            <th>Name</th>
-            <th>Number of Words</th>
+            <th>Question</th>
             <th>Edit</th>
             <th>Copy</th>
             <th>Delete</th>
@@ -40,7 +39,6 @@ function spotgame_settings_page() {
             <?php $current_game = build_deck($game->id); ?>
             <tr>
                 <td><?php echo $current_game->get_name(); ?></td>
-                <td><?php echo $current_game->get_number_of_words(); ?></td>
 
                 <td><a class="ui blue icon button" href="<?php echo $edit_game_url ?>&id=<?php echo $current_game->get_id() ?>" style="padding: 7px">Edit</a></td>
                 <td><a class="ui blue icon button" href="<?php echo $copy_game_url ?>&id=<?php echo $current_game->get_id() ?>" style="padding: 7px">Copy</a></td>
@@ -59,7 +57,6 @@ function spotgame_settings_page() {
                     <form method="POST" action="<?=$view_game_url?>&">
                         <!-- word processing hook -->
                         <input type="hidden" name="deck_id" value="<?php echo $game->id ?>" />
-
                         <input type="submit" class="ui blue icon button" value="View" style="padding: 7px" >
                     </form>
                 </td>
