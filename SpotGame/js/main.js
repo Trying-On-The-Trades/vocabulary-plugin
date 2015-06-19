@@ -2,17 +2,25 @@ var number_of_words_to_guess = 0;
 
 function initiate(type){
     game = [];
-    game = run_game(words, type, number_of_words_to_guess_from_db);
+    game = run_game(words, type, number_of_words_to_guess_from_db, right_word_db);
 
     words_to_guess = game[0];
-    wrong_words = game[1];
+    wrong_words    = game[1];
+    right_word     = game[2];
 
     // How many points the game is worth
     for(var i= 0; i < words_to_guess.length; i++){
         total_game_points = total_game_points + Number(words_to_guess[i]['points']);
     }
 
-    build_word_container(words_to_guess[current_index], type, wrong_words, game_title, currency);
+    if(type == "game"){
+        words_to_guess = right_word;
+        build_word_container(words_to_guess[current_index], type, wrong_words, game_title, currency);
+    }else{
+        build_word_container(words_to_guess[current_index], type, wrong_words, game_title, currency);
+    }
+
+
 
     disable_button("prev");
 }
@@ -22,22 +30,29 @@ function go_to_learn(e, type){
     game = run_game(words, type, number_of_words_to_guess_from_db);
 
     words_to_guess = game[0];
-    wrong_words = game[1];
+    wrong_words    = game[1];
+    right_word     = game[2];
 
     // How many points the game is worth
     for(var i= 0; i < words_to_guess.length; i++){
         total_game_points = total_game_points + Number(words_to_guess[i]['points']);
     }
 
-    build_word_container(words_to_guess[current_index], type, wrong_words, game_title, currency);
+    if(type == "game"){
+        words_to_guess = right_word;
+        build_word_container(words_to_guess[current_index], type, wrong_words, game_title, currency);
+    }else{
+        build_word_container(words_to_guess[current_index], type, wrong_words, game_title, currency);
+    }
 
     disable_button("prev");
 
     e.preventDefault();
 }
 
-function run_game(words, type, number_of_words_to_guess_from_db){
+function run_game(words, type, number_of_words_to_guess_from_db, right_word_db){
     var words_to_guess     = [];
+    var right_word = right_word_db;
     var wrong_words = [], not_pick_again = [],  already_guessed = [];
     var x = 0,  y = 0;
     var picking_new_word = true;
@@ -89,7 +104,7 @@ function run_game(words, type, number_of_words_to_guess_from_db){
         }
     }
 
-    return [words_to_guess, wrong_words];
+    return [words_to_guess, wrong_words, right_word];
 }
 
 function get_random_number(max){
@@ -342,6 +357,7 @@ function next_word(words_length, type, game_title, currency){
     if(type == "learning" && current_index < words_length){
         build_word_container(words_to_guess[current_index], "learning", wrong_words, game_title, "");
     }else if(type == "game" && current_index < words_length){
+        words_to_guess = right_word;
         build_word_container(words_to_guess[current_index], "game", wrong_words, game_title, currency);
     }else{
         build_learn_container(game_title);
@@ -363,6 +379,7 @@ function prev_word(words_length, type, game_title, currency){
     if(type == "learning"){
         build_word_container(words_to_guess[current_index], "learning", wrong_words, game_title, "");
     }else{
+        words_to_guess = right_word;
         build_word_container(words_to_guess[current_index], "game", wrong_words, game_title, currency);
     }
 
