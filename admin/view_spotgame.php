@@ -8,11 +8,14 @@ $circliful_css = WP_PLUGIN_URL . '/vocabulary-plugin/spotGame/css/jquery.circlif
 $style_css     = WP_PLUGIN_URL . '/vocabulary-plugin/spotGame/css/style.css';
 
 if (isset($_POST['deck_id'])) {
-$deck            = intval($_POST['deck_id']);
-$words           = get_all_game_words($deck);
-//$number_of_words = get_number_of_words_for_game($deck);
-$deck_name       = get_deck_title($deck);
-$currency = get_points_symbol();
+    $deck            = intval($_POST['deck_id']);
+    $words           = get_all_game_words($deck);
+    //$number_of_words = get_number_of_words_for_game($deck);
+    $deck_name       = get_deck_title($deck);
+    $right_word_id   = intval(get_number_of_words_for_game($deck));
+    $word            = get_word($right_word_id);
+    $image_url = '../../../';
+    $currency        = get_points_symbol();
 }
 
 ?>
@@ -32,9 +35,13 @@ $currency = get_points_symbol();
         var currency   = "<?php echo $currency?> ";
         var question   = "<?php echo $deck_name->name ?>";
 
+        var right_word_db = [
+            {word:"<?php echo $word->word?>", description:"<?php echo $word->description?>", image:"<?php echo $image_url . $word->image?>", audio:"<?php echo $word->audio?>", points:"<?php echo $word->points?>"},
+        ];
+
         var words = [
             <?php foreach($words as $word): ?>
-            {word:"<?php echo $word->word?>", description:"<?php echo $word->description?>", image:"<?php echo $word->image?>", audio:"<?php echo $word->audio?>", points:"<?php echo $word->points?>"},
+                {word:"<?php echo $word->word?>", description:"<?php echo $word->description?>", image:"<?php echo $image_url . $word->image?>", audio:"<?php echo $word->audio?>", points:"<?php echo $word->points?>"},
             <?php endforeach; ?>
 
         ];
