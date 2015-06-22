@@ -11,6 +11,7 @@ if (isset($_GET['id'])) {
     $deck_name       = get_deck_title($db, $deck);
     $image_url = '../../../';
     $currency        = get_points_symbol($db);
+    $deck_name       = get_deck_title($db, $deck);
 }
 
 ?>
@@ -42,7 +43,7 @@ if (isset($_GET['id'])) {
     ];
 
 
-    var question      = "What is this?";
+    var question      = "<?php echo $deck_name ?>";
 //    var right_word_db = [{word:"Mjolnir", description:"Is a fictional weapon appearing in American comic books published by Marvel Comics and is the favored weapon of the superhero Thor.", image:"mjolnir.jpg", audio:"mjolnir.mp3", points:"40"}];
 </script>
 
@@ -67,6 +68,8 @@ if (isset($_GET['id'])) {
         var game = [];
 
         build_home();
+
+        initiate("game");
 
     </script>
 
