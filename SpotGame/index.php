@@ -10,7 +10,7 @@ if (isset($_GET['id'])) {
     $word            = get_word($db, $deck, $right_word_id);
     $number_of_words = get_number_of_words_for_game($db, $deck);
     $deck_name       = get_deck_title($db, $deck);
-    $image_url = '../../../';
+    $image_url       = '../../../';
     $currency        = get_points_symbol($db);
 }
 
@@ -26,7 +26,7 @@ if (isset($_GET['id'])) {
 <link href="css/jquery.circliful.css" rel="stylesheet" type="text/css" />
 <script type="text/javascript" src="js/jquery.circliful.min.js"></script>
 <link href="css/style.css" type="text/css" rel="stylesheet">
-<title>Vocabulary Play - Game</title>
+<title>Spot Term - Game</title>
 </head>
 
 <body>
