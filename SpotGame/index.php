@@ -4,11 +4,10 @@ require('db.php');
 
 if (isset($_GET['id'])) {
     $deck            = intval($_GET['id']);
-    $right_word_id   = intval($_GET['word_id']);
     $db              = database_connection();
+    $right_word_id   = intval(get_number_of_words_for_game($db, $deck));
     $words           = get_all_spotgame_words($db, $deck, $right_word_id);
     $word            = get_word($db, $deck, $right_word_id);
-    $number_of_words = get_number_of_words_for_game($db, $deck);
     $deck_name       = get_deck_title($db, $deck);
     $image_url = '../../../';
     $currency        = get_points_symbol($db);
@@ -57,7 +56,7 @@ if (isset($_GET['id'])) {
 
         ];
 
-        var number_of_words_to_guess_from_db = Number("<?php echo $number_of_words?>");
+        var number_of_words_to_guess_from_db = 1;
 
         var errors = 0;
         var points = 0;
