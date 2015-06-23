@@ -1,0 +1,392 @@
+
+@import url(http://fonts.googleapis.com/css?family=Open+Sans);
+
+body {
+	background: #F3F3F3;
+	font-family: 'Open Sans', sans-serif, Helvetica;
+	font-size: 10px;
+	margin: 0;
+	padding: 0;
+}
+
+* {
+	box-sizing: border-box;
+}
+
+.clear {
+	clear: both;
+}
+
+#wrapper {
+	width: 80%;
+	margin: 0 auto;
+}
+
+#title h1 {
+    text-align: center;
+    font-size: 2.5em;
+}
+
+#content {
+	margin-bottom: 20px;
+}
+
+.buttons_div{
+    display: block;
+    margin: 0px auto;
+    text-align: center;
+}
+
+#content button.learning,
+#content button.game {
+	width: 70%;
+	height: 100px;
+	margin: 50px auto 0;
+	text-transform: uppercase;
+	background: #0192E1;
+	text-decoration: none;
+	text-align: center;
+	line-height: 100px;
+	border: 1px solid #0072B5;
+	display: block;
+	font-size: 2em;
+	color: #FFFFFF;
+	cursor:pointer;
+	outline: none;
+	top: 0;
+
+	-webkit-box-shadow: 0px 9px 0px #0072B5, 0px 9px 25px #999;
+	-moz-box-shadow: 0px 9px 0px #0072B5, 0px 9px 25px #999;
+	box-shadow: 0px 9px 0px #0072B5, 0px 9px 25px #999;
+
+	-webkit-transition: all .5s ease;
+	-moz-transition: all .5s ease;
+	-ms-transition: all .5s ease;
+	-o-transition: all .5s ease;
+	transition: all .5s ease;
+}
+
+
+
+#content button.learning:hover,
+#content button.game:hover {
+	-webkit-box-shadow: 0px 3px 0px #0072B5, 0px 3px 6px #999;
+	-moz-box-shadow: 0px 3px 0px #0072B5, 0px 3px 6px #999;
+	box-shadow: 0px 3px 0px #0072B5, 0px 3px 6px #999;
+	position: relative;
+	top: 6px;
+}
+
+#content p {
+	text-align: center;
+}
+
+#content p.word {
+ font-size: 4em;
+ margin: 0 0 20px 0;
+ line-height: 1em;
+}
+
+#content p.only_word {
+ line-height: 7em !important;
+}
+
+#content p.question {
+	font-size: 2em;
+	margin-top: 0;
+	padding: 0 20px;
+}
+
+#content p.description {
+	font-size: 3em;
+}
+
+#content .prev,
+#content .next {
+	width: 32px;
+	height: 50px;
+	position: absolute;
+	border: none;
+	top: 45vh;
+	outline: none;
+	cursor: pointer;
+}
+
+#content .prev {
+	background: url(../images/prev.png);
+	left: 20%;
+}
+
+#content .next {
+	background: url(../images/next.png);
+	right: 20%;
+}
+
+#content .disable,
+#top_content .dead {
+	opacity: 0.2;
+}
+
+
+#image {
+	width: 50%;
+	margin: 0 auto;
+}
+
+#image img {
+    width: 100%;
+    margin-bottom: 50px;
+    max-height: 200px;
+}
+
+#article {
+	width: 50%;
+	min-height: 380px;
+	margin: 0 auto;
+}
+
+#card {
+	min-height: 380px;
+}
+
+.front, .back {
+	width: 100% !important;
+	height: auto !important;
+	min-height: 380px;
+	box-shadow: 0 0 2px #ccc;
+	background: #FFFFFF;
+	padding: 20px 10px;
+	border-top: 5px solid #0192E1;
+	cursor: pointer;
+}
+
+.game_card {
+	box-shadow: 0 0 2px #ccc;
+	background: #FFFFFF;
+}
+
+#audio {
+	margin: 0 auto 50px;
+	display: block;
+}
+
+#top_content {
+	/*height: 70px;*/
+	border-top: 5px solid #0192E1;
+	padding: 10px 20px;
+}
+
+footer.footer span {
+	font-size: 1.5em;
+	display: inline-block;
+	margin-top: 30px;
+	text-align: center;
+	color: #999999;
+}
+
+footer.footer {
+	position: absolute;
+	bottom: 20px;
+	right: 20px;
+}
+
+form#form_word {
+	padding: 0 20px 20px;
+}
+
+form#form_word input[type="radio"] {
+	display: none;
+}
+
+form#form_word label {
+	display: inline-block;
+	width: 100%;
+	background-color: #FFFFFF;
+	margin-bottom: 10px;
+	font-size: 2em;
+	line-height: 50px;
+	padding: 0 10px;
+	border: 1px solid #e4e4e4;
+	cursor: pointer;
+}
+
+form#form_word input[type="radio"]:checked + label {
+	background-color: #0192E1;
+	border: 1px solid #0072B5;
+	color: #FFFFFF;
+}
+
+form#form_word input[type="radio"]:hover label {
+	position: relative;
+	top: 1px;
+	left: 1px;
+}
+
+.error {
+	width: 100%;
+	height: 30px;
+	line-height: 30px;
+	padding-left: 10px;
+	border: 1px solid red;
+	font-size: 1.2em;
+	background: lightpink;
+	display: none;
+}
+
+button#check, button#learning, button#play, button#cancel {
+	width: 150px;
+	height: 50px;
+	margin: 20px 5px auto 0;
+	text-transform: uppercase;
+	background: #0192E1;
+	border: 1px solid #0072B5;
+	display: inline-block;
+	color: #FFFFFF;
+	cursor:pointer;
+	outline: none;
+}
+
+#top_content .live {
+	width: 30px;
+	height: 29px;
+	display: block;
+	background: url(../images/heart.png);
+	float: right;
+	margin-left: 5px;
+}
+
+.correct {
+	background: url(../images/rightMark.png) no-repeat 95%;
+}
+
+.incorrect {
+	background: url(../images/wrongMark.png) no-repeat 95%;
+}
+
+.game_over,
+.start {
+	width: 50% !important;
+	height: auto !important;
+	min-height: 380px;
+	margin: 0 auto;
+	box-shadow: 0 0 2px #ccc;
+	background: #FFFFFF ;
+	padding: 20px 10px;
+	border-top: 5px solid #0192E1 ;
+	text-align: center;
+}
+
+.game_over h2 {
+	font-size: 3em;
+}
+
+.game_over p {
+	font-size: 2em;
+}
+
+.game_over div {
+	margin: 0 auto;
+}
+
+.game_over div span{
+	font-size: 2em !important;
+	margin: 0;
+	color: #0192e1;
+	font-weight: 900;
+}
+
+.game_over span {
+	display: block;
+	margin: 20px auto;
+	text-align: center;
+	font-size: 1.5em;
+	color: #999;
+}
+
+.game_over button.over_learning,
+.game_over button.over_game {
+	width: 150px;
+	height: 50px;
+	margin: 20px;
+	text-transform: uppercase;
+	background: #0192E1 ;
+	border: 1px solid #0072B5 ;
+	color: #FFFFFF ;
+	cursor: pointer;
+	outline: none;
+}
+
+.points {
+	float: left;
+	font-size: 2em;
+	margin: 0;
+	border-bottom: 5px solid #0192E1 ;
+	padding: 0 0 5px 0;
+}
+
+@media (max-width: 1100px) {
+
+	#article,
+	.start,
+	.game_over {
+		width: 80% !important;
+	}
+
+	#content .prev {
+		left: 10%;
+	}
+
+	#content .next {
+		right: 10%;
+	}
+
+}
+
+
+@media (max-width: 900px) {
+
+	#article,
+	.start,
+	.game_over {
+		width: 100% !important;
+	}
+
+	#content .prev {
+		left: 2%;
+	}
+
+	#content .next {
+		right: 2%;
+	}
+
+	#audio {
+		transition: 1s;
+	}
+
+}
+
+@media (max-width: 500px) {
+	body {
+		font-size: 8px;
+	}
+
+	#article {
+		width: 100%;
+	}
+
+	#content .prev {
+		left: 0;
+	}
+
+	#content .next {
+		right: 0;
+	}
+
+	#audio {
+		display: block;
+		width: 45px;
+		margin: 0 auto;
+		transition: 1s;
+	}
+
+}

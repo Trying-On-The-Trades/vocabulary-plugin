@@ -90,6 +90,38 @@ if ( ! function_exists( 'wp_handle_upload' ) ) {
         echo "<meta http-equiv='refresh' content='0;url=$location' />";
     }
 
+    function process_new_spotgame(){
+
+        // Create a new spotgame game
+        $spotgame_name         = $_POST['game_name'];
+        $spotgame_image        = "";
+        $spotgame_num_of_words = $_POST['words'][0];
+        $game_type             = "spotgame";
+
+        $selected_words = $_POST['words'];
+        $selected_deck = $_POST['decks'];
+        $deck_words = get_all_game_words_ids($selected_deck);
+
+        $deck_id = create_deck($spotgame_name, $spotgame_image, $spotgame_num_of_words ,$game_type);
+
+        if(!empty($deck_words)){
+            foreach($deck_words as $word){
+                create_deck_word($deck_id, $word->id);
+            }
+        }
+
+        if(!empty($selected_deck)){
+            foreach($selected_deck as $word){
+                create_deck_word($deck_id, $word);
+            }
+        }
+
+
+        $location = admin_url() . 'admin.php?page=spotgame_settings';
+
+        echo "<meta http-equiv='refresh' content='0;url=$location' />";
+    }
+
     function process_new_hatgame(){
 
         if ( !empty( $_FILES['word_image']['name'] ) ) {
@@ -221,6 +253,55 @@ if ( ! function_exists( 'wp_handle_upload' ) ) {
             wp_redirect( admin_url( 'admin.php?page=hatplehgame_settings&error') );
         }
     }
+
+    function process_edit_spotgame(){
+
+        // Edit a flashcard game
+        $spotgame_id           = $_POST['game_id'];
+        $spotgame_name         = $_POST['game_name'];
+        $spotgame_image        = "";
+        $spotgame_num_of_words = $_POST['words'][0];
+        $game_type              = "spotgame";
+
+        $selected_deck = $_POST['decks'];
+
+        $deck_words = "";
+
+        if('NA') {
+            $deck_words = get_all_game_words_ids($selected_deck);
+        }
+
+        if($spotgame_id == "copy"){
+            $deck_id = create_deck($spotgame_name, $spotgame_image, $spotgame_num_of_words, $game_type);
+
+            if(!empty($deck_words)){
+                foreach($deck_words as $word){
+                    create_deck_word($deck_id, $word->id);
+                }
+            }
+
+            $return = "true";
+        }else{
+            $return = update_deck($spotgame_id, $spotgame_name, $spotgame_image, $spotgame_num_of_words, $game_type);
+
+
+            if(!empty($deck_words)){
+                delete_deck_word_by_deck($spotgame_id);
+
+                foreach($deck_words as $word){
+                    create_deck_word($spotgame_id, $word->id);
+                }
+            }
+
+        }
+
+        if($return){
+            wp_redirect( admin_url( 'admin.php?page=spotgame_settings&settings-saved') );
+        } else {
+            wp_redirect( admin_url( 'admin.php?page=spotgame_settings&error') );
+        }
+    }
+
 
     function process_edit_flashcard(){
 
