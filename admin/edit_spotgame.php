@@ -21,12 +21,18 @@ function edit_spotgame_settings_page() {
 
     if (isset($_GET['id']) && is_numeric( $_GET['id']) ) {
         $game = build_deck($_GET['id']);
-        $deck_words = get_all_game_words_ids($_GET['id']);
-    }    $selected_words_ids = array();
 
-    for($j = 0; $j < sizeof($deck_words); $j++){
-        $selected_words_ids[$j] = $deck_words[$j]->id;
+        $deck_words = get_number_of_words_for_game($_GET['id']);
     }
+
+    $selected_words_ids = array($deck_words->number_of_words);
+
+
+    //echo var_dump($selected_words_ids);
+
+//    for($j = 0; $j < sizeof($deck_words); $j++){
+//        $selected_words_ids[$j] = $deck_words[$j]->id;
+//    }
 
     ?>
 <link rel="stylesheet" type="text/css" href="<?php echo $semantic ?>"/>
