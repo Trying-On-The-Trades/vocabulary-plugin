@@ -7,6 +7,9 @@ function flashcardgame_settings_page() {
     $semantic      = WP_PLUGIN_URL . '/vocabulary-plugin/css/semantic.css';
     $new_game_url  = admin_url() . "admin.php?page=new_flashcardgame_settings";
     $edit_game_url = admin_url() . "admin.php?page=edit_flashcardgame_settings&action=edit";
+    $hotspot_editor_url = admin_url() . "admin.php?page=new_hotspot_editor_settings";
+
+    $pano_editor = WP_PLUGIN_URL . '../sample-page-edit';
     $copy_game_url = admin_url() . "admin.php?page=edit_flashcardgame_settings&action=copy";
     $view_game_url = admin_url() . "admin.php?page=view_flashcardgame_settings";
     ?>
@@ -32,6 +35,7 @@ function flashcardgame_settings_page() {
             <th>Copy</th>
             <th>Delete</th>
             <th>View</th>
+            <th>Create Hotspot</th>
         </tr>
         </thead>
 
@@ -62,6 +66,9 @@ function flashcardgame_settings_page() {
 
                         <input type="submit" class="ui blue icon button" value="View" style="padding: 7px" >
                     </form>
+                </td>
+                <td>
+                    <a class="ui blue icon button" href="<?php echo $pano_editor ?>" style="padding: 7px">Create Hotspot</a>
                 </td>
             </tr>
         <?php endforeach; ?>

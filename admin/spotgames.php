@@ -27,10 +27,12 @@ function spotgame_settings_page() {
         <thead>
         <tr>
             <th>Question</th>
+            <th>Choosed Word</th>
             <th>Edit</th>
             <th>Copy</th>
             <th>Delete</th>
             <th>View</th>
+            <th>Add HotSpot</th>
         </tr>
         </thead>
 
@@ -39,7 +41,7 @@ function spotgame_settings_page() {
             <?php $current_game = build_deck($game->id); ?>
             <tr>
                 <td><?php echo $current_game->get_name(); ?></td>
-
+                <td><?php echo $current_game->get_name(); ?></td>
                 <td><a class="ui blue icon button" href="<?php echo $edit_game_url ?>&id=<?php echo $current_game->get_id() ?>" style="padding: 7px">Edit</a></td>
                 <td><a class="ui blue icon button" href="<?php echo $copy_game_url ?>&id=<?php echo $current_game->get_id() ?>" style="padding: 7px">Copy</a></td>
                 <td>

@@ -7,7 +7,7 @@ function hatplehgame_settings_page() {
     $new_game_url  = admin_url() . "admin.php?page=new_hatplehgame_settings";
     $edit_game_url = admin_url() . "admin.php?page=edit_hatplehgame_settings&action=edit";
     $copy_game_url = admin_url() . "admin.php?page=edit_hatplehgame_settings&action=copy";
-
+    $hotspot_editor_url = admin_url() . "admin.php?page=new_hotspot_editor_settings";
     $view_game_url = admin_url() . "admin.php?page=view_hatplehgame_settings";
     ?>
 
@@ -29,6 +29,7 @@ function hatplehgame_settings_page() {
             <th>Copy</th>
             <th>Delete</th>
             <th>View</th>
+            <th>Create Hotspot</th>
         </tr>
         </thead>
 
@@ -57,6 +58,9 @@ function hatplehgame_settings_page() {
 
                         <input type="submit" class="ui blue icon button" value="View" style="padding: 7px" >
                     </form>
+                </td>
+                <td>
+                    <a class="ui blue icon button" href="<?php echo $hotspot_editor_url ?>&id=<?php echo $current_game->get_id() ?>" style="padding: 7px">Create Hotspot</a>
                 </td>
             </tr>
 

@@ -22,9 +22,7 @@ function edit_spotgame_settings_page() {
     if (isset($_GET['id']) && is_numeric( $_GET['id']) ) {
         $game = build_deck($_GET['id']);
         $deck_words = get_all_game_words_ids($_GET['id']);
-    }
-
-    $selected_words_ids = array();
+    }    $selected_words_ids = array();
 
     for($j = 0; $j < sizeof($deck_words); $j++){
         $selected_words_ids[$j] = $deck_words[$j]->id;
