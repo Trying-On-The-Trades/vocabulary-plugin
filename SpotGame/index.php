@@ -1,5 +1,4 @@
 <?php
-
 require('db.php');
 
 if (isset($_GET['id'])) {
