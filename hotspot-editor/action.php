@@ -9,8 +9,6 @@
     $deck_id      = $_POST['deck_id'];
     $game_type    = $_POST['game_type'];
 
-    echo $game_type;
-
 ?>
 
 
@@ -63,7 +61,8 @@
                     game_type: game_type
                 },
                 success: function (d) {
-                    alert('Hotspot Added!' + d);
+                    //alert('Hotspot Added!' + d);
+                    window.location.href = 'http://localhost:8888/wordpress/pano/';
                 },
                 error: function (d) {
                     alert('Hotspot Fail!');
@@ -75,7 +74,6 @@
         }
 
         add_new_hotspot(domain, mission, description, icon, point_x, point_y, deck_id, game_type);
-
 
     </script>
 </head>
