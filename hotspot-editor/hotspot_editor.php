@@ -1,42 +1,48 @@
 <?php
-echo "ola mundo";
 require('db.php');
-echo "ola mundo 2";
-    $db    = database_connection();
-echo "ola mundo 3";
-echo var_dump($db);
-    $missions = get_missions($db);
-echo var_dump($missions);
-    $domains = get_domains($db);
-    $semantic      = WP_PLUGIN_URL . '/vocabulary-plugin/css/semantic.css';
+    $db        = database_connection();
+    $missions  = get_missions($db);
+    $domains   = get_domains($db);
+    $semantic  = "../wp-content/plugins/vocabulary-plugin/hotspot-editor/css/semantic.css";
+    $point_x   = $_GET['point_x'];
+    $point_y   = $_GET['point_y'];
+    $deck_id   = $_GET['deck_id'];
+    $game_type = get_deck_type($db, $deck_id);
+
+
 ?>
+
 <!DOCTYPE html>
 <html lang="en">
-<link>
+<head>
 <meta charset="UTF-8">
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
-<title>Create Hotspot</title>
+
 </head>
 <link rel="stylesheet" type="text/css" href="<?php echo $semantic ?>"/>
-<h2>Create a new hotspot!</h2>
+<h2 class="title" >Create a new hotspot!</h2>
 <hr>
-<style type="text/css">
-	.new_pano_form{
-		width:85%;
-		margin: 0px auto;
-	}
-</style>
+<!--<style type="text/css">-->
+<!--	.new_pano_form{-->
+<!--		width:85%;-->
+<!--		margin: 0px auto;-->
+<!--	}-->
+<!--</style>-->
 <body>
-<form method="post" enctype="multipart/form-data" action="<?php echo get_admin_url() . 'admin-post.php' ?>">
+<form method="post" enctype="multipart/form-data" action="../wp-content/plugins/vocabulary-plugin/hotspot-editor/action.php">
     <!-- pano processing hook -->
     <input type="hidden" name="action" value="create_new_hotspot" />
+    <input type="hidden" name="point_x" value="<?=$point_x?>" />
+    <input type="hidden" name="point_y" value="<?=$point_y?>" />
+    <input type="hidden" name="deck_id" value="<?=$deck_id?>" />
+    <input type="hidden" name="game_type" value="<?=$game_type?>" />
     <div class="ui form segment new_pano_form">
 	    <div class="ui form">
 	      <div class="field">
 	        <label for="mission_id">Select a Mission</label>
 	        <select name="mission_id">
                  <?php foreach($missions as $mission): ?>
-                    <option value="<?php echo $mission->mission_id ?>"><?php echo $mission->name ?></option>
+                    <option value="<?php echo $mission['id'] ?>"><?php echo $mission['name']  ?></option>
                  <?php endforeach; ?>
             </select>
 	      </div>
@@ -48,7 +54,7 @@ echo var_dump($missions);
 	        <select name="hotspot_domain_id">
 				 <option value="NA">...</option>
                  <?php foreach($domains as $domain): ?>
-                    <option value="<?php echo $domain->id ?>"><?php echo $domain->name ?></option>
+                    <option value="<?php echo $domain['id'] ?>"><?php echo $domain['name'] ?></option>
                 <?php endforeach; ?>
 			</select>
 	      </div>
@@ -67,8 +73,11 @@ echo var_dump($missions);
           </div>
         </div>
 
-	    <?php submit_button(); ?>
-
+        <div class="ui form">
+            <div class="field">
+                <input type="submit"  value="Save Changes" class="ui blue icon button" />
+            </div>
+        </div>
 </form>
 </div>
 </body>

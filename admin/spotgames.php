@@ -9,6 +9,8 @@ function spotgame_settings_page() {
     $edit_game_url = admin_url() . "admin.php?page=edit_spotgame_settings&action=edit";
     $copy_game_url = admin_url() . "admin.php?page=edit_spotgame_settings&action=copy";
     $view_game_url = admin_url() . "admin.php?page=view_spotgame_settings";
+
+    $pano_editor = WP_PLUGIN_URL . '../sample-page-edit';
     ?>
 
     <!-- style sheet so our admin page looks nice -->
@@ -61,6 +63,9 @@ function spotgame_settings_page() {
                         <input type="hidden" name="deck_id" value="<?php echo $game->id ?>" />
                         <input type="submit" class="ui blue icon button" value="View" style="padding: 7px" >
                     </form>
+                </td>
+                <td>
+                    <a class="ui blue icon button" href="<?php echo $pano_editor ?>?game_id=<?php echo $game->id ?>&game_type='flashcard'" style="padding: 7px">Create Hotspot</a>
                 </td>
             </tr>
         <?php endforeach; ?>

@@ -2,11 +2,11 @@
 
 function view_flashcardgame_settings_page() {
 
-    $main_js       = WP_PLUGIN_URL . '/vocabulary-plugin/wordpla/js/main.js';
-    $flip_js       = WP_PLUGIN_URL . '/vocabulary-plugin/wordpla/js/jquery.flip.js';
-    $circliful_js  = WP_PLUGIN_URL . '/vocabulary-plugin/wordpla/js/jquery.circliful.min.js';
-    $circliful_css = WP_PLUGIN_URL . '/vocabulary-plugin/wordpla/css/jquery.circliful.css';
-    $style_css     = WP_PLUGIN_URL . '/vocabulary-plugin/wordpla/css/style.css';
+    $main_js       = WP_PLUGIN_URL . '/vocabulary-plugin/flashcard/js/main.js';
+    $flip_js       = WP_PLUGIN_URL . '/vocabulary-plugin/flashcard/js/jquery.flip.js';
+    $circliful_js  = WP_PLUGIN_URL . '/vocabulary-plugin/flashcard/js/jquery.circliful.min.js';
+    $circliful_css = WP_PLUGIN_URL . '/vocabulary-plugin/flashcard/css/jquery.circliful.css';
+    $style_css     = WP_PLUGIN_URL . '/vocabulary-plugin/flashcard/css/style.css';
 
     if (isset($_POST['deck_id'])) {
         $deck            = intval($_POST['deck_id']);

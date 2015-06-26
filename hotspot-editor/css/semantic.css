@@ -15135,4 +15135,11 @@ ol.ui.horizontal.list li:before,
 
 div#wpfooter {
   position: inherit!important;
+
+}
+
+.title{
+    margin: 0 auto;
+    text-align: center;
+>>>>>>> 30a9e34188822551cd7dba9256aa288959525f69
 }
