@@ -16,9 +16,9 @@ function flashcardgame_settings_page() {
 
     <!-- style sheet so our admin page looks nice -->
     <link rel="stylesheet" type="text/css" href="<?php echo $semantic ?>"/>
-    <link rel="stylesheet" type="text/css" href="../wordpla/js/featherlight/featherlight.min.css"/>
-    <script type="text/javascript" src="../wordpla/js/featherlight/featherlight.min.js"></script>
-    <script type="text/javascript" src="../wordpla/js/featherlight/featherlight-functions.js"></script>
+    <link rel="stylesheet" type="text/css" href="../flashcard/js/featherlight/featherlight.min.css"/>
+    <script type="text/javascript" src="../flashcard/js/featherlight/featherlight.min.js"></script>
+    <script type="text/javascript" src="../flashcard/js/featherlight/featherlight-functions.js"></script>
     <hr>
 
     <?php if ( isset( $_GET[ 'settings-saved' ] ) ): ?>
@@ -54,7 +54,6 @@ function flashcardgame_settings_page() {
                         <input type="hidden" name="action" value="delete_deck" />
                         <input type="hidden" name="game_type" value="flashcardgame">
                         <input type="hidden" name="game_id" value="<?php echo $current_game->get_id() ?>" />
-                        <input type="hidden" name="deck_id" value="<?php echo $game->id ?>" />
 
                         <input type="submit" class="ui blue icon button" value="Delete" style="padding: 7px" >
                     </form>
@@ -68,7 +67,7 @@ function flashcardgame_settings_page() {
                     </form>
                 </td>
                 <td>
-                    <a class="ui blue icon button" href="<?php echo $pano_editor ?>" style="padding: 7px">Create Hotspot</a>
+                    <a class="ui blue icon button" href="<?php echo $pano_editor ?>?game_id=<?php echo $game->id ?>&game_type='flashcard'" style="padding: 7px">Create Hotspot</a>
                 </td>
             </tr>
         <?php endforeach; ?>
