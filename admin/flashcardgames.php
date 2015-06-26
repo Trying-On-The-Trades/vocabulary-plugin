@@ -16,9 +16,9 @@ function flashcardgame_settings_page() {
 
     <!-- style sheet so our admin page looks nice -->
     <link rel="stylesheet" type="text/css" href="<?php echo $semantic ?>"/>
-    <link rel="stylesheet" type="text/css" href="../wordpla/js/featherlight/featherlight.min.css"/>
-    <script type="text/javascript" src="../wordpla/js/featherlight/featherlight.min.js"></script>
-    <script type="text/javascript" src="../wordpla/js/featherlight/featherlight-functions.js"></script>
+    <link rel="stylesheet" type="text/css" href="../flashcard/js/featherlight/featherlight.min.css"/>
+    <script type="text/javascript" src="../flashcard/js/featherlight/featherlight.min.js"></script>
+    <script type="text/javascript" src="../flashcard/js/featherlight/featherlight-functions.js"></script>
     <hr>
 
     <?php if ( isset( $_GET[ 'settings-saved' ] ) ): ?>
@@ -77,7 +77,7 @@ function flashcardgame_settings_page() {
     <a class="ui blue icon button" href="<?php echo $new_game_url ?>" style="padding: 7px">New Game</a>
 
     <script>
-        jQuery(document).ready(function(){
+        jQuery(document).ready(function()
             jQuery("#gameTable").tablesorter();
         })
     </script>

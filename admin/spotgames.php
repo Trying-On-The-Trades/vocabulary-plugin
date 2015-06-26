@@ -13,9 +13,9 @@ function spotgame_settings_page() {
 
     <!-- style sheet so our admin page looks nice -->
     <link rel="stylesheet" type="text/css" href="<?php echo $semantic ?>"/>
-    <link rel="stylesheet" type="text/css" href="../wordpla/js/featherlight/featherlight.min.css"/>
-    <script type="text/javascript" src="../wordpla/js/featherlight/featherlight.min.js"></script>
-    <script type="text/javascript" src="../wordpla/js/featherlight/featherlight-functions.js"></script>
+    <link rel="stylesheet" type="text/css" href="../flashcard/js/featherlight/featherlight.min.css"/>
+    <script type="text/javascript" src="../flashcard/js/featherlight/featherlight.min.js"></script>
+    <script type="text/javascript" src="../flashcard/js/featherlight/featherlight-functions.js"></script>
     <hr>
 
     <?php if ( isset( $_GET[ 'settings-saved' ] ) ): ?>
