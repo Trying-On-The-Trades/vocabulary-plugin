@@ -76,7 +76,7 @@ function flashcardgame_settings_page() {
     <a class="ui blue icon button" href="<?php echo $new_game_url ?>" style="padding: 7px">New Game</a>
 
     <script>
-        jQuery(document).ready(function(){
+        jQuery(document).ready(function()
             jQuery("#gameTable").tablesorter();
         })
     </script>
