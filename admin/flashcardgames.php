@@ -67,7 +67,7 @@ function flashcardgame_settings_page() {
                     </form>
                 </td>
                 <td>
-                    <a class="ui blue icon button" href="<?php echo $pano_editor ?>?game_id=<?php echo $game->id ?>&game_type='flashcard'" style="padding: 7px">Create Hotspot</a>
+                    <a class="ui blue icon button" href="<?php echo $pano_editor ?>?game_id=<?php echo $game->id ?>" style="padding: 7px">Create Hotspot</a>
                 </td>
             </tr>
         <?php endforeach; ?>

@@ -9,6 +9,8 @@ function hatplehgame_settings_page() {
     $copy_game_url = admin_url() . "admin.php?page=edit_hatplehgame_settings&action=copy";
     $hotspot_editor_url = admin_url() . "admin.php?page=new_hotspot_editor_settings";
     $view_game_url = admin_url() . "admin.php?page=view_hatplehgame_settings";
+
+    $pano_editor = WP_PLUGIN_URL . '../sample-page-edit';
     ?>
 
     <!-- style sheet so our admin page looks nice -->
@@ -60,7 +62,7 @@ function hatplehgame_settings_page() {
                     </form>
                 </td>
                 <td>
-                    <a class="ui blue icon button" href="<?php echo $hotspot_editor_url ?>&id=<?php echo $current_game->get_id() ?>" style="padding: 7px">Create Hotspot</a>
+                    <a class="ui blue icon button" href="<?php echo $pano_editor ?>?game_id=<?php echo $game->id ?>" style="padding: 7px">Create Hotspot</a>
                 </td>
             </tr>
 

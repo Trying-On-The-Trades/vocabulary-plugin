@@ -19,14 +19,17 @@ if (isset($_POST['deck_id'])) {
 }
 
 ?>
-
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
 <script type="text/javascript" src="<?=$flip_js?>"></script>
 <script src="<?=$main_js?>"></script>
 <link href="<?=$circliful_css?>" rel="stylesheet" type="text/css" />
 <script type="text/javascript" src="<?=$circliful_js?>"></script>
 <link href="<?=$style_css?>" type="text/css" rel="stylesheet">
-
+    <script type="text/javascript">
+        var right_word_db = [
+            {word:"<?php echo $word->word?>", description:"<?php echo $word->description?>", image:"<?php echo $image_url . $word->image?>", audio:"<?php echo $word->audio?>", points:"<?php echo $word->points?>"}
+        ];
+    </script>
 
 <div id="wrapper">
 
@@ -34,10 +37,6 @@ if (isset($_POST['deck_id'])) {
         var game_title = "Spot Game";
         var currency   = "<?php echo $currency?> ";
         var question   = "<?php echo $deck_name->name ?>";
-
-        var right_word_db = [
-            {word:"<?php echo $word->word?>", description:"<?php echo $word->description?>", image:"<?php echo $image_url . $word->image?>", audio:"<?php echo $word->audio?>", points:"<?php echo $word->points?>"},
-        ];
 
         var words = [
             <?php foreach($words as $word): ?>
