@@ -9,10 +9,10 @@ $style_css     = WP_PLUGIN_URL . '/vocabulary-plugin/spotGame/css/style.css';
 
 if (isset($_POST['deck_id'])) {
     $deck            = intval($_POST['deck_id']);
-    $words           = get_all_game_words($deck);
+    $right_word_id   = intval(get_number_of_words_for_game($deck));
+    $words           = get_all_game_words_spotgame($deck, $right_word_id);
     //$number_of_words = get_number_of_words_for_game($deck);
     $deck_name       = get_deck_title($deck);
-    $right_word_id   = intval(get_number_of_words_for_game($deck));
     $word            = get_word($right_word_id);
     $image_url = '../../../';
     $currency        = get_points_symbol();
@@ -56,6 +56,8 @@ if (isset($_POST['deck_id'])) {
         var game = [];
 
         build_home();
+
+        initiate("game");
 
     </script>
 

@@ -19,7 +19,7 @@
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
     <script type="text/javascript">
 
-        var url          = "'" + document.location.origin + "/wordpress/wp-admin/admin-post.php" + "'";
+        var url          = document.location.origin + "/wordpress/wp-admin/admin-post.php";
         var mission      = '';
         var domain       = '';
         var description  = '';
@@ -44,11 +44,11 @@
             icon = true;
         }
 
-        function add_new_hotspot(domain_id, mission_id, hotspot_description, hotspot_icon, x, y, deck_id, game_type) {
+        function add_new_hotspot(domain_id, mission_id, hotspot_description, hotspot_icon, x, y, deck_id, game_type, url) {
 
             $.ajax({
                 type: 'POST',
-                url: 'http://localhost:8888/wordpress/wp-admin/admin-post.php',
+                url: url,
                 data: {
                     action: 'create_new_hotspot_ajax',
                     mission_id: mission_id,
@@ -62,7 +62,7 @@
                 },
                 success: function (d) {
                     //alert('Hotspot Added!' + d);
-                    window.location.href = 'http://localhost:8888/wordpress/pano/';
+                    window.location.href = document.location.origin + '/wordpress/pano/';
                 },
                 error: function (d) {
                     alert('Hotspot Fail!');
@@ -73,7 +73,7 @@
 
         }
 
-        add_new_hotspot(domain, mission, description, icon, point_x, point_y, deck_id, game_type);
+        add_new_hotspot(domain, mission, description, icon, point_x, point_y, deck_id, game_type, url);
 
     </script>
 </head>
