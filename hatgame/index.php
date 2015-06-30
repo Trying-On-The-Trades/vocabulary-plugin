@@ -9,13 +9,13 @@
     $image_url = '../../../';
 
 
-    // $style_css = WP_PLUGIN_URL . '/vocabulary-plugin/hatpleh/css/style-2.css';
-    // $main_js = WP_PLUGIN_URL . '/vocabulary-plugin/hatpleh/js/hatpla.js';
-    // $jquery_css = WP_PLUGIN_URL . '/vocabulary-plugin/hatpleh/css/jquery-ui.css';
-    // $jquery_js = WP_PLUGIN_URL . '/vocabulary-plugin/hatpleh/js/jquery.easy-confirm-dialog.js';
+    // $style_css = WP_PLUGIN_URL . '/vocabulary-plugin/hatgame/css/style-2.css';
+    // $main_js = WP_PLUGIN_URL . '/vocabulary-plugin/hatgame/js/hatpla.js';
+    // $jquery_css = WP_PLUGIN_URL . '/vocabulary-plugin/hatgame/css/jquery-ui.css';
+    // $jquery_js = WP_PLUGIN_URL . '/vocabulary-plugin/hatgame/js/jquery.easy-confirm-dialog.js';
 
-    if (isset($_GET['deck'])) {
-        $deck = intval($_GET['deck']);
+    if (isset($_GET['id'])) {
+        $deck = intval($_GET['id']);
         $db = database_connection();
         $words = get_hatpleh_words($db, $deck);
         $term = $words[mt_rand(0, count($words) - 1)];

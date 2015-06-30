@@ -43,7 +43,7 @@ function new_flashcardgame_settings_page() {
 	    </div>
 
 	    <p class="error" id="words_error">* Number of words in the game can not be lower than words selected</p>
-	    <p class="error" id="not_enough_words">* Must select at least 4 words</p>
+	    <p class="error" id="not_enough_words">* Must select at least 6 words</p>
 
        <div class="ui form">
 	      <div class="field">
@@ -113,7 +113,7 @@ function new_flashcardgame_settings_page() {
         var n = jQuery("input:checkbox:checked").length;
         var game_number_of_words = jQuery('#game_number_of_words').prop('value');
 
-        if(n < 4){
+        if(n < 6){
             e.preventDefault();
             document.getElementById("not_enough_words").style.display = "block";
             document.getElementById("words_error").style.display = "none";

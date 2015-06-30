@@ -9,24 +9,27 @@ $style_css     = WP_PLUGIN_URL . '/vocabulary-plugin/spotGame/css/style.css';
 
 if (isset($_POST['deck_id'])) {
     $deck            = intval($_POST['deck_id']);
-    $words           = get_all_game_words($deck);
+    $right_word_id   = intval(get_number_of_words_for_game($deck));
+    $words           = get_all_game_words_spotgame($deck, $right_word_id);
     //$number_of_words = get_number_of_words_for_game($deck);
     $deck_name       = get_deck_title($deck);
-    $right_word_id   = intval(get_number_of_words_for_game($deck));
     $word            = get_word($right_word_id);
     $image_url = '../../../';
     $currency        = get_points_symbol();
 }
 
 ?>
-
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
 <script type="text/javascript" src="<?=$flip_js?>"></script>
 <script src="<?=$main_js?>"></script>
 <link href="<?=$circliful_css?>" rel="stylesheet" type="text/css" />
 <script type="text/javascript" src="<?=$circliful_js?>"></script>
 <link href="<?=$style_css?>" type="text/css" rel="stylesheet">
-
+    <script type="text/javascript">
+        var right_word_db = [
+            {word:"<?php echo $word->word?>", description:"<?php echo $word->description?>", image:"<?php echo $image_url . $word->image?>", audio:"<?php echo $word->audio?>", points:"<?php echo $word->points?>"}
+        ];
+    </script>
 
 <div id="wrapper">
 
@@ -34,10 +37,6 @@ if (isset($_POST['deck_id'])) {
         var game_title = "Spot Game";
         var currency   = "<?php echo $currency?> ";
         var question   = "<?php echo $deck_name->name ?>";
-
-        var right_word_db = [
-            {word:"<?php echo $word->word?>", description:"<?php echo $word->description?>", image:"<?php echo $image_url . $word->image?>", audio:"<?php echo $word->audio?>", points:"<?php echo $word->points?>"},
-        ];
 
         var words = [
             <?php foreach($words as $word): ?>
@@ -57,6 +56,8 @@ if (isset($_POST['deck_id'])) {
         var game = [];
 
         build_home();
+
+        initiate("game");
 
     </script>
 
