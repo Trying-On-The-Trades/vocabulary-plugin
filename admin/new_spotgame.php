@@ -139,6 +139,8 @@ function new_spotgame_settings_page() {
         var cat_selected = jQuery( "#category_id option:selected" ).val();
         var dom_selected = jQuery( "#domain_id option:selected" ).val();
 
+        var checkboxes = jQuery("input:checkbox");
+
         jQuery(".cat_option").hide();
         //jQuery("input:checkbox").hide();
 
@@ -150,19 +152,80 @@ function new_spotgame_settings_page() {
         {
             jQuery(".cat_option").hide();
             jQuery(".cat" + cat_selected).show();
+
+            var category = "cat" + cat_selected;
+
+            for(var k = 0; k < checkboxes.length; k++){
+                if(!checkboxes[k].classList.contains(category)){
+                   checkboxes[k].checked = false;
+                }
+            }
         }
         else if(cat_selected == "NA" && dom_selected != "NA")
         {
             jQuery(".cat_option").hide();
             jQuery(".dom" + dom_selected).show();
+
+            var domain = "dom" + dom_selected;
+
+            for(var k = 0; k < checkboxes.length; k++){
+                if(!checkboxes[k].classList.contains(domain)){
+                   checkboxes[k].checked = false;
+                }
+            }
         }
         else
         {
             jQuery(".cat_option").hide();
             jQuery(".dom" + dom_selected + ".cat" + cat_selected).show();
+
+            var category = "cat" + cat_selected;
+
+            for(var k = 0; k < checkboxes.length; k++){
+                if(!checkboxes[k].classList.contains(category)){
+                   checkboxes[k].checked = false;
+                }
+            }
+
+            var domain = "dom" + dom_selected;
+
+            for(var k = 0; k < checkboxes.length; k++){
+                if(!checkboxes[k].classList.contains(domain)){
+                   checkboxes[k].checked = false;
+                }
+            }
         }
         jQuery("input:checkbox").hide();
+
+
     }
+
+//    function filter_words(){
+//
+//        var selected        = jQuery( "#category_id option:selected" ).val();
+//        var checkboxes = jQuery("input:checkbox");
+//
+//        if(!(selected == "NA")){
+//            jQuery("label").hide();
+//            var category = ".cat" + selected;
+//
+//            jQuery(category).show();
+//            jQuery("input:checkbox").hide();
+//
+//            var category_selected = "";
+//
+//            for(var k = 0; k < checkboxes.length; k++){
+//                category_selected = "." + checkboxes[k].className;
+//                if(category_selected != category){
+//                   checkboxes[k].checked = false;
+//                }
+//            }
+//        }else{
+//            jQuery("label").show();
+//            jQuery("input:checkbox").hide();
+//        }
+//
+//    }
 
 
 </script>

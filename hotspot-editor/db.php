@@ -10,7 +10,7 @@ function database_connection()
 }
 
 
-function get_missions($db){
+function get_missions($db, $pano_id){
 
     $pano_text_table_name    = 'wp_pano_text';
     $mission_table_name      = 'wp_pano_mission';
@@ -23,7 +23,8 @@ function get_missions($db){
         "SELECT wpm.id as mission_id, wpm.quest_id, wpm.points, wpm.mission_xml, wpmt.*, wpt.name as pano_name
         FROM wp_pano_mission wpm
         INNER JOIN wp_pano_mission_text wpmt ON wpmt.mission_id = wpm.id
-        INNER JOIN wp_pano_text wpt ON wpt.id = wpm.pano_id");
+        INNER JOIN wp_pano_text wpt ON wpt.id = wpm.pano_id
+        WHERE wpm.pano_id =" . $pano_id);
 
 
     while($row = $rows->fetch_object())

@@ -10,13 +10,6 @@ function new_word_settings_page() {
 <link rel="stylesheet" type="text/css" href="<?php echo $semantic ?>"/>
 <h2>Create a new word!</h2>
 <hr>
-<style type="text/css">
-	#domain_form{
-	    display: none;
-	    width: 80%;
-	    margin: 0 auto;
-	}
-</style>
 <form method="post" enctype="multipart/form-data" action="<?php echo get_admin_url() . 'admin-post.php' ?>">
     <input type="hidden" name="action" value="create_new_word" />
     <div class="ui form segment new_word_form">
@@ -95,11 +88,6 @@ function new_word_settings_page() {
 			jQuery("#quest_id").val(quest_id);
 		});
 	});
-    function addForm() {
-        document.getElementById("buttonDomain").style.display = "none";
-        document.getElementById("domain_form").style.display = "block";
-    }
-
 
 </script>
 <?php }

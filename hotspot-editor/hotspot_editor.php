@@ -1,7 +1,8 @@
 <?php
 require('db.php');
     $db        = database_connection();
-    $missions  = get_missions($db);
+    $pano_id   = $_GET['pano_id'];
+    $missions  = get_missions($db, $pano_id);
     $domains   = get_domains($db);
     $semantic  = "../wp-content/plugins/vocabulary-plugin/hotspot-editor/css/semantic.css";
     $point_x   = $_GET['point_x'];
@@ -41,6 +42,7 @@ require('db.php');
 	      <div class="field">
 	        <label for="mission_id">Select a Mission</label>
 	        <select name="mission_id">
+                <option value="NA">Select a mission</option>
                  <?php foreach($missions as $mission): ?>
                     <option value="<?php echo $mission['id'] ?>"><?php echo $mission['name']  ?></option>
                  <?php endforeach; ?>
@@ -52,7 +54,7 @@ require('db.php');
 	      <div class="field">
 	        <label for="hotspot_domain_id">Select a Domain</label>
 	        <select name="hotspot_domain_id">
-				 <option value="NA">...</option>
+				 <option value="NA">Select a domain</option>
                  <?php foreach($domains as $domain): ?>
                     <option value="<?php echo $domain['id'] ?>"><?php echo $domain['name'] ?></option>
                 <?php endforeach; ?>
@@ -63,14 +65,34 @@ require('db.php');
 	    <div class="ui form">
 	      <div class="field">
 	        <label for="hotspot_description">Hotspot Description</label>
-	        <textarea name="hotspot_description" required ></textarea>
+	        <textarea rows="4" name="hotspot_description" required ></textarea>
 	      </div>
 	    </div>
+
+        <div class="ui form">
+            <div class="field">
+                <label for="hotspot_menu_name">Hotspot Menu Text</label>
+                <input type="text" name="hotspot_menu_name" required />
+            </div>
+        </div>
+
+        <div class="ui form">
+            <div class="field">
+                <label for="hotspot_points">Hotspot Points</label>
+                <input type="text" name="hotspot_points" required />
+            </div>
+        </div>
 
         <div class="ui form">
           <div class="field">
             <input type="checkbox" name="hotspot_icon" checked="true" />Apply image to hotspot
           </div>
+        </div>
+
+        <div class="ui form">
+            <div class="field">
+                <input type="checkbox" name="hotspot_menu" checked="true" />Show hotspot on the menu
+            </div>
         </div>
 
         <div class="ui form">

@@ -7,6 +7,8 @@ function edit_word_settings_page() {
     $word_id = filter_input(INPUT_POST,'id');
 
     $words    = get_word($word_id);
+    $domains   = get_domains();
+    $categories = get_word_categories();
 
     if (isset($_GET['id']) && is_numeric( $_GET['id']) ) {
         $words = build_words($_GET['id']);
@@ -28,6 +30,31 @@ function edit_word_settings_page() {
     <input type="hidden" name="word_id" value="<?= $words->get_id(); ?>"/>
 
     <div class="ui form segment edit_word_form">
+
+        <div class="ui form">
+              <div class="field">
+                <label for="domain_id">Select a Domain</label>
+                <select name="domain_id">
+                     <option value="NA"> ... </option>
+                     <?php foreach($domains as $domain): ?>
+                        <option value="<?php echo $domain->id ?>"><?php echo $domain->name ?></option>
+                    <?php endforeach; ?>
+                </select>
+                </div>
+            </div>
+
+        <div class="ui form">
+              <div class="field">
+                <label for="category_id">Select a Category</label>
+                <select name="category_id">
+                     <option value="NA">...</option>
+                     <?php foreach($categories as $category): ?>
+                        <option value="<?php echo $category->id ?>"><?php echo $category->name ?></option>
+                    <?php endforeach; ?>
+                </select>
+              </div>
+            </div>
+
 	    <div class="ui form">
 	      <div class="field">
 	      	<div class="ui left labeled icon input">

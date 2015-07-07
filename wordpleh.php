@@ -97,3 +97,5 @@ require_once("admin/spotgames.php");
 require_once("admin/view_spotgame.php");
 
 require_once("admin/hotspot_editor.php");
+
+require_once("admin/view_panos.php");

@@ -140,6 +140,16 @@ function get_deck_title($deck_id){
     return $deck_number_words;
 }
 
+function get_all_panos(){
+    global $wpdb;
+    $pano_table_name = get_panos_table_name();
+
+    $sql = "SELECT id FROM {$pano_table_name} as wpt";
+    $panos = $wpdb->get_results($sql);
+
+    return $panos;
+}
+
 function get_deck_words($deck_id){
     global $wpdb;
 
