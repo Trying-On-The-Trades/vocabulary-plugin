@@ -6,9 +6,6 @@ function new_category_settings_page() {
 <link rel="stylesheet" type="text/css" href="<?php echo $semantic ?>"/>
 <h2>Create a new category!</h2>
 <hr>
-<style type="text/css">
-
-</style>
 <form method="post" enctype="multipart/form-data" action="<?php echo get_admin_url() . 'admin-post.php' ?>">
     <!-- pano processing hook -->
     <input type="hidden" name="action" value="create_new_category" />
@@ -16,7 +13,7 @@ function new_category_settings_page() {
 	    <div class="ui form">
 	      <div class="field">
 	      	<div class="ui left labeled icon input">
-	        	<label for="category_name">category Name</label>
+	        	<label for="category_name">Category Name</label>
 	    		<input name="category_name" id="name" required />
      	 	</div>
 	      </div>

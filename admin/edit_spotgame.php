@@ -21,10 +21,12 @@ function edit_spotgame_settings_page() {
 
     if (isset($_GET['id']) && is_numeric( $_GET['id']) ) {
         $game = build_deck($_GET['id']);
+
         $deck_words = get_number_of_words_for_game($_GET['id']);
     }
 
     $selected_words_ids = array($deck_words->number_of_words);
+
 
     //echo var_dump($selected_words_ids);
 
@@ -83,6 +85,12 @@ function edit_spotgame_settings_page() {
 	    <div class="ui form">
 	      <div class="field">
 	        <label for="category_id">Filter by</label>
+	        <select name="domain_id" id="domain_id">
+				 <option value="NA">Select a Domain</option>
+                 <?php foreach($domains as $domain): ?>
+        <option value="<?php echo $domain->id ?>"><?php echo $domain->name ?></option>
+    <?php endforeach; ?>
+            </select>
 	        <select name="category_id" id="category_id">
 				 <option value="NA">Select a Category</option>
                  <?php foreach($categories as $category): ?>
@@ -98,13 +106,13 @@ function edit_spotgame_settings_page() {
                 <?php foreach($words as $word): ?>
         <?php if(in_array($word->id, $selected_words_ids)): ?>
             <li class="games_form">
-                <input type="checkbox" id="<?php echo $word->id ?>" class="cat<?php echo $word->word_category_id ?>" name="words[]" value="<?php echo $word->id ?>" checked>
-                <label for="<?php echo $word->id ?>" class="cat<?php echo $word->word_category_id ?>"><?php echo $word->word ?></label>
+                <input type="checkbox" id="<?php echo $word->id ?>" class="dom<?php echo $word->domain_id ?> cat<?php echo $word->word_category_id ?>" name="words[]" value="<?php echo $word->id ?>" checked>
+                <label for="<?php echo $word->id ?>" class="dom_option cat_option dom<?php echo $word->domain_id ?> cat<?php echo $word->word_category_id ?>" ><?php echo $word->word ?></label>
             </li>
         <?php else :?>
             <li class="games_form">
-                <input type="checkbox" id="<?php echo $word->id ?>" class="cat<?php echo $word->word_category_id ?>" name="words[]" value="<?php echo $word->id ?>">
-                <label for="<?php echo $word->id ?>" class="cat<?php echo $word->word_category_id ?>"><?php echo $word->word ?></label>
+                <input type="checkbox" id="<?php echo $word->id ?>" class="dom<?php echo $word->domain_id ?> cat<?php echo $word->word_category_id ?>" name="words[]" value="<?php echo $word->id ?>">
+                <label for="<?php echo $word->id ?>" class="dom_option cat_option dom<?php echo $word->domain_id ?> cat<?php echo $word->word_category_id ?>" ><?php echo $word->word ?></label>
             </li>
         <?php endif; ?>
 
@@ -136,6 +144,10 @@ function edit_spotgame_settings_page() {
         filter_words();
     });
 
+    jQuery("#domain_id").change(function(){
+        filter_words();
+    });
+
     function user_selected_enough_words(e){
         var n = jQuery("input:checkbox:checked").length;
         var game_number_of_words = jQuery('#game_number_of_words').prop('value');
@@ -156,23 +168,68 @@ function edit_spotgame_settings_page() {
 
     }
 
-    function filter_words(){
+    function filter_words()
+    {
+        var cat_selected = jQuery( "#category_id option:selected" ).val();
+        var dom_selected = jQuery( "#domain_id option:selected" ).val();
 
-        var selected = jQuery( "#category_id option:selected" ).val();
+        var checkboxes = jQuery("input:checkbox");
 
+        jQuery(".cat_option").hide();
         //jQuery("input:checkbox").hide();
-        //jQuery("label").hide();
 
-        if(!(selected == "NA")){
-            jQuery("label").hide();
-            var category = ".cat" + selected;
-
-            jQuery(category).show();
-            jQuery("input:checkbox").hide();
-        }else{
-            jQuery("label").show();
-            jQuery("input:checkbox").hide();
+        if(cat_selected == "NA" && dom_selected == "NA")
+        {
+            jQuery(".cat_option").show();
         }
+        else if(cat_selected != "NA" && dom_selected == "NA")
+        {
+            jQuery(".cat_option").hide();
+            jQuery(".cat" + cat_selected).show();
+
+            var category = "cat" + cat_selected;
+
+            for(var k = 0; k < checkboxes.length; k++){
+                if(!checkboxes[k].classList.contains(category)){
+                   checkboxes[k].checked = false;
+                }
+            }
+        }
+        else if(cat_selected == "NA" && dom_selected != "NA")
+        {
+            jQuery(".cat_option").hide();
+            jQuery(".dom" + dom_selected).show();
+
+            var domain = "dom" + dom_selected;
+
+            for(var k = 0; k < checkboxes.length; k++){
+                if(!checkboxes[k].classList.contains(domain)){
+                   checkboxes[k].checked = false;
+                }
+            }
+        }
+        else
+        {
+            jQuery(".cat_option").hide();
+            jQuery(".dom" + dom_selected + ".cat" + cat_selected).show();
+
+            var category = "cat" + cat_selected;
+
+            for(var k = 0; k < checkboxes.length; k++){
+                if(!checkboxes[k].classList.contains(category)){
+                   checkboxes[k].checked = false;
+                }
+            }
+
+            var domain = "dom" + dom_selected;
+
+            for(var k = 0; k < checkboxes.length; k++){
+                if(!checkboxes[k].classList.contains(domain)){
+                   checkboxes[k].checked = false;
+                }
+            }
+        }
+        jQuery("input:checkbox").hide();
 
 
     }

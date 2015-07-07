@@ -16,31 +16,31 @@ var used_hint;//bool variable to check if hitn was used
 
 //this section creates the image elements to represent the user's progress
 var error1 = document.createElement("img");
-error1.setAttribute("src", "../hatpleh/images/1error.png");
+error1.setAttribute("src", "../hatgame/images/1error.png");
 error1.setAttribute("alt", "No Image");
 
 var error2 = document.createElement("img");
-error2.setAttribute("src", "../hatpleh/images/2error.png");
+error2.setAttribute("src", "../hatgame/images/2error.png");
 error2.setAttribute("alt", "No Image");
 
 var error3 = document.createElement("img");
-error3.setAttribute("src", "../hatpleh/images/3error.png");
+error3.setAttribute("src", "../hatgame/images/3error.png");
 error3.setAttribute("alt", "No Image");
 
 var error4 = document.createElement("img");
-error4.setAttribute("src", "../hatpleh/images/4error.png");
+error4.setAttribute("src", "../hatgame/images/4error.png");
 error4.setAttribute("alt", "No Image");
 
 var error5 = document.createElement("img");
-error5.setAttribute("src", "../hatpleh/images/5error.png");
+error5.setAttribute("src", "../hatgame/images/5error.png");
 error5.setAttribute("alt", "No Image");
 
 var error6 = document.createElement("img");
-error6.setAttribute("src", "../hatpleh/images/6error.png");
+error6.setAttribute("src", "../hatgame/images/6error.png");
 error6.setAttribute("alt", "No Image");
 
 var error7 = document.createElement("img");
-error7.setAttribute("src", "../hatpleh/images/7error.png");
+error7.setAttribute("src", "../hatgame/images/7error.png");
 error7.setAttribute("alt", "No Image");
 
 var winner = document.createElement("img");
@@ -49,11 +49,11 @@ winner.setAttribute("src", winner_image);
 winner.setAttribute("alt", "WINNER!");
 
 var rightAnswer = document.createElement("img");
-rightAnswer.setAttribute("src", "../hatpleh/images/right.png");
+rightAnswer.setAttribute("src", "../hatgame/images/right.png");
 rightAnswer.setAttribute("alt", "Right!");
 
 var gameOver = document.createElement("img");
-gameOver.setAttribute("src", "../hatpleh/images/gameOver.png");
+gameOver.setAttribute("src", "../hatgame/images/gameOver.png");
 gameOver.setAttribute("alt", "Game Over!");
 
 

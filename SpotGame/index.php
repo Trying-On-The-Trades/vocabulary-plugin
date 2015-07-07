@@ -1,5 +1,4 @@
 <?php
-
 require('db.php');
 
 if (isset($_GET['id'])) {
@@ -9,7 +8,7 @@ if (isset($_GET['id'])) {
     $words           = get_all_spotgame_words($db, $deck, $right_word_id);
     $word            = get_word($db, $deck, $right_word_id);
     $deck_name       = get_deck_title($db, $deck);
-    $image_url = '../../../';
+    $image_url       = '../../../';
     $currency        = get_points_symbol($db);
     $deck_name       = get_deck_title($db, $deck);
 }
@@ -26,7 +25,7 @@ if (isset($_GET['id'])) {
 <link href="css/jquery.circliful.css" rel="stylesheet" type="text/css" />
 <script type="text/javascript" src="js/jquery.circliful.min.js"></script>
 <link href="css/style.css" type="text/css" rel="stylesheet">
-<title>Vocabulary Play - Game</title>
+<title>Spot Term - Game</title>
 </head>
 
 <body>

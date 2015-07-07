@@ -9,13 +9,16 @@ function spotgame_settings_page() {
     $edit_game_url = admin_url() . "admin.php?page=edit_spotgame_settings&action=edit";
     $copy_game_url = admin_url() . "admin.php?page=edit_spotgame_settings&action=copy";
     $view_game_url = admin_url() . "admin.php?page=view_spotgame_settings";
+
+    //$pano_editor = WP_PLUGIN_URL . '../sample-page-edit';
+    $pano_editor = admin_url() . "admin.php?page=view_panos_settings";
     ?>
 
     <!-- style sheet so our admin page looks nice -->
     <link rel="stylesheet" type="text/css" href="<?php echo $semantic ?>"/>
-    <link rel="stylesheet" type="text/css" href="../wordpla/js/featherlight/featherlight.min.css"/>
-    <script type="text/javascript" src="../wordpla/js/featherlight/featherlight.min.js"></script>
-    <script type="text/javascript" src="../wordpla/js/featherlight/featherlight-functions.js"></script>
+    <link rel="stylesheet" type="text/css" href="../flashcard/js/featherlight/featherlight.min.css"/>
+    <script type="text/javascript" src="../flashcard/js/featherlight/featherlight.min.js"></script>
+    <script type="text/javascript" src="../flashcard/js/featherlight/featherlight-functions.js"></script>
     <hr>
 
     <?php if ( isset( $_GET[ 'settings-saved' ] ) ): ?>
@@ -27,10 +30,12 @@ function spotgame_settings_page() {
         <thead>
         <tr>
             <th>Question</th>
+            <th>Choosed Word</th>
             <th>Edit</th>
             <th>Copy</th>
             <th>Delete</th>
             <th>View</th>
+            <th>Add HotSpot</th>
         </tr>
         </thead>
 
@@ -39,7 +44,7 @@ function spotgame_settings_page() {
             <?php $current_game = build_deck($game->id); ?>
             <tr>
                 <td><?php echo $current_game->get_name(); ?></td>
-
+                <td><?php echo $current_game->get_name(); ?></td>
                 <td><a class="ui blue icon button" href="<?php echo $edit_game_url ?>&id=<?php echo $current_game->get_id() ?>" style="padding: 7px">Edit</a></td>
                 <td><a class="ui blue icon button" href="<?php echo $copy_game_url ?>&id=<?php echo $current_game->get_id() ?>" style="padding: 7px">Copy</a></td>
                 <td>
@@ -58,6 +63,13 @@ function spotgame_settings_page() {
                         <!-- word processing hook -->
                         <input type="hidden" name="deck_id" value="<?php echo $game->id ?>" />
                         <input type="submit" class="ui blue icon button" value="View" style="padding: 7px" >
+                    </form>
+                </td>
+                <td>
+                    <form method="POST" action="<?=$pano_editor?>&">
+                        <!-- word processing hook -->
+                        <input type="hidden" name="game_id" value="<?php echo $game->id ?>" />
+                        <input type="submit" class="ui blue icon button" value="Create_Hotspot" style="padding: 7px" >
                     </form>
                 </td>
             </tr>
