@@ -63,14 +63,34 @@ require('db.php');
 	    <div class="ui form">
 	      <div class="field">
 	        <label for="hotspot_description">Hotspot Description</label>
-	        <textarea name="hotspot_description" required ></textarea>
+	        <textarea rows="4" name="hotspot_description" required ></textarea>
 	      </div>
 	    </div>
+
+        <div class="ui form">
+            <div class="field">
+                <label for="hotspot_menu_name">Hotspot Menu Text</label>
+                <input type="text" name="hotspot_menu_name" required />
+            </div>
+        </div>
+
+        <div class="ui form">
+            <div class="field">
+                <label for="hotspot_points">Hotspot Points</label>
+                <input type="text" name="hotspot_points" required />
+            </div>
+        </div>
 
         <div class="ui form">
           <div class="field">
             <input type="checkbox" name="hotspot_icon" checked="true" />Apply image to hotspot
           </div>
+        </div>
+
+        <div class="ui form">
+            <div class="field">
+                <input type="checkbox" name="hotspot_menu" checked="true" />Show hotspot on the menu
+            </div>
         </div>
 
         <div class="ui form">
