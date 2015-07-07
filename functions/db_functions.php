@@ -29,6 +29,22 @@ function get_all_game_words($deck_id){
     return $words;
 }
 
+function get_all_game_words_spotgame($deck_id, $right_word_id){
+    global $wpdb;
+
+    $word_table_name = get_dictionary_table_name();
+    $deck_word_table_name = get_deck_words_table_name();
+
+    $words = $wpdb->get_results(
+        "SELECT word, description, image, audio, points
+         FROM " . $word_table_name . " wpt " .
+        "WHERE id IN (SELECT dictionary_id FROM " . $deck_word_table_name ." WHERE deck_id = " . $deck_id .") AND
+               id <> $right_word_id");
+
+
+    return $words;
+}
+
 function get_all_game_words_ids($deck_id){
     global $wpdb;
 

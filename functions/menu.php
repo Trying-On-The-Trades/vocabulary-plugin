@@ -140,5 +140,12 @@ function create_sub_wordpleh_menus(){
         "view_spotgame_settings",
         "view_spotgame_settings_page");
 
+    add_submenu_page(null,
+        "New Hotspot",
+        "New Hotspot",
+        "administrator",
+        "new_hotspot_editor_settings",
+        "new_hotspot_editor_settings_page");
+
 
 }
