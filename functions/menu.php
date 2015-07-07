@@ -147,5 +147,12 @@ function create_sub_wordpleh_menus(){
         "new_hotspot_editor_settings",
         "new_hotspot_editor_settings_page");
 
+    add_submenu_page(null,
+        "View Panos",
+        "View Panos",
+        "administrator",
+        "view_panos_settings",
+        "view_panos_settings_page");
+
 
 }

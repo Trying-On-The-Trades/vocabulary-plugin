@@ -15170,7 +15170,7 @@ div#wpfooter {
   left: 1px;
 }
 
-#words_error, #not_enough_words{
+#words_error, #not_enough_words, #pano_not_selected{
     display: none;
     color: red;
 }
