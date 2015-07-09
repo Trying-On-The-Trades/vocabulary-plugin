@@ -23,7 +23,7 @@ function word_settings_page() {
 
     <div class="ui form">
         <div class="field">
-            <label for="filter">Filter by</label>
+            <label for="filter">Filter the words by</label>
             <select name="domain_id" id="domain_id">
                 <option value="NA">Select a Domain</option>
                 <?php foreach($domains as $domain): ?>
@@ -91,6 +91,11 @@ function word_settings_page() {
         jQuery("#domain_id").change(function(){
             filter_words();
         });
+
+        function validation()
+        {
+
+        }
 
         function filter_words()
         {

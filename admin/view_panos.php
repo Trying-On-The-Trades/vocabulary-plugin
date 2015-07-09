@@ -6,6 +6,7 @@ function view_panos_settings_page() {
     $panos = get_all_panos();
     $pano_editor = WP_PLUGIN_URL . '../pano_editor/';
     $game_id = $_POST['game_id'];
+    $pano_desc = get_pano_description();
 
     ?>
 <link rel="stylesheet" type="text/css" href="<?php echo $semantic ?>"/>
@@ -22,7 +23,7 @@ function view_panos_settings_page() {
             <select name="panos" id="pano_id">
 				 <option value="NA">Select a Pano</option>
                  <?php foreach($panos as $pano): ?>
-                    <option value="<?php echo $pano->id ?>"><?php echo $pano->id ?></option>
+                    <option value="<?php echo $pano->id ?>"><?php echo $pano_desc ?></option>
                 <?php endforeach; ?>
             </select>
         </div>

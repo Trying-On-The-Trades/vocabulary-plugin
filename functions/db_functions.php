@@ -150,6 +150,22 @@ function get_all_panos(){
     return $panos;
 }
 
+function get_pano_description(){
+    global $wpdb;
+    $pano_table_name = get_pano_table_name();
+    $text_table_name = get_pano_text_table_name();
+    $language_code = get_user_language();
+
+    // DB query joining the pano table and the pano text table
+    $panos = $wpdb->get_results(
+        "SELECT wpp.id, wppt.description FROM " . $pano_table_name . " wpp " .
+        "INNER JOIN " . $text_table_name . " wppt ON " .
+        "wppt.pano_id = wpp.id " .
+        "WHERE wppt.language_code = " . $language_code, ARRAY_A);
+
+    return $panos;
+}
+
 function get_deck_words($deck_id){
     global $wpdb;
 
