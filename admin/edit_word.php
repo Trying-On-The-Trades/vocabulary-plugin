@@ -24,7 +24,7 @@ function edit_word_settings_page() {
 <?php elseif ( isset( $_GET[ 'error' ] ) ): ?>
     <div class="error"><p>Error updating dictionary.</p></div>
 <?php endif; ?>
-<form method="post" enctype="multipart/form-data" action="<?php echo get_admin_url() . 'admin-post.php' ?>">
+<form id="myform" method="post" enctype="multipart/form-data" action="<?php echo get_admin_url() . 'admin-post.php' ?>">
     <!-- pano processing hook -->
     <input type="hidden" name="action" value="edit_word" />
     <input type="hidden" name="word_id" value="<?= $words->get_id(); ?>"/>
@@ -66,7 +66,7 @@ function edit_word_settings_page() {
 	    <div class="ui form">
 	      <div class="field">
 	        <label for="word_description">Description</label>
-	        <textarea name="word_description" required ><?php echo $words->get_description() ?></textarea>
+	        <textarea name="word_description" id="word_description" required ><?php echo $words->get_description() ?></textarea>
 	      </div>
 	    </div>
         <div class="ui form">
@@ -102,9 +102,24 @@ function edit_word_settings_page() {
 </form>
 </div>
 
-    <script>
-        jQuery(document).ready(function(){
-            jQuery("#wordTable").tablesorter();
-        })
-    </script>
+<script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
+<script src="http://jqueryvalidation.org/files/dist/jquery.validate.min.js"></script>
+<script src="http://jqueryvalidation.org/files/dist/additional-methods.min.js"></script>
+<script>
+    jQuery.validator.setDefaults({
+      debug: true,
+      success: "valid"
+    });
+    $( "#myform" ).validate({
+      rules: {
+        word_description: {
+          required: true,
+          maxlength: 255
+        }
+      }
+    });
+            jQuery(document).ready(function(){
+                jQuery("#wordTable").tablesorter();
+            })
+</script>
 <?php }

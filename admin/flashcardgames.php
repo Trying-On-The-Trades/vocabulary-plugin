@@ -9,7 +9,7 @@ function flashcardgame_settings_page() {
     $edit_game_url = admin_url() . "admin.php?page=edit_flashcardgame_settings&action=edit";
     $hotspot_editor_url = admin_url() . "admin.php?page=new_hotspot_editor_settings";
 
-    $pano_editor = WP_PLUGIN_URL . '../sample-page-edit';
+    $pano_editor = admin_url() . "admin.php?page=view_panos_settings";
     $copy_game_url = admin_url() . "admin.php?page=edit_flashcardgame_settings&action=copy";
     $view_game_url = admin_url() . "admin.php?page=view_flashcardgame_settings";
     ?>
@@ -67,7 +67,11 @@ function flashcardgame_settings_page() {
                     </form>
                 </td>
                 <td>
-                    <a class="ui blue icon button" href="<?php echo $pano_editor ?>?game_id=<?php echo $game->id ?>" style="padding: 7px">Create Hotspot</a>
+                    <form method="POST" action="<?=$pano_editor?>&">
+                        <!-- word processing hook -->
+                        <input type="hidden" name="game_id" value="<?php echo $game->id ?>" />
+                        <input type="submit" class="ui blue icon button" value="Create_Hotspot" style="padding: 7px" >
+                    </form>
                 </td>
             </tr>
         <?php endforeach; ?>
@@ -76,7 +80,7 @@ function flashcardgame_settings_page() {
     <a class="ui blue icon button" href="<?php echo $new_game_url ?>" style="padding: 7px">New Game</a>
 
     <script>
-        jQuery(document).ready(function()
+        jQuery(document).ready(function(){
             jQuery("#gameTable").tablesorter();
         })
     </script>

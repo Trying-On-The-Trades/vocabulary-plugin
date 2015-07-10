@@ -10,7 +10,7 @@ function new_word_settings_page() {
 <link rel="stylesheet" type="text/css" href="<?php echo $semantic ?>"/>
 <h2>Create a new word!</h2>
 <hr>
-<form method="post" enctype="multipart/form-data" action="<?php echo get_admin_url() . 'admin-post.php' ?>">
+<form id="myform" method="post" enctype="multipart/form-data" action="<?php echo get_admin_url() . 'admin-post.php' ?>">
     <input type="hidden" name="action" value="create_new_word" />
     <div class="ui form segment new_word_form">
 	    <div class="ui form">
@@ -47,7 +47,7 @@ function new_word_settings_page() {
 	    <div class="ui form">
 	      <div class="field">
 	        <label for="word_description">Description</label>
-	        <textarea name="word_description" required ></textarea>
+	        <textarea name="word_description" id="word_description" required ></textarea>
 	      </div>
 	    </div>
         <div class="ui form">
@@ -80,8 +80,24 @@ function new_word_settings_page() {
 	</div>
 </form>
 </div>
-
+<script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
+<script src="http://jqueryvalidation.org/files/dist/jquery.validate.min.js"></script>
+<script src="http://jqueryvalidation.org/files/dist/additional-methods.min.js"></script>
 <script>
+
+jQuery.validator.setDefaults({
+  debug: true,
+  success: "valid"
+});
+$( "#myform" ).validate({
+  rules: {
+    word_description: {
+      required: true,
+      maxlength: 255
+    }
+  }
+});
+
 	jQuery(document).ready(function(){
 		jQuery("#pano_id").change(function(){
 			var quest_id = jQuery("option:selected", this).attr("data-quest-id");
