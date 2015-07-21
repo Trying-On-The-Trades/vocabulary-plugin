@@ -24,7 +24,7 @@ function edit_word_settings_page() {
 <?php elseif ( isset( $_GET[ 'error' ] ) ): ?>
     <div class="error"><p>Error updating dictionary.</p></div>
 <?php endif; ?>
-<form method="post" enctype="multipart/form-data" action="<?php echo get_admin_url() . 'admin-post.php' ?>">
+<form id="myform" method="post" enctype="multipart/form-data" action="<?php echo get_admin_url() . 'admin-post.php' ?>">
     <!-- pano processing hook -->
     <input type="hidden" name="action" value="edit_word" />
     <input type="hidden" name="word_id" value="<?= $words->get_id(); ?>"/>
@@ -66,7 +66,8 @@ function edit_word_settings_page() {
 	    <div class="ui form">
 	      <div class="field">
 	        <label for="word_description">Description</label>
-	        <textarea name="word_description" required ><?php echo $words->get_description() ?></textarea>
+	        <textarea name="word_description" id="word_description" required ><?php echo $words->get_description() ?></textarea>
+	        <p class="error" id="description_too_big">* Description must be smaller than 255 char</p>
 	      </div>
 	    </div>
         <div class="ui form">
@@ -102,9 +103,23 @@ function edit_word_settings_page() {
 </form>
 </div>
 
-    <script>
-        jQuery(document).ready(function(){
-            jQuery("#wordTable").tablesorter();
-        })
-    </script>
+<script>
+
+jQuery('#myform').submit(function(e){
+       max_description_size(e);
+   });
+
+   function max_description_size(e){
+       var size = jQuery("#word_description").val().length;
+       if(size > 255){
+           document.getElementById("description_too_big").style.display = "block";
+           e.preventDefault();
+       }else{
+           document.getElementById("description_too_big").style.display = "none";
+       }
+   }
+            jQuery(document).ready(function(){
+                jQuery("#wordTable").tablesorter();
+            })
+</script>
 <?php }

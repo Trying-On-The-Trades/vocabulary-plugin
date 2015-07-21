@@ -10,7 +10,7 @@ function new_word_settings_page() {
 <link rel="stylesheet" type="text/css" href="<?php echo $semantic ?>"/>
 <h2>Create a new word!</h2>
 <hr>
-<form method="post" enctype="multipart/form-data" action="<?php echo get_admin_url() . 'admin-post.php' ?>">
+<form id="myform" method="post" enctype="multipart/form-data" action="<?php echo get_admin_url() . 'admin-post.php' ?>">
     <input type="hidden" name="action" value="create_new_word" />
     <div class="ui form segment new_word_form">
 	    <div class="ui form">
@@ -47,7 +47,8 @@ function new_word_settings_page() {
 	    <div class="ui form">
 	      <div class="field">
 	        <label for="word_description">Description</label>
-	        <textarea name="word_description" required ></textarea>
+	        <textarea name="word_description" id="word_description" required ></textarea>
+	        <p class="error" id="description_too_big">* Description must be smaller than 255 char</p>
 	      </div>
 	    </div>
         <div class="ui form">
@@ -82,6 +83,21 @@ function new_word_settings_page() {
 </div>
 
 <script>
+
+jQuery('#myform').submit(function(e){
+       max_description_size(e);
+   });
+
+   function max_description_size(e){
+       var size = jQuery("#word_description").val().length;
+       if(size > 255){
+           document.getElementById("description_too_big").style.display = "block";
+           e.preventDefault();
+       }else{
+           document.getElementById("description_too_big").style.display = "none";
+       }
+   }
+
 	jQuery(document).ready(function(){
 		jQuery("#pano_id").change(function(){
 			var quest_id = jQuery("option:selected", this).attr("data-quest-id");
