@@ -48,6 +48,7 @@ function new_word_settings_page() {
 	      <div class="field">
 	        <label for="word_description">Description</label>
 	        <textarea name="word_description" id="word_description" required ></textarea>
+	        <p class="error" id="description_too_big">* Description must be smaller than 255 char</p>
 	      </div>
 	    </div>
         <div class="ui form">
@@ -80,23 +81,22 @@ function new_word_settings_page() {
 	</div>
 </form>
 </div>
-<script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
-<script src="http://jqueryvalidation.org/files/dist/jquery.validate.min.js"></script>
-<script src="http://jqueryvalidation.org/files/dist/additional-methods.min.js"></script>
+
 <script>
 
-jQuery.validator.setDefaults({
-  debug: true,
-  success: "valid"
-});
-$( "#myform" ).validate({
-  rules: {
-    word_description: {
-      required: true,
-      maxlength: 255
-    }
-  }
-});
+jQuery('#myform').submit(function(e){
+       max_description_size(e);
+   });
+
+   function max_description_size(e){
+       var size = jQuery("#word_description").val().length;
+       if(size > 255){
+           document.getElementById("description_too_big").style.display = "block";
+           e.preventDefault();
+       }else{
+           document.getElementById("description_too_big").style.display = "none";
+       }
+   }
 
 	jQuery(document).ready(function(){
 		jQuery("#pano_id").change(function(){
