@@ -82,7 +82,8 @@ body {
 }
 
 #content p.only_word {
- line-height: 7em !important;
+  margin-top: 3em;
+  margin-bottom: 3em;
 }
 
 #content p.question {
