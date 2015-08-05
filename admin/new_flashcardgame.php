@@ -10,7 +10,7 @@ function new_flashcardgame_settings_page() {
 
 ?>
 <link rel="stylesheet" type="text/css" href="<?php echo $semantic ?>"/>
-<h2>Create New Game!</h2>
+<h2>Create a New Deck!</h2>
 <hr>
 <style type="text/css">
 	#domain_form{
@@ -27,7 +27,7 @@ function new_flashcardgame_settings_page() {
 	   <div class="ui form">
 	      <div class="field">
 	      	<div class="ui left labeled icon input">
-	        	<label for="game_name">Game Name: </label>
+	        	<label for="game_name">Deck Name: </label>
 	    		<input name="game_name" id="name" required />
      	 	</div>
 	      </div>
