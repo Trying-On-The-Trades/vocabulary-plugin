@@ -6,8 +6,15 @@ function edit_spotgame_settings_page() {
   $game    = get_deck($game_id);
   $domains  = get_domains();
   $categories = get_word_categories();
-  $words = get_words();
   $decks = get_decks('flashcard');
+  if((isset($_GET['deck_id'])) && is_numeric($_GET['deck_id'])){
+    $deck_id = $_GET['deck_id'];
+    $words = get_deck_words($deck_id);
+    header('Location: ' . WP_PLUGIN_URL . '/vocabulary-plugin/admin/edit_spotgame');
+  } else {
+    $words = get_words();
+    header('Location: ' . WP_PLUGIN_URL . '/vocabulary-plugin/admin/edit_spotgame');
+  }
 
   //Will be empty if it's a copy or
   //Will have the id if it's an update
@@ -29,6 +36,17 @@ function edit_spotgame_settings_page() {
 <?php elseif ( isset( $_GET[ 'error' ] ) ): ?>
   <div class="error"><p>Error updating game.</p></div>
 <?php endif; ?>
+
+<form method="GET" action="<?= WP_PLUGIN_URL . '/vocabulary-plugin/admin/edit_spotgame.php' ?>">
+  <label>Choose a Deck:</label>
+  <select name="decks" id="deck_id">
+    <option value="NA">Select a Deck</option>
+    <?php foreach($decks as $deck): ?>
+    <option value="<?php echo $deck->id ?>"><?php echo $deck->name ?></option>
+    <?php endforeach; ?>
+  </select>
+  <input type="submit" value="Filter" class="ui blue icon button" style="padding: 7px;">
+</form>
 
 <form id="form" method="post" enctype="multipart/form-data" action="<?php echo get_admin_url() . 'admin-post.php' ?>">
 <!-- pano processing hook -->
@@ -53,6 +71,7 @@ if(isset($_GET['action']) && $_GET['action'] == "edit"){
         <option value="<?php echo $deck->id ?>"><?php echo $deck->name ?></option>
         <?php endforeach; ?>
       </select>
+      <input type="submit" value="Filter" class="ui blue icon button" style="padding: 7px;">
     </div>
   </div>
   <div class="ui form">
