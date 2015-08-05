@@ -61,7 +61,7 @@ function edit_spotgame_settings_page() {
 
         <div class="ui form">
         <div class="field">
-            <label>Choose a deck:</label>
+            <label>Choose a Deck:</label>
             <select name="decks" id="deck_id">
 				 <option value="NA">Select a Deck</option>
                  <?php foreach($decks as $deck): ?>

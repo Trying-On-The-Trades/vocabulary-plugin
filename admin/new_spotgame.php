@@ -11,7 +11,7 @@ function new_spotgame_settings_page() {
 
     ?>
 <link rel="stylesheet" type="text/css" href="<?php echo $semantic ?>"/>
-<h2>Create New Game!</h2>
+<h2>Create a New Game!</h2>
 <hr>
 
 <form id="form" method="post" enctype="multipart/form-data" action="<?php echo get_admin_url() . 'admin-post.php' ?>">
@@ -20,7 +20,7 @@ function new_spotgame_settings_page() {
 
        <div class="ui form">
         <div class="field">
-            <label>Choose a deck:</label>
+            <label>Choose a Deck:</label>
             <select name="decks" id="deck_id">
 				 <option value="NA">Select a Deck</option>
                  <?php foreach($decks as $deck): ?>
