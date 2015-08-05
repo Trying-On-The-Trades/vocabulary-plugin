@@ -8,7 +8,7 @@ function word_create_menu() {
 
 // function to create the top level meny
 function create_top_wordpleh_menu(){
-	add_menu_page('word-settings', 
+	add_menu_page('word-settings',
 				  'WordPlã',
 				  'administrator',
 				  'word_menu',
@@ -36,106 +36,106 @@ function create_sub_wordpleh_menus(){
 
 
     add_submenu_page("word_menu",
-        "Category",
-        "Category",
+        "Word Categories",
+        "Word Categories",
         "administrator",
         "category_settings",
         "category_settings_page");
 
     add_submenu_page(null,
-        "New Category",
-        "New Category",
+        "New Word Category",
+        "New Word Category",
         "administrator",
         "new_category_settings",
         "new_category_settings_page");
 
     add_submenu_page(null,
-        "Edit Category",
-        "Edit Category",
+        "Edit Word Category",
+        "Edit Word Category",
         "administrator",
         "edit_category_settings",
         "edit_category_settings_page");
 
     add_submenu_page("word_menu",
-        "Flash Card Game",
-        "Flash Card Game",
+        "Flash Card Decks",
+        "Flash Card Decks",
         "administrator",
         "flashcardgame_settings",
         "flashcardgame_settings_page");
 
     add_submenu_page(null,
-        "New Flash Card Game",
-        "New Flash Card Game",
+        "New Flash Card Deck",
+        "New Flash Card Deck",
         "administrator",
         "new_flashcardgame_settings",
         "new_flashcardgame_settings_page");
 
     add_submenu_page(null,
-        "Edit Flash Card Game",
-        "Edit Flash Card Game",
+        "Edit Flash Card Deck",
+        "Edit Flash Card Deck",
         "administrator",
         "edit_flashcardgame_settings",
         "edit_flashcardgame_settings_page");
 
     add_submenu_page(null,
-        "View Flash Card Game",
-        "View Flash Card Game",
+        "View Flash Card Deck",
+        "View Flash Card Deck",
         "administrator",
         "view_flashcardgame_settings",
         "view_flashcardgame_settings_page");
 
     add_submenu_page("word_menu",
-        "Hat Game",
-        "Hat Game",
+        "Spelling Games",
+        "Spelling Games",
         "administrator",
         "hatplehgame_settings",
         "hatplehgame_settings_page");
 
     add_submenu_page(null,
-        "New Hat Game",
-        "New Hat Game",
+        "New Spelling Game",
+        "New Spelling Game",
         "administrator",
         "new_hatplehgame_settings",
         "new_hatplehgame_settings_page");
 
     add_submenu_page(null,
-        "Edit Hat Game",
-        "Edit Hat Game",
+        "Edit Spelling Game",
+        "Edit Spelling Game",
         "administrator",
         "edit_hatplehgame_settings",
         "edit_hatplehgame_settings_page");
 
     add_submenu_page(null,
-        "View Hat Game",
-        "View Hat Game",
+        "View Spelling Game",
+        "View Spelling Game",
         "administrator",
         "view_hatplehgame_settings",
         "view_hatplehgame_settings_page");
 
     add_submenu_page("word_menu",
-        "Spot Game",
-        "Spot Game",
+        "Spot the Word Games",
+        "Spot the Word Games",
         "administrator",
         "spotgame_settings",
         "spotgame_settings_page");
 
     add_submenu_page(null,
-        "New Spot Game",
-        "New Spot Game",
+        "New Spot the Word Game",
+        "New Spot the Word Game",
         "administrator",
         "new_spotgame_settings",
         "new_spotgame_settings_page");
 
     add_submenu_page(null,
-        "Edit Spot Game",
-        "Edit Spot Game",
+        "Edit Spot the Word Game",
+        "Edit Spot the Word Game",
         "administrator",
         "edit_spotgame_settings",
         "edit_spotgame_settings_page");
 
     add_submenu_page(null,
-        "View Spot Game",
-        "View Spot Game",
+        "View Spot the Word Game",
+        "View Spot the Word Game",
         "administrator",
         "view_spotgame_settings",
         "view_spotgame_settings_page");
