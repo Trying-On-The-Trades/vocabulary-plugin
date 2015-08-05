@@ -8,7 +8,7 @@ function new_hatplehgame_settings_page() {
 
     ?>
 <link rel="stylesheet" type="text/css" href="<?php echo $semantic ?>"/>
-<h2>Create a new HatPlã game!</h2>
+<h2>Create a new Game!</h2>
 <hr>
 <form method="post" enctype="multipart/form-data" action="<?php echo get_admin_url() . 'admin-post.php' ?>">
     <input type="hidden" name="action" value="create_new_hatgame" />
