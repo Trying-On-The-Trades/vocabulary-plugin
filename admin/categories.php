@@ -16,7 +16,7 @@ function category_settings_page() {
         <div class="updated"><p>Settings updated successfully.</p></div>
     <?php endif ?>
 
-<h2>Categories</h2>
+<h2>Word Categories</h2>
 <table class="ui table segment">
   <tr>
     <th>Category</th>
