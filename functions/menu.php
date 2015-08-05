@@ -18,6 +18,13 @@ function create_top_wordpleh_menu(){
 // function to create the sub menus
 function create_sub_wordpleh_menus(){
 
+	add_submenu_page("word_menu",
+						"Word List",
+						"Word List",
+						"administrator",
+						"word_settings",
+						"word_settings_page");
+
 	// Create the sub menu item for new words
 	add_submenu_page(null,
 					 "New Word",
@@ -147,5 +154,6 @@ function create_sub_wordpleh_menus(){
         "new_hotspot_editor_settings",
         "new_hotspot_editor_settings_page");
 
+		remove_submenu_page("word_menu", "word_menu");
 
 }
