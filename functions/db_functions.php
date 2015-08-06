@@ -169,9 +169,15 @@ function get_pano_description(){
 function get_deck_words($deck_id){
     global $wpdb;
 
-    $table_name = get_deck_words_table_name();
+    $decks_table_name = get_decks_table_name();
+    $deck_words_table_name = get_deck_words_table_name();
+    $dictionary_table_name = get_dictionary_table_name();
 
-    $sql = "SELECT * FROM " . $table_name . " AS wpt WHERE game_type = " . $deck_id;
+    $sql = "SELECT dic.* FROM " . $decks_table_name . " d " .
+      "INNER JOIN " . $deck_words_table_name . " dw ON d.id = dw.deck_id " .
+      "INNER JOIN " . $dictionary_table_name . " dic ON dw.dictionary_id = dic.id " .
+      "WHERE d.id = " . $deck_id;
+
     $deck_words = $wpdb->get_results($sql);
 
     return $deck_words;

@@ -11,6 +11,7 @@ function edit_spotgame_settings_page() {
 
   if((isset($_POST['decks'])) && is_numeric($_POST['decks'])){
     $deck_id = $_POST['decks'];
+    echo $deck_id;
     $words = get_deck_words($deck_id);
   } else {
     $words = get_words();
