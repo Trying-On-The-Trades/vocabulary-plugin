@@ -7,13 +7,13 @@ function edit_spotgame_settings_page() {
   $domains  = get_domains();
   $categories = get_word_categories();
   $decks = get_decks('flashcard');
-  if((isset($_GET['deck_id'])) && is_numeric($_GET['deck_id'])){
+  if((isset($_POST['deck_id'])) && is_numeric($_POST['deck_id'])){
     $deck_id = $_GET['deck_id'];
     $words = get_deck_words($deck_id);
     header('Location: ' . WP_PLUGIN_URL . '/vocabulary-plugin/admin/edit_spotgame');
+      die();
   } else {
     $words = get_words();
-    header('Location: ' . WP_PLUGIN_URL . '/vocabulary-plugin/admin/edit_spotgame');
   }
 
   //Will be empty if it's a copy or
@@ -37,7 +37,7 @@ function edit_spotgame_settings_page() {
   <div class="error"><p>Error updating game.</p></div>
 <?php endif; ?>
 
-<form method="GET" action="<?= WP_PLUGIN_URL . '/vocabulary-plugin/admin/edit_spotgame.php' ?>">
+<form method="POST" action="<?= WP_PLUGIN_URL . '/vocabulary-plugin/admin/edit_spotgame.php' ?>">
   <label>Choose a Deck:</label>
   <select name="decks" id="deck_id">
     <option value="NA">Select a Deck</option>
