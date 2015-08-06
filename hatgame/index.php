@@ -1,5 +1,5 @@
 <?php
-    
+
     require('db.php');
     //$var = [];
     $word = "";
@@ -46,11 +46,11 @@
     <script type="text/javascript" src="js/jquery.easy-confirm-dialog.js"></script>
     <link href="css/style-3.css" type="text/css" rel="stylesheet">
     <script src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
-    
+
 </head>
 <body>
 <div id="wrapper">
-    <h2>Can you earn your <?= $profession ?>'s Hat?</h2>
+    <h2><?= $profession ?></h2>
     <div class="content">
         <aside><p id="life"></p></aside>
     </div>
