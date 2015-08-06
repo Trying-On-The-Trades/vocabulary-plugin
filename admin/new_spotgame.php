@@ -7,26 +7,42 @@ function new_spotgame_settings_page() {
   $domains   = get_domains();
   $categories = get_word_categories();
   $words = get_words();
+  $deck_id = 'NA';
+
+  if((isset($_POST['decks'])) && is_numeric($_POST['decks'])){
+    $deck_id = $_POST['decks'];
+    echo $deck_id;
+    $words = get_deck_words($deck_id);
+  } else {
+    $words = get_words();
+  }
+
 ?>
 
 <link rel="stylesheet" type="text/css" href="<?php echo $semantic ?>"/>
 
 <h2>Create a New Game!</h2>
 <hr>
+
+<div class="ui form segment new_word_form">
+<form method="POST">
+  <div class="ui form">
+    <div class="field">
+      <label>Choose a Deck:</label>
+      <select name="decks" id="deck_id">
+        <option value="NA">Select a Deck</option>
+        <?php foreach($decks as $deck): ?>
+        <option value="<?php echo $deck->id ?>"><?php echo $deck->name ?></option>
+        <?php endforeach; ?>
+      </select>
+      <input type="submit" value="Filter" class="ui blue icon button" style="padding: 7px;">
+    </div>
+  </div>
+</form>
+
 <form id="form" method="post" enctype="multipart/form-data" action="<?php echo get_admin_url() . 'admin-post.php' ?>">
   <input type="hidden" name="action" value="create_new_spotgame" />
-  <div class="ui form segment new_word_form">
-    <div class="ui form">
-      <div class="field">
-        <label>Choose a Deck:</label>
-        <select name="decks" id="deck_id">
-          <option value="NA">Select a Deck</option>
-          <?php foreach($decks as $deck): ?>
-          <option value="<?php echo $deck->id ?>"><?php echo $deck->name ?></option>
-          <?php endforeach; ?>
-        </select>
-      </div>
-    </div>
+  <input type="hidden" name="decks" value="<?= $deck_id ?>" />
     <div class="ui form">
       <div class="field">
         <div class="ui left labeled icon input">

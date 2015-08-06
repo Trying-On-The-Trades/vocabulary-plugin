@@ -67,7 +67,7 @@ if(isset($_GET['action']) && $_GET['action'] == "edit"){
 ?>
 
 <input type="hidden" name="game_id" value="<?= $game_id_to_form ?>"/>
-  <input type="hidden" name="decks" value="<?= $deck_id ?>" />
+<input type="hidden" name="decks" value="<?= $deck_id ?>" />
   <div class="ui form">
     <div class="field">
       <div class="ui left labeled icon input">
