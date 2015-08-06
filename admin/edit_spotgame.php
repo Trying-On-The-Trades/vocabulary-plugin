@@ -7,11 +7,11 @@ function edit_spotgame_settings_page() {
   $domains  = get_domains();
   $categories = get_word_categories();
   $decks = get_decks('flashcard');
-  if((isset($_POST['deck_id'])) && is_numeric($_POST['deck_id'])){
-    $deck_id = $_GET['deck_id'];
+  $deck_id = 'NA';
+
+  if((isset($_POST['decks'])) && is_numeric($_POST['decks'])){
+    $deck_id = $_POST['decks'];
     $words = get_deck_words($deck_id);
-    header('Location: ' . WP_PLUGIN_URL . '/vocabulary-plugin/admin/edit_spotgame');
-      die();
   } else {
     $words = get_words();
   }
@@ -37,15 +37,20 @@ function edit_spotgame_settings_page() {
   <div class="error"><p>Error updating game.</p></div>
 <?php endif; ?>
 
-<form method="POST" action="<?= WP_PLUGIN_URL . '/vocabulary-plugin/admin/edit_spotgame.php' ?>">
-  <label>Choose a Deck:</label>
-  <select name="decks" id="deck_id">
-    <option value="NA">Select a Deck</option>
-    <?php foreach($decks as $deck): ?>
-    <option value="<?php echo $deck->id ?>"><?php echo $deck->name ?></option>
-    <?php endforeach; ?>
-  </select>
-  <input type="submit" value="Filter" class="ui blue icon button" style="padding: 7px;">
+<div class="ui form segment edit_word_form">
+<form method="POST">
+  <div class="ui form">
+    <div class="field">
+      <label>Choose a Deck:</label>
+      <select name="decks" id="deck_id">
+        <option value="NA">Select a Deck</option>
+        <?php foreach($decks as $deck): ?>
+        <option value="<?php echo $deck->id ?>"><?php echo $deck->name ?></option>
+        <?php endforeach; ?>
+      </select>
+      <input type="submit" value="Filter" class="ui blue icon button" style="padding: 7px;">
+    </div>
+  </div>
 </form>
 
 <form id="form" method="post" enctype="multipart/form-data" action="<?php echo get_admin_url() . 'admin-post.php' ?>">
@@ -61,19 +66,7 @@ if(isset($_GET['action']) && $_GET['action'] == "edit"){
 ?>
 
 <input type="hidden" name="game_id" value="<?= $game_id_to_form ?>"/>
-<div class="ui form segment edit_word_form">
-  <div class="ui form">
-    <div class="field">
-      <label>Choose a Deck:</label>
-      <select name="decks" id="deck_id">
-        <option value="NA">Select a Deck</option>
-        <?php foreach($decks as $deck): ?>
-        <option value="<?php echo $deck->id ?>"><?php echo $deck->name ?></option>
-        <?php endforeach; ?>
-      </select>
-      <input type="submit" value="Filter" class="ui blue icon button" style="padding: 7px;">
-    </div>
-  </div>
+  <input type="hidden" name="decks" value="<?= $deck_id ?>" />
   <div class="ui form">
     <div class="field">
       <div class="ui left labeled icon input">

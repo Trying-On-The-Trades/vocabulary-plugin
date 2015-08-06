@@ -171,7 +171,7 @@ function get_deck_words($deck_id){
 
     $table_name = get_deck_words_table_name();
 
-    $sql = "SELECT * FROM {$table_name} AS wpt WHERE game_type = {$deck_id}";
+    $sql = "SELECT * FROM " . $table_name . " AS wpt WHERE game_type = " . $deck_id;
     $deck_words = $wpdb->get_results($sql);
 
     return $deck_words;
