@@ -10,7 +10,7 @@ function edit_category_settings_page() {
     }
     ?>
 <link rel="stylesheet" type="text/css" href="<?php echo $semantic ?>"/>
-<h2>Create a new category!</h2>
+<h2>Edit a category!</h2>
 <hr>
 <style type="text/css">
 

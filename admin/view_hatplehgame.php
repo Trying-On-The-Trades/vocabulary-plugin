@@ -45,7 +45,7 @@
         <script src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
 
     <div id="wrapper">
-        <h2>Can you earn your <?= $profession ?>'s Hat?</h2>
+        <h2><?= $profession ?></h2>
         <div class="content">
             <aside><p id="life"></p></aside>
         </div>

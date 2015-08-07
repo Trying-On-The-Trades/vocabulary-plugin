@@ -25,7 +25,7 @@ function flashcardgame_settings_page() {
         <div class="updated"><p>Settings updated successfully.</p></div>
     <?php endif ?>
 
-    <h2>Games</h2>
+    <h2>Flash Card Decks</h2>
     <table id="gameTable" class="ui table segment tablesorter">
         <thead>
         <tr>
@@ -77,7 +77,7 @@ function flashcardgame_settings_page() {
         <?php endforeach; ?>
         </tbody>
     </table>
-    <a class="ui blue icon button" href="<?php echo $new_game_url ?>" style="padding: 7px">New Game</a>
+    <a class="ui blue icon button" href="<?php echo $new_game_url ?>" style="padding: 7px">New Deck</a>
 
     <script>
         jQuery(document).ready(function(){

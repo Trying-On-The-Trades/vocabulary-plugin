@@ -25,7 +25,7 @@ function spotgame_settings_page() {
         <div class="updated"><p>Settings updated successfully.</p></div>
     <?php endif ?>
 
-    <h2>Games</h2>
+    <h2>Spot the Word Games</h2>
     <table id="gameTable" class="ui table segment tablesorter">
         <thead>
         <tr>

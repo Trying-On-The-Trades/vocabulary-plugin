@@ -19,7 +19,7 @@ function word_settings_page() {
         <div class="updated"><p>Settings updated successfully.</p></div>
     <?php endif ?>
 
-    <h2>Vocabulary</h2>
+    <h2>Word List</h2>
 
     <div class="ui form">
         <div class="field">

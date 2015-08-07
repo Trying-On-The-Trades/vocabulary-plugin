@@ -66,7 +66,7 @@ if ( ! function_exists( 'wp_handle_upload' ) ) {
         wp_redirect( admin_url( 'admin.php?page=category_settings' ) );
     }
 
-    function process_new_flashcard(){ 
+    function process_new_flashcard(){
 
         // Create a new flashcard game
         $flashcard_name         = $_POST['game_name'];
@@ -376,8 +376,3 @@ if ( ! function_exists( 'wp_handle_upload' ) ) {
 
         echo "<meta http-equiv='refresh' content='0;url=$location' />";
     }
-
-
-
-
-
