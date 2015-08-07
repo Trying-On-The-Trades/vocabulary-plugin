@@ -58,8 +58,8 @@ function new_spotgame_settings_page() {
         <ul>
           <?php foreach($words as $word): ?>
           <li class="games_form">
-            <input type="checkbox" id="<?php echo $word->id ?>" class="" name="words[]" value="<?php echo $word->id ?>">
-            <label for="<?php echo $word->id ?>" class="" ><?php echo $word->word ?></label>
+            <input type="radio" id="<?php echo $word->id ?>" name="words[]" value="<?php echo $word->id ?>">
+            <label for="<?php echo $word->id ?>" ><?php echo $word->word ?></label>
           </li>
           <?php endforeach; ?>
         </ul>
@@ -69,52 +69,5 @@ function new_spotgame_settings_page() {
   </div>
 </form>
 <?php endif; ?>
-
-<script>
-jQuery(document).ready(function(){
-  jQuery("#pano_id").change(function(){
-    var quest_id = jQuery("option:selected", this).attr("data-quest-id");
-    jQuery("#quest_id").val(quest_id);
-  });
-});
-
-function addForm() {
-  document.getElementById("buttonDomain").style.display = "none";
-  document.getElementById("domain_form").style.display = "block";
-}
-
-jQuery('#form').submit(function(e){
-  user_selected_enough_words(e);
-});
-
-jQuery('#game_number_of_words').change(function(){
-  document.getElementById("words_error").style.display = "none";
-  document.getElementById("not_enough_words").style.display = "none";
-});
-
-jQuery("input:checkbox").change(function(){
-  document.getElementById("words_error").style.display = "none";
-  document.getElementById("not_enough_words").style.display = "none";
-});
-
-function user_selected_enough_words(e){
-  var n = jQuery("input:checkbox:checked").length;
-  var game_number_of_words = jQuery('#game_number_of_words').prop('value');
-
-  if(n > 1 || n < 1){
-    e.preventDefault();
-    document.getElementById("not_enough_words").style.display = "block";
-    document.getElementById("words_error").style.display = "none";
-  }
-  else if(n < Number(game_number_of_words)){
-    e.preventDefault();
-    document.getElementById("words_error").style.display = "block";
-    document.getElementById("not_enough_words").style.display = "none";
-  }else{
-    document.getElementById("words_error").style.display = "none";
-    document.getElementById("not_enough_words").style.display = "none";
-  }
-}
-</script>
 
 <?php }
