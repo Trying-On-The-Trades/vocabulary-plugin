@@ -6,15 +6,14 @@ function new_spotgame_settings_page() {
   $deck_words = get_deck_words('');
   $domains   = get_domains();
   $categories = get_word_categories();
-  $words = get_words();
+  $words = array();
   $deck_id = 'NA';
 
   if((isset($_POST['decks'])) && is_numeric($_POST['decks'])){
     $deck_id = $_POST['decks'];
-    echo $deck_id;
     $words = get_deck_words($deck_id);
   } else {
-    $words = get_words();
+    $words = array();
   }
 
 ?>
@@ -32,14 +31,15 @@ function new_spotgame_settings_page() {
       <select name="decks" id="deck_id">
         <option value="NA">Select a Deck</option>
         <?php foreach($decks as $deck): ?>
-        <option value="<?php echo $deck->id ?>"><?php echo $deck->name ?></option>
+        <option value="<?php echo $deck->id ?>" <?= ($deck->id == $deck_id)? 'selected' : '' ?> ><?php echo $deck->name ?></option>
         <?php endforeach; ?>
       </select>
-      <input type="submit" value="Filter" class="ui blue icon button" style="padding: 7px;">
+      <input type="submit" value="Choose" class="ui blue icon button" style="padding: 7px;">
     </div>
   </div>
 </form>
 
+<?php if($deck_id != 'NA'): ?>
 <form id="form" method="post" enctype="multipart/form-data" action="<?php echo get_admin_url() . 'admin-post.php' ?>">
   <input type="hidden" name="action" value="create_new_spotgame" />
   <input type="hidden" name="decks" value="<?= $deck_id ?>" />
@@ -68,6 +68,8 @@ function new_spotgame_settings_page() {
     <?php submit_button(); ?>
   </div>
 </form>
+<?php endif; ?>
+
 <script>
 jQuery(document).ready(function(){
   jQuery("#pano_id").change(function(){
