@@ -4,8 +4,7 @@ define('DB_USER','root');
 define('DB_PASS','root');
 define('DB_NAME','wordpress');
 
-function database_connection()
-{
+function database_connection(){
     return new mysqli(DB_HOST, DB_USER, DB_PASS, DB_NAME);
 }
 
@@ -100,12 +99,24 @@ function get_points_symbol($db){
         "SELECT symbol FROM {$deck_table_name}
           WHERE id = 1");
 
-    while($row = $rows->fetch_object())
-    {
+    while($row = $rows->fetch_object()){
         $final = $row->symbol;
     }
 
     return $final;
+}
+
+function get_points_name($db){
+  $currency_table_name = 'wp_points_info';
+  $points_name = "";
+
+  $rows = $db->query("SELECT plural FROM " . $currency_table_name . " WHERE id = 1 LIMIT 1");
+
+  while($row = $rows->fetch_object()){
+    $points_name = $row->plural;
+  }
+
+  return $points_name;
 }
 
 ?>

@@ -273,7 +273,7 @@ function game_container(word, wrong_words, game_title, currency){
                             '<input type="text" id="points" value="'+ points +'" hidden>' +
                         "</form>\n" +
                         "<div id='initial_question'>" +
-                            "<p class='question'>It will cost you " + cost + currency + " to play. Let's do it!?</p>" +
+                            "<p class='question'>It will cost you " + cost + ' ' + currency + " to play. Let's do it!?</p>" +
                             '<div class="buttons_div">' +
                                 "<button id='cancel' class='check'>Cancel</button>\n" +
                                 "<button id='play' class='check'>Let's Go!</button>\n" +
@@ -574,11 +574,11 @@ function game_over_container(final_message, game_title){
 
     if(points < 0) {
         final_points = points * (-1);
-        final_result = 'It cost you ' + final_points + currency;
+        final_result = 'It cost you ' + final_points + ' ' + currency;
     }else{
         game_over_title = "Congratulations!!";
         final_points = points;
-        final_result = 'You have earned ' + final_points + currency;
+        final_result = 'You have earned ' + final_points + ' ' + currency;
     }
 
     return  "<section id='content' class='game_over'>\n" +

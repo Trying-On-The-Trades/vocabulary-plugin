@@ -9,7 +9,7 @@ if (isset($_GET['id'])) {
     $word            = get_word($db, $deck, $right_word_id);
     $deck_name       = get_deck_title($db, $deck);
     $image_url       = '../../../';
-    $currency        = get_points_symbol($db);
+    $currency        = get_points_name($db);
     $deck_name       = get_deck_title($db, $deck);
 }
 
