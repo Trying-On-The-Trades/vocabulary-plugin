@@ -257,10 +257,7 @@ function game_container(word, wrong_words, game_title, currency){
     var cost = Number(word['points']) * 0.1;
     cost = parseInt(cost, 10);
 
-    var html =  "<header id='title'>\n" +
-                    "<h1>" + 'Spot Game' + "</h1>\n" +
-                "</header>\n" +
-                "<section id='content'>\n" +
+    var html =  "<section id='content'>\n" +
                     "<button class='prev disable' id='prev'></button>\n" +
                     "<article id='article' class='game_card'>\n" +
                         "<div id='top_content'>\n" +
@@ -313,11 +310,7 @@ function learning_container(word, game_title){
     }
 
 
-    return "<header id='title'>\n" +
-        "<h1>" + 'Spot Game' + "</h1>\n" +
-        "</header>\n" +
-
-        "<section id='content'>\n" +
+    return "<section id='content'>\n" +
 
         "<button class='prev disable' id='prev'></button>\n" +
 
@@ -588,10 +581,7 @@ function game_over_container(final_message, game_title){
         final_result = 'You have earned ' + final_points + currency;
     }
 
-    return  "<header id='title'>\n" +
-        "<h1>" + 'Spot Game' + "</h1>\n" +
-        "</header>\n" +
-        "<section id='content' class='game_over'>\n" +
+    return  "<section id='content' class='game_over'>\n" +
         '<h2 id="game_result">' + game_over_title + '</h2>' +
         '<p>' + final_result + '</p>' +
         "<button id='learning' class='over_learning'>Back to Learning</button>\n" +
@@ -608,10 +598,7 @@ function draw_graph(){
 }
 
 function home_container(game_title){
-    return  "<header id='title'>\n" +
-        "<h1>" + 'Spot Game' + "</h1>\n" +
-        "</header>\n" +
-        "<section id='content' class='start'>\n" +
+    return  "<section id='content' class='start'>\n" +
         "<button id='learning' class='learning'>Learning Section</button>\n" +
         "<button id='game' class='game'>Play Game!</button>\n" +
         '<input type="text" id="points" value="'+ points +'" hidden>' +
@@ -619,10 +606,7 @@ function home_container(game_title){
 }
 
 function final_learn_container(game_title){
-    return  "<header id='title'>\n" +
-        "<h1>" + 'Spot Game' + "</h1>\n" +
-        "</header>\n" +
-        "<section id='content' class='game_over'>\n" +
+    return  "<section id='content' class='game_over'>\n" +
         '<h2>DONE!!!</h2>' +
         '<p>You just finished the learning section!!</p>' +
         '<p>What do you want to do next ?</p>' +
