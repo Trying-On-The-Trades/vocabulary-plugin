@@ -391,8 +391,7 @@ function prev_word(words_length, type, game_title, currency){
 }
 
 function disable_button(button_id){
-    $('#'+button_id).prop("disabled", true);
-    $('#'+button_id).addClass('disable');
+    $('#'+button_id).hide();
 }
 
 function enable_button(button_id){
