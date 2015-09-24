@@ -277,6 +277,8 @@ function game_container(word, wrong_words, game_title, currency){
                             '<div class="buttons_div">' +
                                 "<button id='cancel' class='check'>Cancel</button>\n" +
                                 "<button id='play' class='check'>Let's Go!</button>\n" +
+                                '<br>\n' +
+                                '<button id="learning">I want to learn first for free</button>\n' +
                             '</div>' +
                         '</div>' +
                     "</article>\n" +
