@@ -249,6 +249,19 @@ button#check, button#learning, button#play, button#cancel {
 	outline: none;
 }
 
+button#learning {
+	width: 300px;
+	height: 50px;
+	margin: 20px 5px auto 0;
+	text-transform: uppercase;
+	background: #0192E1;
+	border: 1px solid #0072B5;
+	display: inline-block;
+	color: #FFFFFF;
+	cursor:pointer;
+	outline: none;
+}
+
 #top_content .live {
 	width: 30px;
 	height: 29px;
