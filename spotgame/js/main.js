@@ -278,7 +278,7 @@ function game_container(word, wrong_words, game_title, currency){
                                 "<button id='cancel' class='check'>Cancel</button>\n" +
                                 "<button id='play' class='check'>Let's Go!</button>\n" +
                                 '<br>\n' +
-                                '<button id="learning">I want to learn first for free</button>\n' +
+                                '<button id="learning" class="check">I want to learn first for free</button>\n' +
                             '</div>' +
                         '</div>' +
                     "</article>\n" +
@@ -585,8 +585,6 @@ function game_over_container(final_message, game_title){
     return  "<section id='content' class='game_over'>\n" +
         '<h2 id="game_result">' + game_over_title + '</h2>' +
         '<p>' + final_result + '</p>' +
-        "<button id='learning' class='over_learning'>Back to Learning</button>\n" +
-        "<button id='game' class='over_game'>Play Again!</button>\n" +
         '<input type="text" id="points" value="'+ points +'" hidden>' +
         "</section>\n";
 
